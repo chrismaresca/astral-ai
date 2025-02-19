@@ -1,0 +1,130 @@
+# models.yaml
+providers:
+  openai:
+    models:
+      - model_type: "llm"
+        alias: "gpt-4o"
+        alias_mapped_model: "gpt-4o-01-15-24"
+        model_names:
+          - "gpt-4o-01-15-24"
+          - "gpt-4o-12-17-24"
+          - "gpt-4o-01-10-24"
+        supported_features:
+          reasoning_effort: false
+          developer_message: false
+          system_message: true
+          structured_output: true
+          image_ingestion: true
+          function_call: true
+        pricing:
+          prompt_tokens: 2.50
+          cached_prompt_tokens: 1.25
+          output_tokens: 10
+
+      - model_type: "llm"
+        alias: "o1"
+        alias_mapped_model: "o1-01-15-24"
+        model_names:
+          - "o1-01-15-24"
+          - "o1-12-17-24"
+          - "o1-01-10-24"
+        supported_features:
+          reasoning_effort: true
+          developer_message: true
+          system_message: false
+          structured_output: true
+          image_ingestion: true
+          function_call: true
+        pricing:
+          prompt_tokens: 15
+          cached_prompt_tokens: 7.5
+          output_tokens: 60
+
+      - model_type: "llm"
+        alias: "o1-mini"
+        alias_mapped_model: "o1-mini-01-15-24"
+        model_names:
+          - "o1-mini-01-15-24"
+          - "o1-mini-12-17-24"
+          - "o1-mini-01-10-24"
+        supported_features:
+          reasoning_effort: false
+          developer_message: false
+          system_message: false
+          structured_output: true
+          image_ingestion: false
+          function_call: true
+        pricing:
+          prompt_tokens: 3.00
+          cached_prompt_tokens: 1.50
+          output_tokens: 12
+
+      - model_type: "llm"
+        alias: "o3-mini"
+        alias_mapped_model: "o3-mini-2025-01-31"
+        model_names:
+          - "o3-mini-2025-01-31"
+        supported_features:
+          reasoning_effort: true
+          developer_message: true
+          system_message: false
+          structured_output: true
+          image_ingestion: false
+          function_call: true
+        pricing:
+          prompt_tokens: 0.0
+          cached_prompt_tokens: 0.0
+          output_tokens: 0.0
+
+  anthropic:
+    models:
+      - model_type: "llm"
+        alias: "claude-3-5-sonnet"
+        alias_mapped_model: "claude-3-5-sonnet-20241022"
+        model_names:
+          - "claude-3-5-sonnet-20241022"
+        supported_features:
+          reasoning_effort: false
+          developer_message: false
+          system_message: true
+          structured_output: true
+          image_ingestion: true
+          function_call: true
+        pricing:
+          prompt_tokens: 0.0
+          cached_prompt_tokens: 0.0
+          output_tokens: 0.0
+
+      - model_type: "llm"
+        alias: "claude-3-opus"
+        alias_mapped_model: "claude-3-opus-20240229"
+        model_names:
+          - "claude-3-opus-20240229"
+        supported_features:
+          reasoning_effort: false
+          developer_message: false
+          system_message: true
+          structured_output: true
+          image_ingestion: true
+          function_call: true
+        pricing:
+          prompt_tokens: 0.0
+          cached_prompt_tokens: 0.0
+          output_tokens: 0.0
+
+      - model_type: "llm"
+        alias: "claude-3-haiku"
+        alias_mapped_model: "claude-3-5-haiku-20241022"
+        model_names:
+          - "claude-3-5-haiku-20241022"
+        supported_features:
+          reasoning_effort: false
+          developer_message: false
+          system_message: false
+          structured_output: true
+          image_ingestion: false
+          function_call: true
+        pricing:
+          prompt_tokens: 0.0
+          cached_prompt_tokens: 0.0
+          output_tokens: 0.0

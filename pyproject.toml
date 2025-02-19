@@ -1,0 +1,26 @@
+[project]
+name = "astral-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Chris Maresca", email = "chris@chrismaresca.dev" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "openai>=1.63.0",
+    "pydantic-settings>=2.7.1",
+    "pydantic>=2.10.6",
+    "pyyaml>=6.0.2",
+    "typer>=0.15.1",
+    "colorama>=0.4.6",
+]
+
+[project.scripts]
+astral-ai = "astral_ai:main"
+
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
