@@ -108,14 +108,18 @@ from typing import overload, Literal, Union, List, Optional, TypeAlias
 
 
 # Astral Messaging Types
-from astral_ai.messaging._models import MessageList, Message, TextMessage, ImageMessage
+from astral_ai.messaging._models import (MessageList,
+                                         Message,
+                                         TextMessage,
+                                         ImageMessage)
 
 # Astral Providers
-from astral_ai.providers._generics import AnthropicRequest, AnthropicResponse, StructuredOutputT, AnthropicRequestType, AnthropicResponseType
-from astral_ai.providers._base_adapters import BaseCompletionAdapter
+from astral_ai.providers._generics import (AnthropicRequestType,
+                                           AnthropicResponseType,
+                                           StructuredOutputT)
 
-# OpenAI Message Types
-from astral_ai._providersMOVE import AnthropicMessage
+# Astral Base Adapters
+from astral_ai.providers._base_adapters import BaseCompletionAdapter
 
 # Astral AI Types
 from astral_ai._types._request import AstralCompletionRequest
@@ -123,7 +127,11 @@ from astral_ai._types._response import AstralChatResponse, AstralStructuredRespo
 
 # OpenAI Types
 # TODO: is this right?
-from ._types import AnthropicRequest
+from ._types import (
+    AnthropicRequestType,
+    AnthropicResponseType,
+
+)
 
 
 class Anthropic:
@@ -147,24 +155,24 @@ class AnthropicCompletionAdapter(BaseCompletionAdapter[AnthropicClients, Anthrop
     # -------------------------------------------------------------------------- #
 
     @overload
-    def to_astral_completion_response(self, response: AnthropicResponse) -> AstralChatResponse:
+    def to_astral_completion_response(self, response: AnthropicResponseType) -> AstralChatResponse:
         ...
 
     @overload
-    def to_astral_completion_response(self, response: AnthropicResponse, response_model: StructuredOutputT) -> AstralStructuredResponse:
+    def to_astral_completion_response(self, response: AnthropicResponseType, response_model: StructuredOutputT) -> AstralStructuredResponse:
         ...
 
     # -------------------------------------------------------------------------- #
     # Implementation
     # -------------------------------------------------------------------------- #
 
-    def to_provider_completion_request(self, request: AstralCompletionRequest) -> AnthropicRequest:
+    def to_provider_completion_request(self, request: AstralCompletionRequest) -> AnthropicRequestType:
         """
         Convert an AstralCompletionRequest into an AnthropicRequest.
         """
         pass
 
-    def to_astral_completion_response(self, response: AnthropicResponse, response_model: Optional[StructuredOutputT] = None) -> Union[AstralChatResponse, AstralStructuredResponse]:
+    def to_astral_completion_response(self, response: AnthropicResponseType, response_model: Optional[StructuredOutputT] = None) -> Union[AstralChatResponse, AstralStructuredResponse]:
         """
         Convert an AnthropicResponse into an AstralChatResponse or AstralStructuredResponse.
         """

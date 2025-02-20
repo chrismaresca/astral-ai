@@ -10,8 +10,9 @@ Completions Resource for Astral AI
 # Imports
 # ------------------------------------------------------------------------------
 
-# Typing
+# Built-ins
 from typing import Any, Dict, List, Optional, Union, Iterable, Type, Literal, overload, TypeVar
+from abc import ABC, abstractmethod
 
 # Pydantic
 from pydantic import BaseModel
@@ -20,7 +21,7 @@ from pydantic import BaseModel
 from astral_ai._types._base import NOT_GIVEN, NotGiven
 from astral_ai._types._request import AstralCompletionRequest, AstralStructuredCompletionRequest
 from astral_ai._types._astral import AstralParams
-from astral_ai._types._response import AstralChatResponse, AstralStructuredResponse
+from astral_ai._types._response import AstralChatResponse, AstralStructuredResponse, AstralBaseResponse
 
 # Models
 from astral_ai.constants._models import ModelName, get_provider_from_model_name
@@ -46,7 +47,7 @@ from astral_ai._types._request import (
 
 # Astral AI Decorators
 # TODO: implement required_parameters
-from astral_ai._decorators import required_parameters
+from astral_ai._decorators import required_parameters, calculate_cost_decorator
 
 
 # Mappings
@@ -61,7 +62,44 @@ from astral_ai.providers._generics import StructuredOutputT
 # ------------------------------------------------------------------------------
 
 
-class Completions:
+class SyncResource(ABC):
+    """
+    Base class for all sync resources.
+    """
+
+    def __init__(self, request: AstralCompletionRequest, astral_params: Optional[AstralParams] = None) -> None:
+        self.request = request
+        self.astral_params = astral_params
+
+        self.model = request.model
+
+        # Validate model
+        if not isinstance(self.model, ModelName):
+            raise ModelNameError(model_name=self.model)
+
+        # Set the model provider.
+        self.model_provider = get_provider_from_model_name(self.model)
+
+        # Validate provider
+        if not self.model_provider:
+            raise ProviderNotFoundForModelError(model_name=self.model)
+
+        # Retrieve (or create) the provider client.
+        self.client = get_provider_client(self.model_provider, astral_client=astral_params.astral_client)
+
+        # Get the provider adapter.
+        self.adapter = get_provider_adapter(self.model_provider)
+
+    @abstractmethod
+    def run(self) -> AstralBaseResponse:
+        pass
+
+    @abstractmethod
+    async def run_async(self) -> AstralBaseResponse:
+        pass
+
+
+class Completions(SyncResource):
     """
     Astral AI Completions Resource.
     """
@@ -71,28 +109,9 @@ class Completions:
         request: AstralCompletionRequest,
         astral_params: Optional[AstralParams] = None,
     ) -> None:
-        """
-        Initialize the completions resource.
-        """
-        self.request = request
 
-        # Validate model
-        self.model = request.model
-        if not isinstance(self.model, ModelName):
-            raise ModelNameError(model_name=self.model)
-
-        # Validate provider
-        model_provider = get_provider_from_model_name(self.model)
-        if not model_provider:
-            raise ProviderNotFoundForModelError(model_name=self.model)
-
-        # Retrieve (or create) the provider client.
-        self.client = get_provider_client(model_provider, astral_client=astral_params.astral_client)
-
-        model_provider = "openai"
-
-        # Get the provider adapter.
-        self.adapter = get_provider_adapter(model_provider)
+        # Initialize the base class.
+        super().__init__(request, astral_params)
 
     # --------------------------------------------------------------------------
     # Run Chat Overload
@@ -114,6 +133,7 @@ class Completions:
     # Run Implementation
     # --------------------------------------------------------------------------
 
+    @calculate_cost_decorator
     def run(self, response_format: Optional[StructuredOutputT] = None) -> Union[AstralChatResponse, AstralStructuredResponse]:
         """
         Execute the completion request.
@@ -141,7 +161,6 @@ class Completions:
 # ------------------------------------------------------------------------------
 # Top-level Functions
 # ------------------------------------------------------------------------------
-
 
 @required_parameters("model", "messages")
 def completion(

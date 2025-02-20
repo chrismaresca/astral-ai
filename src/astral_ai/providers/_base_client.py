@@ -31,11 +31,10 @@ from typing import (
 
 # Provider Types
 from astral_ai.providers._generics import (
-    ModelProviderClientT,
+    ProviderClientT,
     ProviderResponseChatT,
     ProviderResponseStructuredT,
     ProviderResponseStreamingT,
-    ModelProviderClient,
     ProviderRequestChatT,
     ProviderRequestStructuredT,
     ProviderRequestStreamingT,
@@ -51,7 +50,6 @@ from astral_ai._auth import (
     AUTH_CONFIG_TYPE,
     get_env_vars,
 )
-from astral_ai._providersMOVE import ModelProviderClient, ModelProviderClientT
 from astral_ai.constants._models import ModelProvider
 
 # Exceptions
@@ -72,7 +70,7 @@ from astral_ai.logger import logger
 class BaseProviderClient(
     ABC,
     Generic[
-        ModelProviderClientT,
+        ProviderClientT,
         ProviderRequestChatT,
         ProviderRequestStructuredT,
         ProviderRequestStreamingT,
@@ -92,7 +90,7 @@ class BaseProviderClient(
     - Generic type definitions for provider-specific request/response types
 
     Type Parameters:
-        ModelProviderClientT: The provider's client type (e.g. OpenAI, Anthropic client)
+        ProviderClientT: The provider's client type (e.g. OpenAI, Anthropic client)
         ProviderRequestChatT: The provider's chat request type
         ProviderRequestStructuredT: The provider's structured request type
         ProviderRequestStreamingT: The provider's streaming request type
@@ -106,7 +104,7 @@ class BaseProviderClient(
         client: The authenticated provider client instance
     """
     _auth_strategies: Dict[AUTH_METHOD_NAME_TYPES, AuthCallable] = {}
-    _client_cache: ClassVar[Dict[Any, ModelProviderClient]] = {}
+    _client_cache: ClassVar[Dict[Any, ProviderClientT]] = {}
     _model_provider: ModelProvider = None
 
     def __init__(self, config: Optional[AUTH_CONFIG_TYPE] = None) -> None:
@@ -126,7 +124,7 @@ class BaseProviderClient(
 
         if cache_client and cache_key in self._client_cache:
             logger.info("Using cached provider client.")
-            self.client: ModelProviderClientT = self._client_cache[cache_key]
+            self.client: ProviderClientT = self._client_cache[cache_key]
         else:
             self.client = self._get_or_authenticate_client()
             if cache_client:
@@ -152,7 +150,7 @@ class BaseProviderClient(
         logger.debug("No config.yaml found; proceeding without a configuration file.")
         return None
 
-    def _get_or_authenticate_client(self) -> ModelProviderClient:
+    def _get_or_authenticate_client(self) -> ProviderClientT:
         """
         Attempts to authenticate using a specified auth method (if provided in config)
         or by looping through all available strategies.

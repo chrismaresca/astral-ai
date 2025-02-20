@@ -50,53 +50,14 @@ from astral_ai._types._request import (
     Tool,
 )
 
+# OpenAI Types
+from ._message import OpenAIMessageT
 # ------------------------------------------------------------------------------
 # Generic Types
 # ------------------------------------------------------------------------------
 
 # Response Format Type
 _ResponseFormatT = TypeVar("ResponseFormatT", bound=BaseModel)
-
-
-# ------------------------------------------------------------------------------
-# OpenAI Message Types
-# ------------------------------------------------------------------------------
-
-
-# Message Type
-OpenAIMessage: TypeAlias = ChatCompletionMessageParam
-
-
-# ------------------------------------------------------------------------------
-# OpenAI Request Types
-# ------------------------------------------------------------------------------
-
-# Chat Request
-OpenAIRequestChatT: TypeAlias = 'OpenAIRequestChat'
-
-# Streaming Request
-OpenAIRequestStreamingT: TypeAlias = 'OpenAIRequestStreaming'
-
-# Structured Request
-OpenAIRequestStructuredT: TypeAlias = 'OpenAIRequestStructured'
-
-
-# ------------------------------------------------------------------------------
-# OpenAI Response Types
-# ------------------------------------------------------------------------------
-
-
-# Streaming Response
-OpenAIStreamingResponse: TypeAlias = ChatCompletionChunk
-
-# Chat Response
-OpenAIChatResponse: TypeAlias = ChatCompletion
-
-# Structured Response
-OpenAIStructuredResponse: TypeAlias = ParsedChatCompletion
-
-# Type Alias for OpenAI Response
-OpenAIResponse: TypeAlias = Union[OpenAIChatResponse, OpenAIStructuredResponse, OpenAIStreamingResponse]
 
 
 # ------------------------------------------------------------------------------
@@ -109,7 +70,7 @@ class OpenAIRequestBase(TypedDict, total=False):
     OpenAI Request Base Model for Astral AI
     """
     model: Required[OpenAIModels]
-    messages: Required[OpenAIMessage]
+    messages: Required[OpenAIMessageT]
     frequency_penalty: Optional[float]
     """Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far."""
 
@@ -208,3 +169,20 @@ class OpenAIRequestStreaming(OpenAIRequestBase):
 
 class OpenAIRequestStructured(Generic[_ResponseFormatT], OpenAIRequestBase):
     response_format: _ResponseFormatT
+
+
+# ------------------------------------------------------------------------------
+# OpenAI Type Aliases
+# ------------------------------------------------------------------------------
+
+# Chat Request
+OpenAIRequestChatType: TypeAlias = OpenAIRequestChat
+
+# Streaming Request
+OpenAIRequestStreamingType: TypeAlias = OpenAIRequestStreaming
+
+# Structured Request
+OpenAIRequestStructuredType: TypeAlias = OpenAIRequestStructured
+
+# Union of all request types
+OpenAIRequestType: TypeAlias = Union[OpenAIRequestChatType, OpenAIRequestStreamingType, OpenAIRequestStructuredType]

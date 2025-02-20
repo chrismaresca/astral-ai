@@ -21,7 +21,6 @@ from pydantic import BaseModel
 from astral_ai.providers._generics import (
     ProviderRequestT,
     ProviderResponseT,
-    ModelProviderClientT,
     StructuredOutputT,
 )
 

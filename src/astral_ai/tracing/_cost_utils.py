@@ -52,16 +52,3 @@ def get_model_costs(model_name: ModelName, model_provider: ModelProvider) -> Uni
     model_cost_dict = model_cost_mapping[model_provider][model_name]
 
     return ChatCost(**model_cost_dict) if model_name in ChatModels else EmbeddingCost(**model_cost_dict)
-
-
-
-if __name__ == "__main__":
-    test_model_name = "gpt-4o"
-    test_provider = "openai"
-    test_cost = get_model_costs(test_model_name, test_provider)
-
-    test_model_name = "text-embedding-3-small"
-    test_provider = "openai"
-    test_cost = get_model_costs(test_model_name, test_provider)
-
-    print(test_cost)

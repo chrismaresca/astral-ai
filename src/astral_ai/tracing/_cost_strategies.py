@@ -22,7 +22,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Tuple, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from astral_ai._types._response import BaseResponse
+    from astral_ai._types._response import AstralBaseResponse
     from astral_ai._types._usage import BaseUsage
 
 # ------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ if TYPE_CHECKING:
 
 class CostStrategy(ABC):
     @abstractmethod
-    def handle_cost(self, response: BaseResponse, cost: float) -> Tuple[BaseResponse, float]:
+    def handle_cost(self, response: AstralBaseResponse, cost: float) -> Tuple[AstralBaseResponse, float]:
         """
         Process the cost along with the response.
         This method should return either the unmodified response or an enhanced result.
@@ -48,7 +48,7 @@ class CostStrategy(ABC):
 class ReturnCostStrategy(CostStrategy):
     """Return the response and cost as a tuple."""
 
-    def handle_cost(self, response: BaseResponse, cost: float) -> Tuple[BaseResponse, float]:
+    def handle_cost(self, response: AstralBaseResponse, cost: float) -> Tuple[AstralBaseResponse, float]:
         return response, cost
 
 # ------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ class S3CostStrategy(CostStrategy):
         self.bucket_name = bucket_name
         self.s3_client = s3_client
 
-    def handle_cost(self, response: BaseResponse, cost: float) -> Tuple[BaseResponse, float]:
+    def handle_cost(self, response: AstralBaseResponse, cost: float) -> Tuple[AstralBaseResponse, float]:
         pass
 
 # ------------------------------------------------------------------------------
@@ -77,5 +77,5 @@ class DataDogCostStrategy(CostStrategy):
     def __init__(self, datadog_client: Any):
         self.datadog_client = datadog_client
 
-    def handle_cost(self, response: BaseResponse, cost: float) -> Tuple[BaseResponse, float]:
+    def handle_cost(self, response: AstralBaseResponse, cost: float) -> Tuple[AstralBaseResponse, float]:
         pass

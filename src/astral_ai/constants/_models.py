@@ -130,10 +130,23 @@ AnthropicModels = Literal[
 
 # OpenAI
 ChatModels = Literal[
+    "gpt-4o-01-15-24",
+    "gpt-4o-12-17-24",
+    "gpt-4o-01-10-24",
+    "o1-01-15-24",
+    "o1-12-17-24",
+    "o1-01-10-24",
+    "o1-mini-01-15-24",
+    "o1-mini-12-17-24",
+    "o1-mini-01-10-24",
+    "o3-mini-2025-01-31",
     "gpt-4o",
     "o1",
     "o1-mini",
     "o3-mini",
+    "claude-3-5-sonnet-20241022",
+    "claude-3-opus-20240229",
+    "claude-3-5-haiku-20241022",
     "claude-3-5-sonnet",
     "claude-3-opus",
     "claude-3-haiku",
@@ -152,6 +165,7 @@ EmbeddingModels = Literal[
 
 ModelName: TypeAlias = Literal[OpenAIModels, AnthropicModels]
 
+# TODO: Run asserts to ensure that the model name is valid via Provider Mapping and Function Mapping.
 # ------------------------------------------------------------------------------
 # Model Name to Provider Mapping
 # ------------------------------------------------------------------------------

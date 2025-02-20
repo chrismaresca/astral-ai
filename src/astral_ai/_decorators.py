@@ -1,3 +1,4 @@
+from __future__ import annotations
 # -------------------------------------------------------------------------------- #
 # Decorators
 # -------------------------------------------------------------------------------- #
@@ -9,7 +10,13 @@ This file contains decorators for timing and logging.
 # Imports
 # -------------------------------------------------------------------------------- #
 # Built-in imports
-from typing import List, Dict, Optional, Callable, Tuple, Union, TYPE_CHECKING, ParamSpec, TypeVar
+from typing import (List,
+                    Dict,
+                    Optional,
+                    Callable, Tuple, Union, TYPE_CHECKING, ParamSpec, TypeVar)
+
+# Astral AI
+from astral_ai.tracing._cost_utils import get_model_costs
 
 # Astral imports
 from astral_ai._types._request import NOT_GIVEN
@@ -23,6 +30,18 @@ from typing import Callable
 
 # Exceptions
 from astral_ai.exceptions import MissingParameterError
+
+
+# -------------------------------------------------------------------------------- #
+# Type Checking Imports
+# -------------------------------------------------------------------------------- #
+
+if TYPE_CHECKING:
+    from astral_ai.providers._base_client import BaseProviderClient
+    from astral_ai.providers._generics import ProviderRequestType, ProviderResponseType
+    from astral_ai.constants._models import ModelName
+    from astral_ai.tracing._cost_strategies import CostStrategy
+
 
 # -------------------------------------------------------------------------------- #
 # Timer Decorator
@@ -84,23 +103,16 @@ def required_parameters(*required_args: str) -> Callable:
 # -------------------------------------------------------------------------------- #
 
 
-if TYPE_CHECKING:
-    from astral_ai.providers._base_client import BaseProviderClient
-    from astral_ai.providers._generics import ProviderRequest
-    from astral_ai.tracing._cost_strategies import CostStrategy
-
-
 # -------------------------------------------------------------------------------- #
 # Generics
 # -------------------------------------------------------------------------------- #
-
 P = ParamSpec("P")
 R = TypeVar("R")
 
 
 def calculate_cost_decorator(
-    func: Callable[..., R]
-) -> Callable[..., Union[R, Tuple[R, float]]]:
+    func: Callable[..., AstralResponseType]
+) -> Callable[..., Union[ProviderResponseType, Tuple[ProviderResponseType, float]]]:
     """
     A decorator that calculates the cost of a function call.
     If a cost_strategy is provided, it will be used to process the cost.
@@ -108,19 +120,23 @@ def calculate_cost_decorator(
     @functools.wraps(func)
     def wrapper(
         self: BaseProviderClient,
-        request: ProviderRequest,
+        request: ProviderRequestType,
+        model: ModelName,
         cost_strategy: Optional[CostStrategy] = None,
         *args,
         **kwargs,
     ) -> Union[R, Tuple[R, float]]:
+
         model_provider = self._model_provider
-        model_name = request.model
+        model_name = model
 
         # Retrieve cost details for the model.
-        costs = get_model_costs(model_name, model_provider)
+        costs = get_model_costs(model_name=model_name, model_provider=model_provider)
 
         # Execute the wrapped function to get the response.
         result = func(self, request, *args, **kwargs)
+
+        result.choices
 
         # Calculate the cost using usage details and cost configuration.
         cost = calculate_cost(result, costs)

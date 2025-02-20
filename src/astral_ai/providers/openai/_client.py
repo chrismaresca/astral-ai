@@ -14,26 +14,35 @@ from astral_ai.constants._models import ModelProvider, OpenAIModels
 from astral_ai.providers._base_client import BaseProviderClient
 
 # OpenAI Types
-from astral_ai.providers.openai._types import OpenAIRequestChatT, OpenAIRequestStreamingT, OpenAIRequestStructuredT, OpenAIStructuredResponse, OpenAIChatResponse, OpenAIStreamingResponse
-
+from astral_ai.providers.openai._types import (
+    OpenAIRequestChatType,
+    OpenAIRequestStreamingType,
+    OpenAIRequestStructuredType,
+    OpenAIStructuredResponseType,
+    OpenAIChatResponseType,
+    OpenAIStreamingResponseType
+)
 # Exceptions
 from astral_ai.exceptions import ProviderAuthenticationError, ProviderResponseError
 
 # Astral Auth
 from astral_ai._auth import AUTH_METHOD_NAME_TYPES, AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS
 
+# Decorators
+from astral_ai._decorators import calculate_cost_decorator
+
 # OpenAI Provider Client Type
-from astral_ai.providers._generics import OpenAIClients
+from astral_ai.providers._generics import OpenAIClientsType
 
 
 class OpenAIProviderClient(BaseProviderClient[
-        OpenAIClients,
-        OpenAIRequestChatT,
-        OpenAIRequestStructuredT,
-        OpenAIRequestStreamingT,
-        OpenAIChatResponse,
-        OpenAIStructuredResponse,
-        OpenAIStreamingResponse]):
+        OpenAIClientsType,
+        OpenAIRequestChatType,
+        OpenAIRequestStructuredType,
+        OpenAIRequestStreamingType,
+        OpenAIChatResponseType,
+        OpenAIStructuredResponseType,
+        OpenAIStreamingResponseType]):
     """
     Client for OpenAI.
     """
@@ -81,15 +90,22 @@ class OpenAIProviderClient(BaseProviderClient[
     # Create Completion
     # --------------------------------------------------------------------------
 
-    @calculate_cost
-    def create_completion_chat(self, request: OpenAIRequestChatT) -> OpenAIChatResponse:
+    @calculate_cost_decorator
+    def create_completion_chat(self, request: OpenAIRequestChatType, model: OpenAIModels) -> OpenAIChatResponseType:
         """
         Create a completion using the OpenAI API.
+
+        Args:
+            request: The request to create a completion.
+            model: The model to use for the completion. This is a workaround to ensure the correct type is used.
+
+        Returns:
+            The completion.
         """
 
         openai_response = self.client.chat.completions.create(**request)
 
-        if isinstance(openai_response, OpenAIChatResponse):
+        if isinstance(openai_response, OpenAIChatResponseType):
             return openai_response
         else:
             raise ProviderResponseError(provider_name=self._model_provider, response_type="OpenAIChatResponse")
@@ -98,14 +114,22 @@ class OpenAIProviderClient(BaseProviderClient[
     # Create Structured Completion
     # --------------------------------------------------------------------------
 
-    @calculate_cost
-    def create_completion_structured(self, request: OpenAIRequestStructuredT) -> OpenAIStructuredResponse:
+    @calculate_cost_decorator
+    def create_completion_structured(self, request: OpenAIRequestStructuredType, model: OpenAIModels) -> OpenAIStructuredResponseType:
         """
         Create a structured completion using the OpenAI API.
+
+        Args:
+            request: The request to create a structured completion.
+            model: The model to use for the completion. This is a workaround to ensure the correct type is used.
+
+
+        Returns:
+            The structured completion.
         """
         openai_response = self.client.beta.chat.completions.parse(**request)
 
-        if isinstance(openai_response, OpenAIStructuredResponse):
+        if isinstance(openai_response, OpenAIStructuredResponseType):
             return openai_response
         else:
             raise ProviderResponseError(provider_name=self._model_provider, response_type="OpenAIStructuredResponse")

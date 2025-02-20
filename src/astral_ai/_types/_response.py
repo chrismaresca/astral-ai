@@ -69,7 +69,7 @@ class ProviderResponseMessageObject(BaseModel):
 # ------------------------------------------------------------------------------
 
 
-class BaseResponse(BaseModel):
+class AstralBaseResponse(BaseModel):
     """
     Base Response Model for Astral AI
     """
@@ -123,7 +123,7 @@ class BaseResponse(BaseModel):
 # ------------------------------------------------------------------------------
 
 
-ResponseT = TypeVar('ResponseT', bound=BaseResponse)
+ResponseT = TypeVar('ResponseT', bound=AstralBaseResponse)
 UsageT = TypeVar('UsageT', bound=BaseUsage)
 CostT = TypeVar('CostT', bound=BaseCost)
 
@@ -157,7 +157,7 @@ class PrivatePropagationMixin(BaseModel, Generic[UsageT, CostT]):
 # ------------------------------------------------------------------------------
 
 
-class AstralChatResponse(PrivatePropagationMixin[ChatUsage, ChatCost], BaseResponse):
+class AstralChatResponse(PrivatePropagationMixin[ChatUsage, ChatCost], AstralBaseResponse):
     """
     Chat Response Model for Astral AI
     """
@@ -198,14 +198,13 @@ if __name__ == "__main__":
         completion_tokens=100,
         total_tokens=200,
     )
-    
+
     cost = ChatCost(
         input_cost=0.0001,
         output_cost=0.0002,
         total_cost=0.0003,
         total_tokens=200,
     )
-    
 
     print("==== PRIVATE ATTRS ====")
     print(usage.response_id)

@@ -14,70 +14,53 @@ from typing import TypeAlias, TypeVar, Union
 # Pydantic imports
 from pydantic import BaseModel
 
-# -------------------------
+# -------------------------------------------------------------------------------- #
 # OpenAI Imports
-# -------------------------
-from openai import OpenAI, AsyncOpenAI, AzureOpenAI, AsyncAzureOpenAI
-from astral_ai.providers.openai import (
+# -------------------------------------------------------------------------------- #
+
+from astral_ai.providers.openai._types import (
     # Message Types
-    OpenAIMessage,
+    OpenAIMessageType,
+
     # Request Types
-    OpenAIRequestChatT,
-    OpenAIRequestStructuredT,
-    OpenAIRequestStreamingT,
+    OpenAIRequestChatType,
+    OpenAIRequestStructuredType,
+    OpenAIRequestStreamingType,
+
+    # Clients
+    OpenAIClientsType,
+    AzureOpenAIClientsType,
+
     # Response Types
-    OpenAIResponse,
-    OpenAIChatResponse,
-    OpenAIStructuredResponse,
-    OpenAIStreamingResponse,
+
+    OpenAIChatResponseType,
+    OpenAIStructuredResponseType,
+    OpenAIStreamingResponseType,
 )
 
-# -------------------------
+# -------------------------------------------------------------------------------- #
 # Anthropic Imports
-# -------------------------
-from astral_ai.providers.anthropic import (
+# -------------------------------------------------------------------------------- #
+from astral_ai.providers.anthropic._types import (
+
     # Message Types
-    AnthropicMessage,
+    AnthropicMessageType,
     # Request Types
-    AnthropicRequest,
+
+    AnthropicRequestChatType,
+    AnthropicRequestStreamingType,
+    AnthropicRequestStructuredType,
+
     # Response Types
-    AnthropicResponse,
-    AnthropicChatResponse,
-    AnthropicStructuredResponse,
-    AnthropicStreamingResponse,
+    AnthropicChatResponseType,
+    AnthropicStructuredResponseType,
+    AnthropicStreamingResponseType,
 )
 
-# -------------------------------------------------------------------------------- #
-# Provider-Specific Types: OpenAI
-# -------------------------------------------------------------------------------- #
-# OpenAI Message
-OpenAIMessageType: TypeAlias = OpenAIMessage
-# OpenAI Request
-OpenAIRequestType: TypeAlias = Union[OpenAIRequestChatT, OpenAIRequestStructuredT, OpenAIRequestStreamingT]
-# OpenAI Response Types
-OpenAIResponseType: TypeAlias = OpenAIResponse
-OpenAIChatResponseType: TypeAlias = OpenAIChatResponse
-OpenAIStructuredResponseType: TypeAlias = OpenAIStructuredResponse
-OpenAIStreamingResponseType: TypeAlias = OpenAIStreamingResponse
-
-# OpenAI Client Types
-OpenAIClients: TypeAlias = Union[OpenAI, AsyncOpenAI]
-AzureOpenAIClients: TypeAlias = Union[AzureOpenAI, AsyncAzureOpenAI]
-OpenAIClientT = TypeVar("OpenAIClientT", bound=OpenAIClients)
 
 # -------------------------------------------------------------------------------- #
 # Provider-Specific Types: Anthropic
 # -------------------------------------------------------------------------------- #
-# Anthropic Message
-AnthropicMessageType: TypeAlias = AnthropicMessage
-# Anthropic Request
-AnthropicRequestType: TypeAlias = AnthropicRequest
-# Anthropic Response Types
-AnthropicResponseType: TypeAlias = AnthropicResponse
-AnthropicChatResponseType: TypeAlias = AnthropicChatResponse
-AnthropicStructuredResponseType: TypeAlias = AnthropicStructuredResponse
-AnthropicStreamingResponseType: TypeAlias = AnthropicStreamingResponse
-
 
 # -------------------------------------------------------------------------------- #
 # Structured Output Generic
@@ -91,32 +74,52 @@ StructuredOutputT = TypeVar("_StructuredOutputT", bound=BaseModel)
 # -------------------------------------------------------------------------------- #
 
 # Union alias for any provider message.
-ProviderMessage: TypeAlias = Union[OpenAIMessage, AnthropicMessage]
-ProviderMessageT = TypeVar("ProviderMessageT", bound=ProviderMessage)
+ProviderMessageType: TypeAlias = Union[OpenAIMessageType, AnthropicMessageType]
+ProviderMessageT = TypeVar("ProviderMessageT", bound=ProviderMessageType)
 
 # -------------------------------------------------------------------------------- #
 # Provider Client Types
 # -------------------------------------------------------------------------------- #
 # Provider Client Types (union of all supported provider clients)
-ModelProviderClient: TypeAlias = Union[OpenAIClients, AzureOpenAIClients]
-ModelProviderClientT = TypeVar("ModelProviderClientT", bound=ModelProviderClient)
+ProviderClientType: TypeAlias = Union[OpenAIClientsType, AzureOpenAIClientsType]
+ProviderClientT = TypeVar("ProviderClientT", bound=ProviderClientType)
 
 # -------------------------------------------------------------------------------- #
 # Provider Request Types
 # -------------------------------------------------------------------------------- #
+
+# Chat Request Types
+ProviderRequestChatType: TypeAlias = Union[OpenAIRequestChatType, AnthropicRequestChatType]
+ProviderRequestChatT = TypeVar("ProviderRequestChatT", bound=ProviderRequestChatType)
+
+# Structured Request Types
+ProviderRequestStructuredType: TypeAlias = Union[OpenAIRequestStructuredType, AnthropicRequestStructuredType]
+ProviderRequestStructuredT = TypeVar("ProviderRequestStructuredT", bound=ProviderRequestStructuredType)
+
+# Streaming Request Types
+ProviderRequestStreamingType: TypeAlias = Union[OpenAIRequestStreamingType, AnthropicRequestStreamingType]
+ProviderRequestStreamingT = TypeVar("ProviderRequestStreamingT", bound=ProviderRequestStreamingType)
+
 # Union alias for any provider request.
-ProviderRequest: TypeAlias = Union[OpenAIRequestType, AnthropicRequest]
-ProviderRequestT = TypeVar("ProviderRequestT", bound=ProviderRequest)
-ProviderRequestChatT = TypeVar("ProviderRequestChatT", bound=Union[OpenAIRequestChatT, AnthropicRequest])
-ProviderRequestStructuredT = TypeVar("ProviderRequestStructuredT", bound=Union[OpenAIRequestStructuredT, AnthropicRequest])
-ProviderRequestStreamingT = TypeVar("ProviderRequestStreamingT", bound=Union[OpenAIRequestStreamingT, AnthropicRequest])
+ProviderRequestType: TypeAlias = Union[ProviderRequestChatType, ProviderRequestStructuredType, ProviderRequestStreamingType]
+ProviderRequestT = TypeVar("ProviderRequestT", bound=ProviderRequestType)
+
 # -------------------------------------------------------------------------------- #
 # Provider Response Types
 # -------------------------------------------------------------------------------- #
 # Union alias for any provider response.
-ProviderResponse: TypeAlias = Union[OpenAIResponse, AnthropicResponse]
-ProviderResponseT = TypeVar("ProviderResponseT", bound=ProviderResponse)
-ProviderResponseChatT = TypeVar("ProviderResponseChatT", bound=Union[OpenAIChatResponse, AnthropicChatResponse])
-ProviderResponseStructuredT = TypeVar("ProviderResponseStructuredT", bound=Union[OpenAIStructuredResponse, AnthropicStructuredResponse])
-ProviderResponseStreamingT = TypeVar("ProviderResponseStreamingT", bound=Union[OpenAIStreamingResponse, AnthropicStreamingResponse])
+# Chat Response Types
+ProviderResponseChatType: TypeAlias = Union[OpenAIChatResponseType, AnthropicChatResponseType]
+ProviderResponseChatT = TypeVar("ProviderResponseChatT", bound=ProviderResponseChatType)
 
+# Structured Response Types
+ProviderResponseStructuredType: TypeAlias = Union[OpenAIStructuredResponseType, AnthropicStructuredResponseType]
+ProviderResponseStructuredT = TypeVar("ProviderResponseStructuredT", bound=ProviderResponseStructuredType)
+
+# Streaming Response Types
+ProviderResponseStreamingType: TypeAlias = Union[OpenAIStreamingResponseType, AnthropicStreamingResponseType]
+ProviderResponseStreamingT = TypeVar("ProviderResponseStreamingT", bound=ProviderResponseStreamingType)
+
+# Union alias for any provider response.
+ProviderResponseType: TypeAlias = Union[ProviderResponseChatType, ProviderResponseStructuredType, ProviderResponseStreamingType]
+ProviderResponseT = TypeVar("ProviderResponseT", bound=ProviderResponseType)
