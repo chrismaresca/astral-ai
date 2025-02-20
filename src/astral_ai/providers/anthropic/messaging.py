@@ -14,7 +14,7 @@ Message Handlers for Anthropic.
 from typing import overload, Literal, Union, List
 
 # Astral Models
-from astral_ai._models import AnthropicModels
+from astral_ai.constants._models import AnthropicModels
 
 # Astral Messaging Types
 from astral_ai.messaging._models import MessageList, Message, TextMessage, ImageMessage

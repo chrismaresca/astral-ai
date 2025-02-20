@@ -20,7 +20,7 @@ from typing import Literal, Optional, Dict, List, Iterable, Union, TypedDict, Re
 from httpx import Timeout
 
 # Astral AI
-from astral_ai._models import OpenAIModels
+from astral_ai.constants._models import OpenAIModels, ModelProvider
 
 # Astral AI Types
 from astral_ai._types._request import (
@@ -65,6 +65,9 @@ AnthropicResponse: TypeAlias = Union[AnthropicChatResponse, AnthropicStructuredR
 
 
 class AnthropicRequest(TypedDict, total=False):
+    """
+    Anthropic Request Model for Astral AI
+    """
     # Required fields:
     model: Required[OpenAIModels]
     """The model to use for the request."""

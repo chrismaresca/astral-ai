@@ -15,7 +15,7 @@ This module contains:
 from typing import Union, List, Iterable, overload
 
 # Project Models
-from astral_ai._models import (
+from astral_ai.constants._models import (
     ModelName,
     OpenAIModels,
     AnthropicModels,

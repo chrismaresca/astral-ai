@@ -14,7 +14,7 @@
 # from typing import overload, Literal, Union, List
 
 # # Astral Models
-# from astral_ai._models import OpenAIModels
+# from astral_ai.constants._models import OpenAIModels
 
 # # Astral Messaging Types
 # from astral_ai.messaging._models import MessageList, Message, TextMessage, ImageMessage
@@ -112,7 +112,7 @@ from astral_ai.messaging._models import MessageList, Message, TextMessage, Image
 
 # Astral Providers
 from astral_ai.providers._generics import AnthropicRequest, AnthropicResponse, StructuredOutputT, AnthropicRequestType, AnthropicResponseType
-from astral_ai.providers._adapters import BaseCompletionAdapter
+from astral_ai.providers._base_adapters import BaseCompletionAdapter
 
 # OpenAI Message Types
 from astral_ai._providersMOVE import AnthropicMessage

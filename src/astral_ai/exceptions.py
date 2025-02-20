@@ -14,7 +14,7 @@ This module contains the exceptions for the astral_ai package.
 from typing import Union
 
 # Astral AI
-from astral_ai._models import ModelName
+from astral_ai.constants._models import ModelName, ModelProvider
 
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
@@ -170,6 +170,50 @@ class InvalidMessageRoleError(BaseMessagesError):
 
 class ResponseModelMissingError(Exception):
     """Exception raised when a response model is missing."""
+
     def __init__(self, model_name: ModelName):
         self.message = f"Response model missing for model {model_name}."
+        super().__init__(self.message)
+
+# ------------------------------------------------------------------------------
+# Invalid Parameter Error
+# ------------------------------------------------------------------------------
+
+
+class MissingParameterError(Exception):
+    """Exception raised when a required parameter is missing from a function call."""
+
+    def __init__(self, parameter_name: str, function_name: str):
+        self.message = (
+            f"Oops! The function '{function_name}' needs a value for '{parameter_name}' to work properly. "
+            f"This parameter is required - could you please provide a value for '{parameter_name}'?"
+        )
+        super().__init__(self.message)
+
+
+# ------------------------------------------------------------------------------
+# Provider Response Error
+# ------------------------------------------------------------------------------
+
+class ProviderResponseError(Exception):
+    """Exception raised when we receive an unexpected response from an AI provider."""
+
+    def __init__(self, provider_name: ModelProvider, response_type: str):
+        self.message = (
+            f"Oops! We got an unexpected response from {provider_name}. "
+            f"We received a '{response_type}' response, but that's not what we were expecting. "
+            f"This likely means either the API changed or there's a bug in our code."
+        )
+        super().__init__(self.message)
+
+
+class ProviderFeatureNotSupportedError(ProviderResponseError):
+    """Exception raised when a provider feature is not supported."""
+
+    def __init__(self, provider_name: ModelProvider, feature_name: str):
+        self.message = (
+            f"Oops! It looks like you're trying to use {feature_name}, but {provider_name} doesn't "
+            f"support that feature yet You may want to try a different AI provider that supports "
+            f"what you're trying to do, or use a different approach."
+        )
         super().__init__(self.message)

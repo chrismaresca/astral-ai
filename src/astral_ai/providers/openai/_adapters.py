@@ -19,7 +19,7 @@ from astral_ai.messaging._models import MessageList, Message, TextMessage, Image
 
 # Astral Providers
 from astral_ai.providers._generics import OpenAIClients, OpenAIResponse, StructuredOutputT, OpenAIRequestType, OpenAIResponseType
-from astral_ai.providers._adapters import BaseCompletionAdapter
+from astral_ai.providers._base_adapters import BaseCompletionAdapter
 
 # OpenAI Message Types
 from astral_ai._providersMOVE import OpenAIMessage

@@ -34,7 +34,7 @@ import uuid
 from typing_extensions import Self
 
 # Pydantic
-from pydantic import BaseModel, Field, model_validator, PrivateAttr, ClassVar
+from pydantic import BaseModel, Field, model_validator, PrivateAttr, ConfigDict
 
 # HTTPX Timeout
 from httpx import Timeout
@@ -43,11 +43,13 @@ from httpx import Timeout
 from astral_ai.messaging import Message, MessageList
 
 # Astral AI
-from astral_ai._models import ModelName, ModelProvider, get_provider_from_model_name
+from astral_ai.constants._models import ModelName, ModelProvider, get_provider_from_model_name
 
 # Astral AI Types
 from astral_ai._types._base import NotGiven, NOT_GIVEN
 
+# Astral AI Types
+from astral_ai._types._astral import AstralParams
 
 # ------------------------------------------------------------------------------
 # Modality
@@ -213,6 +215,9 @@ class BaseRequest(BaseModel, ABC):
     # Model
     model: ModelName = Field(description="The model to use for the request.")
 
+    # Astral Parameters
+    astral_params: AstralParams = Field(default_factory=AstralParams, description="Astral parameters.")
+
     @property
     def request_id(self) -> str:
         """The request ID for the request."""
@@ -228,7 +233,7 @@ class BaseRequest(BaseModel, ABC):
         """Set the provider name for the request."""
         self._provider_name = get_provider_from_model_name(model_name=self.model)
         return self
-    
+
 
 # ------------------------------------------------------------------------------
 # Astral Completion Request
@@ -321,6 +326,16 @@ class AstralCompletionRequest(BaseRequest):
     # Timeout
     timeout: float | Timeout | None | NotGiven = Field(default=NOT_GIVEN, description="Override the client-level default timeout for this request, in seconds")
 
+    # --------------------------------------------------------------------------
+    # Model Config
+    # --------------------------------------------------------------------------
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    # --------------------------------------------------------------------------
+    # To Provider Dict
+    # --------------------------------------------------------------------------
+
     def to_provider_dict(self) -> dict:
         """
         Convert the AstralCompletionRequest to a dict excluding unset fields and those set to NOT_GIVEN.
@@ -337,21 +352,13 @@ class AstralCompletionRequest(BaseRequest):
 
 StructuredOutputResponseT = TypeVar('StructuredOutputResponseT', bound=BaseModel)
 
+
 class AstralStructuredCompletionRequest(AstralCompletionRequest):
     """
     Astral Structured Completion Request
     """
-    response_model: StructuredOutputResponseT = Field(description="The response model to use for the request.")
+    response_format: StructuredOutputResponseT = Field(description="The response format to use for the request.")
 
 # ------------------------------------------------------------------------------
 # Astral Embedding Request
 # ------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-

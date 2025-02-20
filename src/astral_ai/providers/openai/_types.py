@@ -32,7 +32,7 @@ from httpx import Timeout
 from pydantic import BaseModel
 
 # Astral AI
-from astral_ai._models import OpenAIModels
+from astral_ai.constants._models import OpenAIModels
 
 # OpenAI Types
 from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
@@ -105,6 +105,9 @@ OpenAIResponse: TypeAlias = Union[OpenAIChatResponse, OpenAIStructuredResponse, 
 
 
 class OpenAIRequestBase(TypedDict, total=False):
+    """
+    OpenAI Request Base Model for Astral AI
+    """
     model: Required[OpenAIModels]
     messages: Required[OpenAIMessage]
     frequency_penalty: Optional[float]

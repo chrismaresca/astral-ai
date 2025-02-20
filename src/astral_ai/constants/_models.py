@@ -93,6 +93,9 @@ MODEL_DEFINITIONS = {
     },
 }
 
+# ------------------------------------------------------------------------------
+# Model Breakdown by Provider
+# ------------------------------------------------------------------------------
 
 OpenAIModels = Literal[
     "gpt-4o-01-15-24",
@@ -120,7 +123,38 @@ AnthropicModels = Literal[
     "claude-3-haiku",
 ]
 
+# ------------------------------------------------------------------------------
+# Model Breakdown by Function
+# ------------------------------------------------------------------------------
+
+
+# OpenAI
+ChatModels = Literal[
+    "gpt-4o",
+    "o1",
+    "o1-mini",
+    "o3-mini",
+    "claude-3-5-sonnet",
+    "claude-3-opus",
+    "claude-3-haiku",
+]
+
+EmbeddingModels = Literal[
+    "text-embedding-3-small",
+    "text-embedding-3-large",
+]
+
+# ------------------------------------------------------------------------------
+# ALL MODEL NAMES
+# Because every model is within the scope of the provider, we can use the
+# union of the two types to create a single type that encompasses all models.
+# ------------------------------------------------------------------------------
+
 ModelName: TypeAlias = Literal[OpenAIModels, AnthropicModels]
+
+# ------------------------------------------------------------------------------
+# Model Name to Provider Mapping
+# ------------------------------------------------------------------------------
 
 PROVIDER_MODEL_NAMES: Dict[ModelName, ModelProvider] = {
     "gpt-4o-01-15-24": "openai",

@@ -13,7 +13,7 @@ Utils for the agents.
 from typing import Optional, List, Union, Tuple
 
 # Project Types
-from astral_ai._models import ModelName
+from astral_ai.constants._models import ModelName
 from astral_ai.messaging._models import Message, MessageList
 
 # Project Exceptions

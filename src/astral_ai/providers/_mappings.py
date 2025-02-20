@@ -10,17 +10,17 @@ from typing import Dict, Optional, overload, Literal
 
 # Astral imports
 from astral_ai._types._astral import AstralClientParams
-from astral_ai._models import ModelProvider
+from astral_ai.constants._models import ModelProvider
 from astral_ai._auth import AUTH_CONFIG_TYPE
 from astral_ai.exceptions import ProviderNotSupportedError
 
 # Provider imports
-from astral_ai.providers.base import BaseProviderClient
+from astral_ai.providers._base_client import BaseProviderClient
 from astral_ai.providers.anthropic import AnthropicProviderClient
 from astral_ai.providers.openai import OpenAIProviderClient
 
 # Adapter imports
-from astral_ai.providers._adapters import BaseCompletionAdapter
+from astral_ai.providers._base_adapters import BaseCompletionAdapter
 from astral_ai.providers.openai._adapters import OpenAICompletionAdapter
 from astral_ai.providers.anthropic._adapters import AnthropicCompletionAdapter
 

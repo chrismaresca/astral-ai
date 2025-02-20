@@ -17,12 +17,13 @@ from typing import Any, Dict, List, Optional, Union, Iterable, Type, Literal, ov
 from pydantic import BaseModel
 
 # Astral AI Types
-from astral_ai._types._request import AstralCompletionRequest, AstralStructuredCompletionRequest, NOT_GIVEN
-from astral_ai._types._astral import AstralClientParams
+from astral_ai._types._base import NOT_GIVEN, NotGiven
+from astral_ai._types._request import AstralCompletionRequest, AstralStructuredCompletionRequest
+from astral_ai._types._astral import AstralParams
 from astral_ai._types._response import AstralChatResponse, AstralStructuredResponse
 
 # Models
-from astral_ai._models import ModelName, get_provider_from_model_name
+from astral_ai.constants._models import ModelName, get_provider_from_model_name
 
 # Exceptions
 from astral_ai.exceptions import ProviderNotFoundForModelError, ModelNameError, ResponseModelMissingError
@@ -68,7 +69,7 @@ class Completions:
     def __init__(
         self,
         request: AstralCompletionRequest,
-        astral_client: Optional[AstralClientParams] = None,
+        astral_params: Optional[AstralParams] = None,
     ) -> None:
         """
         Initialize the completions resource.
@@ -86,7 +87,7 @@ class Completions:
             raise ProviderNotFoundForModelError(model_name=self.model)
 
         # Retrieve (or create) the provider client.
-        self.client = get_provider_client(model_provider, astral_client=astral_client)
+        self.client = get_provider_client(model_provider, astral_client=astral_params.astral_client)
 
         model_provider = "openai"
 
@@ -106,14 +107,14 @@ class Completions:
     # --------------------------------------------------------------------------
 
     @overload
-    def run(self, response_model: StructuredOutputT) -> AstralStructuredResponse:
+    def run(self, response_format: StructuredOutputT) -> AstralStructuredResponse:
         ...
 
     # --------------------------------------------------------------------------
     # Run Implementation
     # --------------------------------------------------------------------------
 
-    def run(self, response_model: Optional[StructuredOutputT] = None) -> Union[AstralChatResponse, AstralStructuredResponse]:
+    def run(self, response_format: Optional[StructuredOutputT] = None) -> Union[AstralChatResponse, AstralStructuredResponse]:
         """
         Execute the completion request.
 
@@ -125,7 +126,7 @@ class Completions:
         # Step One: Convert the request to the provider request.
         provider_request = self.adapter.to_provider_completion_request(self.request)
 
-        if response_model is None:
+        if response_format is None:
             # Step Two: Execute the request.
             provider_response = self.client.create_completion_chat(provider_request)
         else:
@@ -147,33 +148,33 @@ def completion(
     *,
     model: str,
     messages: List[Dict[str, str]],
-    astral_client: AstralClientParams,
-    stream: bool = False,
-    frequency_penalty: Optional[float] = NOT_GIVEN,
-    logit_bias: Optional[Dict[str, int]] = NOT_GIVEN,
-    logprobs: Optional[bool] = NOT_GIVEN,
-    max_completion_tokens: Optional[int] = NOT_GIVEN,
-    max_tokens: Optional[int] = NOT_GIVEN,
-    metadata: Optional[Metadata] = NOT_GIVEN,
-    modalities: Optional[List[Modality]] = NOT_GIVEN,
-    n: Optional[int] = NOT_GIVEN,
-    parallel_tool_calls: bool = NOT_GIVEN,
-    prediction: Optional[ResponsePrediction] = NOT_GIVEN,
-    presence_penalty: Optional[float] = NOT_GIVEN,
-    reasoning_effort: Union[ReasoningEffort, Any] = NOT_GIVEN,
-    response_format: Union[ResponseFormat, Any] = NOT_GIVEN,
-    seed: Optional[int] = NOT_GIVEN,
-    service_tier: Optional[Literal["auto", "default"]] = NOT_GIVEN,
-    stop: Union[Optional[str], List[str]] = NOT_GIVEN,
-    store: Optional[bool] = NOT_GIVEN,
-    stream_options: Optional[StreamOptions] = NOT_GIVEN,
-    temperature: Optional[float] = NOT_GIVEN,
-    tool_choice: Union[ToolChoice, Any] = NOT_GIVEN,
-    tools: Union[Iterable[Tool], Any] = NOT_GIVEN,
-    top_logprobs: Optional[int] = NOT_GIVEN,
-    top_p: Optional[float] = NOT_GIVEN,
-    user: Union[str, Any] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None] = NOT_GIVEN,
+    astral_params: AstralParams | NotGiven = NOT_GIVEN,
+    stream: Optional[bool] | NotGiven = NOT_GIVEN,
+    frequency_penalty: Optional[float] | NotGiven = NOT_GIVEN,
+    logit_bias: Optional[Dict[str, int]] | NotGiven = NOT_GIVEN,
+    logprobs: Optional[bool] | NotGiven = NOT_GIVEN,
+    max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
+    max_tokens: Optional[int] | NotGiven = NOT_GIVEN,
+    metadata: Optional[Metadata] | NotGiven = NOT_GIVEN,
+    modalities: Optional[List[Modality]] | NotGiven = NOT_GIVEN,
+    n: Optional[int] | NotGiven = NOT_GIVEN,
+    parallel_tool_calls: bool | NotGiven = NOT_GIVEN,
+    prediction: Optional[ResponsePrediction] | NotGiven = NOT_GIVEN,
+    presence_penalty: Optional[float] | NotGiven = NOT_GIVEN,
+    reasoning_effort: ReasoningEffort | NotGiven = NOT_GIVEN,
+    response_format: ResponseFormat | NotGiven = NOT_GIVEN,
+    seed: Optional[int] | NotGiven = NOT_GIVEN,
+    service_tier: Literal["auto", "default"] | NotGiven = NOT_GIVEN,
+    stop: Optional[str] | List[str] | NotGiven = NOT_GIVEN,
+    store: Optional[bool] | NotGiven = NOT_GIVEN,
+    stream_options: Optional[StreamOptions] | NotGiven = NOT_GIVEN,
+    temperature: Optional[float] | NotGiven = NOT_GIVEN,
+    tool_choice: ToolChoice | NotGiven = NOT_GIVEN,
+    tools: Iterable[Tool] | NotGiven = NOT_GIVEN,
+    top_logprobs: Optional[int] | NotGiven = NOT_GIVEN,
+    top_p: Optional[float] | NotGiven = NOT_GIVEN,
+    user: str | NotGiven = NOT_GIVEN,
+    timeout: Union[float, Timeout, None] | NotGiven = NOT_GIVEN,
 ) -> AstralChatResponse:
     """
     Top-level function for a chat completion request.
@@ -212,7 +213,7 @@ def completion(
         "timeout": timeout,
     }
     request = AstralCompletionRequest(**request_data)
-    comp = Completions(request, astral_client=astral_client)
+    comp = Completions(request, astral_params=astral_params)
     return comp.run()
 
 
@@ -228,34 +229,33 @@ def completion_structured(
     *,
     model: str,
     messages: List[Dict[str, str]],
-    response_model: StructuredOutputResponseT,
-    astral_client: AstralClientParams,
-    stream: bool = False,
-    frequency_penalty: Optional[float] = NOT_GIVEN,
-    logit_bias: Optional[Dict[str, int]] = NOT_GIVEN,
-    logprobs: Optional[bool] = NOT_GIVEN,
-    max_completion_tokens: Optional[int] = NOT_GIVEN,
-    max_tokens: Optional[int] = NOT_GIVEN,
-    metadata: Optional[Metadata] = NOT_GIVEN,
-    modalities: Optional[List[Modality]] = NOT_GIVEN,
-    n: Optional[int] = NOT_GIVEN,
-    parallel_tool_calls: bool = NOT_GIVEN,
-    prediction: Optional[ResponsePrediction] = NOT_GIVEN,
-    presence_penalty: Optional[float] = NOT_GIVEN,
-    reasoning_effort: Union[ReasoningEffort, Any] = NOT_GIVEN,
-    response_format: Union[ResponseFormat, Any] = NOT_GIVEN,
-    seed: Optional[int] = NOT_GIVEN,
-    service_tier: Optional[Literal["auto", "default"]] = NOT_GIVEN,
-    stop: Union[Optional[str], List[str]] = NOT_GIVEN,
-    store: Optional[bool] = NOT_GIVEN,
-    stream_options: Optional[StreamOptions] = NOT_GIVEN,
-    temperature: Optional[float] = NOT_GIVEN,
-    tool_choice: Union[ToolChoice, Any] = NOT_GIVEN,
-    tools: Union[Iterable[Tool], Any] = NOT_GIVEN,
-    top_logprobs: Optional[int] = NOT_GIVEN,
-    top_p: Optional[float] = NOT_GIVEN,
-    user: Union[str, Any] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None] = NOT_GIVEN,
+    response_format: StructuredOutputResponseT,
+    astral_params: Optional[AstralParams] | NotGiven = NOT_GIVEN,
+    stream: bool | NotGiven = NOT_GIVEN,
+    frequency_penalty: Optional[float] | NotGiven = NOT_GIVEN,
+    logit_bias: Optional[Dict[str, int]] | NotGiven = NOT_GIVEN,
+    logprobs: Optional[bool] | NotGiven = NOT_GIVEN,
+    max_completion_tokens: Optional[int] | NotGiven = NOT_GIVEN,
+    max_tokens: Optional[int] | NotGiven = NOT_GIVEN,
+    metadata: Optional[Metadata] | NotGiven = NOT_GIVEN,
+    modalities: Optional[List[Modality]] | NotGiven = NOT_GIVEN,
+    n: Optional[int] | NotGiven = NOT_GIVEN,
+    parallel_tool_calls: bool | NotGiven = NOT_GIVEN,
+    prediction: Optional[ResponsePrediction] | NotGiven = NOT_GIVEN,
+    presence_penalty: Optional[float] | NotGiven = NOT_GIVEN,
+    reasoning_effort: ReasoningEffort | NotGiven = NOT_GIVEN,
+    seed: Optional[int] | NotGiven = NOT_GIVEN,
+    service_tier: Literal["auto", "default"] | NotGiven = NOT_GIVEN,
+    stop: Union[Optional[str], List[str]] | NotGiven = NOT_GIVEN,
+    store: Optional[bool] | NotGiven = NOT_GIVEN,
+    stream_options: Optional[StreamOptions] | NotGiven = NOT_GIVEN,
+    temperature: Optional[float] | NotGiven = NOT_GIVEN,
+    tool_choice: ToolChoice | NotGiven = NOT_GIVEN,
+    tools: Iterable[Tool] | NotGiven = NOT_GIVEN,
+    top_logprobs: Optional[int] | NotGiven = NOT_GIVEN,
+    top_p: Optional[float] | NotGiven = NOT_GIVEN,
+    user: str | NotGiven = NOT_GIVEN,
+    timeout: Union[float, Timeout, None] | NotGiven = NOT_GIVEN,
 ) -> AstralStructuredResponse:
     """
     Top-level function for a structured completion request.
@@ -265,13 +265,13 @@ def completion_structured(
         field parsed using the provided `response_model`.
     """
 
-    if response_model is None:
+    if response_format is None:
         raise ResponseModelMissingError(model_name=model)
 
     # Mark the request as structured.
     request_data = {
         "model": model,
-        "response_model": response_model,
+        "response_format": response_format,
         "messages": messages,
         "stream": stream,
         "frequency_penalty": frequency_penalty,
@@ -304,7 +304,5 @@ def completion_structured(
     }
 
     request = AstralStructuredCompletionRequest(**request_data)
-    comp = Completions(request, astral_client=astral_client)
-    return comp.run(response_model)
-
-
+    comp = Completions(request, astral_params=astral_params)
+    return comp.run(response_model=response_format)

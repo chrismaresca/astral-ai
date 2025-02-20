@@ -52,10 +52,8 @@ class NotGiven:
 # TypeVar for NotGivenOr
 _T = TypeVar("_T")
 
+# Not Given or TypeVar
 NotGivenOr = Union[_T, NotGiven]
-NOT_GIVEN = NotGiven()
 
+# Not Given Final
 NOT_GIVEN: Final[NotGiven] = NotGiven()
-
-# Create a type alias for the sentinel:
-NotGivenType = NotGiven

@@ -52,7 +52,7 @@ from astral_ai._auth import (
     get_env_vars,
 )
 from astral_ai._providersMOVE import ModelProviderClient, ModelProviderClientT
-
+from astral_ai.constants._models import ModelProvider
 
 # Exceptions
 from astral_ai.exceptions import (
@@ -81,6 +81,7 @@ class BaseProviderClient(
         ProviderResponseStreamingT
     ],
     metaclass=AuthRegistryMeta
+    # metaclass=ModelProviderMeta
 ):
     """Base class for all provider clients (OpenAI, Anthropic, etc.).
 
@@ -106,6 +107,7 @@ class BaseProviderClient(
     """
     _auth_strategies: Dict[AUTH_METHOD_NAME_TYPES, AuthCallable] = {}
     _client_cache: ClassVar[Dict[Any, ModelProviderClient]] = {}
+    _model_provider: ModelProvider = None
 
     def __init__(self, config: Optional[AUTH_CONFIG_TYPE] = None) -> None:
         """Initialize the provider client with optional configuration.

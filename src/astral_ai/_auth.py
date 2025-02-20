@@ -18,13 +18,13 @@ from typing import Callable, TYPE_CHECKING, Any, Dict, Literal, Union, ClassVar,
 from pydantic import BaseModel, Field
 
 # Astral AI Models
-from astral_ai._models import ModelProvider, ModelName
+from astral_ai.constants._models import ModelProvider, ModelName
 
 # Astral AI Providers
 from astral_ai._providersMOVE import ModelProviderClient
 # Astral AI Providers
 if TYPE_CHECKING:
-    from astral_ai.providers.base import BaseProviderClient
+    from astral_ai.providers._base_client import BaseProviderClient
 
 # ------------------------------------------------------------------------------
 # Auth Method Names

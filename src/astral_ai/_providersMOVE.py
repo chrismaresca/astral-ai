@@ -2,7 +2,7 @@
 from typing import TypeAlias, Union, TypeVar, Mapping, Callable, Any, overload, Literal, Iterable, List
 
 # Project Models
-from astral_ai._models import ModelProvider, ModelName, OpenAIModels, AnthropicModels, get_provider_from_model_name
+from astral_ai.constants._models import ModelProvider, ModelName, OpenAIModels, AnthropicModels, get_provider_from_model_name
 
 # Project Utils
 from astral_ai.messaging._utils import handle_no_messages, standardize_messages
