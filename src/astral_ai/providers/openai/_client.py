@@ -14,7 +14,7 @@ from astral_ai.constants._models import ModelProvider, OpenAIModels
 from astral_ai.providers._base_client import BaseProviderClient
 
 # OpenAI Types
-from astral_ai.providers.openai._types import (
+from ._types import (
     OpenAIRequestChatType,
     OpenAIRequestStreamingType,
     OpenAIRequestStructuredType,
@@ -26,10 +26,8 @@ from astral_ai.providers.openai._types import (
 from astral_ai.exceptions import ProviderAuthenticationError, ProviderResponseError
 
 # Astral Auth
-from astral_ai._auth import AUTH_METHOD_NAME_TYPES, AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS
+from astral_ai._auth import AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS
 
-# Decorators
-from astral_ai._decorators import calculate_cost_decorator
 
 # OpenAI Provider Client Type
 from astral_ai.providers._generics import OpenAIClientsType
@@ -90,14 +88,12 @@ class OpenAIProviderClient(BaseProviderClient[
     # Create Completion
     # --------------------------------------------------------------------------
 
-    @calculate_cost_decorator
-    def create_completion_chat(self, request: OpenAIRequestChatType, model: OpenAIModels) -> OpenAIChatResponseType:
+    def create_completion_chat(self, request: OpenAIRequestChatType) -> OpenAIChatResponseType:
         """
         Create a completion using the OpenAI API.
 
         Args:
             request: The request to create a completion.
-            model: The model to use for the completion. This is a workaround to ensure the correct type is used.
 
         Returns:
             The completion.
@@ -114,15 +110,12 @@ class OpenAIProviderClient(BaseProviderClient[
     # Create Structured Completion
     # --------------------------------------------------------------------------
 
-    @calculate_cost_decorator
-    def create_completion_structured(self, request: OpenAIRequestStructuredType, model: OpenAIModels) -> OpenAIStructuredResponseType:
+    def create_completion_structured(self, request: OpenAIRequestStructuredType) -> OpenAIStructuredResponseType:
         """
         Create a structured completion using the OpenAI API.
 
         Args:
             request: The request to create a structured completion.
-            model: The model to use for the completion. This is a workaround to ensure the correct type is used.
-
 
         Returns:
             The structured completion.

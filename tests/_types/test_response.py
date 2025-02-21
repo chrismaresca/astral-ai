@@ -13,15 +13,18 @@ Tests for Response Models in Astral AI
 import pytest
 
 # Astral AI imports
-from astral_ai._types._response import (
+from astral_ai._types import (
     ProviderResponseObject,
     AstralChatResponse,
 )
-from astral_ai._types._usage import ChatUsage, ChatCost
+
+# Astral AI Tracing Types
+from astral_ai._types._response._usage import ChatUsage, ChatCost
 
 # -------------------------------------------------------------------------------- #
 # Test Data
 # -------------------------------------------------------------------------------- #
+
 
 @pytest.fixture
 def provider_response():
@@ -33,6 +36,7 @@ def provider_response():
         provider_created=1713859200,
     )
 
+
 @pytest.fixture
 def chat_usage():
     return ChatUsage(
@@ -40,6 +44,7 @@ def chat_usage():
         completion_tokens=100,
         total_tokens=200,
     )
+
 
 @pytest.fixture
 def chat_cost():
@@ -54,10 +59,11 @@ def chat_cost():
 # Tests
 # -------------------------------------------------------------------------------- #
 
+
 def test_private_attrs_propagation(provider_response, chat_usage, chat_cost):
     """Test that private attributes are correctly propagated to usage and cost"""
     print("\n=== Starting Private Attrs Propagation Test ===")
-    
+
     print("\n--- Creating Response Object ---")
     response = AstralChatResponse(
         model="gpt-4o",
@@ -92,29 +98,30 @@ def test_private_attrs_propagation(provider_response, chat_usage, chat_cost):
     # Test usage private attrs
     assert response.usage.response_id == response.response_id, "Usage response ID mismatch"
     print("✓ Usage response ID assertion passed")
-    
+
     assert response.usage.model_provider == response.provider_name, "Usage model provider mismatch"
     print("✓ Usage model provider assertion passed")
-    
+
     assert response.usage.model_name == response.model, "Usage model name mismatch"
     print("✓ Usage model name assertion passed")
 
     # Test cost private attrs
     assert response.cost.response_id == response.response_id, "Cost response ID mismatch"
     print("✓ Cost response ID assertion passed")
-    
+
     assert response.cost.model_provider == response.provider_name, "Cost model provider mismatch"
     print("✓ Cost model provider assertion passed")
-    
+
     assert response.cost.model_name == response.model, "Cost model name mismatch"
     print("✓ Cost model name assertion passed")
-    
+
     print("\n=== Private Attrs Propagation Test Completed Successfully ===")
+
 
 def test_response_creation(provider_response, chat_usage, chat_cost):
     """Test basic response creation and attributes"""
     print("\n=== Starting Response Creation Test ===")
-    
+
     print("\n--- Creating Response Object ---")
     response = AstralChatResponse(
         model="gpt-4o",
@@ -141,20 +148,20 @@ def test_response_creation(provider_response, chat_usage, chat_cost):
     print("\n--- Running Assertions ---")
     assert response.model == "gpt-4o", "Model mismatch"
     print("✓ Model assertion passed")
-    
+
     assert response.provider_response == provider_response, "Provider response mismatch"
     print("✓ Provider response assertion passed")
-    
+
     assert response.usage == chat_usage, "Usage mismatch"
     print("✓ Usage assertion passed")
-    
+
     assert response.cost == chat_cost, "Cost mismatch"
     print("✓ Cost assertion passed")
-    
+
     assert isinstance(response.response_id, str), "Response ID not a string"
     print("✓ Response ID type assertion passed")
-    
+
     assert isinstance(response.time_created, float), "Time created not a float"
     print("✓ Time created type assertion passed")
-    
+
     print("\n=== Response Creation Test Completed Successfully ===")

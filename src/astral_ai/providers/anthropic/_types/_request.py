@@ -40,7 +40,7 @@ from openai.types.chat.chat_completion_message_param import ChatCompletionMessag
 from openai.types.chat import ChatCompletionChunk, ParsedChatCompletion, ChatCompletion
 
 # Astral AI Types
-from astral_ai._types._request import (
+from astral_ai._types._request._request import (
     ToolChoice,
     ReasoningEffort,
     ResponseFormat,

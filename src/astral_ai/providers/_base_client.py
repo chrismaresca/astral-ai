@@ -29,6 +29,8 @@ from typing import (
     overload,
 )
 
+from abc import ABCMeta
+
 # Provider Types
 from astral_ai.providers._generics import (
     ProviderClientT,
@@ -46,7 +48,7 @@ from astral_ai._auth import (
     AuthMethodConfig,
     AuthRegistryMeta,
     AuthCallable,
-    AUTH_METHOD_NAME_TYPES,
+    AUTH_METHOD_NAMES,
     AUTH_CONFIG_TYPE,
     get_env_vars,
 )
@@ -66,6 +68,9 @@ from astral_ai.logger import logger
 # Base Provider Client
 # -------------------------------------------------------------------------------- #
 
+# Define a new metaclass that combines both metaclasses
+class CombinedMeta(AuthRegistryMeta, ABCMeta):
+    pass
 
 class BaseProviderClient(
     ABC,
@@ -78,7 +83,7 @@ class BaseProviderClient(
         ProviderResponseStructuredT,
         ProviderResponseStreamingT
     ],
-    metaclass=AuthRegistryMeta
+    metaclass=CombinedMeta
     # metaclass=ModelProviderMeta
 ):
     """Base class for all provider clients (OpenAI, Anthropic, etc.).
@@ -103,7 +108,7 @@ class BaseProviderClient(
         _client_cache: Cache of authenticated provider clients
         client: The authenticated provider client instance
     """
-    _auth_strategies: Dict[AUTH_METHOD_NAME_TYPES, AuthCallable] = {}
+    _auth_strategies: Dict[AUTH_METHOD_NAMES, AuthCallable] = {}
     _client_cache: ClassVar[Dict[Any, ProviderClientT]] = {}
     _model_provider: ModelProvider = None
 

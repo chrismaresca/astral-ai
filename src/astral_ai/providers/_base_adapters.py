@@ -25,8 +25,8 @@ from astral_ai.providers._generics import (
 )
 
 # Astral AI Types
-from astral_ai._types._request import AstralCompletionRequest
-from astral_ai._types._response import AstralChatResponse, AstralStructuredResponse
+from astral_ai._types._request._request import AstralCompletionRequest
+from astral_ai._types._response._response import AstralChatResponse, AstralStructuredResponse
 
 
 # -------------------------------------------------------------------------------- #

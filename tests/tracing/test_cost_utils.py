@@ -11,8 +11,8 @@ import pytest
 from typing import Union
 
 # Astral AI imports
-from astral_ai.tracing._cost_utils import get_model_costs
-from astral_ai._types._usage import ChatCost, EmbeddingCost
+from astral_ai.utilities.cost_utils import get_model_costs
+from astral_ai._types._response._usage import ChatCost, EmbeddingCost
 from astral_ai.constants._models import (
     ModelName,
     ModelProvider,

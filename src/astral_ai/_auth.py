@@ -21,10 +21,8 @@ from pydantic import BaseModel, Field
 from astral_ai.constants._models import ModelProvider, ModelName
 
 # Astral AI Providers
-from astral_ai._providersMOVE import ModelProviderClient
-# Astral AI Providers
-if TYPE_CHECKING:
-    from astral_ai.providers._base_client import BaseProviderClient
+from astral_ai.providers._types import BaseProviderClient, ModelProviderClient
+
 
 # ------------------------------------------------------------------------------
 # Auth Method Names
@@ -35,18 +33,11 @@ AUTH_METHOD_NAMES = Literal["api_key", "ad_token", "bearer_token", "oauth", "ser
 
 
 # ------------------------------------------------------------------------------
-# Auth Method Name Types
-# ------------------------------------------------------------------------------
-
-
-AUTH_METHOD_NAME_TYPES: TypeAlias = Union[AUTH_METHOD_NAMES, str]
-
-# ------------------------------------------------------------------------------
 # Auth Environment Variables
 # ------------------------------------------------------------------------------
 
 
-AUTH_ENV_VARS: TypeAlias = Dict[Union[str, AUTH_METHOD_NAME_TYPES], str]
+AUTH_ENV_VARS: TypeAlias = Dict[Union[str, AUTH_METHOD_NAMES], str]
 
 # ------------------------------------------------------------------------------
 # Auth Method Config
@@ -59,18 +50,26 @@ class AuthMethodConfig(BaseModel):
 
     Extend this class for provider-specific authentication configurations.
     """
-    auth_method: AUTH_METHOD_NAME_TYPES = Field(
+    auth_method: AUTH_METHOD_NAMES = Field(
         default="api_key", description="The name of the authentication method to use."
     )
     environment_variables: Dict[str, str] = Field(
         default_factory=dict, description="Environment variables to use for the authentication method."
     )
 
+# ------------------------------------------------------------------------------
+# Auth Config Type
+# ------------------------------------------------------------------------------
 
-AUTH_CONFIG_TYPE: TypeAlias = Dict[AUTH_METHOD_NAME_TYPES, AuthMethodConfig]
+
+AUTH_CONFIG_TYPE: TypeAlias = Dict[AUTH_METHOD_NAMES, AuthMethodConfig]
+
+# ------------------------------------------------------------------------------
+# Auth Callable
+# ------------------------------------------------------------------------------
 
 AuthCallable = Callable[
-    [BaseProviderClient[ModelProvider, ModelName], AUTH_CONFIG_TYPE, AUTH_ENV_VARS],
+    [BaseProviderClient, AUTH_CONFIG_TYPE, AUTH_ENV_VARS],
     ModelProviderClient,
 ]
 

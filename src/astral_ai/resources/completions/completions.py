@@ -1,40 +1,48 @@
-# ------------------------------------------------------------------------------
+from __future__ import annotations
+
+# -------------------------------------------------------------------------------- #
 # Completions Resource
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
 
 """
-Completions Resource for Astral AI
-"""
 
-# ------------------------------------------------------------------------------
+Astral AI Completions Resource
+
+Handles both chat and structured completion requests by providing:
+- Type-safe request handling
+- Provider-specific request/response adaptation
+- Cost calculation and tracking
+- Response validation and parsing
+
+"""
+# -------------------------------------------------------------------------------- #
 # Imports
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
 
-# Built-ins
-from typing import Any, Dict, List, Optional, Union, Iterable, Type, Literal, overload, TypeVar
-from abc import ABC, abstractmethod
+# Built-in
+from typing import Dict, List, Optional, Union, Iterable, Literal, overload, TypeVar, Type
+from abc import ABC
 
 # Pydantic
 from pydantic import BaseModel
 
+# HTTPX Timeout
+from httpx import Timeout
+
 # Astral AI Types
-from astral_ai._types._base import NOT_GIVEN, NotGiven
-from astral_ai._types._request import AstralCompletionRequest, AstralStructuredCompletionRequest
-from astral_ai._types._astral import AstralParams
-from astral_ai._types._response import AstralChatResponse, AstralStructuredResponse, AstralBaseResponse
+from astral_ai._types import (
+    # Base
+    NotGiven,
+    NOT_GIVEN,
 
-# Models
-from astral_ai.constants._models import ModelName, get_provider_from_model_name
+    # Request
+    AstralCompletionRequest,
+    AstralStructuredCompletionRequest,
 
-# Exceptions
-from astral_ai.exceptions import ProviderNotFoundForModelError, ModelNameError, ResponseModelMissingError
-
-# Providers
-from astral_ai.providers._mappings import get_provider_client
-
-# Additional types from your modules.
-from astral_ai._types._request import (
+    # Response
     Metadata,
+
+    # Request Params
     Modality,
     ResponsePrediction,
     ReasoningEffort,
@@ -42,66 +50,43 @@ from astral_ai._types._request import (
     StreamOptions,
     ToolChoice,
     Tool,
-    Timeout,
+    AstralParams,
+    AstralChatResponse,
+    AstralStructuredResponse,
 )
 
+# Astral AI Exceptions
+from astral_ai.exceptions import ResponseModelMissingError
+
 # Astral AI Decorators
-# TODO: implement required_parameters
-from astral_ai._decorators import required_parameters, calculate_cost_decorator
+from astral_ai._decorators import required_parameters
 
+# Astral AI Messaging Models
+from astral_ai.messaging._models import Messages
 
-# Mappings
-from astral_ai.providers._mappings import get_provider_adapter
+# Astral AI Resources
+from astral_ai.resources._base_resource import AstralResource
 
+# -------------------------------------------------------------------------------- #
 # Generic Types
-from astral_ai.providers._generics import StructuredOutputT
+# -------------------------------------------------------------------------------- #
+
+_StructuredOutputT = TypeVar("_StructuredOutputT", bound=BaseModel)
+
+# -------------------------------------------------------------------------------- #
+# Completions Resource Class
+# -------------------------------------------------------------------------------- #
 
 
-# ------------------------------------------------------------------------------
-# Completions Resource
-# ------------------------------------------------------------------------------
-
-
-class SyncResource(ABC):
-    """
-    Base class for all sync resources.
-    """
-
-    def __init__(self, request: AstralCompletionRequest, astral_params: Optional[AstralParams] = None) -> None:
-        self.request = request
-        self.astral_params = astral_params
-
-        self.model = request.model
-
-        # Validate model
-        if not isinstance(self.model, ModelName):
-            raise ModelNameError(model_name=self.model)
-
-        # Set the model provider.
-        self.model_provider = get_provider_from_model_name(self.model)
-
-        # Validate provider
-        if not self.model_provider:
-            raise ProviderNotFoundForModelError(model_name=self.model)
-
-        # Retrieve (or create) the provider client.
-        self.client = get_provider_client(self.model_provider, astral_client=astral_params.astral_client)
-
-        # Get the provider adapter.
-        self.adapter = get_provider_adapter(self.model_provider)
-
-    @abstractmethod
-    def run(self) -> AstralBaseResponse:
-        pass
-
-    @abstractmethod
-    async def run_async(self) -> AstralBaseResponse:
-        pass
-
-
-class Completions(SyncResource):
+class Completions(AstralResource):
     """
     Astral AI Completions Resource.
+
+    Handles both chat and structured completion requests by providing:
+    - Type-safe request handling
+    - Provider-specific request/response adaptation
+    - Cost calculation and tracking
+    - Response validation and parsing
     """
 
     def __init__(
@@ -109,64 +94,79 @@ class Completions(SyncResource):
         request: AstralCompletionRequest,
         astral_params: Optional[AstralParams] = None,
     ) -> None:
-
-        # Initialize the base class.
         super().__init__(request, astral_params)
 
-    # --------------------------------------------------------------------------
-    # Run Chat Overload
-    # --------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------- #
+    # Run Method Overloads & Implementation
+    # -------------------------------------------------------------------------------- #
 
     @overload
     def run(self) -> AstralChatResponse:
         ...
 
-    # --------------------------------------------------------------------------
-    # Run Structured Overload
-    # --------------------------------------------------------------------------
-
     @overload
-    def run(self, response_format: StructuredOutputT) -> AstralStructuredResponse:
+    def run(self, response_format: Type[_StructuredOutputT]) -> AstralStructuredResponse[_StructuredOutputT]:
         ...
 
-    # --------------------------------------------------------------------------
-    # Run Implementation
-    # --------------------------------------------------------------------------
-
-    @calculate_cost_decorator
-    def run(self, response_format: Optional[StructuredOutputT] = None) -> Union[AstralChatResponse, AstralStructuredResponse]:
+    def run(
+        self, response_format: Optional[Type[_StructuredOutputT]] = None,
+    ) -> Union[AstralChatResponse, AstralStructuredResponse[_StructuredOutputT]]:
         """
         Execute the completion request.
 
-        If `response_model` is provided, the provider response is assumed to be a structured response.
-        The `response` field of the structured response is parsed into the given model.
-        Otherwise, a standard chat response is returned.
-        """
+        This method handles both chat and structured completion requests by:
+        1. Converting the Astral request to provider-specific format
+        2. Executing the request with the appropriate provider client
+        3. Converting and validating the provider response
+        4. Calculating and attaching cost metrics if enabled
 
-        # Step One: Convert the request to the provider request.
+        Args:
+            response_format: Optional structured output model for parsing responses.
+                           If provided, the response will be parsed into this model type.
+
+        Returns:
+            AstralChatResponse: For standard chat completions when response_format is None
+            AstralStructuredResponse: For structured outputs when response_format is provided
+
+        Note:
+            Cost calculation is only performed if a cost_strategy is configured.
+            The cost metrics will be attached to the response object.
+        """
+        # Convert the request to provider-specific format
         provider_request = self.adapter.to_provider_completion_request(self.request)
 
+        # Execute request and convert response based on type
         if response_format is None:
-            # Step Two: Execute the request.
             provider_response = self.client.create_completion_chat(provider_request)
+            astral_response = self.adapter.to_astral_completion_response(provider_response)
         else:
             provider_response = self.client.create_completion_structured(provider_request)
+            astral_response = self.adapter.to_astral_completion_response(
+                provider_response,
+                response_model=response_format
+            )
 
-        # Step Three: Convert the provider response to the Astral response.
-        astral_response = self.adapter.to_astral_completion_response(provider_response)
+        # Calculate and attach cost metrics if enabled
+        if self.cost_strategy is not None:
+            astral_response = self.cost_strategy.run_cost_strategy(
+                response=astral_response,
+                model_name=self.model,
+                model_provider=self.model_provider,
+            )
 
         return astral_response
 
 
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
 # Top-level Functions
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
+
 
 @required_parameters("model", "messages")
 def completion(
     *,
     model: str,
-    messages: List[Dict[str, str]],
+    messages: Messages,
     astral_params: AstralParams | NotGiven = NOT_GIVEN,
     stream: Optional[bool] | NotGiven = NOT_GIVEN,
     frequency_penalty: Optional[float] | NotGiven = NOT_GIVEN,
@@ -198,8 +198,14 @@ def completion(
     """
     Top-level function for a chat completion request.
 
+    Args:
+        model: The model to use for completion
+        messages: The conversation history
+        astral_params: Optional Astral-specific parameters
+        **kwargs: Additional model-specific parameters
+
     Returns:
-        AstralChatResponse: The chat completion response.
+        AstralChatResponse: The chat completion response
     """
     request_data = {
         "model": model,
@@ -235,10 +241,10 @@ def completion(
     comp = Completions(request, astral_params=astral_params)
     return comp.run()
 
-
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
 # Structured Completion
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
+
 
 StructuredOutputResponseT = TypeVar('StructuredOutputResponseT', bound=BaseModel)
 
@@ -248,7 +254,7 @@ def completion_structured(
     *,
     model: str,
     messages: List[Dict[str, str]],
-    response_format: StructuredOutputResponseT,
+    response_format: Type[StructuredOutputResponseT],
     astral_params: Optional[AstralParams] | NotGiven = NOT_GIVEN,
     stream: bool | NotGiven = NOT_GIVEN,
     frequency_penalty: Optional[float] | NotGiven = NOT_GIVEN,
@@ -275,13 +281,23 @@ def completion_structured(
     top_p: Optional[float] | NotGiven = NOT_GIVEN,
     user: str | NotGiven = NOT_GIVEN,
     timeout: Union[float, Timeout, None] | NotGiven = NOT_GIVEN,
-) -> AstralStructuredResponse:
+) -> AstralStructuredResponse[StructuredOutputResponseT]:
     """
     Top-level function for a structured completion request.
 
+    Args:
+        model: The model to use for completion
+        messages: The conversation history
+        response_format: The Pydantic model to parse the response into
+        astral_params: Optional Astral-specific parameters
+        **kwargs: Additional model-specific parameters
+
     Returns:
         AstralStructuredResponse: The structured response, with its inner `response`
-        field parsed using the provided `response_model`.
+        field parsed using the provided `response_model`
+
+    Raises:
+        ResponseModelMissingError: If response_format is None
     """
 
     if response_format is None:
@@ -324,4 +340,4 @@ def completion_structured(
 
     request = AstralStructuredCompletionRequest(**request_data)
     comp = Completions(request, astral_params=astral_params)
-    return comp.run(response_model=response_format)
+    return comp.run(response_format=response_format)

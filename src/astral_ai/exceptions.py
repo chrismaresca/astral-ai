@@ -1,3 +1,4 @@
+from __future__ import annotations
 # ------------------------------------------------------------------------------
 # Exceptions
 # ------------------------------------------------------------------------------
@@ -56,7 +57,7 @@ class ProviderNotSupportedError(ProviderAuthenticationError):
 class ProviderNotFoundForModelError(ProviderAuthenticationError):
     """Exception raised when a provider is not found for a model."""
 
-    def __init__(self, model_name: Union[ModelName, str]) -> None:
+    def __init__(self, model_name: Union['ModelName', str]) -> None:
         message = f"No provider registered for model '{model_name}'."
         super().__init__(message)
         self.model_name = model_name

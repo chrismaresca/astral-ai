@@ -9,9 +9,15 @@
 from typing import Dict, Optional, overload, Literal
 
 # Astral imports
-from astral_ai._types._astral import AstralClientParams
+from astral_ai._types import AstralClientParams
+
+# Astral Constants
 from astral_ai.constants._models import ModelProvider
+
+# Astral Auth
 from astral_ai._auth import AUTH_CONFIG_TYPE
+
+# Astral Exceptions
 from astral_ai.exceptions import ProviderNotSupportedError
 
 # Provider imports

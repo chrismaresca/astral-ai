@@ -1,3 +1,4 @@
+from __future__ import annotations
 # ------------------------------------------------------------------------------
 # Response Models
 # ------------------------------------------------------------------------------
@@ -24,13 +25,19 @@ from typing_extensions import Self
 from pydantic import BaseModel, PrivateAttr, Field, model_validator
 
 # Astral AI
-from astral_ai.constants._models import ModelName, ModelProvider, get_provider_from_model_name
+from astral_ai.constants._models import ModelName, ModelProvider
+
+# Astral AI Utils
+from astral_ai.utilities import get_provider_from_model_name
 
 # Astral AI Types
-from astral_ai._types._usage import ChatUsage, ChatCost, BaseUsage, BaseCost
+from ._usage import (
+    ChatUsage,
+    ChatCost,
+    BaseUsage,
+    BaseCost,
+)
 
-# Astral AI Exceptions
-from astral_ai.exceptions import ProviderFeatureNotSupportedError
 
 # ------------------------------------------------------------------------------
 # Provider Response and Message Objects
@@ -161,6 +168,7 @@ class AstralChatResponse(PrivatePropagationMixin[ChatUsage, ChatCost], AstralBas
     """
     Chat Response Model for Astral AI
     """
+    response: str = Field(description="The response for the chat completion")
     usage: ChatUsage = Field(description="The usage for the response")
     cost: Optional[ChatCost] = Field(description="The cost for the response", default=None)
 
@@ -176,64 +184,8 @@ StructuredOutputResponse = TypeVar('StructuredOutputResponse', bound=BaseModel)
 # ------------------------------------------------------------------------------
 
 
-class AstralStructuredResponse(AstralChatResponse):
+class AstralStructuredResponse(AstralChatResponse, Generic[StructuredOutputResponse]):
     """
     Structured Response Model for Astral AI
     """
     response: StructuredOutputResponse = Field(description="The response for the structured response")
-
-
-if __name__ == "__main__":
-
-    provider_response = ProviderResponseObject(
-        provider_object="chat.completions",
-        provider_response_id="123",
-        provider_model_id="gpt-4o-mini",
-        provider_request_id="456",
-        provider_created=1713859200,
-    )
-
-    usage = ChatUsage(
-        prompt_tokens=100,
-        completion_tokens=100,
-        total_tokens=200,
-    )
-
-    cost = ChatCost(
-        input_cost=0.0001,
-        output_cost=0.0002,
-        total_cost=0.0003,
-        total_tokens=200,
-    )
-
-    print("==== PRIVATE ATTRS ====")
-    print(usage.response_id)
-    print(cost.response_id)
-    print(usage.model_provider)
-    print(cost.model_provider)
-    print(usage.model_name)
-    print(cost.model_name)
-    print("==== PRIVATE ATTRS ====")
-
-    response = AstralChatResponse(
-        model="gpt-4o",
-        provider_response=provider_response,
-        usage=usage,
-        cost=cost,
-    )
-
-    print("==== RESPONSE ====")
-    print(response)
-    print("==== RESPONSE ====")
-
-    print("==== USAGE ====")
-    print(response.usage.response_id)
-    print(response.usage.model_provider)
-    print(response.usage.model_name)
-    print("==== USAGE ====")
-
-    print("==== COST ====")
-    print(response.cost.response_id)
-    print(response.cost.model_provider)
-    print(response.cost.model_name)
-    print("==== COST ====")

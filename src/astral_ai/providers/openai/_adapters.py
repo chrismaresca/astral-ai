@@ -1,111 +1,117 @@
-# ------------------------------------------------------------------------------
-# OpenAI Message Handlers
-# ------------------------------------------------------------------------------
-
-"""
-Message Handlers for OpenAI.
-"""
-
-# ------------------------------------------------------------------------------
-# Imports
-# ------------------------------------------------------------------------------
-
-# Built-in Types
-from typing import overload, Literal, Union, List, Optional, TypeVar
-
-# Pydantic Types
+from __future__ import annotations
+from typing import overload, Union, Optional, TypeVar, Type, cast
 from pydantic import BaseModel
-
-
-# Astral Messaging Types
-from astral_ai.messaging._models import (MessageList,
-                                         Message,
-                                         TextMessage,
-                                         ImageMessage)
-
 
 # Astral Base Adapters
 from astral_ai.providers._base_adapters import BaseCompletionAdapter
 
 # Astral AI Types
-from astral_ai._types._request import AstralCompletionRequest
-from astral_ai._types._response import AstralChatResponse, AstralStructuredResponse
+from astral_ai._types import (
+    AstralCompletionRequest,
+    AstralChatResponse,
+    AstralStructuredResponse,
+)
 
 # OpenAI Types
 from ._types import (
     OpenAIRequestType,
     OpenAIResponseType,
+    OpenAIChatResponseType,
+    OpenAIStructuredResponseType,
 )
 
-# ------------------------------------------------------------------------------
-# Generic Types
-# ------------------------------------------------------------------------------
+# Astral Usage Types
+from astral_ai._types._response._usage import ChatUsage, ChatCost
 
+# Generic type variable for structured output (parsed content must be a BaseModel)
 _StructuredOutputT = TypeVar("_StructuredOutputT", bound=BaseModel)
 
 
-# ------------------------------------------------------------------------------
-# OpenAI Message List to Provider Request
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
+# OpenAICompletionAdapter Implementation
+# -------------------------------------------------------------------------------- #
 
-# def convert_to_openai_message(message: Message) -> OpenAIMessageType:
-#     """
-#     Convert a project message to an OpenAI message format.
-#     For example, a TextMessage is mapped to a dict with 'role' and 'content' keys.
-#     """
-#     if isinstance(message, TextMessage):
-#         # For OpenAI, we assume a text message has a 'role' and 'content'
-#         return OpenAIMessage({
-#             "role": message.role,
-#             "content": {
-#                 "type": "text",
-#                 "text": message.text,
-#             }
-#         })
-#     elif isinstance(message, ImageMessage):
-#         # For image messages, you might want to include additional keys
-#         return OpenAIMessage({
-#             "role": message.role,
-#             "image_url": message.image_url,
-#             "image_detail": message.image_detail,
-#         })
-#     else:
-#         raise TypeError("Unsupported project message type for OpenAI conversion.")
-
-
-# ------------------------------------------------------------------------------
-# OpenAI Completion Adapter
-# ------------------------------------------------------------------------------
-
-class OpenAICompletionAdapter(BaseCompletionAdapter[OpenAIRequestType, OpenAIResponseType]):
+class OpenAICompletionAdapter(BaseCompletionAdapter):
     """
     Adapter for the OpenAI provider.
     """
 
-    # -------------------------------------------------------------------------- #
-    # Overloads
-    # -------------------------------------------------------------------------- #
-
     @overload
-    def to_astral_completion_response(self, response: OpenAIResponseType) -> AstralChatResponse:
+    def to_astral_completion_response(
+        self,
+        response: OpenAIChatResponseType,
+        response_model: None = None,
+    ) -> AstralChatResponse:
         ...
 
     @overload
-    def to_astral_completion_response(self, response: OpenAIResponseType, response_model: _StructuredOutputT) -> AstralStructuredResponse:
+    def to_astral_completion_response(
+        self,
+        response: OpenAIStructuredResponseType,
+        response_model: Type[_StructuredOutputT],
+    ) -> AstralStructuredResponse[_StructuredOutputT]:
         ...
-
-    # -------------------------------------------------------------------------- #
-    # Implementation
-    # -------------------------------------------------------------------------- #
 
     def to_provider_completion_request(self, request: AstralCompletionRequest) -> OpenAIRequestType:
         """
         Convert an AstralCompletionRequest into an OpenAIRequest.
+        For demonstration, we just return the request.
         """
-        pass
+        ...
 
-    def to_astral_completion_response(self, response: OpenAIResponseType, response_model: Optional[_StructuredOutputT] = None) -> Union[AstralChatResponse, AstralStructuredResponse]:
+
+    def to_astral_completion_response(
+        self,
+        response: OpenAIResponseType,
+        response_model: Optional[Type[_StructuredOutputT]] = None,
+    ) -> Union[AstralChatResponse, AstralStructuredResponse[_StructuredOutputT]]:
         """
-        Convert an OpenAIResponse into an AstralChatResponse or AstralStructuredResponse.
+        Convert an OpenAIResponse into either an AstralChatResponse or
+        an AstralStructuredResponse based on whether a response_model is provided.
         """
-        pass
+        if response_model is None:
+            # Process as a chat response.
+            response_chat: OpenAIChatResponseType = response  # type: ignore
+            astral_chat_response = self._convert_chat_response(response_chat)
+            return astral_chat_response
+        else:
+            # Process as a structured response.
+            response_structured = cast(OpenAIStructuredResponseType, response)
+            astral_structured_response = self._convert_structured_response(response_structured, response_model)
+            return astral_structured_response
+
+    def _convert_chat_response(self, response: OpenAIChatResponseType) -> AstralChatResponse:
+        """Convert the OpenAI ChatCompletion to an AstralChatResponse."""
+        # Extract the content.
+        content = response.choices[0].message.content if response.choices else ""
+        # Extract the usage data.
+        usage_data = response.usage if response.usage else ChatUsage(prompt_tokens=0, completion_tokens=0, total_tokens=0)
+        # Extract the cost data.
+        cost: Optional[ChatCost] = None
+        # Construct the chat response.
+        return AstralChatResponse(response=content, usage=usage_data, cost=cost)
+
+    def _convert_structured_response(
+        self,
+        response: OpenAIStructuredResponseType,
+        response_model: Type[_StructuredOutputT],
+    ) -> AstralStructuredResponse[_StructuredOutputT]:
+        """
+        Convert the OpenAIResponse (assumed to be structured) to an AstralStructuredResponse.
+        This uses the provided response_model to parse the structured data.
+        """
+        # Extract the parsed content.
+        parsed_content_data = response.choices[0].message.parsed
+        if parsed_content_data is None:
+            raise ValueError("Structured response missing parsed content")
+        # Parse the structured output using the provided BaseModel subclass.
+        parsed_content: _StructuredOutputT = response_model.model_validate(parsed_content_data)
+        # Extract the usage data.
+        usage_data = response.usage if response.usage else ChatUsage(prompt_tokens=0, completion_tokens=0, total_tokens=0)
+        # Extract the cost data.
+        cost: Optional[ChatCost] = None
+        # Construct and return the structured response.
+        return AstralStructuredResponse[_StructuredOutputT](response=parsed_content, usage=usage_data, cost=cost)
+
+
+

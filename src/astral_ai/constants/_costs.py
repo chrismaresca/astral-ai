@@ -16,35 +16,37 @@ from astral_ai.constants._models import ModelName, ModelProvider
 # -------------------------------------------------------------------------------- #
 
 
-class ModelCosts(TypedDict):
-    prompt_tokens: float
-    cached_prompt_tokens: float
-    output_tokens: float
-    # Anthropic ONLY
-    cache_creation_tokens: float | None
+class ModelSpecificCosts(TypedDict):
+    completion_token_cost: float
+    cached_completion_token_cost: float
+    prompt_token_cost: float
+    cached_prompt_token_cost: float
+    anthropic_cache_creation_token_cost: float | None
 
 
-ModelCostMapping: TypeAlias = Dict[ModelProvider, Dict[ModelName, ModelCosts]]
+ModelSpecificCostsMapping: TypeAlias = Dict[ModelProvider, Dict[ModelName, ModelSpecificCosts]]
 
 # -------------------------------------------------------------------------------- #
 # Model Cost Constants
 # -------------------------------------------------------------------------------- #
 
-model_cost_mapping: ModelCostMapping = {
+model_specific_cost_mapping: ModelSpecificCostsMapping = {
     "openai": {
         "gpt-4o": {
-            "prompt_tokens": 0.03,
-            "cached_prompt_tokens": 0.03,
-            "output_tokens": 0.06,
-            "cache_creation_tokens": None
+            "completion_token_cost": 0.03,
+            "cached_completion_token_cost": 0.03,
+            "prompt_token_cost": 0.06,
+            "cached_prompt_token_cost": 0.06,
+            "anthropic_cache_creation_token_cost": None
         }
     },
     "anthropic": {
         "claude-3-sonnet": {
-            "prompt_tokens": 0.015,
-            "cached_prompt_tokens": 0.015,
-            "output_tokens": 0.075,
-            "cache_creation_tokens": 0.015
+            "completion_token_cost": 0.015,
+            "cached_completion_token_cost": 0.015,
+            "prompt_token_cost": 0.075,
+            "cached_prompt_token_cost": 0.075,
+            "anthropic_cache_creation_token_cost": 0.015
         }
     }
 }

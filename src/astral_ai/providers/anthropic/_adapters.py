@@ -104,29 +104,20 @@ Message Handlers for OpenAI.
 # ------------------------------------------------------------------------------
 
 # Built-in Types
-from typing import overload, Literal, Union, List, Optional, TypeAlias
+from typing import overload, Union, Optional, TypeAlias
 
-
-# Astral Messaging Types
-from astral_ai.messaging._models import (MessageList,
-                                         Message,
-                                         TextMessage,
-                                         ImageMessage)
 
 # Astral Providers
-from astral_ai.providers._generics import (AnthropicRequestType,
-                                           AnthropicResponseType,
-                                           StructuredOutputT)
+from astral_ai.providers._generics import StructuredOutputT
 
 # Astral Base Adapters
 from astral_ai.providers._base_adapters import BaseCompletionAdapter
 
 # Astral AI Types
-from astral_ai._types._request import AstralCompletionRequest
-from astral_ai._types._response import AstralChatResponse, AstralStructuredResponse
+from astral_ai._types._request._request import AstralCompletionRequest
+from astral_ai._types._response._response import AstralChatResponse, AstralStructuredResponse
 
-# OpenAI Types
-# TODO: is this right?
+# Anthropic Types
 from ._types import (
     AnthropicRequestType,
     AnthropicResponseType,
@@ -145,7 +136,7 @@ class AsyncAnthropic:
 AnthropicClients: TypeAlias = Union[Anthropic, AsyncAnthropic]
 
 
-class AnthropicCompletionAdapter(BaseCompletionAdapter[AnthropicClients, AnthropicRequestType, AnthropicResponseType]):
+class AnthropicCompletionAdapter(BaseCompletionAdapter):
     """
     Adapter for the Anthropic provider.
     """

@@ -34,12 +34,8 @@ from pydantic import BaseModel
 # Astral AI
 from astral_ai.constants._models import OpenAIModels
 
-# OpenAI Types
-from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
-from openai.types.chat import ChatCompletionChunk, ParsedChatCompletion, ChatCompletion
-
 # Astral AI Types
-from astral_ai._types._request import (
+from astral_ai._types import (
     ToolChoice,
     ReasoningEffort,
     ResponseFormat,
@@ -51,7 +47,7 @@ from astral_ai._types._request import (
 )
 
 # OpenAI Types
-from ._message import OpenAIMessageT
+from ._message import OpenAIMessageType
 # ------------------------------------------------------------------------------
 # Generic Types
 # ------------------------------------------------------------------------------
@@ -70,7 +66,7 @@ class OpenAIRequestBase(TypedDict, total=False):
     OpenAI Request Base Model for Astral AI
     """
     model: Required[OpenAIModels]
-    messages: Required[OpenAIMessageT]
+    messages: Required[OpenAIMessageType]
     frequency_penalty: Optional[float]
     """Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far."""
 

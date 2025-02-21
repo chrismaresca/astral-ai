@@ -3,7 +3,7 @@
 # -------------------------------------------------------------------------------- #
 
 # Built-in imports
-from typing import Literal, Optional, List, Union, TypeAlias
+from typing import Literal, Optional, List, Union, TypeAlias, Dict
 
 # Pydantic imports
 from pydantic import BaseModel, Field
@@ -23,6 +23,10 @@ MessageListType: TypeAlias = Union['MessageList', List['Message'], 'Message']
 # Message Models
 # -------------------------------------------------------------------------------- #
 
+# -------------------------------------------------------------------------------- #
+# Text Message
+# -------------------------------------------------------------------------------- #
+
 class TextMessage(BaseModel):
     """
     A text message model.
@@ -35,6 +39,10 @@ class TextMessage(BaseModel):
         ...,
         description="Plain text content for the message."
     )
+
+# -------------------------------------------------------------------------------- #
+# Image Message
+# -------------------------------------------------------------------------------- #
 
 
 class ImageMessage(BaseModel):
@@ -54,8 +62,17 @@ class ImageMessage(BaseModel):
         description="The detail level of the image."
     )
 
+# -------------------------------------------------------------------------------- #
+# Audio Message
+# -------------------------------------------------------------------------------- #
 
-Message: TypeAlias = Union[TextMessage, ImageMessage]
+# TODO: implement audio message
+
+class AudioMessage(BaseModel):
+    """
+    An audio message model.
+    """
+    pass
 
 
 # -------------------------------------------------------------------------------- #
@@ -67,7 +84,7 @@ class MessageList(BaseModel):
     """
     A list of messages.
     """
-    messages: List[Union[TextMessage, ImageMessage]] = Field(
+    messages: List['Message'] = Field(
         ...,
         description="A list of messages."
     )
@@ -83,5 +100,10 @@ class MessageList(BaseModel):
 
 
 # -------------------------------------------------------------------------------- #
-# Message List Type Alias
+# Message Type Aliasess
 # -------------------------------------------------------------------------------- #
+
+
+Message: TypeAlias = Union[TextMessage, ImageMessage]
+
+Messages: TypeAlias = Union[MessageList, List[Message], Message, List[Dict[str, str]]]

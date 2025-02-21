@@ -12,14 +12,16 @@ Utils for the agents.
 # Built-in
 from typing import Optional, List, Union, Tuple
 
-# Project Types
+# Astral AI Constants
 from astral_ai.constants._models import ModelName
+
+# Astral AI Messaging
 from astral_ai.messaging._models import Message, MessageList
 
-# Project Exceptions
+# Astral AI Exceptions
 from astral_ai.exceptions import MessagesNotProvidedError, InvalidMessageError
 
-# Logging
+# Astral AI Logger
 from astral_ai.logger import logger
 
 

@@ -1,11 +1,10 @@
 # Built-in Types
-from typing import Literal, Dict, TypeAlias, Mapping, Callable
-
-# Message Types
-from astral_ai.messaging._models import Message
+from typing import Literal, Dict, TypeAlias
 
 
-# Auto-generated types and constants
+# ------------------------------------------------------------------------------
+# Model Provider
+# ------------------------------------------------------------------------------
 
 ModelProvider = Literal[
     "openai",
@@ -192,36 +191,3 @@ PROVIDER_MODEL_NAMES: Dict[ModelName, ModelProvider] = {
     "claude-3-opus": "anthropic",
     "claude-3-haiku": "anthropic",
 }
-
-# ------------------------------------------------------------
-# Get Provider from Model Name
-# ------------------------------------------------------------
-
-
-def get_provider_from_model_name(model_name: ModelName) -> ModelProvider:
-    """
-    Get the provider from a model name.
-    """
-    return PROVIDER_MODEL_NAMES[model_name]
-
-# ------------------------------------------------------------
-# Is Model Alias
-# ------------------------------------------------------------
-
-
-def is_model_alias(model_name: ModelName) -> bool:
-    """
-    Check if a model name is a model alias.
-    """
-    return model_name in MODEL_DEFINITIONS
-
-# ------------------------------------------------------------
-# Get Model from Model Alias
-# ------------------------------------------------------------
-
-
-def get_model_from_model_alias(model_alias: ModelAlias) -> ModelId:
-    """
-    Get the model from a model alias.
-    """
-    return MODEL_DEFINITIONS[model_alias]["most_recent_model"]
