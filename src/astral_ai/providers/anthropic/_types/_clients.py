@@ -1,14 +1,16 @@
 # ------------------------------------------------------------------------------
-# OpenAI
+# Anthropic Clients
 # ------------------------------------------------------------------------------
 
-from ._client import OpenAIProviderClient
+# Built-in
+from typing import TypeAlias, Union
 
+# Anthropic Imports
+from openai import OpenAI as Anthropic, AsyncOpenAI as AsyncAnthropic
 
 # ------------------------------------------------------------------------------
-# All
+# Anthropic Clients
 # ------------------------------------------------------------------------------
 
-__all__ = [
-    "OpenAIProviderClient",
-]
+
+AnthropicClientsType: TypeAlias = Union[Anthropic, AsyncAnthropic]

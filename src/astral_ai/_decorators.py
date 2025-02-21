@@ -1,4 +1,6 @@
 from __future__ import annotations
+from pydantic import BaseModel
+from astral_ai.tracing._cost_strategies import BaseCostStrategy
 
 # Astral Types
 from astral_ai._types import AstralBaseResponse
@@ -17,38 +19,29 @@ This file contains decorators for timing and logging.
 # Imports
 # -------------------------------------------------------------------------------- #
 # Built-in imports
-from typing import (List,
-                    Dict,
-                    Optional,
-                    Callable, Tuple, Union, TYPE_CHECKING, ParamSpec, TypeVar,
-                    Concatenate)
-
-# Astral AI
-from astral_ai.utilities.cost_utils import get_model_costs
-
-# Astral imports
-from astral_ai._types._request._request import NOT_GIVEN
-
-# Standard library imports
 import time
 import functools
+from typing import (
+    Optional,
+    Callable,
+    Tuple,
+    Union,
+    ParamSpec,
+    TypeVar,
+    Concatenate,
+)
 
-# Types
-from typing import Callable
+# Astral AI Utilities
+from astral_ai.utilities import get_model_costs
 
-# Exceptions
+# Astral AI Types
+from astral_ai._types import NOT_GIVEN
+
+# Astral AI Constants
+from astral_ai.constants._models import ModelName, ModelProvider
+
+# Astral AI Exceptions
 from astral_ai.exceptions import MissingParameterError
-
-
-# -------------------------------------------------------------------------------- #
-# Type Checking Imports
-# -------------------------------------------------------------------------------- #
-
-if TYPE_CHECKING:
-    from astral_ai.providers._base_client import BaseProviderClient
-    from astral_ai.providers._generics import ProviderRequestType, ProviderResponseType
-    from astral_ai.constants._models import ModelName, ModelProvider
-    from astral_ai.tracing._cost_strategies import CostStrategy
 
 
 # -------------------------------------------------------------------------------- #
@@ -104,113 +97,3 @@ def required_parameters(*required_args: str) -> Callable:
             return func(*args, **kwargs)
         return wrapper
     return decorator
-
-
-# -------------------------------------------------------------------------------- #
-# Cost Decorator
-# -------------------------------------------------------------------------------- #
-
-
-# -------------------------------------------------------------------------------- #
-# Generics
-# -------------------------------------------------------------------------------- #
-# P = ParamSpec("P")
-# R = TypeVar("R")
-
-
-P = ParamSpec("P")
-R = TypeVar("R", bound=AstralBaseResponse)
-
-
-class ModelNameError(Exception):
-    """
-    Exception raised when a model name is not valid.
-    """
-
-    def __init__(self, model_name: str):
-        self.message = f"Invalid model name: {model_name}"
-        super().__init__(self.message)
-
-
-class ProviderNotFoundForModelError(Exception):
-    """
-    Exception raised when a provider is not found for a model.
-    """
-
-    def __init__(self, model_name: str):
-        self.message = f"Provider not found for model: {model_name}"
-        super().__init__(self.message)
-
-
-# -------------------------------------------------------------------------------- #
-# Cost Decorator
-# -------------------------------------------------------------------------------- #
-
-from astral_ai.tracing._cost_strategies import BaseCostStrategy
-from astral_ai.utilities.cost_utils import get_model_costs
-
-
-# -------------------------------------------------------------------------------- #
-# Generic Types
-# -------------------------------------------------------------------------------- #
-
-from pydantic import BaseModel
-
-_StructuredOutputT = TypeVar("_StructuredOutputT", bound=BaseModel)
-
-
-# -------------------------------------------------------------------------------- #
-def calculate_cost_decorator(
-    func: Callable[Concatenate[AstralResource, P], R]
-) -> Callable[Concatenate[AstralResource, P], Union[R, Tuple[R, float]]]:
-    """
-    A decorator that calculates the cost of a function call.
-    If a cost_strategy is provided, it will be used to process the cost.
-    """
-    @functools.wraps(func)
-    def wrapper(
-        self: AstralResource,
-        response_format: Optional[_StructuredOutputT] = None,    
-        *args,
-        **kwargs,
-    ) -> Union[R, Tuple[R, float]]:
-
-        model_name = self.model
-        model_provider = self.model_provider
-
-        if not isinstance(model_name, ModelName):
-            raise ModelNameError(model_name=model_name)
-
-        if not isinstance(model_provider, ModelProvider):
-            raise ProviderNotFoundForModelError(model_name=model_name)
-        
-
-        cost_strategy = self.cost_strategy
-
-        if response_format is None:
-            # Execute the wrapped function to get the response.
-            result = func(self, *args, **kwargs)
-        else:
-            result = func(self, response_format, *args, **kwargs)
-
-        # Retrieve cost details for the model.
-        costs = get_model_costs(model_name=model_name, model_provider=model_provider)
-
-        output = cost_strategy.handle_costs(costs=costs) if cost_strategy else result
-        if not isinstance(model_name, ModelName):
-            raise ModelNameError(model_name=model_name)
-
-        if not isinstance(model_provider, ModelProvider):
-            raise ProviderNotFoundForModelError(model_name=model_name)
-
-            # Execute the wrapped function to get the response.
-        result = func(self, *args, **kwargs)
-
-        # Retrieve cost details for the model.
-        costs = get_model_costs(model_name=model_name, model_provider=model_provider, usage=result.usage)
-
-        output = cost_strategy.handle_costs(costs=costs) if cost_strategy else result
-
-        return output
-
- 

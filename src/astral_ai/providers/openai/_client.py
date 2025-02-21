@@ -28,9 +28,8 @@ from astral_ai.exceptions import ProviderAuthenticationError, ProviderResponseEr
 # Astral Auth
 from astral_ai._auth import AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS
 
-
-# OpenAI Provider Client Type
-from astral_ai.providers._generics import OpenAIClientsType
+# Provider Types
+from astral_ai.providers.openai._types import OpenAIClientsType
 
 
 class OpenAIProviderClient(BaseProviderClient[
