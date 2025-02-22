@@ -22,4 +22,3 @@ class ProviderClientProtocol(Protocol):
 
 # Base provider client type
 BaseProviderClient = TypeVar("BaseProviderClient", bound=ProviderClientProtocol)
-ModelProviderClient = TypeVar("ModelProviderClient", bound=ProviderClientProtocol)

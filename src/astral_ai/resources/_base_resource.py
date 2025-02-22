@@ -29,7 +29,7 @@ from astral_ai.utilities import get_provider_from_model_name
 from astral_ai.exceptions import ModelNameError
 
 # Providers
-from astral_ai.providers._mappings import get_provider_client, get_provider_adapter
+from astral_ai.providers._mappings import ProviderClientRegistry, AdapterRegistry
 
 # Cost Strategies
 from astral_ai.tracing._cost_strategies import BaseCostStrategy, ReturnCostStrategy
@@ -70,7 +70,7 @@ class AstralResource(ABC):
             ModelNameError: If the model name is invalid
         """
         self.request = request
-        self.astral_params = astral_params
+        self.astral_params = astral_params or AstralParams()
 
         # Validate model
         if not isinstance(request.model, ModelName):
@@ -81,17 +81,17 @@ class AstralResource(ABC):
         # Set the model provider.
         self.model_provider: ModelProvider = get_provider_from_model_name(self.model)
 
-        # TODO: Add support for multiple cost strategies.
+        # TODO: Add support for multiple cost strategies???
         self.cost_strategy = self._set_cost_strategy()
 
         # TODO: Remove this for production.
         self.model_provider = "openai"
 
         # Retrieve (or create) the provider client.
-        self.client = get_provider_client(self.model_provider, astral_client=astral_params.astral_client)
+        self.client = ProviderClientRegistry.get_client(self.model_provider, astral_client=astral_params.astral_client)
 
-        # Get the provider adapter.
-        self.adapter = get_provider_adapter(self.model_provider)
+        # Retrieve (or create) the provider adapter.
+        self.adapter = AdapterRegistry.get_adapter(self.model_provider)
 
     def _set_cost_strategy(self) -> BaseCostStrategy:
         """

@@ -21,7 +21,7 @@ from pydantic import BaseModel, Field
 from astral_ai.constants._models import ModelProvider, ModelName
 
 # Astral AI Providers
-from astral_ai.providers._types import BaseProviderClient, ModelProviderClient
+from astral_ai.providers._types import BaseProviderClient
 
 
 # ------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ AUTH_CONFIG_TYPE: TypeAlias = Dict[AUTH_METHOD_NAMES, AuthMethodConfig]
 
 AuthCallable = Callable[
     [BaseProviderClient, AUTH_CONFIG_TYPE, AUTH_ENV_VARS],
-    ModelProviderClient,
+    BaseProviderClient,
 ]
 
 # ------------------------------------------------------------------------------
