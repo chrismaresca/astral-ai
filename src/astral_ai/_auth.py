@@ -64,6 +64,9 @@ class AuthMethodConfig(BaseModel):
 
 AUTH_CONFIG_TYPE: TypeAlias = Dict[AUTH_METHOD_NAMES, AuthMethodConfig]
 
+# ADDED: Auth Config Type with Provider
+AUTH_CONFIG_TYPE_WITH_PROVIDER: TypeAlias = Dict[ModelProvider, AUTH_CONFIG_TYPE]
+
 # ------------------------------------------------------------------------------
 # Auth Callable
 # ------------------------------------------------------------------------------
