@@ -17,7 +17,8 @@ from typing import (Literal,
                     List,
                     Iterable,
                     Union,
-                    TypeVar)
+                    TypeVar,
+                    Any)
 
 # Abstract Base Classes
 from abc import ABC
@@ -98,11 +99,22 @@ class BaseRequest(BaseModel, ABC):
         """Set the provider name for the request."""
         self._provider_name = get_provider_from_model_name(model_name=self.model)
         return self
+    
+    @model_validator(mode="before")
+    def handle_none_astral_params(cls, data: dict) -> dict:
+        """Handle None astral_params by setting default AstralParams."""
+        if isinstance(data, dict) and data.get("astral_params") is None:
+            data["astral_params"] = AstralParams()
+        return data
 
+    def model_dump_without_astral_params(self, **kwargs) -> Dict[str, Any]:
+        """Dump the model without astral params."""
+        return self.model_dump(exclude={"astral_params"}, **kwargs)
 
 # ------------------------------------------------------------------------------
 # Astral Completion Request
 # ------------------------------------------------------------------------------
+
 
 class AstralCompletionRequest(BaseRequest):
     """
@@ -197,24 +209,10 @@ class AstralCompletionRequest(BaseRequest):
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
-    # --------------------------------------------------------------------------
-    # To Provider Dict
-    # --------------------------------------------------------------------------
-
-    def to_provider_dict(self) -> dict:
-        """
-        Convert the AstralCompletionRequest to a dict excluding unset fields and those set to NOT_GIVEN.
-        """
-        # Get fields explicitly provided by the user (or set to a default explicitly)
-        raw = self.model_dump(exclude_unset=True)
-        # Filter out any field with a value that is NOT_GIVEN
-        return {key: value for key, value in raw.items() if value is not NOT_GIVEN}
-
 
 # ------------------------------------------------------------------------------
 # Astral Structured Completion Request
 # ------------------------------------------------------------------------------
-
 StructuredOutputResponseT = TypeVar('StructuredOutputResponseT', bound=BaseModel)
 
 
@@ -227,3 +225,10 @@ class AstralStructuredCompletionRequest(AstralCompletionRequest):
 # ------------------------------------------------------------------------------
 # Astral Embedding Request
 # ------------------------------------------------------------------------------
+
+
+class AstralEmbeddingRequest(BaseRequest):
+    """
+    Astral Embedding Request
+    """
+    input: str | List[str] = Field(description="The input to embed. This can be a single string or a list of strings.")

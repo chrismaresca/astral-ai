@@ -21,6 +21,9 @@ if TYPE_CHECKING:
         OpenAIChatResponseType,
         OpenAIStructuredResponseType,
         OpenAIStreamingResponseType,
+
+        # Embedding Types
+        OpenAIRequestEmbeddingType,
     )
     from astral_ai.providers.anthropic._types import (
         # Message Types
@@ -33,6 +36,9 @@ if TYPE_CHECKING:
         AnthropicChatResponseType,
         AnthropicStructuredResponseType,
         AnthropicStreamingResponseType,
+
+        # Embedding Types
+        AnthropicRequestEmbeddingType,
     )
 
 # -------------------------------------------------------------------------------- #
@@ -88,16 +94,44 @@ ProviderResponseStreamingType: TypeAlias = Union["OpenAIStreamingResponseType", 
 ProviderResponseStreamingT = TypeVar("ProviderResponseStreamingT", bound=ProviderResponseStreamingType)
 
 # -------------------------------------------------------------------------------- #
+# Provider Combined Response Types
+# -------------------------------------------------------------------------------- #
+# Non-streaming completion response types (chat or structured)
+ProviderCompletionResponseType: TypeAlias = Union[
+    ProviderResponseChatType,
+    ProviderResponseStructuredType
+]
+
+# -------------------------------------------------------------------------------- #
 # Provider Request/Response Union Aliases
 # -------------------------------------------------------------------------------- #
 # Union alias for any provider request.
-ProviderRequestType: TypeAlias = Union[
+ProviderChatRequestType: TypeAlias = Union[
     ProviderRequestChatType,
-    ProviderRequestStructuredType,
     ProviderRequestStreamingType
 ]
-ProviderRequestT = TypeVar("ProviderRequestT", bound=ProviderRequestType)
+ProviderChatRequestT = TypeVar("ProviderChatRequestT", bound=ProviderChatRequestType)
 
+# Structured Request Types
+ProviderStructuredRequestType: TypeAlias = Union[
+    ProviderRequestStructuredType,
+]
+ProviderStructuredRequestT = TypeVar("ProviderStructuredRequestT", bound=ProviderStructuredRequestType)
+
+
+# -------------------------------------------------------------------------------- #
+# Provider Embedding Request Types
+# -------------------------------------------------------------------------------- #
+# Union alias for any provider embedding request.
+ProviderEmbeddingRequestType: TypeAlias = Union[
+    'OpenAIRequestEmbeddingType',
+    'AnthropicRequestEmbeddingType'
+]
+ProviderEmbeddingRequestT = TypeVar("ProviderEmbeddingRequestT", bound=ProviderEmbeddingRequestType)
+
+# -------------------------------------------------------------------------------- #
+# Provider Response Types
+# -------------------------------------------------------------------------------- #
 # Union alias for any provider response.
 ProviderResponseType: TypeAlias = Union[
     ProviderResponseChatType,

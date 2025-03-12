@@ -17,12 +17,14 @@ from ._request import (
     OpenAIRequestChat,
     OpenAIRequestStreaming,
     OpenAIRequestStructured,
-
+    OpenAIRequestEmbedding,
     # Request Types
     OpenAIRequestType,
     OpenAIRequestChatType,
     OpenAIRequestStreamingType,
     OpenAIRequestStructuredType,
+    OpenAIRequestEmbeddingType,
+
 )
 
 # -------------------------------------------------------------------------------- #
@@ -34,6 +36,9 @@ from ._response import (
     OpenAIChatResponseType,
     OpenAIStructuredResponseType,
     OpenAIResponseType,
+
+    # Usage Types
+    OpenAICompletionUsageType,
 )
 
 # -------------------------------------------------------------------------------- #
@@ -53,7 +58,7 @@ __all__ = [
     # Message Types
     "OpenAIMessageType",
 
-    # Request Types
+    # Chat Request Types
     "OpenAIRequestChat",
     "OpenAIRequestStreaming",
     "OpenAIRequestStructured",
@@ -61,6 +66,13 @@ __all__ = [
     "OpenAIRequestChatType",
     "OpenAIRequestStreamingType",
     "OpenAIRequestStructuredType",
+
+    # Embedding Types
+    "OpenAIRequestEmbedding",
+    "OpenAIRequestEmbeddingType",
+
+    # Usage Types
+    "OpenAICompletionUsageType",
 
     # Response Types
     "OpenAIChatResponseType",

@@ -182,3 +182,14 @@ OpenAIRequestStructuredType: TypeAlias = OpenAIRequestStructured
 
 # Union of all request types
 OpenAIRequestType: TypeAlias = Union[OpenAIRequestChatType, OpenAIRequestStreamingType, OpenAIRequestStructuredType]
+
+# ------------------------------------------------------------------------------
+# TODO: OpenAI Embedding Request Types
+# ------------------------------------------------------------------------------
+
+
+class OpenAIRequestEmbedding(OpenAIRequestBase, total=False):
+    pass
+
+
+OpenAIRequestEmbeddingType: TypeAlias = OpenAIRequestEmbedding

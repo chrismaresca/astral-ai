@@ -24,9 +24,9 @@ ModelAlias = Literal[
 ]
 
 ModelId = Literal[
-    "gpt-4o-01-15-24",
-    "gpt-4o-12-17-24",
-    "gpt-4o-01-10-24",
+    "gpt-4o-2024-11-20",
+    "gpt-4o-2024-08-06",
+    "gpt-4o-2024-05-13",
     "o1-01-15-24",
     "o1-12-17-24",
     "o1-01-10-24",
@@ -40,13 +40,14 @@ ModelId = Literal[
 ]
 
 
+
 MODEL_DEFINITIONS = {
     "gpt-4o": {
         "provider": "openai",
         "model_type": "llm",
-        "model_ids": ['gpt-4o-01-15-24', 'gpt-4o-12-17-24', 'gpt-4o-01-10-24'],
+        "model_ids": ['gpt-4o-2024-11-20', 'gpt-4o-2024-08-06', 'gpt-4o-2024-05-13'],
         "pricing": {'prompt_tokens': 2.5, 'cached_prompt_tokens': 1.25, 'output_tokens': 10, 'per_million': 1000000},
-        "most_recent_model": "gpt-4o-01-15-24",
+        "most_recent_model": "gpt-4o-2024-11-20",
     },
     "o1": {
         "provider": "openai",
@@ -97,9 +98,9 @@ MODEL_DEFINITIONS = {
 # ------------------------------------------------------------------------------
 
 OpenAIModels = Literal[
-    "gpt-4o-01-15-24",
-    "gpt-4o-12-17-24",
-    "gpt-4o-01-10-24",
+    "gpt-4o-2024-11-20",
+    "gpt-4o-2024-08-06",
+    "gpt-4o-2024-05-13",
     "o1-01-15-24",
     "o1-12-17-24",
     "o1-01-10-24",
@@ -129,9 +130,9 @@ AnthropicModels = Literal[
 
 # OpenAI
 ChatModels = Literal[
-    "gpt-4o-01-15-24",
-    "gpt-4o-12-17-24",
-    "gpt-4o-01-10-24",
+    "gpt-4o-2024-11-20",
+    "gpt-4o-2024-08-06",
+    "gpt-4o-2024-05-13",
     "o1-01-15-24",
     "o1-12-17-24",
     "o1-01-10-24",
@@ -170,9 +171,9 @@ ModelName: TypeAlias = Literal[OpenAIModels, AnthropicModels]
 # ------------------------------------------------------------------------------
 
 PROVIDER_MODEL_NAMES: Dict[ModelName, ModelProvider] = {
-    "gpt-4o-01-15-24": "openai",
-    "gpt-4o-12-17-24": "openai",
-    "gpt-4o-01-10-24": "openai",
+    "gpt-4o-2024-11-20": "openai",
+    "gpt-4o-2024-08-06": "openai",
+    "gpt-4o-2024-05-13": "openai",
     "o1-01-15-24": "openai",
     "o1-12-17-24": "openai",
     "o1-01-10-24": "openai",

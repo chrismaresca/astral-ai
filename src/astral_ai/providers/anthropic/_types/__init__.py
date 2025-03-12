@@ -17,12 +17,16 @@ from ._request import (
     AnthropicRequestChat,
     AnthropicRequestStreaming,
     AnthropicRequestStructured,
+    AnthropicRequestEmbedding,
 
     # Request Types
     AnthropicRequestType,
     AnthropicRequestChatType,
     AnthropicRequestStreamingType,
     AnthropicRequestStructuredType,
+
+    # Embedding Types
+    AnthropicRequestEmbeddingType,
 )
 
 # -------------------------------------------------------------------------------- #
@@ -60,6 +64,10 @@ __all__ = [
     "AnthropicRequestChatType",
     "AnthropicRequestStreamingType",
     "AnthropicRequestStructuredType",
+
+    # Embedding Types
+    "AnthropicRequestEmbedding",
+    "AnthropicRequestEmbeddingType",
 
     # Response Types
     "AnthropicChatResponseType",

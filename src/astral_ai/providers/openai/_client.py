@@ -98,6 +98,7 @@ class OpenAIProviderClient(BaseProviderClient[
             The completion.
         """
 
+
         openai_response = self.client.chat.completions.create(**request)
 
         if isinstance(openai_response, OpenAIChatResponseType):
@@ -125,3 +126,8 @@ class OpenAIProviderClient(BaseProviderClient[
             return openai_response
         else:
             raise ProviderResponseError(provider_name=self._model_provider, response_type="OpenAIStructuredResponse")
+
+
+
+
+

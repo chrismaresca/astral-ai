@@ -92,9 +92,8 @@ class Completions(AstralResource):
     def __init__(
         self,
         request: AstralCompletionRequest,
-        astral_params: Optional[AstralParams] = None,
     ) -> None:
-        super().__init__(request, astral_params)
+        super().__init__(request)
 
     # -------------------------------------------------------------------------------- #
     # Run Method Overloads & Implementation
@@ -133,7 +132,7 @@ class Completions(AstralResource):
             The cost metrics will be attached to the response object.
         """
         # Convert the request to provider-specific format
-        provider_request = self.adapter.to_provider_completion_request(self.request)
+        provider_request = self.adapter.to_provider_request(self.request)
 
         # Execute request and convert response based on type
         if response_format is None:
@@ -146,15 +145,47 @@ class Completions(AstralResource):
                 response_model=response_format
             )
 
-        # Calculate and attach cost metrics if enabled
+        # Apply cost strategy if configured
+        astral_response = self._apply_cost(astral_response)
+
+        return astral_response
+    
+    def _apply_cost(self, response: Union[AstralChatResponse, AstralStructuredResponse[_StructuredOutputT]]) -> Union[AstralChatResponse, AstralStructuredResponse[_StructuredOutputT]]:
+        """
+        Apply cost calculation to any response type if a cost strategy is configured.
+        
+        The method relies on the overloaded signatures in BaseCostStrategy to handle
+        the appropriate response types correctly.
+        
+        Args:
+            response: The response object (either chat or structured)
+            
+        Returns:
+            The same response object with cost information attached if a cost strategy is configured
+        """
         if self.cost_strategy is not None:
-            astral_response = self.cost_strategy.run_cost_strategy(
-                response=astral_response,
+            return self.cost_strategy.run_cost_strategy(
+                response=response,
                 model_name=self.model,
                 model_provider=self.model_provider,
             )
+        return response
 
-        return astral_response
+    @overload
+    async def run_async(self) -> AstralChatResponse:
+        ...
+
+    @overload
+    async def run_async(self, response_format: Type[_StructuredOutputT]) -> AstralStructuredResponse[_StructuredOutputT]:
+        ...
+
+    async def run_async(
+        self, response_format: Optional[Type[_StructuredOutputT]] = None,
+    ) -> Union[AstralChatResponse, AstralStructuredResponse[_StructuredOutputT]]:
+        """
+        Execute the completion request asynchronously.
+        """
+        pass
 
 
 # -------------------------------------------------------------------------------- #
@@ -166,9 +197,8 @@ class Completions(AstralResource):
 def completion(
     *,
     model: str,
-    messages: Messages,
-    astral_params: AstralParams | NotGiven = NOT_GIVEN,
-    stream: Optional[bool] | NotGiven = NOT_GIVEN,
+    messages: Messages | List[Dict[str, str]],
+    astral_params: Optional[AstralParams] | None = None,
     frequency_penalty: Optional[float] | NotGiven = NOT_GIVEN,
     logit_bias: Optional[Dict[str, int]] | NotGiven = NOT_GIVEN,
     logprobs: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -210,7 +240,8 @@ def completion(
     request_data = {
         "model": model,
         "messages": messages,
-        "stream": stream,
+        "astral_params": astral_params,
+        "stream": False,
         "frequency_penalty": frequency_penalty,
         "logit_bias": logit_bias,
         "logprobs": logprobs,
@@ -238,7 +269,7 @@ def completion(
         "timeout": timeout,
     }
     request = AstralCompletionRequest(**request_data)
-    comp = Completions(request, astral_params=astral_params)
+    comp = Completions(request)
     return comp.run()
 
 # -------------------------------------------------------------------------------- #
@@ -255,8 +286,7 @@ def completion_structured(
     model: str,
     messages: List[Dict[str, str]],
     response_format: Type[StructuredOutputResponseT],
-    astral_params: Optional[AstralParams] | NotGiven = NOT_GIVEN,
-    stream: bool | NotGiven = NOT_GIVEN,
+    astral_params: Optional[AstralParams] | None = None,
     frequency_penalty: Optional[float] | NotGiven = NOT_GIVEN,
     logit_bias: Optional[Dict[str, int]] | NotGiven = NOT_GIVEN,
     logprobs: Optional[bool] | NotGiven = NOT_GIVEN,
@@ -308,7 +338,7 @@ def completion_structured(
         "model": model,
         "response_format": response_format,
         "messages": messages,
-        "stream": stream,
+        "stream": False,
         "frequency_penalty": frequency_penalty,
         "logit_bias": logit_bias,
         "logprobs": logprobs,
@@ -341,3 +371,204 @@ def completion_structured(
     request = AstralStructuredCompletionRequest(**request_data)
     comp = Completions(request, astral_params=astral_params)
     return comp.run(response_format=response_format)
+
+# -------------------------------------------------------------------------------- #
+
+# # -------------------------------------------------------------------------------- #
+# # Testing and Benchmarking
+# # -------------------------------------------------------------------------------- #
+# if __name__ == "__main__":
+#     import time
+#     import statistics
+#     from tabulate import tabulate
+#     from astral_ai.messaging._models import MessageList
+#     from typing import Tuple
+#     from openai import OpenAI
+#     from openai.types.chat import ChatCompletion
+
+#     def call_completion(model: str, messages: MessageList) -> Tuple[AstralChatResponse, float]:
+#         start_time = time.time()
+#         comp = completion(model=model, messages=messages)
+#         end_time = time.time()
+#         latency = end_time - start_time
+#         return comp, latency
+
+#     def call_openai_directly(model: str, messages: list) -> Tuple[ChatCompletion, float]:
+#         import openai
+#         client = openai.OpenAI()
+        
+#         start_time = time.time()
+#         response = client.chat.completions.create(
+#             model=model,
+#             messages=messages,
+#             stream=False,
+#         )
+#         end_time = time.time()
+#         latency = end_time - start_time
+#         return response, latency
+
+#     # Test messages
+#     messages_1 = [
+#         {"role": "developer", "content": "You are an expert software engineer."},
+#         {"role": "user", "content": "Write a function to print 'Hello, world!'"},
+#     ]
+
+#     messages_2 = [
+#         {"role": "user", "content": "Just say 'Hello, world!'"},
+#     ]
+
+#     messages_3 = [
+#         {"role": "user", "content": "You are a helpful assistant."},
+#         {"role": "user", "content": "What is the capital of the moon?"},
+#     ]
+
+#     # Convert to MessageList and back to dict format
+#     messages_1 = MessageList(messages=messages_1).model_dump()["messages"]
+#     messages_2 = MessageList(messages=messages_2).model_dump()["messages"]
+#     messages_3 = MessageList(messages=messages_3).model_dump()["messages"]
+
+#     # Prepare test cases
+#     test_cases = [
+#         {"name": "Complex Query", "messages": messages_1},
+#         {"name": "Simple Query", "messages": messages_2},
+#         {"name": "Creative Query", "messages": messages_3},
+#     ]
+
+#     # Results storage
+#     results = []
+    
+#     # Number of iterations
+#     iterations = 3
+    
+#     # Track total cost
+#     total_cost = 0.0
+    
+#     print(f"Running benchmark with {iterations} iterations per test case...")
+    
+#     # Run benchmarks
+#     for test_case in test_cases:
+#         name = test_case["name"]
+#         messages = test_case["messages"]
+        
+#         # Astral API calls
+#         astral_latencies = []
+#         astral_costs = []
+        
+#         print(f"\nRunning {name} through Astral API...")
+#         for i in range(iterations):
+#             print(f"  Iteration {i+1}/{iterations}", end="\r")
+#             comp, latency = call_completion(model="gpt-4o", messages=messages)
+
+#             astral_latencies.append(latency)
+#             if comp.cost:
+#                 cost_value = comp.cost.total_cost or 0.0
+#                 astral_costs.append(cost_value)
+#                 total_cost += cost_value
+        
+#         # OpenAI direct calls
+#         openai_latencies = []
+        
+#         print(f"\nRunning {name} through direct OpenAI API...")
+#         for i in range(iterations):
+#             print(f"  Iteration {i+1}/{iterations}", end="\r")
+#             _, latency = call_openai_directly(model="gpt-4o", messages=messages)
+#             openai_latencies.append(latency)
+        
+#         # Calculate statistics
+#         results.append({
+#             "Test Case": name,
+#             "Astral Avg Latency": f"{statistics.mean(astral_latencies):.3f}s",
+#             "Astral Min Latency": f"{min(astral_latencies):.3f}s",
+#             "Astral Max Latency": f"{max(astral_latencies):.3f}s",
+#             "Astral Avg Cost": f"${statistics.mean(astral_costs):.6f}" if astral_costs else "N/A",
+#             "OpenAI Avg Latency": f"{statistics.mean(openai_latencies):.3f}s",
+#             "OpenAI Min Latency": f"{min(openai_latencies):.3f}s",
+#             "OpenAI Max Latency": f"{max(openai_latencies):.3f}s",
+#             "Latency Diff": f"{(statistics.mean(astral_latencies) - statistics.mean(openai_latencies)):.3f}s"
+#         })
+    
+#     # Display results
+#     print("\n\n# -------------------------------------------------------------------------------- #")
+#     print("# Benchmark Results")
+#     print("# -------------------------------------------------------------------------------- #\n")
+    
+#     print(tabulate(results, headers="keys", tablefmt="grid"))
+    
+#     # Summary
+#     avg_astral_latency = statistics.mean([float(r["Astral Avg Latency"].replace("s", "")) for r in results])
+#     avg_openai_latency = statistics.mean([float(r["OpenAI Avg Latency"].replace("s", "")) for r in results])
+    
+#     print(f"\nOverall Astral Average Latency: {avg_astral_latency:.3f}s")
+#     print(f"Overall OpenAI Average Latency: {avg_openai_latency:.3f}s")
+#     print(f"Overall Latency Difference: {avg_astral_latency - avg_openai_latency:.3f}s")
+#     print(f"Total Astral Cost: ${total_cost:.6f}")
+
+
+# -------------------------------------------------------------------------------- #
+# Simple Test Function
+# -------------------------------------------------------------------------------- #
+
+def run_simple_test():
+    """
+    Run a simple test with the Astral API and print the results.
+    
+    This function demonstrates a basic completion request and displays:
+    - Response content
+    - Latency
+    - Token usage
+    - Cost information
+    """
+    import time
+    from typing import List, Dict, Any, Tuple
+    
+    # Sample messages for testing
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What are the three laws of robotics?"}
+    ]
+
+    # Print the messages
+    print(f"Messages: {messages}")
+    
+    print("\n# -------------------------------------------------------------------------------- #")
+    print("# Running Simple Astral API Test")
+    print("# -------------------------------------------------------------------------------- #\n")
+    
+    # Measure latency
+    start_time = time.time()
+    
+    # Make the completion request
+    response = completion(
+        model="gpt-4o",
+        messages=messages
+    )
+
+
+    # Calculate latency
+    latency = time.time() - start_time
+    
+    # Print results
+    print(f"Response:\n{'-' * 40}")
+    print(response.response)
+    print(f"\n{'-' * 40}")
+    
+    print(f"\nLatency: {latency:.3f}s")
+    
+    # Print usage information
+    if response.usage:
+        print("\nToken Usage:")
+        print(f"  Prompt tokens: {response.usage.prompt_tokens}")
+        print(f"  Completion tokens: {response.usage.completion_tokens}")
+        print(f"  Total tokens: {response.usage.total_tokens}")
+    
+    # Print cost information
+    if response.cost:
+        print("\nCost Information:")
+        print(f"  Input cost: ${response.cost.input_cost:.6f}")
+        print(f"  Output cost: ${response.cost.output_cost:.6f}")
+        print(f"  Total cost: ${response.cost.total_cost:.6f}")
+    
+    return response
+
+if __name__ == "__main__":
+    run_simple_test()

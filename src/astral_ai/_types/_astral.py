@@ -47,8 +47,8 @@ class AstralParams(BaseModel):
         default_factory=ReturnCostStrategy, description="Cost strategy."
     )
     # Optionally, the user can supply a specific provider client instance.
-    provider_client: Optional[BaseProviderClient] = Field(
-        default=None, description="Optionally override the default provider client with a specific instance."
-    )
+    # provider_client: Optional[BaseProviderClient] = Field(
+    #     default=None, description="Optionally override the default provider client with a specific instance."
+    # )
 
     model_config = ConfigDict(arbitrary_types_allowed=True)

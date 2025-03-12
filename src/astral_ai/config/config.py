@@ -34,4 +34,3 @@ class AstralConfig(BaseSettings):
 # Initialize Config
 config = AstralConfig()
 
-print(config.SUPPORTED_MODEL_TYPES)

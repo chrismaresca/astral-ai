@@ -13,7 +13,7 @@ from pydantic import BaseModel, Field
 # Base Types
 # -------------------------------------------------------------------------------- #
 
-MessageRole = Literal["system", "user", "developer"]
+MessageRole = Literal["system", "user"]
 ImageDetail = Literal["high", "low", "auto"]
 
 MessageListType: TypeAlias = Union['MessageList', List['Message'], 'Message']
@@ -35,7 +35,7 @@ class TextMessage(BaseModel):
         default="user",
         description="The role of the message sender."
     )
-    text: str = Field(
+    content: str = Field(
         ...,
         description="Plain text content for the message."
     )
@@ -68,12 +68,20 @@ class ImageMessage(BaseModel):
 
 # TODO: implement audio message
 
+
 class AudioMessage(BaseModel):
     """
     An audio message model.
     """
     pass
 
+
+# -------------------------------------------------------------------------------- #
+# Message Type Alias
+# -------------------------------------------------------------------------------- #
+
+# TODO: Add audio message
+Message: TypeAlias = Union[TextMessage, ImageMessage]
 
 # -------------------------------------------------------------------------------- #
 # Message List
@@ -84,7 +92,7 @@ class MessageList(BaseModel):
     """
     A list of messages.
     """
-    messages: List['Message'] = Field(
+    messages: List[Message] = Field(
         ...,
         description="A list of messages."
     )
@@ -103,7 +111,5 @@ class MessageList(BaseModel):
 # Message Type Aliasess
 # -------------------------------------------------------------------------------- #
 
-
-Message: TypeAlias = Union[TextMessage, ImageMessage]
 
 Messages: TypeAlias = Union[MessageList, List[Message], Message, List[Dict[str, str]]]

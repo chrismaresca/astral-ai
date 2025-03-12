@@ -15,7 +15,7 @@ from functools import singledispatch
 from typing import Union
 
 # Astral AI Types
-from astral_ai._types._usage import (
+from astral_ai._types._response._usage import (
     ChatUsage,
     EmbeddingUsage,
     BaseUsage,
@@ -32,6 +32,15 @@ from astral_ai.constants._models import (
 
 # Astral AI Models Costs
 from astral_ai.constants._costs import model_specific_cost_mapping, ModelSpecificCosts
+
+
+# ------------------------------------------------------------------------------
+# Cost Constants
+# ------------------------------------------------------------------------------
+
+# OpenAI
+COST_MULTIPLIER = 1_000_000
+
 
 
 # ------------------------------------------------------------------------------
@@ -78,15 +87,15 @@ def _(usage: ChatUsage, model_name: ModelName, model_provider: ModelProvider) ->
     model_costs = get_model_costs(model_name=model_name, model_provider=model_provider)
 
     # Calculate individual cost components.
-    prompt_cost = model_costs["prompt_token_cost"] * usage.prompt_tokens
-    cached_prompt_cost = model_costs["cached_prompt_token_cost"] * getattr(usage, "cached_tokens", 0)
-    completion_cost = model_costs["completion_token_cost"] * usage.completion_tokens
-    cached_completion_cost = model_costs["cached_completion_token_cost"] * usage.completion_tokens
+    prompt_cost = model_costs["prompt_token_cost"] * (usage.prompt_tokens / COST_MULTIPLIER)
+    cached_prompt_cost = model_costs["cached_prompt_token_cost"] * (usage.cached_tokens / COST_MULTIPLIER)
+    completion_cost = model_costs["completion_token_cost"] * (usage.completion_tokens / COST_MULTIPLIER)
+    cached_completion_cost = model_costs["cached_completion_token_cost"] * (usage.completion_tokens / COST_MULTIPLIER)
 
     # Anthropic ONLY Cache Creation Cost (if applicable)
     anthropic_cache_creation_cost = None
     if model_provider == "anthropic" and getattr(usage, "cache_creation_input_tokens", None) and model_costs.get("anthropic_cache_creation_token_cost"):
-        anthropic_cache_creation_cost = model_costs["anthropic_cache_creation_token_cost"] * usage.cache_creation_input_tokens
+        anthropic_cache_creation_cost = model_costs["anthropic_cache_creation_token_cost"] * (usage.cache_creation_input_tokens / COST_MULTIPLIER)
 
     # Calculate the total cost.
     total_cost = prompt_cost + cached_prompt_cost + completion_cost + cached_completion_cost

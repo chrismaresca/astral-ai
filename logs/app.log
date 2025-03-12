@@ -1,0 +1,449 @@
+2025-03-07 13:28:56 | AI Logger | ERROR | error | Failed to load Astral authentication configuration file astral.yaml: [Errno 2] No such file or directory: 'astral.yaml'
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/_base_client.py", line 88, in read_config
+    with config_path.open("r", encoding="utf-8") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/.pyenv/versions/3.12.8/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'astral.yaml'
+2025-03-07 13:28:56 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:28:56 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:28:56 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:28:56 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:28:56 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:28:56 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:28:56 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:28:56 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:28:56 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:28:56 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:28:56 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:28:56 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:28:56 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:28:56 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:28:56 | AI Logger | WARNING | warning | Authentication method 'api_key' failed for 'mock_provider': No API key provided for mock authentication.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/_base_client.py", line 263, in _get_or_authenticate_client
+    client = strategy(self, self._config, env)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/_auth.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/test_base_client.py", line 48, in auth_via_api_key
+    raise ProviderAuthenticationError("No API key provided for mock authentication.")
+astral_ai.exceptions.ProviderAuthenticationError: No API key provided for mock authentication.
+2025-03-07 13:28:56 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'oauth'
+2025-03-07 13:28:56 | AI Logger | WARNING | warning | Authentication method 'oauth' failed for 'mock_provider': No OAuth token provided for mock authentication.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/_base_client.py", line 263, in _get_or_authenticate_client
+    client = strategy(self, self._config, env)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/_auth.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/test_base_client.py", line 66, in auth_via_oauth
+    raise ProviderAuthenticationError("No OAuth token provided for mock authentication.")
+astral_ai.exceptions.ProviderAuthenticationError: No OAuth token provided for mock authentication.
+2025-03-07 13:28:56 | AI Logger | ERROR | error | All authentication methods failed for provider 'mock_provider':
+- api_key: No API key provided for mock authentication.
+- oauth: No OAuth token provided for mock authentication.
+2025-03-07 13:29:18 | AI Logger | ERROR | error | Failed to load Astral authentication configuration file astral.yaml: [Errno 2] No such file or directory: 'astral.yaml'
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/_base_client.py", line 88, in read_config
+    with config_path.open("r", encoding="utf-8") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/.pyenv/versions/3.12.8/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'astral.yaml'
+2025-03-07 13:29:18 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:29:18 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:29:18 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:29:18 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:29:18 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:29:18 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:29:18 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:29:18 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:29:18 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:29:18 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:29:18 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:29:18 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:29:18 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:29:18 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:29:18 | AI Logger | WARNING | warning | Authentication method 'api_key' failed for 'mock_provider': No API key provided for mock authentication.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/_base_client.py", line 263, in _get_or_authenticate_client
+    client = strategy(self, self._config, env)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/_auth.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/test_base_client.py", line 48, in auth_via_api_key
+    raise ProviderAuthenticationError("No API key provided for mock authentication.")
+astral_ai.exceptions.ProviderAuthenticationError: No API key provided for mock authentication.
+2025-03-07 13:29:18 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'oauth'
+2025-03-07 13:29:18 | AI Logger | WARNING | warning | Authentication method 'oauth' failed for 'mock_provider': No OAuth token provided for mock authentication.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/_base_client.py", line 263, in _get_or_authenticate_client
+    client = strategy(self, self._config, env)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/_auth.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/test_base_client.py", line 66, in auth_via_oauth
+    raise ProviderAuthenticationError("No OAuth token provided for mock authentication.")
+astral_ai.exceptions.ProviderAuthenticationError: No OAuth token provided for mock authentication.
+2025-03-07 13:29:18 | AI Logger | ERROR | error | All authentication methods failed for provider 'mock_provider':
+- api_key: No API key provided for mock authentication.
+- oauth: No OAuth token provided for mock authentication.
+2025-03-07 13:31:03 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:31:03 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:31:03 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:31:03 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:31:03 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:31:03 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:31:03 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:31:03 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:31:03 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:31:03 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:31:03 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:31:03 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:31:03 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:31:03 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:31:03 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:32:33 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:32:33 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:32:33 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:32:33 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:32:33 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:32:33 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:32:33 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:32:33 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:32:33 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:32:33 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:32:33 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:32:33 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:32:33 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:32:33 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:32:33 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:33:55 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:33:55 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:33:55 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:33:55 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:33:55 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:33:55 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:33:55 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:33:55 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:33:55 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:33:55 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:33:55 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:33:55 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:33:55 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:33:55 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:33:55 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:36:07 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:36:07 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:36:07 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:36:07 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:36:07 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:36:07 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:36:07 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:36:07 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:36:07 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-07 13:36:07 | AI Logger | INFO | info | Using cached provider client.
+2025-03-07 13:36:07 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:36:07 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:36:07 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | No specific auth method configured for 'mock_provider'. Will try all available methods: ['api_key', 'oauth']
+2025-03-07 13:36:07 | AI Logger | INFO | info | Attempting authentication mock_provider using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | Authentication succeeded for 'mock_provider' using method: 'api_key'
+2025-03-07 13:36:07 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 15:43:26 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 15:43:26 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 15:43:26 | AI Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': No API key provided for OpenAI authentication.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/_base_client.py", line 263, in _get_or_authenticate_client
+    client = strategy(self, self._config, env)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/_auth.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/openai/_client.py", line 67, in auth_via_api_key
+    raise ProviderAuthenticationError("No API key provided for OpenAI authentication.")
+astral_ai.exceptions.ProviderAuthenticationError: No API key provided for OpenAI authentication.
+2025-03-10 15:43:26 | AI Logger | ERROR | error | All authentication methods failed for provider 'openai':
+- api_key: No API key provided for OpenAI authentication.
+2025-03-10 15:46:30 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 15:46:30 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 15:46:30 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 15:46:30 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 15:47:22 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 15:47:22 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 15:47:22 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 15:47:22 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 15:48:20 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 15:48:20 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 15:48:20 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 15:48:20 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 15:48:32 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 15:48:32 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 15:48:32 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 15:48:32 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 15:49:11 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 15:49:11 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 15:49:11 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 15:49:11 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 15:50:13 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 15:50:13 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 15:50:13 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 15:50:13 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 15:51:00 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 15:51:00 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 15:51:00 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 15:51:00 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:00:34 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:00:34 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:00:34 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:00:34 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:01:31 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:01:31 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:01:31 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:01:31 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:01:57 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:01:57 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:01:57 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:01:57 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:02:21 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:02:21 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:02:21 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:02:21 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:03:35 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:03:35 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:03:35 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:03:35 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:03:57 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:03:57 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:03:57 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:03:57 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:04:07 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:04:07 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:04:07 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:04:07 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:05:13 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:05:13 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:05:13 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:05:13 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 16:55:25 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 16:55:25 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 16:55:25 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 16:55:25 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:02:02 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:02:02 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:02:02 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:02:02 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:02:54 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:02:54 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:02:54 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:02:54 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:04:19 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:04:19 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:04:19 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:04:19 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:04:40 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:04:40 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:04:40 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:04:40 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:04:52 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:04:52 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:04:52 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:04:52 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:05:04 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:05:04 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:05:04 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:05:04 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:05:24 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:05:24 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:05:24 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:05:24 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:08:36 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:08:36 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:08:36 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:08:36 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:09:45 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:09:45 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:09:45 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:09:45 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:13:24 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:13:24 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:13:24 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:13:24 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:14:47 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:14:47 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:14:47 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:14:47 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:18:30 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:18:30 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:18:30 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:18:30 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:37:06 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:37:06 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:37:06 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:37:06 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:53:03 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:53:03 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:53:03 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:53:03 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:54:03 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:54:03 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:54:03 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:54:03 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:54:21 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:54:21 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:54:21 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:54:21 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:55:53 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:55:53 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:55:53 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:55:53 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:56:15 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:56:15 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:56:15 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:56:15 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:56:52 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:56:52 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:56:52 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:56:52 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:57:07 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:57:07 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:57:07 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:57:07 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:57:23 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:57:23 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:57:23 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:57:23 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:57:51 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:57:51 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:57:51 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:57:51 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:58:16 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:58:16 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:58:16 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:58:16 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 17:59:33 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 17:59:33 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 17:59:33 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 17:59:33 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 18:00:43 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 18:00:43 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 18:00:44 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 18:00:44 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 18:03:29 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 18:03:29 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 18:03:29 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 18:03:29 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 18:09:19 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 18:09:19 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 18:09:19 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 18:09:19 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-10 18:11:11 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-10 18:11:11 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-10 18:11:11 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-10 18:11:11 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:01:29 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:01:29 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:01:29 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:01:29 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:01:46 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:01:46 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:01:46 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:01:46 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:05:17 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:05:17 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:05:17 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:05:17 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:13:36 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:13:36 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:13:36 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:13:36 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:16:23 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:16:23 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:16:23 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:16:23 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:17:03 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:17:03 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:17:03 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:17:03 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:17:27 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:17:27 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:17:27 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:17:27 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:17:50 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:17:50 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:17:50 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:17:50 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:19:19 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:19:19 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:19:19 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:19:19 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 14:20:56 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 14:20:56 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 14:20:56 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 14:20:56 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 15:49:49 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 15:49:49 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 15:49:49 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 15:49:49 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-11 15:51:02 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-11 15:51:02 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-11 15:51:02 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-11 15:51:02 | AI Logger | INFO | info | Caching provider client for future use.

@@ -158,28 +158,28 @@ class ChatUsage(BaseUsage):
     total_tokens: int = Field(description="The total tokens for the request")
 
     # Chat Usage Details
-    audio_tokens: Optional[int] = Field(description="The audio tokens for the request")
-    cached_tokens: Optional[int] = Field(description="The cached tokens for the request")
-    accepted_prediction_tokens: Optional[int] = Field(description="The accepted prediction tokens for the request")
-    rejected_prediction_tokens: Optional[int] = Field(description="The rejected prediction tokens for the request")
-    reasoning_tokens: Optional[int] = Field(description="The reasoning tokens for the request")
+    audio_tokens: Optional[int] = Field(description="The audio tokens for the request", default=0)
+    cached_tokens: Optional[int] = Field(description="The cached tokens for the request", default=0)
+    accepted_prediction_tokens: Optional[int] = Field(description="The accepted prediction tokens for the request", default=0)
+    rejected_prediction_tokens: Optional[int] = Field(description="The rejected prediction tokens for the request", default=0)
+    reasoning_tokens: Optional[int] = Field(description="The reasoning tokens for the request", default=0)
 
     # Anthropic ONLY
-    cache_creation_input_tokens: Optional[int] = Field(description="The number of input tokens")
+    cache_creation_input_tokens: Optional[int] = Field(description="The number of input tokens", default=0)
 
 class ChatCost(BaseCost):
     """
     Chat Cost Model for Astral AI
     """
-    input_cost: Optional[float] = Field(description="The input cost for the request", default=None)
-    cached_input_cost: Optional[float] = Field(description="The cached input cost for the request", default=None)
-    output_cost: Optional[float] = Field(description="The output cost for the request", default=None)
+    input_cost: Optional[float] = Field(description="The input cost for the request", default=0.0)
+    cached_input_cost: Optional[float] = Field(description="The cached input cost for the request", default=0.0)
+    output_cost: Optional[float] = Field(description="The output cost for the request", default=0.0)
 
     # Anthropic ONLY
-    anthropic_cache_creation_cost: Optional[float] = Field(description="The cached output cost for the request", default=None)
+    anthropic_cache_creation_cost: Optional[float] = Field(description="The cached output cost for the request", default=0.0)
 
     # Total
-    total_cost: Optional[float] = Field(description="The total cost for the request", default=None)
+    total_cost: Optional[float] = Field(description="The total cost for the request", default=0.0)
 
 
 # ------------------------------------------------------------------------------

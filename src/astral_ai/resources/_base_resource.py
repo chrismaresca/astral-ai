@@ -12,15 +12,15 @@ Provides the abstract base class for all Astral AI resources.
 # -------------------------------------------------------------------------------- #
 # Built-in imports
 from abc import ABC, abstractmethod
-from typing import Optional
+from typing import Optional, get_args, Generic, TypeVar, Type, Union
 
 # Astral AI Types
-from astral_ai._types._request._request import AstralCompletionRequest
+from astral_ai._types._request._request import AstralCompletionRequest, BaseRequest
 from astral_ai._types._astral import AstralParams
 from astral_ai._types._response._response import AstralBaseResponse
 
 # Models
-from astral_ai.constants._models import ModelName, ModelProvider
+from astral_ai.constants._models import ModelProvider, ModelAlias, ModelId
 
 # Utilities
 from astral_ai.utilities import get_provider_from_model_name
@@ -29,10 +29,18 @@ from astral_ai.utilities import get_provider_from_model_name
 from astral_ai.exceptions import ModelNameError
 
 # Providers
-from astral_ai.providers._mappings import ProviderClientRegistry, AdapterRegistry
+from astral_ai.providers._client_registry import ProviderClientRegistry
 
 # Cost Strategies
 from astral_ai.tracing._cost_strategies import BaseCostStrategy, ReturnCostStrategy
+
+
+# -------------------------------------------------------------------------------- #
+# Generic Type Variables
+# -------------------------------------------------------------------------------- #
+
+TRequest = TypeVar('TRequest', bound=BaseRequest)
+TResponse = TypeVar('TResponse', bound=AstralBaseResponse)
 
 
 # -------------------------------------------------------------------------------- #
@@ -40,7 +48,7 @@ from astral_ai.tracing._cost_strategies import BaseCostStrategy, ReturnCostStrat
 # -------------------------------------------------------------------------------- #
 
 
-class AstralResource(ABC):
+class AstralResource(Generic[TRequest, TResponse], ABC):
     """
     Abstract base class for all Astral AI resources.
 
@@ -48,73 +56,108 @@ class AstralResource(ABC):
     clients and adapters. All resource implementations should inherit from this class.
 
     Args:
-        request (AstralCompletionRequest): The request configuration
-        astral_params (Optional[AstralParams]): Optional Astral-specific parameters
+        request (TRequest): The request configuration
 
     Raises:
         ModelNameError: If the model name is invalid
         ProviderNotFoundForModelError: If no provider is found for the given model
     """
 
-    def __init__(self,
-                 request: AstralCompletionRequest,
-                 astral_params: Optional[AstralParams] = None) -> None:
+    def __init__(
+        self,
+        request: TRequest,
+    ) -> None:
         """
         Initialize the AstralResource.
 
         Args:
-            request (AstralCompletionRequest): The request configuration
-            astral_params (Optional[AstralParams]): Optional Astral-specific parameters
+            request (TRequest): The request configuration
 
         Raises:
             ModelNameError: If the model name is invalid
         """
+
+        # Set the request
         self.request = request
-        self.astral_params = astral_params or AstralParams()
 
-        # Validate model
-        if not isinstance(request.model, ModelName):
-            raise ModelNameError(model_name=request.model)
-        else:
-            self.model: ModelName = request.model
+        # Setup the resource
+        self._setup_resource()
 
-        # Set the model provider.
-        self.model_provider: ModelProvider = get_provider_from_model_name(self.model)
+    def _setup_resource(self) -> None:
+        """
+        Setup the resource.
+        """
+        # Extract core parameters
+        self.astral_params = self.request.astral_params
+        self.astral_client = self.astral_params.astral_client
 
-        # TODO: Add support for multiple cost strategies???
-        self.cost_strategy = self._set_cost_strategy()
+        # Validate the model and set up provider
+        # TODO: make this an entire validation step for what features it supports vs whats passed in the request.
+        self._validate_request()
 
-        # TODO: Remove this for production.
+        self.model = self.request.model
+        self.model_provider = get_provider_from_model_name(self.model)
+
+        # TODO: remove this in production
         self.model_provider = "openai"
 
-        # Retrieve (or create) the provider client.
-        self.client = ProviderClientRegistry.get_client(self.model_provider, astral_client=astral_params.astral_client)
+        self.client = ProviderClientRegistry.get_client(
+            self.model_provider,
+            astral_client=self.astral_client
+        )
 
-        # Retrieve (or create) the provider adapter.
-        self.adapter = AdapterRegistry.get_adapter(self.model_provider)
+        # Set up provider client and adapter
+        from astral_ai.providers._adapters import create_adapter
+        self.adapter = create_adapter(self.model_provider)
 
-    def _set_cost_strategy(self) -> BaseCostStrategy:
+        # Set cost strategy from astral params
+        self.cost_strategy = self.astral_params.cost_strategy or ReturnCostStrategy()
+
+
+    # --------------------------------------------------------------------------
+    # Validation
+    # --------------------------------------------------------------------------
+
+    def _validate_request(self) -> None:
         """
-        Set the cost strategy.
+        Validate the request.
         """
-        return self.astral_params.cost_strategy or ReturnCostStrategy()
+        valid_models = get_args(ModelAlias) + get_args(ModelId)
+        if self.request.model not in valid_models:
+            raise ModelNameError(model_name=self.request.model)
+        
+        # Validate the request data
+        # TODO: Implement this. Look at earlier Astral AI implementations
+
+    # --------------------------------------------------------------------------
+    # Abstract Methods to Run the Resource
+    # Has approaches for sync, async, and streaming execution
+    # --------------------------------------------------------------------------
 
     @abstractmethod
-    def run(self) -> AstralBaseResponse:
+    def run(self, *args, **kwargs) -> TResponse:
         """
         Execute the resource synchronously.
 
         Returns:
-            AstralBaseResponse: The response from the provider
+            TResponse: The response from the provider
         """
         pass
 
     @abstractmethod
-    async def run_async(self) -> AstralBaseResponse:
+    async def run_async(self, *args, **kwargs) -> TResponse:
         """
         Execute the resource asynchronously.
 
         Returns:
-            AstralBaseResponse: The response from the provider
+            TResponse: The response from the provider
         """
         pass
+
+    # TODO: Implement this
+    # @abstractmethod
+    # def run_stream(self, *args, **kwargs) -> AsyncGenerator[TResponse, None]:
+    #     """
+    #     Execute the resource asynchronously.
+    #     """
+    #     pass

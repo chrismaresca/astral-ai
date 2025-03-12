@@ -191,14 +191,12 @@ AnthropicRequestStructuredType: TypeAlias = AnthropicRequestStructured
 AnthropicRequestType: TypeAlias = Union[AnthropicRequestChatType, AnthropicRequestStreamingType, AnthropicRequestStructuredType]
 
 
+# ------------------------------------------------------------------------------
+# TODO: Anthropic Embedding Request Types
+# ------------------------------------------------------------------------------
+
+class AnthropicRequestEmbedding(AnthropicRequestBase, total=False):
+    pass
 
 
-
-if __name__ == "__main__":
-    # Test type hints for each request type's model field
-
-    class TestDict(BaseModel):
-        model: str
-
-    test_dict: TestDict = TestDict(model="claude-3-5-haiku-20241022")
-    reveal_type(test_dict.model)  # Expected: Literal["claude-3-5-haiku-20241022"]
+AnthropicRequestEmbeddingType: TypeAlias = AnthropicRequestEmbedding

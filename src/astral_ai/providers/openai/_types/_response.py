@@ -25,7 +25,7 @@ from pydantic import BaseModel
 
 # OpenAI Types
 from openai.types.chat import ChatCompletionChunk, ParsedChatCompletion, ChatCompletion
-
+from openai.types.completion_usage import CompletionUsage
 # ------------------------------------------------------------------------------
 # Generic Types
 # ------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ from openai.types.chat import ChatCompletionChunk, ParsedChatCompletion, ChatCom
 _StructuredOutputT = TypeVar("_StructuredOutputT", bound=BaseModel)
 
 # ------------------------------------------------------------------------------
-# OpenAI Response Types
+# OpenAI Chat Response Types
 # ------------------------------------------------------------------------------
 
 
@@ -43,12 +43,18 @@ OpenAIStreamingResponseType: TypeAlias = ChatCompletionChunk
 # Chat Response
 OpenAIChatResponseType: TypeAlias = ChatCompletion
 
-# # Structured Response
-# OpenAIStructuredResponseType: TypeAlias = ParsedChatCompletion
 
-
+# OpenAI Structured Response
 OpenAIStructuredResponseType: TypeAlias = ParsedChatCompletion[_StructuredOutputT]
 
+# OpenAI Completion Usage
+OpenAICompletionUsageType: TypeAlias = CompletionUsage
 
 # Type Alias for OpenAI Response
 OpenAIResponseType: TypeAlias = Union[OpenAIChatResponseType, OpenAIStructuredResponseType, OpenAIStreamingResponseType]
+
+# ------------------------------------------------------------------------------
+# OpenAI Embedding Response
+# ------------------------------------------------------------------------------
+
+# TODO: Embedding Response
