@@ -19,7 +19,7 @@ from typing import Dict, Any, Optional, Union
 # Astral AI imports
 from astral_ai.providers._base_client import BaseProviderClient, read_config
 from astral_ai.constants._models import ModelProvider
-from astral_ai.exceptions import (
+from astral_ai.errors.exceptions import (
     ProviderAuthenticationError,
     UnknownAuthMethodError,
     AuthMethodFailureError

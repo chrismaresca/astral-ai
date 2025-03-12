@@ -23,7 +23,7 @@ from astral_ai.constants._models import (
 
 
 # Astral AI Exceptions
-from astral_ai.exceptions import ProviderNotFoundForModelError
+from astral_ai.errors.exceptions import ProviderNotFoundForModelError
 
 
 # ------------------------------------------------------------------------------

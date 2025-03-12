@@ -19,7 +19,7 @@ from astral_ai.constants._models import ModelName
 from astral_ai.messaging._models import Message, MessageList
 
 # Astral AI Exceptions
-from astral_ai.exceptions import MessagesNotProvidedError, InvalidMessageError
+from astral_ai.errors.exceptions import MessagesNotProvidedError, InvalidMessageError
 
 # Astral AI Logger
 from astral_ai.logger import logger

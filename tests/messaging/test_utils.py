@@ -23,7 +23,7 @@ from astral_ai.messaging._models import (
     TextMessage,
     ImageMessage
 )
-from astral_ai.exceptions import MessagesNotProvidedError, InvalidMessageError
+from astral_ai.errors.exceptions import MessagesNotProvidedError, InvalidMessageError
 from astral_ai.constants._models import ModelName
 
 # -------------------------------------------------------------------------------- #

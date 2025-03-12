@@ -56,7 +56,7 @@ class Logger:
 
     def __init__(
         self,
-        name: str = "AI Logger",
+        name: str = "Astral Logger",
         log_level: Optional[str] = None,
         log_directory: str = "logs",
         log_filename: str = "app.log",

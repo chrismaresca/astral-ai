@@ -55,8 +55,11 @@ from astral_ai._types import (
     AstralStructuredResponse,
 )
 
+# Astral AI Models
+from astral_ai.constants._models import ModelName
+
 # Astral AI Exceptions
-from astral_ai.exceptions import ResponseModelMissingError
+from astral_ai.errors.exceptions import ResponseModelMissingError
 
 # Astral AI Decorators
 from astral_ai._decorators import required_parameters
@@ -196,7 +199,7 @@ class Completions(AstralResource):
 @required_parameters("model", "messages")
 def completion(
     *,
-    model: str,
+    model: ModelName,
     messages: Messages | List[Dict[str, str]],
     astral_params: Optional[AstralParams] | None = None,
     frequency_penalty: Optional[float] | NotGiven = NOT_GIVEN,
@@ -283,7 +286,7 @@ StructuredOutputResponseT = TypeVar('StructuredOutputResponseT', bound=BaseModel
 @required_parameters("model", "messages", "response_model")
 def completion_structured(
     *,
-    model: str,
+    model: ModelName,
     messages: List[Dict[str, str]],
     response_format: Type[StructuredOutputResponseT],
     astral_params: Optional[AstralParams] | None = None,
@@ -539,7 +542,7 @@ def run_simple_test():
     
     # Make the completion request
     response = completion(
-        model="gpt-4o",
+        model="deepseek-chat",
         messages=messages
     )
 

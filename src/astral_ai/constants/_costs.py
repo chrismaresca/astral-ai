@@ -48,6 +48,14 @@ model_specific_cost_mapping: ModelSpecificCostsMapping = {
             "cached_prompt_token_cost": 0.075,
             "anthropic_cache_creation_token_cost": 0.015
         }
+    },
+    "deepseek": {
+        "deepseek-chat": {
+            "completion_token_cost": 0.0,
+            "cached_completion_token_cost": 0.0,
+            "prompt_token_cost": 0.0,
+            "cached_prompt_token_cost": 0.0,
+        }
     }
 }
 

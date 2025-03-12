@@ -26,7 +26,7 @@ from astral_ai.constants._models import ModelProvider, ModelAlias, ModelId
 from astral_ai.utilities import get_provider_from_model_name
 
 # Exceptions
-from astral_ai.exceptions import ModelNameError
+from astral_ai.errors.exceptions import ModelNameError
 
 # Providers
 from astral_ai.providers._client_registry import ProviderClientRegistry
@@ -99,7 +99,7 @@ class AstralResource(Generic[TRequest, TResponse], ABC):
         self.model_provider = get_provider_from_model_name(self.model)
 
         # TODO: remove this in production
-        self.model_provider = "openai"
+        # self.model_provider = "openai"
 
         self.client = ProviderClientRegistry.get_client(
             self.model_provider,

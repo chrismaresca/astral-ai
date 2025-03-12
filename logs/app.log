@@ -447,3 +447,1282 @@ astral_ai.exceptions.ProviderAuthenticationError: No API key provided for OpenAI
 2025-03-11 15:51:02 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
 2025-03-11 15:51:02 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
 2025-03-11 15:51:02 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-12 10:20:18 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-12 10:20:18 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-12 10:20:19 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-12 10:20:19 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-12 10:24:38 | AI Logger | INFO | info | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-12 10:24:38 | AI Logger | INFO | info | Attempting authentication openai using method: 'api_key'
+2025-03-12 10:24:38 | AI Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-12 10:24:38 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-12 10:26:21 | AI Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 10:26:21 | AI Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 10:26:21 | AI Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 10:26:21 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-12 10:26:59 | AI Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 10:26:59 | AI Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 10:26:59 | AI Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 10:26:59 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-12 10:28:57 | AI Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 10:28:57 | AI Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 10:28:57 | AI Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 10:28:57 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-12 10:29:33 | AI Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 10:29:33 | AI Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 10:29:33 | AI Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 10:29:33 | AI Logger | INFO | info | Caching provider client for future use.
+2025-03-12 11:27:01 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 11:27:01 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 11:27:01 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 11:27:01 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 11:27:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:27:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:27:01 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 89, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 20, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 11:27:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:27:01 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 89, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 20, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 11:27:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:27:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:27:01 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 89, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 20, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 11:30:10 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 11:30:10 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 11:30:10 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 11:30:10 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 11:30:10 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:10 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:10 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 20, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 11:30:10 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:10 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 20, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 11:30:10 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:10 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:10 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 20, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 11:30:25 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 11:30:25 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 11:30:25 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 11:30:25 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 11:30:25 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 31, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 11:30:25 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:25 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 31, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 11:30:25 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:25 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 31, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 11:30:25 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:25 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 31, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 11:30:25 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:25 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 31, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 11:30:25 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 11:30:25 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 82, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 31, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:16:44 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:16:44 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:16:44 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:16:44 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:16:44 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:16:44 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:16:44 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:16:44 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:16:44 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:16:44 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:16:44 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:16:44 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:16:44 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:16:44 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:16:44 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:18:45 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:18:45 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:18:46 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:18:46 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:18:46 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:18:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:18:46 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:18:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:18:46 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:18:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:18:46 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:18:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:18:46 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:18:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:18:46 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:19:36 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:19:36 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:19:36 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:19:36 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:19:36 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:19:36 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:19:36 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:19:36 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:19:36 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:19:36 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:19:36 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:19:36 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:19:36 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:19:36 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:19:36 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 91, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:22:12 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:22:12 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:22:12 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:22:12 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:22:12 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:22:12 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:22:12 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:22:12 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:22:12 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:22:12 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:22:12 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:22:12 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:22:12 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:22:12 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:22:12 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:24:54 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:24:54 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:24:54 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:24:54 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:24:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:24:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:24:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:24:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:24:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:28:24 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:28:24 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:28:24 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:28:24 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:28:24 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:28:24 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:28:24 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:28:24 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:28:24 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:28:24 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:28:24 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:28:24 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:28:24 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:28:24 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:28:24 | Astral Logger | ERROR | error | Error in 'create_completion_chat' for provider DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 88, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:31:30 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:31:30 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:31:30 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:31:30 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:31:30 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:31:31 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:31:31 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:31:31 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:31:31 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:31:31 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:31:31 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:31:31 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:31:31 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:31:31 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:31:31 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:33:20 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:33:20 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:33:20 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:33:20 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:33:20 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:33:20 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:33:20 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:33:20 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:33:20 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:33:20 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:33:20 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:33:20 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:33:20 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:33:20 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:33:20 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:35:17 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:35:17 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:35:17 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:35:17 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:35:17 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:35:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:35:17 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:35:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:35:17 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:35:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:35:17 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:35:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:35:17 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:35:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:35:17 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 92, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:37:29 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:37:29 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:37:29 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:37:29 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:37:29 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:37:29 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:37:29 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:37:29 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:37:29 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:37:29 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:37:29 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:37:29 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:37:29 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:37:29 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:37:29 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:39:01 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:39:01 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:39:01 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:39:01 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:39:01 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:39:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:39:01 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:39:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:39:01 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:39:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:39:01 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:39:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:39:01 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:39:01 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:39:01 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 94, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:42:04 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:42:04 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:42:04 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:42:04 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:42:04 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:42:04 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:04 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:42:04 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:04 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:42:04 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:04 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:42:04 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:04 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:42:04 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:04 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:42:55 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:42:55 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:42:55 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:42:55 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:42:55 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:42:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:55 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:42:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:55 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:42:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:55 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:42:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:55 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:42:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:42:55 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 198, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:44:27 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:44:27 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:44:27 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:44:27 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 12:44:27 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original authentication error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 199, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.AuthenticationError: Original authentication error
+2025-03-12 12:44:27 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:44:27 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original rate limit error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 199, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.RateLimitError: Original rate limit error
+2025-03-12 12:44:27 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:44:27 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original connection error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 199, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIConnectionError: Original connection error
+2025-03-12 12:44:27 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:44:27 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Request timed out.
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 199, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APITimeoutError: Request timed out.
+2025-03-12 12:44:27 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:44:27 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original status error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 199, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+openai.APIStatusError: Original status error
+2025-03-12 12:44:27 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 12:44:27 | Astral Logger | ERROR | error | Provider error in 'create_completion_chat' for DEEPSEEK: Original unexpected error
+Traceback (most recent call last):
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/errors/error_decorators.py", line 199, in _decorator
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/src/astral_ai/providers/deepseek/_client.py", line 119, in create_completion_chat
+    openai_response = self.client.chat.completions.create(**request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/AI-Dev/ASTRAL/astral-ai/tests/providers/deepseek/test_client.py", line 37, in create
+    raise error_instance
+test_client.test_deepseek_unexpected_error.<locals>.DummyError: Original unexpected error
+2025-03-12 12:47:57 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 12:47:57 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 12:47:57 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 12:47:57 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:34:43 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:34:43 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:34:43 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:34:43 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:34:43 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:34:43 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:34:43 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:34:43 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:34:43 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:35:45 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:35:45 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:35:45 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:35:45 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:35:45 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:35:45 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:35:45 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:35:45 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:35:45 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:36:18 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:36:18 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:36:18 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:36:18 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:36:18 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:36:18 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:36:18 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:36:18 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:36:18 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:37:57 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:37:57 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:37:57 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:37:57 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:37:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:37:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:37:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:37:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:37:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:38:53 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:38:53 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:38:54 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:38:54 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:38:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:38:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:38:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:38:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:38:54 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:39:30 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:39:30 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:39:30 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:39:30 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:39:30 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:39:30 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:39:30 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:39:30 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:39:30 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:28 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:40:28 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:40:28 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:40:28 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:40:28 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:28 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:28 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:28 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:28 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:55 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:40:55 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:40:55 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:40:55 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:40:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:40:55 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:41:23 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:41:23 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:41:23 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:41:23 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:41:23 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:41:23 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:41:23 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:41:23 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:41:23 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:45:17 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:45:17 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:45:17 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:45:17 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:45:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:45:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:45:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:45:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:45:17 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:46 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:47:46 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:47:46 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:47:46 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:47:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:46 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:57 | Astral Logger | INFO | info | No specific auth method configured for 'deepseek'. Will try all available methods: ['api_key_with_base_url']
+2025-03-12 16:47:57 | Astral Logger | INFO | info | Attempting authentication deepseek using method: 'api_key_with_base_url'
+2025-03-12 16:47:57 | Astral Logger | INFO | info | Authentication succeeded for 'deepseek' using method: 'api_key_with_base_url'
+2025-03-12 16:47:57 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-12 16:47:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:57 | Astral Logger | INFO | info | Using cached provider client.
+2025-03-12 16:47:57 | Astral Logger | INFO | info | Using cached provider client.

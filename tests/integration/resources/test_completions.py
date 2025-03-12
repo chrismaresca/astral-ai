@@ -39,7 +39,7 @@ from astral_ai._types._request import Metadata
 from astral_ai.tracing._cost_strategies import BaseCostStrategy, ReturnCostStrategy
 
 # Astral AI Exceptions
-from astral_ai.exceptions import ResponseModelMissingError
+from astral_ai.errors.exceptions import ResponseModelMissingError
 from astral_ai.constants._models import ModelName
 
 

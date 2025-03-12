@@ -10,6 +10,7 @@ ModelProvider = Literal[
     "openai",
     "anthropic",
     "azureOpenAI",
+    "deepseek",
 ]
 
 
@@ -21,6 +22,8 @@ ModelAlias = Literal[
     "claude-3-5-sonnet",
     "claude-3-opus",
     "claude-3-haiku",
+    "deepseek-chat",
+    "deepseek-reasoner",
 ]
 
 ModelId = Literal[
@@ -37,8 +40,9 @@ ModelId = Literal[
     "claude-3-5-sonnet-20241022",
     "claude-3-opus-20240229",
     "claude-3-5-haiku-20241022",
+    "deepseek-chat",
+    "deepseek-reasoner",
 ]
-
 
 
 MODEL_DEFINITIONS = {
@@ -91,6 +95,18 @@ MODEL_DEFINITIONS = {
         "pricing": {'prompt_tokens': 0.0, 'cached_prompt_tokens': 0.0, 'output_tokens': 0.0, 'per_million': 1000000},
         "most_recent_model": "claude-3-5-haiku-20241022"
     },
+    "deepseek-chat": {
+        "provider": "deepseek",
+        "model_type": "llm",
+        "model_ids": ['deepseek-chat'],
+        "pricing": {'prompt_tokens': 0.0, 'cached_prompt_tokens': 0.0, 'output_tokens': 0.0, 'per_million': 1000000},
+    },
+    "deepseek-reasoner": {
+        "provider": "deepseek",
+        "model_type": "llm",
+        "model_ids": ['deepseek-reasoner'],
+        "pricing": {'prompt_tokens': 0.0, 'cached_prompt_tokens': 0.0, 'output_tokens': 0.0, 'per_million': 1000000},
+    },
 }
 
 # ------------------------------------------------------------------------------
@@ -123,6 +139,11 @@ AnthropicModels = Literal[
     "claude-3-haiku",
 ]
 
+DeepSeekModels = Literal[
+    "deepseek-chat",
+    "deepseek-reasoner"
+]
+
 # ------------------------------------------------------------------------------
 # Model Breakdown by Function
 # ------------------------------------------------------------------------------
@@ -150,6 +171,8 @@ ChatModels = Literal[
     "claude-3-5-sonnet",
     "claude-3-opus",
     "claude-3-haiku",
+    "deepseek-chat",
+    "deepseek-reasoner",
 ]
 
 EmbeddingModels = Literal[
@@ -163,7 +186,7 @@ EmbeddingModels = Literal[
 # union of the two types to create a single type that encompasses all models.
 # ------------------------------------------------------------------------------
 
-ModelName: TypeAlias = Literal[OpenAIModels, AnthropicModels]
+ModelName: TypeAlias = Literal[OpenAIModels, AnthropicModels, DeepSeekModels]
 
 # TODO: Run asserts to ensure that the model name is valid via Provider Mapping and Function Mapping.
 # ------------------------------------------------------------------------------
@@ -191,4 +214,6 @@ PROVIDER_MODEL_NAMES: Dict[ModelName, ModelProvider] = {
     "claude-3-5-sonnet": "anthropic",
     "claude-3-opus": "anthropic",
     "claude-3-haiku": "anthropic",
+    "deepseek-chat": "deepseek",
+    "deepseek-reasoner": "deepseek",
 }

@@ -41,7 +41,7 @@ from astral_ai._types import NOT_GIVEN
 from astral_ai.constants._models import ModelName, ModelProvider
 
 # Astral AI Exceptions
-from astral_ai.exceptions import MissingParameterError
+from astral_ai.errors.exceptions import MissingParameterError
 
 
 # -------------------------------------------------------------------------------- #

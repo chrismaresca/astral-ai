@@ -56,10 +56,13 @@ from astral_ai._auth import (
 from astral_ai.constants._models import ModelProvider
 
 # Exceptions
-from astral_ai.exceptions import (
+from astral_ai.errors.exceptions import (
     ProviderAuthenticationError,
     UnknownAuthMethodError,
     AuthMethodFailureError,
+    AstralAuthError,
+    AstralAuthMethodFailureError,
+    AstralUnknownAuthMethodError,
 )
 
 # Logging
@@ -171,12 +174,12 @@ class BaseProviderClient(
         cache_key = self.__class__
 
         if cache_client and cache_key in self._client_cache:
-            logger.info("Using cached provider client.")
+            logger.debug("Using cached provider client.")
             self.client: ProviderClientT = self._client_cache[cache_key]
         else:
             self.client = self._get_or_authenticate_client()
             if cache_client:
-                logger.info("Caching provider client for future use.")
+                logger.debug("Caching provider client for future use.")
                 self._client_cache[cache_key] = self.client
 
     # --------------------------------------------------------------------------
@@ -231,9 +234,9 @@ class BaseProviderClient(
             ProviderClientT: An authenticated provider client
             
         Raises:
-            UnknownAuthMethodError: If the specified auth method is not supported
-            AuthMethodFailureError: If the specified auth method fails
-            ProviderAuthenticationError: If all authentication methods fail
+            AstralUnknownAuthMethodError: If the specified auth method is not supported
+            AstralAuthMethodFailureError: If the specified auth method fails
+            AstralAuthError: If all authentication methods fail
         """
         env = get_env_vars()
         auth_method_config = self._config.get("auth_method")
@@ -245,24 +248,24 @@ class BaseProviderClient(
             # If specific auth method is configured, only try that one
             auth_method_name = auth_method_config.auth_method
             if auth_method_name not in self._auth_strategies:
-                error = UnknownAuthMethodError(auth_method_name, supported_methods)
+                error = AstralUnknownAuthMethodError(auth_method_name, supported_methods)
                 logger.error(f"{error}")
                 raise error
             methods_to_try = [(auth_method_name, self._auth_strategies[auth_method_name])]
-            logger.info(f"Using configured authentication method: '{auth_method_name}' for '{self._model_provider}'")
+            logger.debug(f"Using configured authentication method: '{auth_method_name}' for '{self._model_provider}'")
         else:
             # Otherwise try all available strategies
             methods_to_try = list(self._auth_strategies.items())
-            logger.info(f"No specific auth method configured for '{self._model_provider}'. Will try all available methods: {supported_methods}")
+            logger.debug(f"No specific auth method configured for '{self._model_provider}'. Will try all available methods: {supported_methods}")
         
         # Try each authentication method
         errors = []
         for name, strategy in methods_to_try:
-            logger.info(f"Attempting authentication {self._model_provider} using method: '{name}'")
+            logger.debug(f"Attempting authentication {self._model_provider} using method: '{name}'")
             try:
                 client = strategy(self, self._config, env)
                 if client:
-                    logger.info(f"Authentication succeeded for '{self._model_provider}' using method: '{name}'")
+                    logger.debug(f"Authentication succeeded for '{self._model_provider}' using method: '{name}'")
                     return client
             except Exception as e:
                 error_msg = f"Authentication method '{name}' failed for '{self._model_provider}': {e}"
@@ -271,13 +274,13 @@ class BaseProviderClient(
                 
                 # If using a specific configured method, fail immediately
                 if auth_method_config:
-                    raise AuthMethodFailureError(name, e) from e
+                    raise AstralAuthMethodFailureError(error_msg) from e
         
         # If we get here, all authentication methods failed
         error_details = "\n".join([f"- {name}: {error}" for name, error in errors])
         error_message = f"All authentication methods failed for provider '{self._model_provider}':\n{error_details}"
         logger.error(error_message)
-        raise ProviderAuthenticationError(error_message)
+        raise AstralAuthError(error_message)
 
     # --------------------------------------------------------------------------
     # Create Completion

@@ -1,0 +1,78 @@
+# --------------------------------------------------------------------------------
+# error_messages.yaml
+# --------------------------------------------------------------------------------
+
+provider:
+  OPENAI:
+    authentication:
+      base_message: "Please verify your API key or credentials. Check your environment variables or config file."
+      suggestions:
+        - "Check your API key or credentials."
+        - "Verify your environment variables or config file."
+      documentation_url: "https://docs.openai.com/api/errors"
+    rate_limit:
+      base_message: "You're sending requests too fast. Slow down or review your API usage limits."
+      suggestions:
+        - "Slow down your request rate."
+        - "Review API usage limits."
+      documentation_url: "https://docs.openai.com/api/errors"
+    connection:
+      base_message: "A network error occurred. Check your internet connection and consider increasing timeout settings."
+      suggestions:
+        - "Check your internet connection."
+        - "Consider increasing timeout settings."
+      documentation_url: "https://docs.openai.com/api/errors"
+    status:
+      base_message: "The API responded with an error status. Review your request parameters and ensure the service is available."
+      suggestions: []
+      documentation_url: "https://docs.openai.com/api/errors"
+    unexpected:
+      base_message: "Something went wrong. Please review your request and refer to the documentation."
+      suggestions: []
+      documentation_url: "https://docs.openai.com/api/errors"
+
+  DEEPSEEK:
+    authentication:
+      base_message: "Please verify that your API key and base URL are correct."
+      suggestions:
+        - "Verify your API key and base URL."
+      documentation_url: "https://docs.deepseek.com/api/error-codes"
+    rate_limit:
+      base_message: "Too many requests. Consider adjusting your request frequency or reviewing your usage limits."
+      suggestions:
+        - "Slow down your request rate."
+        - "Review usage limits."
+      documentation_url: "https://docs.deepseek.com/api/error-codes"
+    connection:
+      base_message: "A network error occurred. Check your internet connection and your timeout settings."
+      suggestions:
+        - "Check your internet connection."
+        - "Review your timeout settings."
+      documentation_url: "https://docs.deepseek.com/api/error-codes"
+    status:
+      base_message: "The API responded with an error status."
+      suggestions:
+        - "Potential issue: insufficient API credits. Check your balance here: https://platform.deepseek.com/top_up"
+      documentation_url: "https://docs.deepseek.com/api/error-codes"
+    unexpected:
+      base_message: "An unknown error occurred. Please refer to the docs for troubleshooting."
+      suggestions: []
+      documentation_url: "https://docs.deepseek.com/api/error-codes"
+
+client:
+  default:
+    message: "Client Error: An error occurred within the client."
+    emoji: "🚫"
+    suggestions:
+      - "Ensure the client is properly configured."
+      - "Check for network issues."
+    documentation_url: "https://docs.astralai.com/client/errors"
+
+resource:
+  default:
+    message: "Resource Error: An error occurred at the resource level."
+    emoji: "❗"
+    suggestions:
+      - "Ensure the resource is configured correctly."
+      - "Review resource documentation."
+    documentation_url: "https://docs.astralai.com/resources/errors"

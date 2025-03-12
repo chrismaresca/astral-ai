@@ -7,18 +7,20 @@ import uuid
 from astral_ai._types import AstralClientParams
 from astral_ai.constants._models import ModelProvider
 from astral_ai._auth import AUTH_CONFIG_TYPE
-from astral_ai.exceptions import ProviderNotSupportedError
+from astral_ai.errors.exceptions import ProviderNotSupportedError
 
 # Provider imports
 from astral_ai.providers._base_client import BaseProviderClient
 from astral_ai.providers.anthropic import AnthropicProviderClient
 from astral_ai.providers.openai import OpenAIProviderClient
+from astral_ai.providers.deepseek._client import DeepSeekProviderClient
 
 
 # Map of provider names to their client classes
 _PROVIDER_CLIENT_MAP: Dict[ModelProvider, type[BaseProviderClient]] = {
     "openai": OpenAIProviderClient,
     "anthropic": AnthropicProviderClient,
+    "deepseek": DeepSeekProviderClient,
 }
 
 class ProviderClientRegistry:
@@ -76,6 +78,15 @@ class ProviderClientRegistry:
     ) -> AnthropicProviderClient:
         ...
 
+    @overload
+    @classmethod
+    def get_client(
+        cls,
+        provider_name: Literal["deepseek"],
+        astral_client: Optional[AstralClientParams] = None,
+    ) -> DeepSeekProviderClient:
+        ...
+        
     @classmethod
     def get_client(
         cls,
