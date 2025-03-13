@@ -11,6 +11,7 @@ Request Models for Astral AI
 # ------------------------------------------------------------------------------
 
 # Built-in
+from typing import Type
 from typing import (Literal,
                     Optional,
                     Dict,
@@ -99,7 +100,7 @@ class BaseRequest(BaseModel, ABC):
         """Set the provider name for the request."""
         self._provider_name = get_provider_from_model_name(model_name=self.model)
         return self
-    
+
     @model_validator(mode="before")
     def handle_none_astral_params(cls, data: dict) -> dict:
         """Handle None astral_params by setting default AstralParams."""
@@ -125,7 +126,7 @@ class AstralCompletionRequest(BaseRequest):
     messages: Union[MessageList, List[Message], Message, List[Dict[str, str]]] = Field(description="The messages to send to the model.")
 
     # Stream
-    stream: bool = Field(default=False, description="If set, partial message deltas will be sent, like in ChatGPT. Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a `data: [DONE]` message.")
+    # stream: bool = Field(default=False, description="If set, partial message deltas will be sent, like in ChatGPT. Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a `data: [DONE]` message.")
 
     # TODO: Audio
     # audio: Optional[AudioParam] | NotGiven = Field(default=NOT_GIVEN, description="Parameters for audio output. Required when audio output is requested with `modalities: ['audio']`.")
@@ -220,8 +221,9 @@ class AstralStructuredCompletionRequest(AstralCompletionRequest):
     """
     Astral Structured Completion Request
     """
-    response_format: StructuredOutputResponseT = Field(description="The response format to use for the request.")
-
+    response_format: Type[StructuredOutputResponseT] = Field(
+        description="The response format (a Pydantic model class) to use for the request."
+    )
 # ------------------------------------------------------------------------------
 # Astral Embedding Request
 # ------------------------------------------------------------------------------

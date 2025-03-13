@@ -20,13 +20,11 @@ from astral_ai._types._astral import AstralParams
 from astral_ai._types._response._response import AstralBaseResponse
 
 # Models
-from astral_ai.constants._models import ModelProvider, ModelAlias, ModelId
+from astral_ai.constants._models import ModelName
 
 # Utilities
 from astral_ai.utilities import get_provider_from_model_name
 
-# Exceptions
-from astral_ai.errors.exceptions import ModelNameError
 
 # Providers
 from astral_ai.providers._client_registry import ProviderClientRegistry
@@ -91,73 +89,30 @@ class AstralResource(Generic[TRequest, TResponse], ABC):
         self.astral_params = self.request.astral_params
         self.astral_client = self.astral_params.astral_client
 
-        # Validate the model and set up provider
-        # TODO: make this an entire validation step for what features it supports vs whats passed in the request.
-        self._validate_request()
-
-        self.model = self.request.model
-        self.model_provider = get_provider_from_model_name(self.model)
+        self._model_provider = get_provider_from_model_name(self.request.model)
 
         # TODO: remove this in production
         # self.model_provider = "openai"
 
         self.client = ProviderClientRegistry.get_client(
-            self.model_provider,
+            self._model_provider,
             astral_client=self.astral_client
         )
 
         # Set up provider client and adapter
         from astral_ai.providers._adapters import create_adapter
-        self.adapter = create_adapter(self.model_provider)
+        self.adapter = create_adapter(self._model_provider)
 
         # Set cost strategy from astral params
         self.cost_strategy = self.astral_params.cost_strategy or ReturnCostStrategy()
-
 
     # --------------------------------------------------------------------------
     # Validation
     # --------------------------------------------------------------------------
 
-    def _validate_request(self) -> None:
-        """
-        Validate the request.
-        """
-        valid_models = get_args(ModelAlias) + get_args(ModelId)
-        if self.request.model not in valid_models:
-            raise ModelNameError(model_name=self.request.model)
-        
-        # Validate the request data
-        # TODO: Implement this. Look at earlier Astral AI implementations
-
-    # --------------------------------------------------------------------------
-    # Abstract Methods to Run the Resource
-    # Has approaches for sync, async, and streaming execution
-    # --------------------------------------------------------------------------
-
     @abstractmethod
-    def run(self, *args, **kwargs) -> TResponse:
+    def _validate_model(self, model: Optional[ModelName] = None) -> None:
         """
-        Execute the resource synchronously.
-
-        Returns:
-            TResponse: The response from the provider
+        Validate the model.
         """
-        pass
-
-    @abstractmethod
-    async def run_async(self, *args, **kwargs) -> TResponse:
-        """
-        Execute the resource asynchronously.
-
-        Returns:
-            TResponse: The response from the provider
-        """
-        pass
-
-    # TODO: Implement this
-    # @abstractmethod
-    # def run_stream(self, *args, **kwargs) -> AsyncGenerator[TResponse, None]:
-    #     """
-    #     Execute the resource asynchronously.
-    #     """
-    #     pass
+        raise NotImplementedError("Subclasses must implement this method.")

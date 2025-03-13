@@ -269,7 +269,6 @@ class BaseProviderClient(
                 errors.append((name, e))
                 # If there's only one method to try, re-raise the underlying error immediately.
                 if len(methods_to_try) == 1:
-                    print("We are here. BEFORE CALLED. Number of errors: ", len(errors))
                     raise e
 
         # If multiple methods were attempted and all failed, raise a consolidated error.

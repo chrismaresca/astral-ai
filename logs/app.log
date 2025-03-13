@@ -8213,3 +8213,1416 @@ astral_ai.errors.exceptions.AstralMissingCredentialsError: Missing required cred
 2025-03-13 11:34:02 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
 2025-03-13 11:34:17 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
 2025-03-13 11:36:48 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': OpenAIProviderClient._validate_credentials() got an unexpected keyword argument 'type'
+2025-03-13 17:16:20 | Astral Logger | ERROR | error | Model gpt-4o does not support structured output or JSON mode. Raising error.
+2025-03-13 17:18:27 | Astral Logger | ERROR | error | Model gpt-4o does not support structured output or JSON mode. Cannot process request.
+2025-03-13 17:18:27 | Astral Logger | ERROR | error | Available capabilities for gpt-4o: {'supports_reasoning_effort': False, 'supports_structured_output': True, 'supports_image_ingestion': True, 'supports_function_calls': True, 'supports_system_message': True, 'supports_developer_message': False, 'supports_only_user_message': False}
+2025-03-13 17:24:57 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:27:06 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:28:58 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:30:33 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:33:58 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:34:31 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:35:28 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:35:48 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 17:37:48 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 17:37:53 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 17:37:53 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 17:37:53 | Astral Logger | DEBUG | info | Handling structured response with model: RoboticLaws
+2025-03-13 17:37:53 | Astral Logger | DEBUG | debug | Request parameters: is_json_request=True, force_json=False
+2025-03-13 17:37:53 | Astral Logger | DEBUG | debug | Updated request with model: gpt-4o-2024-11-20
+2025-03-13 17:37:53 | Astral Logger | DEBUG | info | Model gpt-4o-2024-11-20 supports structured output, using native structured output capability
+2025-03-13 17:37:53 | Astral Logger | WARNING | warning | Model gpt-4o-2024-11-20 supports structured output. You called a JSON-based method, which is more generic. We're overriding your request and using structured output, to override this behavior, set `force_json=True`.
+2025-03-13 17:37:53 | Astral Logger | DEBUG | debug | Mapping to provider request format for structured output
+2025-03-13 17:37:53 | Astral Logger | DEBUG | info | Executing structured completion request to openai
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:08:37 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:11:20 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:11:24 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:11:24 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:11:24 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:11:56 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:12:02 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:12:02 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:12:02 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:13:21 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:13:26 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:13:26 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:13:26 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:22:21 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:22:27 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:22:27 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:22:27 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:22:53 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:22:57 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:22:57 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:22:57 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:27:42 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:27:46 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:27:46 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:27:46 | Astral Logger | DEBUG | debug | Constructing Request for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:27:55 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:27:58 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:27:58 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:27:58 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:30:13 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:30:16 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:30:16 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:30:16 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:33:18 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:36:47 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:37:02 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:37:20 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:40:17 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:40:22 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:40:22 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:40:22 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:40:23 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:40:27 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:40:27 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:40:27 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:42:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:42:09 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:42:09 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:42:10 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:42:10 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:42:25 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:42:25 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:42:52 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:42:52 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:44:39 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:44:39 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:44:39 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:44:40 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:45:43 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:47:46 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:47:46 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:47:46 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:47:47 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:48:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:48:37 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:48:37 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:48:38 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:49:15 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:49:34 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:50:17 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:50:54 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:50:54 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:50:54 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:50:55 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:51:48 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:51:48 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:51:48 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:51:49 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:52:07 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:52:07 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:52:07 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:52:08 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:53:49 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:54:19 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:55:46 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:55:46 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:55:46 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:55:47 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:56:22 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:56:22 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:56:22 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:56:23 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:56:25 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:56:25 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:56:25 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:56:27 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:56:27 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:56:27 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:56:28 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:56:28 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:56:28 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:57:21 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 18:57:21 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 18:57:21 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 18:57:22 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 18:57:23 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:57:23 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:57:23 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 18:57:28 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:57:28 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:57:28 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 18:57:29 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 18:57:29 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 18:57:29 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:00:46 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:01:09 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 19:01:20 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 19:01:24 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:01:24 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:01:24 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 19:01:28 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:01:28 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:01:28 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 19:01:31 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:01:31 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:01:31 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 19:01:35 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:01:35 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:01:35 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 19:20:10 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 19:20:12 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:20:12 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:20:12 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 19:20:14 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:20:14 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:20:14 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 19:20:16 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:20:16 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:20:16 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 19:20:19 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:20:19 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:20:19 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 19:26:58 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-13 19:26:58 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-13 19:26:58 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=False, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Available auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug |   Strategy 'api_key': auth_via_api_key
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | No specific auth method configured for 'openai'. Will try all available methods: ['api_key']
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Attempting authentication for openai using method: 'api_key'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Authentication succeeded for 'openai' using method: 'api_key'
+2025-03-13 19:26:59 | Astral Logger | DEBUG | debug | Caching provider client for future use.
+2025-03-13 19:27:06 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:27:06 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:27:06 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-13 19:27:08 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:27:08 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:27:08 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.run_simple_tests.<locals>.RoboticLaws'>
+2025-03-13 19:27:10 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-13 19:27:10 | Astral Logger | DEBUG | info | No tools provided for model gpt-4o-2024-11-20.
+2025-03-13 19:27:10 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20

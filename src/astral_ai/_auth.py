@@ -163,10 +163,38 @@ AUTH_CONFIG_TYPE_WITH_PROVIDER: TypeAlias = Dict[ModelProvider, AUTH_CONFIG_TYPE
 # Auth Callable
 # ------------------------------------------------------------------------------
 
-AuthCallable = Callable[
-    [BaseProviderClient, AUTH_CONFIG_TYPE, AUTH_ENV_VARS],
-    BaseProviderClient,
-]
+# ------------------------------------------------------------------------------
+# Auth Callable Protocol
+# ------------------------------------------------------------------------------
+
+from typing import Protocol, runtime_checkable, Any
+
+# -------------------------------------------------------------------------------- #
+# Auth Callable Protocol
+# -------------------------------------------------------------------------------- #
+from astral_ai.providers._generics import ProviderClientType
+@runtime_checkable
+class AuthCallable(Protocol):
+    """
+    Protocol defining the interface for authentication strategy callables.
+    
+    This protocol ensures that all authentication methods follow the same signature,
+    making them interchangeable as strategies in the authentication system.
+    """
+    def __call__(
+        self, 
+        instance: 'BaseProviderClient',
+        config: AUTH_CONFIG_TYPE, 
+        env: AUTH_ENV_VARS,
+    ) -> ProviderClientType: ...
+
+
+# TODO: Remove this
+# # Type definition for auth callables that return provider clients
+# AuthCallable = Callable[
+#     ['BaseProviderClient', AUTH_CONFIG_TYPE, AUTH_ENV_VARS],
+#     ProviderClientType,
+# ]
 
 # ------------------------------------------------------------------------------
 # Auth Registry Meta

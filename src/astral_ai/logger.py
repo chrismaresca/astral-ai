@@ -143,4 +143,4 @@ class Logger:
 # Create default logger instance (demo)
 # -------------------------------------------------------------------------------- #
 
-logger = Logger()
+logger = Logger(log_level="DEBUG")

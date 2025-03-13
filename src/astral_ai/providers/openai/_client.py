@@ -62,6 +62,7 @@ class OpenAIProviderClient(BaseProviderClient[
         # Initialize the base class (which performs authentication)
         super().__init__(config)
 
+
     # --------------------------------------------------------------------------
     # Validate Credentials
     # --------------------------------------------------------------------------
@@ -93,7 +94,7 @@ class OpenAIProviderClient(BaseProviderClient[
     # --------------------------------------------------------------------------
 
     @auth_method("api_key")
-    def auth_via_api_key(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS) -> OpenAI:
+    def auth_via_api_key(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS, async_client: bool = False) -> OpenAI:
         """
         Authenticate using an API key from config or environment variables.
 
@@ -112,7 +113,10 @@ class OpenAIProviderClient(BaseProviderClient[
         # Extract the credentials
         api_key = credentials["api_key"]
 
-        return OpenAI(api_key=api_key)
+        if async_client:
+            return AsyncOpenAI(api_key=api_key)
+        else:
+            return OpenAI(api_key=api_key)
 
     # # --------------------------------------------------------------------------
     # # Create Completion Stream
@@ -157,6 +161,35 @@ class OpenAIProviderClient(BaseProviderClient[
             )
 
     # --------------------------------------------------------------------------
+    # Create Completion Async
+    # --------------------------------------------------------------------------
+
+    @provider_error_handler
+    async def create_completion_chat_async(self, request: OpenAIRequestChatType) -> OpenAIChatResponseType:
+        """
+        Create a completion asynchronously using the OpenAI API.
+
+        Args:
+            request: The request to create a completion.
+
+        Returns:
+            The completion.
+        """
+        # Initialize AsyncOpenAI with the same credentials
+        async_client = AsyncOpenAI(api_key=self.client.api_key)
+        
+        openai_response = await self.client.chat.completions.create(**request)
+
+        if isinstance(openai_response, OpenAIChatResponseType):
+            return openai_response
+        else:
+            raise AstralProviderResponseError(
+                f"Unexpected response type from {self._model_provider}",
+                provider_name=self._model_provider,
+                expected_response_type="OpenAIChatResponse"
+            )
+
+    # --------------------------------------------------------------------------
     # Create Structured Completion
     # --------------------------------------------------------------------------
 
@@ -171,7 +204,39 @@ class OpenAIProviderClient(BaseProviderClient[
         Returns:
             The structured completion.
         """
+
+
         openai_response = self.client.beta.chat.completions.parse(**request)
+
+
+        if isinstance(openai_response, OpenAIStructuredResponseType):
+            return openai_response
+        else:
+            raise AstralProviderResponseError(
+                f"Unexpected response type from {self._model_provider}",
+                provider_name=self._model_provider,
+                expected_response_type="OpenAIStructuredResponse"
+            )
+
+    # --------------------------------------------------------------------------
+    # Create Structured Completion Async
+    # --------------------------------------------------------------------------
+
+    @provider_error_handler
+    async def create_completion_structured_async(self, request: OpenAIRequestStructuredType) -> OpenAIStructuredResponseType:
+        """
+        Create a structured completion asynchronously using the OpenAI API.
+
+        Args:
+            request: The request to create a structured completion.
+
+        Returns:
+            The structured completion.
+        """
+        # Initialize AsyncOpenAI with the same credentials
+        async_client = AsyncOpenAI(api_key=self.client.api_key)
+        
+        openai_response = await async_client.beta.chat.completions.parse(**request)
 
         if isinstance(openai_response, OpenAIStructuredResponseType):
             return openai_response

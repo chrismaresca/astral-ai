@@ -66,27 +66,6 @@ class ProviderNotFoundForModelError(ProviderAuthenticationError):
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
-# ------------------------------------------------------------------------------
-# Model Name Error
-# ------------------------------------------------------------------------------
-
-
-class ModelError(Exception):
-    """General exception raised when a model is not valid."""
-    pass
-
-# ------------------------------------------------------------------------------
-# Model Name Error
-# ------------------------------------------------------------------------------
-
-
-class ModelNameError(ModelError):
-    """Exception raised when a model name is not valid."""
-
-    def __init__(self, model_name: Union[ModelName, str]) -> None:
-        message = f"Model name '{model_name}' is not valid."
-        super().__init__(message)
-        self.model_name = model_name
 
 # ------------------------------------------------------------------------------
 # Messages Not Provided Error
@@ -222,11 +201,11 @@ class AstralBaseError(Exception):
     """
 
     def __init__(self, message: str, *,
-                status_code: Optional[int] = None,
-                request_id: Optional[str] = None,
-                error_body: Optional[Any] = None,
-                error_traceback: Optional[str] = None,
-                **kwargs: Any) -> None:
+                 status_code: Optional[int] = None,
+                 request_id: Optional[str] = None,
+                 error_body: Optional[Any] = None,
+                 error_traceback: Optional[str] = None,
+                 **kwargs: Any) -> None:
         super().__init__(message)
         self.status_code = status_code
         self.request_id = request_id
@@ -275,21 +254,21 @@ class AstralProviderStatusError(AstralProviderError):
 
 class AstralProviderResponseError(AstralProviderError):
     """Error when the provider returns an unexpected response type"""
-    
+
     def __init__(self, message: str, *,
-                provider_name: str,
-                expected_response_type: str,
-                status_code: Optional[int] = None,
-                request_id: Optional[str] = None,
-                error_body: Optional[Any] = None,
-                error_traceback: Optional[str] = None,
-                **kwargs: Any) -> None:
-        super().__init__(message, 
-                        status_code=status_code,
-                        request_id=request_id,
-                        error_body=error_body,
-                        error_traceback=error_traceback,
-                        **kwargs)
+                 provider_name: str,
+                 expected_response_type: str,
+                 status_code: Optional[int] = None,
+                 request_id: Optional[str] = None,
+                 error_body: Optional[Any] = None,
+                 error_traceback: Optional[str] = None,
+                 **kwargs: Any) -> None:
+        super().__init__(message,
+                         status_code=status_code,
+                         request_id=request_id,
+                         error_body=error_body,
+                         error_traceback=error_traceback,
+                         **kwargs)
         self.provider_name = provider_name
         self.expected_response_type = expected_response_type
 
@@ -306,26 +285,26 @@ authentication methods fail or are not supported by the provider.
 
 class AstralAuthError(AstralBaseError):
     """Base class for all authentication-related errors."""
-    
+
     def __init__(self, message: str = "", *,
-                status_code: Optional[int] = None,
-                request_id: Optional[str] = None,
-                error_body: Optional[Any] = None,
-                error_traceback: Optional[str] = None,
-                auth_method_name: Optional[str] = None,
-                provider_name: Optional[str] = None,
-                model_name: Optional[Union[ModelName, str]] = None,
-                required_credentials: Optional[list[str]] = None,
-                missing_credentials: Optional[list[str]] = None,
-                env_variable_name: Optional[str] = None,
-                documentation_link: Optional[str] = None,
-                **kwargs: Any) -> None:
-        super().__init__(message, 
-                        status_code=status_code,
-                        request_id=request_id,
-                        error_body=error_body,
-                        error_traceback=error_traceback,
-                        **kwargs)
+                 status_code: Optional[int] = None,
+                 request_id: Optional[str] = None,
+                 error_body: Optional[Any] = None,
+                 error_traceback: Optional[str] = None,
+                 auth_method_name: Optional[str] = None,
+                 provider_name: Optional[str] = None,
+                 model_name: Optional[Union[ModelName, str]] = None,
+                 required_credentials: Optional[list[str]] = None,
+                 missing_credentials: Optional[list[str]] = None,
+                 env_variable_name: Optional[str] = None,
+                 documentation_link: Optional[str] = None,
+                 **kwargs: Any) -> None:
+        super().__init__(message,
+                         status_code=status_code,
+                         request_id=request_id,
+                         error_body=error_body,
+                         error_traceback=error_traceback,
+                         **kwargs)
         self.auth_method_name = auth_method_name
         self.provider_name = provider_name
         self.model_name = model_name
@@ -362,16 +341,16 @@ class AstralAuthMethodFailureError(AstralAuthError):
 
 class AstralUnknownAuthMethodError(AstralAuthError):
     """Exception raised when an unknown authentication method is specified."""
-    
+
     def __init__(self, message: str, *,
-                auth_method_name: Optional[str] = None,
-                provider_name: Optional[str] = None,
-                supported_methods: Optional[list[str]] = None,
-                status_code: Optional[int] = None,
-                request_id: Optional[str] = None,
-                error_body: Optional[Any] = None,
-                error_traceback: Optional[str] = None,
-                **kwargs: Any) -> None:
+                 auth_method_name: Optional[str] = None,
+                 provider_name: Optional[str] = None,
+                 supported_methods: Optional[list[str]] = None,
+                 status_code: Optional[int] = None,
+                 request_id: Optional[str] = None,
+                 error_body: Optional[Any] = None,
+                 error_traceback: Optional[str] = None,
+                 **kwargs: Any) -> None:
         super().__init__(
             message,
             status_code=status_code,
@@ -387,22 +366,22 @@ class AstralUnknownAuthMethodError(AstralAuthError):
 
 class MultipleAstralAuthenticationErrors(AstralAuthError):
     """Exception raised when multiple authentication methods fail.
-    
+
     This exception stores information about all the individual failed authentication
     attempts and their corresponding error messages.
     """
-    
+
     def __init__(self, message: str = "", *,
-                status_code: Optional[int] = None,
-                request_id: Optional[str] = None,
-                error_body: Optional[Any] = None,
-                error_traceback: Optional[str] = None,
-                auth_method_name: Optional[str] = None,
-                provider_name: Optional[str] = None,
-                model_name: Optional[Union[ModelName, str]] = None,
-                errors: Optional[list[tuple[str, Exception]]] = None,
-                documentation_link: Optional[str] = None,
-                **kwargs: Any) -> None:
+                 status_code: Optional[int] = None,
+                 request_id: Optional[str] = None,
+                 error_body: Optional[Any] = None,
+                 error_traceback: Optional[str] = None,
+                 auth_method_name: Optional[str] = None,
+                 provider_name: Optional[str] = None,
+                 model_name: Optional[Union[ModelName, str]] = None,
+                 errors: Optional[list[tuple[str, Exception]]] = None,
+                 documentation_link: Optional[str] = None,
+                 **kwargs: Any) -> None:
         super().__init__(
             message,
             status_code=status_code,

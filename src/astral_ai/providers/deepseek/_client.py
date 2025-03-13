@@ -173,6 +173,36 @@ class DeepSeekProviderClient(BaseProviderClient[
             )
 
     # --------------------------------------------------------------------------
+    # Create Completion Async
+    # --------------------------------------------------------------------------
+
+    @provider_error_handler
+    async def create_completion_chat_async(self, request: DeepSeekRequestChatType) -> DeepSeekChatResponseType:
+        """
+        Create a completion asynchronously using the OpenAI SDK to communicate with the DeepSeek API.
+
+        Args:
+            request: The request to create a completion.
+
+        Returns:
+            The completion.
+        """
+        # Initialize AsyncOpenAI with the same credentials and base URL
+        async_client = AsyncOpenAI(api_key=self.client.api_key, base_url=self.client.base_url)
+
+        # IMPORTANT: We use the OpenAI client for DeepSeek
+        openai_response = await async_client.chat.completions.create(**request)
+
+        if isinstance(openai_response, DeepSeekChatResponseType):
+            return openai_response
+        else:
+            raise AstralProviderResponseError(
+                f"Unexpected response type from {self._model_provider}",
+                provider_name=self._model_provider,
+                expected_response_type="DeepSeekChatResponse"
+            )
+
+    # --------------------------------------------------------------------------
     # Create Structured Completion
     # --------------------------------------------------------------------------
 
@@ -188,6 +218,35 @@ class DeepSeekProviderClient(BaseProviderClient[
             The structured completion.
         """
         deepseek_response = self.client.chat.completions.create(**request)
+
+        if isinstance(deepseek_response, DeepSeekStructuredResponseType):
+            return deepseek_response
+        else:
+            raise AstralProviderResponseError(
+                f"Unexpected response type from {self._model_provider}",
+                provider_name=self._model_provider,
+                expected_response_type="DeepSeekStructuredResponse"
+            )
+
+    # --------------------------------------------------------------------------
+    # Create Structured Completion Async
+    # --------------------------------------------------------------------------
+
+    @provider_error_handler
+    async def create_completion_structured_async(self, request: DeepSeekRequestStructuredType) -> DeepSeekStructuredResponseType:
+        """
+        Create a structured completion asynchronously using the OpenAI SDK to communicate with the DeepSeek API.
+
+        Args:
+            request: The request to create a structured completion.
+
+        Returns:
+            The structured completion.
+        """
+        # Initialize AsyncOpenAI with the same credentials and base URL
+        async_client = AsyncOpenAI(api_key=self.client.api_key, base_url=self.client.base_url)
+
+        deepseek_response = await async_client.chat.completions.create(**request)
 
         if isinstance(deepseek_response, DeepSeekStructuredResponseType):
             return deepseek_response

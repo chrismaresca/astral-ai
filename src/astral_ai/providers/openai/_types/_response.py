@@ -29,7 +29,6 @@ from openai.types.completion_usage import CompletionUsage
 # ------------------------------------------------------------------------------
 # Generic Types
 # ------------------------------------------------------------------------------
-
 _StructuredOutputT = TypeVar("_StructuredOutputT", bound=BaseModel)
 
 # ------------------------------------------------------------------------------
@@ -45,7 +44,7 @@ OpenAIChatResponseType: TypeAlias = ChatCompletion
 
 
 # OpenAI Structured Response
-OpenAIStructuredResponseType: TypeAlias = ParsedChatCompletion[_StructuredOutputT]
+OpenAIStructuredResponseType = ParsedChatCompletion
 
 # OpenAI Completion Usage
 OpenAICompletionUsageType: TypeAlias = CompletionUsage

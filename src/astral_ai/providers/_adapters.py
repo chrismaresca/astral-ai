@@ -261,6 +261,8 @@ class ProviderAdapter(Generic[_ModelProviderT]):
         """
         request_data = request.model_dump_without_astral_params()
 
+
+
         # convert messages to provider format
         # TODO: Implement this
         # messages = convert_messages_to_provider_format(request_data["messages"], provider="openai")
@@ -321,7 +323,7 @@ class ProviderAdapter(Generic[_ModelProviderT]):
     def to_astral_completion_response(
         self: "ProviderAdapter[Literal['openai']]",
         response: ProviderResponseStructuredType,
-        response_model: Type[StructuredOutputT]
+        response_format: Type[StructuredOutputT]
     ) -> AstralStructuredResponse[StructuredOutputT]:
         ...
 
@@ -338,7 +340,7 @@ class ProviderAdapter(Generic[_ModelProviderT]):
     def to_astral_completion_response(
         self: "ProviderAdapter[Literal['anthropic']]",
         response: ProviderResponseStructuredType,
-        response_model: Type[StructuredOutputT]
+        response_format: Type[StructuredOutputT]
     ) -> AstralStructuredResponse[StructuredOutputT]:
         ...
 
@@ -355,7 +357,7 @@ class ProviderAdapter(Generic[_ModelProviderT]):
     def to_astral_completion_response(
         self: "ProviderAdapter[Literal['deepseek']]",
         response: ProviderResponseStructuredType,
-        response_model: Type[StructuredOutputT]
+        response_format: Type[StructuredOutputT]
     ) -> AstralStructuredResponse[StructuredOutputT]:
         ...
 
@@ -365,28 +367,28 @@ class ProviderAdapter(Generic[_ModelProviderT]):
     def to_astral_completion_response(
         self,
         response: ProviderCompletionResponseType,
-        response_model: Optional[Type[StructuredOutputT]] = None
+        response_format: Optional[Type[StructuredOutputT]] = None
     ) -> Union[AstralChatResponse, AstralStructuredResponse[StructuredOutputT]]:
         """
         Single runtime implementation that checks provider & response_model.
         """
         if self.provider_name == "openai":
-            if response_model is None:
+            if response_format is None:
                 # parse normal chat response
                 return self._from_openai_chat_response(response)
             else:
                 # parse structured
-                return self._from_openai_structured_response(response, response_model)
+                return self._from_openai_structured_response(response, response_format)
         elif self.provider_name == "anthropic":
-            if response_model is None:
+            if response_format is None:
                 return self._from_anthropic_chat_response(response)
             else:
-                return self._from_anthropic_structured_response(response, response_model)
+                return self._from_anthropic_structured_response(response, response_format)
         elif self.provider_name == "deepseek":
-            if response_model is None:
+            if response_format is None:
                 return self._from_deepseek_chat_response(response)
             else:
-                return self._from_deepseek_structured_response(response, response_model)
+                return self._from_deepseek_structured_response(response, response_format)
 
     # -------------------------------------------------------------------------------- #
     # Provider-Specific Response Conversion Methods
@@ -440,7 +442,7 @@ class ProviderAdapter(Generic[_ModelProviderT]):
         from astral_ai._types._response._response import ChatCost
         cost: Optional[ChatCost] = None
         # Construct and return the structured response.
-        return AstralStructuredResponse[StructuredOutputT](response=parsed_content, usage=usage_data, cost=cost)
+        return AstralStructuredResponse[StructuredOutputT](model=response.model, response=parsed_content, usage=usage_data, cost=cost)
 
     def _from_deepseek_chat_response(self, response: DeepSeekChatResponseType) -> AstralChatResponse:
         """
