@@ -25,12 +25,13 @@ from ._types import (
 # Exceptions
 from astral_ai.errors.exceptions import (
     AstralProviderResponseError,
-    AstralAuthMethodFailureError
+    AstralAuthMethodFailureError,
+    AstralMissingCredentialsError
 )
 from astral_ai.errors.error_decorators import provider_error_handler
 
 # Astral Auth
-from astral_ai._auth import AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS, validate_credentials
+from astral_ai._auth import AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS, AUTH_METHOD_NAMES
 
 # Provider Types
 from astral_ai.providers.openai._types import OpenAIClientsType
@@ -61,6 +62,36 @@ class OpenAIProviderClient(BaseProviderClient[
         # Initialize the base class (which performs authentication)
         super().__init__(config)
 
+    # --------------------------------------------------------------------------
+    # Validate Credentials
+    # --------------------------------------------------------------------------
+
+    def _validate_credentials(self, auth_method_name: AUTH_METHOD_NAMES, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS) -> Dict[str, str]:
+        """
+        Validate the credentials for the OpenAI provider.
+        """
+        credentials = {}
+
+        if auth_method_name == "api_key":
+
+            credentials["api_key"] = config.get(self._model_provider, {}).get(auth_method_name, None) or env.get("OPENAI_API_KEY")
+            if not credentials["api_key"]:
+                raise AstralAuthMethodFailureError("API key is required")
+
+            return credentials
+        else:
+            raise AstralMissingCredentialsError(
+                f"Invalid authentication method: {auth_method_name}",
+                auth_method_name=auth_method_name,
+                provider_name=self._model_provider,
+                required_credentials=["api_key"],
+                missing_credentials=[auth_method_name]
+            )
+
+    # --------------------------------------------------------------------------
+    # Authenticate
+    # --------------------------------------------------------------------------
+
     @auth_method("api_key")
     def auth_via_api_key(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS) -> OpenAI:
         """
@@ -71,14 +102,17 @@ class OpenAIProviderClient(BaseProviderClient[
             env: Environment variables dictionary
             credentials: Pre-validated credentials from the auth_method decorator
         """
-        credentials = validate_credentials(
-            auth_method="api_key",  # Use api_key for testing with base_url requirement
-            provider_name=self._model_provider,
+
+        credentials = self._validate_credentials(
+            auth_method_name="api_key",
             config=config,
             env=env
         )
 
-        return OpenAI(api_key=credentials["api_key"])
+        # Extract the credentials
+        api_key = credentials["api_key"]
+
+        return OpenAI(api_key=api_key)
 
     # # --------------------------------------------------------------------------
     # # Create Completion Stream

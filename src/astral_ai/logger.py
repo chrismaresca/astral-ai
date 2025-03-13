@@ -102,8 +102,8 @@ class Logger:
             self.logger.addHandler(file_handler)     # File (plain text)
 
     def info(self, msg: str, *args, **kwargs):
-        """Pass-through for self.logger.info()."""
-        self.logger.info(msg, *args, **kwargs)
+        """Pass-through for self.logger.debug()."""
+        self.logger.debug(msg, *args, **kwargs)
 
     def debug(self, msg: str, *args, **kwargs):
         """Pass-through for self.logger.debug()."""

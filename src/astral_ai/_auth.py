@@ -27,20 +27,6 @@ from astral_ai.providers._types import BaseProviderClient
 # Astral AI Logger
 from astral_ai.logger import logger
 
-# Astral AI Exceptions
-from astral_ai.errors.exceptions import (
-    AstralAuthConfigurationError,
-    AstralMissingCredentialsError,
-    AstralInvalidCredentialsError,
-    AstralEnvironmentVariableError,
-    AstralAuthMethodFailureError,
-    AstralAuthError,
-    AstralUnknownAuthMethodError,
-)
-
-# Astral AI Error Decorators and Formatters
-from astral_ai.errors.error_decorators import auth_error_handler
-from astral_ai.errors.error_formatter import format_error_message
 
 # ------------------------------------------------------------------------------
 # Auth Method Names
@@ -98,7 +84,7 @@ AUTH_CONFIG: Dict[ModelProvider, Dict[AUTH_METHOD_NAMES, Dict[str, Any]]] = {
             "required": ["api_key"],
             "env_vars": {"api_key": "DEEPSEEK_API_KEY"}
         },
-    
+
     },
 }
 
@@ -200,13 +186,13 @@ class AuthRegistryMeta(type):
     ) -> type:
         cls = super().__new__(mcls, name, bases, namespace)
         # Debug: Log class creation
-        logger.info(f"Creating class with AuthRegistryMeta: {name}")
+        logger.debug(f"Creating class with AuthRegistryMeta: {name}")
 
         # Merge auth strategies from base classes.
         auth_strategies: Dict[str, AuthCallable] = {}
         for base in bases:
             base_strategies = getattr(base, "_auth_strategies", {})
-            logger.info(f"Base class {base.__name__} has strategies: {list(base_strategies.keys())}")
+            logger.debug(f"Base class {base.__name__} has strategies: {list(base_strategies.keys())}")
             auth_strategies.update(base_strategies)
 
         # Register strategies from this class.
@@ -215,12 +201,12 @@ class AuthRegistryMeta(type):
             for attr in namespace.values()
             if callable(attr) and hasattr(attr, "_auth_name")
         }
-        logger.info(f"Found decorated methods in {name}: {list(class_strategies.keys())}")
+        logger.debug(f"Found decorated methods in {name}: {list(class_strategies.keys())}")
 
         auth_strategies.update(class_strategies)
         cls._auth_strategies = auth_strategies
 
-        logger.info(f"Final auth strategies for {name}: {list(auth_strategies.keys())}")
+        logger.debug(f"Final auth strategies for {name}: {list(auth_strategies.keys())}")
         return cls
 
 # ------------------------------------------------------------------------------
@@ -250,11 +236,11 @@ def auth_method(name: str) -> Callable[[AuthCallable], AuthCallable]:
     Returns:
         Callable: A decorator function that registers the auth strategy.
     """
-    logger.info(f"Registering authentication method: '{name}'")
+    logger.debug(f"Registering authentication method: '{name}'")
 
     # Define the decorator function
     def decorator(func: AuthCallable) -> AuthCallable:
-        logger.info(f"Decorating function '{func.__name__}' with auth_method '{name}'")
+        logger.debug(f"Decorating function '{func.__name__}' with auth_method '{name}'")
 
         # Wrap the function to preserve its metadata
         # @auth_error_handler
@@ -262,131 +248,20 @@ def auth_method(name: str) -> Callable[[AuthCallable], AuthCallable]:
         def wrapper(self, *args, **kwargs) -> Any:
             # Extract provider information for better error messages
             provider_name: ModelProvider = getattr(self, "_model_provider", "unknown")
-            logger.info(f"Auth method '{name}' called for provider '{provider_name}'")
+            logger.debug(f"Auth method '{name}' called for provider '{provider_name}'")
 
             # Call the original authentication method without any error handling
             # Let errors bubble up to __init__ in BaseProviderClient
-            logger.info(f"Calling original auth method function '{func.__name__}'")
+            logger.debug(f"Calling original auth method function '{func.__name__}'")
             result = func(self, *args, **kwargs)
-            logger.info(f"Auth method '{name}' for provider '{provider_name}' completed successfully")
+            logger.debug(f"Auth method '{name}' for provider '{provider_name}' completed successfully")
             return result
 
         setattr(wrapper, "_auth_name", name)
-        logger.info(f"Successfully registered auth method '{name}' with function '{func.__name__}'")
+        logger.debug(f"Successfully registered auth method '{name}' with function '{func.__name__}'")
         return wrapper
     return decorator
 
-# ------------------------------------------------------------------------------
-# Auth Helper Functions
-# ------------------------------------------------------------------------------
-
-def validate_credentials(
-    auth_method: AUTH_METHOD_NAMES,
-    provider_name: ModelProvider,
-    config: AUTH_CONFIG_TYPE,
-    env: AUTH_ENV_VARS
-) -> Dict[str, str]:
-    """
-    Validates that all required credentials for an auth method are present.
-    Uses provider-specific configurations with fallback to defaults.
-
-    Args:
-        auth_method: The authentication method name.
-        provider_name: The provider name from ModelProvider.
-        config: The configuration dictionary.
-        env: The environment variables dictionary.
-
-    Returns:
-        Dict[str, str]: Dictionary of validated credentials.
-
-    Raises:
-        AstralMissingCredentialsError: If any required credentials are missing.
-    """
-    logger.info(f"Validating credentials for provider '{provider_name}', auth method '{auth_method}'")
-
-    # Normalize provider name to access the config
-    provider = provider_name.lower()
-    logger.info(f"Normalized provider name: '{provider}'")
-
-    # Try to get provider-specific config for this auth method
-    provider_config = None
-    if provider_name in AUTH_CONFIG and auth_method in AUTH_CONFIG[provider_name]:
-        provider_config = AUTH_CONFIG[provider_name][auth_method]
-        logger.info(f"Found provider-specific auth configuration for '{provider_name}.{auth_method}': {provider_config}")
-    else:
-        # Fall back to default config for this auth method
-        provider_config = DEFAULT_AUTH_CONFIG.get(auth_method, {})
-        logger.info(f"Using default auth configuration for '{auth_method}': {provider_config}")
-
-    # Get required credentials and environment variable mappings
-    required_creds = provider_config.get("required", [])
-    env_vars = provider_config.get("env_vars", {})
-    logger.info(f"Required credentials: {required_creds}")
-    logger.info(f"Environment variable mappings: {env_vars}")
-
-    # If we're using the default config, replace {provider} placeholders
-    for cred, env_var in env_vars.items():
-        if "{provider}" in env_var:
-            original = env_vars[cred]
-            env_vars[cred] = env_var.replace("{provider}", provider.upper())
-            logger.info(f"Replaced placeholder in env var: '{original}' -> '{env_vars[cred]}'")
-
-    # Check for missing credentials
-    missing_creds = []
-    credentials = {}
-
-    for cred in required_creds:
-        # Try config first, then environment variable
-        value = config.get(cred)
-
-        if value:
-            logger.info(f"Found credential '{cred}' in configuration")
-        elif cred in env_vars:
-            env_var_name = env_vars[cred]
-            value = env.get(env_var_name)
-            if value:
-                logger.info(f"Found credential '{cred}' in environment variable '{env_var_name}'")
-            else:
-                logger.info(f"Environment variable '{env_var_name}' not found or empty")
-
-        if value:
-            credentials[cred] = value
-            # Mask the credential value for security in logs
-            masked_value = "********" if cred in ("api_key", "token", "client_secret") else value
-            logger.info(f"Added credential '{cred}' with value: {masked_value}")
-        else:
-            missing_creds.append(cred)
-            logger.info(f"Missing required credential: '{cred}'")
-
-    # If any credentials are missing, raise an error
-    if missing_creds:
-        logger.info(f"Credential validation failed: missing {missing_creds}")
-        
-        # Create a detailed error message that explains what's missing and how to fix it
-        missing_creds_list = ", ".join(missing_creds)
-        env_vars_list = []
-        
-        # Build a list of expected environment variables for the missing credentials
-        for cred in missing_creds:
-            if cred in env_vars:
-                env_vars_list.append(f"{env_vars[cred]}")
-        
-        detailed_message = f"Missing required credentials for {provider_name} authentication using '{auth_method}': {missing_creds_list}"
-        
-        if env_vars_list:
-            env_vars_str = ", ".join(env_vars_list)
-            detailed_message += f". Set environment variable(s): {env_vars_str}"
-            
-        raise AstralMissingCredentialsError(
-            detailed_message,
-            auth_method_name=auth_method,
-            provider_name=provider_name,
-            required_credentials=required_creds,
-            missing_credentials=missing_creds
-        ) from None
-
-    logger.info(f"Credential validation successful for '{provider_name}' using '{auth_method}'")
-    return credentials
 
 # ------------------------------------------------------------------------------
 # Environment Variables Caching
@@ -401,7 +276,7 @@ def get_env_vars() -> AUTH_ENV_VARS:
     Returns:
         Dict: Dictionary containing all environment variables
     """
-    logger.info("Loading environment variables (cached)")
+    logger.debug("Loading environment variables (cached)")
     env_vars = dict(os.environ)
 
     # Log environment variables related to authentication, masking sensitive values
@@ -411,8 +286,8 @@ def get_env_vars() -> AUTH_ENV_VARS:
     )}
 
     if auth_related_vars:
-        logger.info(f"Found authentication-related environment variables: {list(auth_related_vars.keys())}")
+        logger.debug(f"Found authentication-related environment variables: {list(auth_related_vars.keys())}")
     else:
-        logger.info("No authentication-related environment variables found")
+        logger.debug("No authentication-related environment variables found")
 
     return env_vars

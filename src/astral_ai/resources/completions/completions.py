@@ -522,7 +522,6 @@ def run_simple_test():
     - Cost information
     """
     import time
-    from typing import List, Dict, Any, Tuple
     
     # Sample messages for testing
     messages = [
@@ -542,7 +541,7 @@ def run_simple_test():
     
     # Make the completion request
     response = completion(
-        model="gpt-4o",
+        model="deepseek-chat",
         messages=messages
     )
 

@@ -92,11 +92,11 @@ def read_config(config_path: Path) -> Optional[AUTH_CONFIG_TYPE_WITH_PROVIDER]:
         try:
             with config_path.open("r", encoding="utf-8") as f:
                 config_data: AUTH_CONFIG_TYPE_WITH_PROVIDER = yaml.safe_load(f)
-                logger.info(f"Astral authentication configuration loaded from {config_path}: {config_data}")
+                logger.debug(f"Astral authentication configuration loaded from {config_path}: {config_data}")
                 return config_data
         except Exception as e:
             logger.error(f"Failed to load Astral authentication configuration file {config_path}: {e}")
-    logger.info("No Astral authentication configuration file found; proceeding without a configuration file.")
+    logger.debug("No Astral authentication configuration file found; proceeding without a configuration file.")
     return None
 
 
@@ -168,18 +168,18 @@ class BaseProviderClient(
 
         self._full_config: AUTH_CONFIG_TYPE_WITH_PROVIDER = config or self.load_full_config() or {}
         self._config: AUTH_CONFIG_TYPE = self.get_provider_config()
-        logger.info(f"Provider-specific config for '{self._model_provider}': {self._config}")
+        logger.debug(f"Provider-specific config for '{self._model_provider}': {self._config}")
 
         cache_client = self._config.get("cache_client", True)
         cache_key = self.__class__
 
         if cache_client and cache_key in self._client_cache:
-            logger.info("Using cached provider client.")
+            logger.debug("Using cached provider client.")
             self.client: ProviderClientT = self._client_cache[cache_key]
         else:
             self.client = self._get_or_authenticate_client()
             if cache_client:
-                logger.info("Caching provider client for future use.")
+                logger.debug("Caching provider client for future use.")
                 self._client_cache[cache_key] = self.client
 
     # --------------------------------------------------------------------------
@@ -227,9 +227,9 @@ class BaseProviderClient(
 
     @auth_error_handler
     def _get_or_authenticate_client(self) -> ProviderClientT:
-        logger.info(f"Available auth strategies for {self.__class__.__name__}: {list(self._auth_strategies.keys())}")
+        logger.debug(f"Available auth strategies for {self.__class__.__name__}: {list(self._auth_strategies.keys())}")
         for name, func in self._auth_strategies.items():
-            logger.info(f"  Strategy '{name}': {func.__name__}")
+            logger.debug(f"  Strategy '{name}': {func.__name__}")
 
         env = get_env_vars()
         auth_method_config = self._config.get("auth_method")
@@ -251,18 +251,18 @@ class BaseProviderClient(
                 raise error
 
             methods_to_try = [(auth_method_name, self._auth_strategies[auth_method_name])]
-            logger.info(f"Using configured authentication method: '{auth_method_name}' for '{self._model_provider}'")
+            logger.debug(f"Using configured authentication method: '{auth_method_name}' for '{self._model_provider}'")
         else:
             methods_to_try = list(self._auth_strategies.items())
-            logger.info(f"No specific auth method configured for '{self._model_provider}'. Will try all available methods: {supported_methods}")
+            logger.debug(f"No specific auth method configured for '{self._model_provider}'. Will try all available methods: {supported_methods}")
 
         errors = []
         for name, strategy in methods_to_try:
-            logger.info(f"Attempting authentication for {self._model_provider} using method: '{name}'")
+            logger.debug(f"Attempting authentication for {self._model_provider} using method: '{name}'")
             try:
                 client = strategy(self, self._config, env)
                 if client:
-                    logger.info(f"Authentication succeeded for '{self._model_provider}' using method: '{name}'")
+                    logger.debug(f"Authentication succeeded for '{self._model_provider}' using method: '{name}'")
                     return client
             except Exception as e:
                 logger.warning(f"Authentication method '{name}' failed for '{self._model_provider}': {str(e)}")

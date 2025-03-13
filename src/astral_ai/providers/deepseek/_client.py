@@ -29,13 +29,14 @@ from ._constants import DEEPSEEK_BASE_URL
 # Exceptions
 from astral_ai.errors.exceptions import (
     AstralProviderResponseError,
-    AstralAuthMethodFailureError
+    AstralAuthMethodFailureError,
+    AstralMissingCredentialsError
 )
 from astral_ai.errors.error_decorators import provider_error_handler
 
 
 # Astral Auth
-from astral_ai._auth import AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS, validate_credentials
+from astral_ai._auth import AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS, AUTH_METHOD_NAMES
 
 # Provider Types
 from astral_ai.providers.deepseek._types import DeepSeekClientsType
@@ -66,7 +67,35 @@ class DeepSeekProviderClient(BaseProviderClient[
         # Initialize the base class (which performs authentication)
         super().__init__(config)
 
-    
+    # --------------------------------------------------------------------------
+    # Validate Credentials
+    # --------------------------------------------------------------------------
+
+    def _validate_credentials(self, auth_method_name: AUTH_METHOD_NAMES, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS) -> Dict[AUTH_METHOD_NAMES, str]:
+        """
+        Validate the credentials for the DeepSeek provider.
+        """
+        credentials = {}
+
+        if auth_method_name == "api_key_with_base_url":
+            credentials["api_key"] = config.get(self._model_provider, {}).get(auth_method_name, None) or env.get("DEEPSEEK_API_KEY")
+            if not credentials["api_key"]:
+                raise AstralAuthMethodFailureError("API key is required")
+
+            return credentials
+        else:
+            raise AstralMissingCredentialsError(
+                f"Invalid authentication method: {auth_method_name}",
+                auth_method_name=auth_method_name,
+                provider_name=self._model_provider,
+                required_credentials=["api_key"],
+                missing_credentials=[auth_method_name]
+            )
+
+    # --------------------------------------------------------------------------
+    # Authenticate
+    # --------------------------------------------------------------------------
+
     @auth_method("api_key_with_base_url")
     def auth_via_api_key_with_base_url(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS) -> OpenAI:
         """
@@ -83,18 +112,22 @@ class DeepSeekProviderClient(BaseProviderClient[
             AstralMissingCredentialsError: If any required credentials are missing
             AstralAuthMethodFailureError: If client initialization fails
         """
-        # IMPORTANT: For testing, use api_key auth method which requires base_url
-        credentials = validate_credentials(
-            auth_method="api_key",  # Use api_key for testing with base_url requirement
-            provider_name=self._model_provider,
+        credentials = self._validate_credentials(
+            auth_method_name="api_key_with_base_url",
             config=config,
             env=env
         )
 
+        # Extract the credentials
+        api_key = credentials["api_key"]
+
+        # IMPORTANT: This is hard-coded for DeepSeek locally
+        base_url = DEEPSEEK_BASE_URL
+
         # Initialize the client with the credentials and hard-coded base URL
         # Any exceptions will be caught by the auth_method decorator and wrapped appropriately
         # IMPORTANT: We use the OpenAI client for DeepSeek
-        return OpenAI(api_key=credentials["api_key"], base_url=DEEPSEEK_BASE_URL)
+        return OpenAI(api_key=api_key, base_url=base_url)
 
     # # --------------------------------------------------------------------------
     # # Create Completion Stream

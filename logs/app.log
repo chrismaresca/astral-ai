@@ -8203,3 +8203,13 @@ astral_ai.errors.exceptions.AstralMissingCredentialsError: Missing required cred
 2025-03-12 21:07:43 | Astral Logger | INFO | info | Auth method 'api_key' for provider 'openai' completed successfully
 2025-03-12 21:07:43 | Astral Logger | INFO | info | Authentication succeeded for 'openai' using method: 'api_key'
 2025-03-12 21:07:43 | Astral Logger | INFO | info | Caching provider client for future use.
+2025-03-13 11:31:29 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:32:14 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:32:39 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:33:01 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:33:14 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:33:32 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:33:53 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:34:02 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:34:17 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': 'api_key'
+2025-03-13 11:36:48 | Astral Logger | WARNING | warning | Authentication method 'api_key' failed for 'openai': OpenAIProviderClient._validate_credentials() got an unexpected keyword argument 'type'
