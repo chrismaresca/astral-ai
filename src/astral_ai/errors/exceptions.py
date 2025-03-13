@@ -361,26 +361,62 @@ class AstralAuthMethodFailureError(AstralAuthError):
 
 
 class AstralUnknownAuthMethodError(AstralAuthError):
-    """Raised when an authentication method is not supported."""
-
-    def __init__(self, method_name: str, supported_methods: list[str], *,
+    """Exception raised when an unknown authentication method is specified."""
+    
+    def __init__(self, message: str, *,
+                auth_method_name: Optional[str] = None,
+                provider_name: Optional[str] = None,
+                supported_methods: Optional[list[str]] = None,
                 status_code: Optional[int] = None,
                 request_id: Optional[str] = None,
                 error_body: Optional[Any] = None,
                 error_traceback: Optional[str] = None,
                 **kwargs: Any) -> None:
-        message = (
-            f"Unknown authentication method specified: '{method_name}'. "
-            f"Supported methods for this client: {supported_methods}"
+        super().__init__(
+            message,
+            status_code=status_code,
+            request_id=request_id,
+            error_body=error_body,
+            error_traceback=error_traceback,
+            auth_method_name=auth_method_name,
+            provider_name=provider_name,
+            **kwargs
         )
-        super().__init__(message, 
-                        status_code=status_code,
-                        request_id=request_id,
-                        error_body=error_body,
-                        error_traceback=error_traceback,
-                        **kwargs)
-        self.method_name = method_name
-        self.supported_methods = supported_methods
+        self.supported_methods = supported_methods or []
+
+
+class MultipleAstralAuthenticationErrors(AstralAuthError):
+    """Exception raised when multiple authentication methods fail.
+    
+    This exception stores information about all the individual failed authentication
+    attempts and their corresponding error messages.
+    """
+    
+    def __init__(self, message: str = "", *,
+                status_code: Optional[int] = None,
+                request_id: Optional[str] = None,
+                error_body: Optional[Any] = None,
+                error_traceback: Optional[str] = None,
+                auth_method_name: Optional[str] = None,
+                provider_name: Optional[str] = None,
+                model_name: Optional[Union[ModelName, str]] = None,
+                errors: Optional[list[tuple[str, Exception]]] = None,
+                documentation_link: Optional[str] = None,
+                **kwargs: Any) -> None:
+        super().__init__(
+            message,
+            status_code=status_code,
+            request_id=request_id,
+            error_body=error_body,
+            error_traceback=error_traceback,
+            auth_method_name=auth_method_name,
+            provider_name=provider_name,
+            model_name=model_name,
+            documentation_link=documentation_link,
+            **kwargs
+        )
+        self.errors = errors or []
+
 
 # ------------------------------------------------------------------------- #
 # Unexpected Errors
@@ -388,5 +424,5 @@ class AstralUnknownAuthMethodError(AstralAuthError):
 
 
 class AstralUnexpectedError(AstralBaseError):
-    """Unexpected error from a provider API that doesn't fit other categories"""
+    """Exception for unexpected errors that don't fit other categories."""
     pass

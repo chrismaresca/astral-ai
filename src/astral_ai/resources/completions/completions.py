@@ -542,7 +542,7 @@ def run_simple_test():
     
     # Make the completion request
     response = completion(
-        model="deepseek-chat",
+        model="gpt-4o",
         messages=messages
     )
 

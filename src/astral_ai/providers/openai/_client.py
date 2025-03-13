@@ -62,33 +62,23 @@ class OpenAIProviderClient(BaseProviderClient[
         super().__init__(config)
 
     @auth_method("api_key")
-    def auth_via_api_key(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS, credentials: Dict[str, str] = None) -> OpenAI:
+    def auth_via_api_key(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS) -> OpenAI:
         """
         Authenticate using an API key from config or environment variables.
-        
+
         Args:
             config: Configuration dictionary
             env: Environment variables dictionary
             credentials: Pre-validated credentials from the auth_method decorator
         """
-        # If credentials weren't passed (shouldn't happen with our decorator), validate them
-        if credentials is None:
-            credentials = validate_credentials(
-                auth_method="api_key",
-                provider_name=self._model_provider,
-                config=config,
-                env=env
-            )
+        credentials = validate_credentials(
+            auth_method="api_key",  # Use api_key for testing with base_url requirement
+            provider_name=self._model_provider,
+            config=config,
+            env=env
+        )
 
-        # Initialize the client with the credentials
-        try:
-            return OpenAI(api_key=credentials["api_key"])
-        except Exception as e:
-            raise AstralAuthMethodFailureError(
-                f"Failed to initialize OpenAI client: {str(e)}",
-                auth_method_name="api_key",
-                provider_name=self._model_provider
-            ) from e
+        return OpenAI(api_key=credentials["api_key"])
 
     # # --------------------------------------------------------------------------
     # # Create Completion Stream

@@ -2,6 +2,7 @@
 # error_formatting.py
 # -------------------------------------------------------------------------------- #
 
+import os
 import traceback
 from typing import Literal, Optional, Dict, Any
 
@@ -213,6 +214,69 @@ PROVIDER_ERROR_MESSAGES: Dict[str, Any] = {
                 ],
                 "documentation_url": "https://docs.astralai.com/authentication/anthropic"
             }
+        },
+        "DEEPSEEK": {
+            "unknown_method": {
+                "base_message": "The authentication method you specified is not supported for DeepSeek.",
+                "suggestions": [
+                    "Use 'api_key' or 'api_key_with_base_url' authentication for DeepSeek.",
+                    "Check the auth_method parameter in your config."
+                ],
+                "documentation_url": "https://docs.astralai.com/authentication/deepseek"
+            },
+            "method_failure": {
+                "base_message": "Authentication with DeepSeek failed due to an error in the authentication method.",
+                "suggestions": [
+                    "Double-check your authentication configuration.",
+                    "Ensure you're using 'api_key' or 'api_key_with_base_url' authentication for DeepSeek."
+                ],
+                "documentation_url": "https://docs.astralai.com/authentication/deepseek"
+            },
+            "configuration": {
+                "base_message": "Your DeepSeek authentication configuration is incorrect.",
+                "suggestions": [
+                    "Check your configuration file for errors.",
+                    "Make sure all required parameters are properly formatted."
+                ],
+                "documentation_url": "https://docs.astralai.com/authentication/deepseek"
+            },
+            "missing_credentials": {
+                "base_message": "Required DeepSeek credentials are missing.",
+                "suggestions": [
+                    "For 'api_key' authentication, you must provide an API key.",
+                    "For 'api_key_with_base_url' authentication, you must provide both an API key and a base URL.",
+                    "Check your environment variables or configuration file."
+                ],
+                "documentation_url": "https://docs.astralai.com/authentication/deepseek"
+            },
+            "invalid_credentials": {
+                "base_message": "Your DeepSeek credentials are invalid or rejected by the API.",
+                "suggestions": [
+                    "Verify your API key is correct and active.",
+                    "Check if your DeepSeek account is in good standing.",
+                    "Make sure your base URL is correctly formatted if using 'api_key_with_base_url'."
+                ],
+                "documentation_url": "https://docs.astralai.com/authentication/deepseek"
+            },
+            "environment_variables": {
+                "base_message": "Required environment variables for DeepSeek authentication are missing.",
+                "suggestions": [
+                    "For 'api_key' authentication, set the DEEPSEEK_API_KEY environment variable.",
+                    "For 'api_key_with_base_url', set both DEEPSEEK_API_KEY and DEEPSEEK_BASE_URL environment variables.",
+                    "Check your .env file or system environment variables."
+                ],
+                "documentation_url": "https://docs.astralai.com/authentication/deepseek"
+            },
+            "unexpected": {
+                "base_message": "An unexpected error occurred during DeepSeek authentication.",
+                "suggestions": [
+                    "Check your network connection.",
+                    "Verify your API key is valid.",
+                    "Make sure your DeepSeek account is active.",
+                    "Check the base URL format if using 'api_key_with_base_url'."
+                ],
+                "documentation_url": "https://docs.astralai.com/authentication/deepseek"
+            }
         }
     },
     "client": {
@@ -325,7 +389,11 @@ def format_error_message(
     """
 
     source_name = source_name.upper()
+    
+    # Initialize message_parts for building the message
+    message_parts = []
 
+    # Process error category-specific data
     if error_category == "provider":
         # Lookup provider-specific details.
         provider_msgs = PROVIDER_ERROR_MESSAGES.get("provider", {})
@@ -356,16 +424,12 @@ def format_error_message(
         suggestions = config.get("suggestions", [])
         documentation_url = config.get("documentation_url", "https://docs.astralai.com/errors")
     
-    # Append additional context if provided.
-    # TODO: Do we want this?
-    # if additional_message:
-    #     formatted_message += f" Details: {additional_message}"
-    
-    # Build the structured error message.
-    message_parts = []
-    message_parts.append("\n" + "=" * 80)
+    # 1. Build the header
+    message_parts.append("\n\n" + "=" * 80)
     message_parts.append(f"  {emoji}  {error_type.upper()}  {emoji}")
     message_parts.append("=" * 80 + "\n")
+    
+    # 2. Add basic error information
     message_parts.append(f"📌 ERROR TYPE: {error_type.replace('_', ' ').upper()}")
     
     # Add source information.
@@ -377,9 +441,14 @@ def format_error_message(
         message_parts.append(f"🏢 SOURCE: {source_name}")
     
     message_parts.append(f"📝 MESSAGE: {formatted_message}")
+    
+    # 3. Add additional details if provided (after the basic info)
+    if additional_message:
+        message_parts.append(f"📋 DETAILS: {additional_message}")
+    
     message_parts.append("")  # Spacing
     
-    # Append technical details if available.
+    # 4. Add technical details if available
     tech_details = []
     if status_code is not None:
         tech_details.append(f"Status code: {status_code}")
@@ -397,23 +466,153 @@ def format_error_message(
             message_parts.append(f"  • {detail}")
         message_parts.append("")
     
-    # Append troubleshooting suggestions.
+    # 5. Add troubleshooting suggestions
     if suggestions:
         message_parts.append("💡 POTENTIAL SOLUTIONS:")
         for suggestion in suggestions:
             message_parts.append(f"  • {suggestion}")
         message_parts.append("")
     
-    # Append documentation links.
+    # 6. Add documentation links
     message_parts.append("📚 DOCUMENTATION LINKS:")
     message_parts.append(f"  • Documentation: {documentation_url}")
     message_parts.append("")
     
-    # Append error traceback if available.
-    if error_traceback:
+    # 7. Add error traceback if enabled
+    if error_traceback and os.environ.get("ASTRAL_TRACEBACK_IN_MESSAGE", "").lower() == "true":
         message_parts.append("🔍 ERROR TRACEBACK:")
         message_parts.append(f"{error_traceback}")
     
+    # 8. Add footer
+    message_parts.append("=" * 80)
+    
+    return "\n".join(message_parts)
+
+def format_multiple_auth_errors(
+    provider_name: str,
+    errors: list[tuple[str, Exception]],
+    error_traceback: Optional[str] = None
+) -> str:
+    """
+    Format an error message for multiple authentication failures.
+    
+    Args:
+        provider_name: The name of the provider
+        errors: List of tuples containing (auth_method_name, exception)
+        error_traceback: Optional traceback string
+        
+    Returns:
+        Formatted error message with details about all failed authentication attempts
+    """
+    provider_name = provider_name.upper()
+    
+    message_parts = []
+    
+    # 1. Header
+    message_parts.append("\n\n" + "=" * 80)
+    if len(errors) == 1:
+        message_parts.append("  🔒  AUTHENTICATION FAILURE  🔒")
+    else:
+        message_parts.append("  🔒  MULTIPLE AUTHENTICATION FAILURES  🔒")
+    message_parts.append("=" * 80 + "\n")
+    
+    # 2. Basic information
+    if len(errors) == 1:
+        auth_method, _ = errors[0]
+        message_parts.append(f"📌 ERROR TYPE: AUTHENTICATION FAILURE")
+        message_parts.append(f"🏢 PROVIDER: {provider_name}")
+        message_parts.append(f"🔑 METHOD: {auth_method}")
+        message_parts.append(f"📝 MESSAGE: Authentication failed for provider '{provider_name}' using method '{auth_method}'.")
+    else:
+        message_parts.append(f"📌 ERROR TYPE: MULTIPLE AUTHENTICATION FAILURES")
+        message_parts.append(f"🏢 PROVIDER: {provider_name}")
+        message_parts.append(f"📝 MESSAGE: All authentication methods failed for provider '{provider_name}'.")
+    
+    # Extract any additional details from the first error
+    if len(errors) == 1:
+        _, error = errors[0]
+        if hasattr(error, "_message") and error._message:
+            message_parts.append(f"📋 DETAILS: {error._message}")
+    
+    message_parts.append("")  # Spacing
+    
+    # 3. Individual errors
+    if len(errors) == 1:
+        message_parts.append("❌ AUTHENTICATION ERROR DETAILS:")
+    else:
+        message_parts.append("❌ FAILED AUTHENTICATION ATTEMPTS:")
+        
+    for idx, (auth_method, error) in enumerate(errors, 1):
+        if len(errors) > 1:
+            message_parts.append(f"\n--- ATTEMPT #{idx}: '{auth_method}' ---")
+        
+        # Extract error information based on error type
+        if hasattr(error, "missing_credentials") and error.missing_credentials:
+            missing_creds = ", ".join(error.missing_credentials)
+            message_parts.append(f"Missing credentials: {missing_creds}")
+            
+            # For missing credentials errors, check if we need to set env variables
+            if hasattr(error, "provider_name"):
+                env_vars = []
+                for cred in error.missing_credentials:
+                    env_var = f"{error.provider_name.upper()}_{cred.upper()}"
+                    env_vars.append(env_var)
+                if env_vars:
+                    env_vars_str = ", ".join(env_vars)
+                    message_parts.append(f"Required environment variables: {env_vars_str}")
+        elif isinstance(error, Exception):
+            # Get error message without all the formatting
+            error_msg = str(error)
+            # Try to extract just the basic error message, not the full formatted version
+            if "DETAILS:" in error_msg:
+                error_msg = error_msg.split("DETAILS:")[1].split("\n")[0].strip()
+            elif "\n" in error_msg:
+                error_msg = error_msg.split("\n")[0]
+                
+            message_parts.append(f"Error: {error_msg}")
+            
+        # Add more specific attributes if available
+        for attr_name in dir(error):
+            if not attr_name.startswith('_') and not callable(getattr(error, attr_name)) and attr_name not in [
+                "args", "with_traceback", "errors", "missing_credentials", "provider_name", "auth_method_name"
+            ]:
+                value = getattr(error, attr_name)
+                if isinstance(value, (str, int, bool, list)) and value:
+                    # Skip very long values or empty values
+                    if isinstance(value, str) and len(value) > 100:
+                        value = value[:100] + "..."
+                    message_parts.append(f"{attr_name}: {value}")
+            
+    message_parts.append("\n" + "-" * 80)
+    
+    # 4. Suggestions
+    message_parts.append("\n💡 POTENTIAL SOLUTIONS:")
+    
+    # Tailored suggestions based on error types
+    missing_creds_errors = [e for _, e in errors if hasattr(e, "missing_credentials") and e.missing_credentials]
+    if missing_creds_errors:
+        message_parts.append("  • Set the required environment variables mentioned above")
+        message_parts.append("  • Add the missing credentials to your configuration file")
+    
+    message_parts.append("  • Verify your API keys and other credentials are correctly set")
+    message_parts.append("  • Configure a specific authentication method in your astral.yaml file")
+    
+    if len(errors) > 1:
+        message_parts.append("  • Review the individual error messages above for specific issues")
+    message_parts.append("")
+    
+    # 5. Documentation
+    message_parts.append("📚 DOCUMENTATION LINKS:")
+    message_parts.append(f"  • Authentication guide: https://docs.astralai.com/authentication")
+    message_parts.append(f"  • Provider-specific documentation: https://docs.astralai.com/authentication/{provider_name.lower()}")
+    message_parts.append("")
+    
+    # 6. Traceback - only include if enabled
+    if error_traceback and os.environ.get("ASTRAL_TRACEBACK_IN_MESSAGE", "").lower() == "true":
+        message_parts.append("🔍 ERROR TRACEBACK:")
+        message_parts.append(f"{error_traceback}")
+    
+    # 7. Footer
     message_parts.append("=" * 80)
     
     return "\n".join(message_parts)

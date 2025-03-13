@@ -30,6 +30,7 @@ from typing import (
 )
 
 from abc import ABCMeta
+import traceback
 
 # Provider Types
 from astral_ai.providers._generics import (
@@ -57,13 +58,14 @@ from astral_ai.constants._models import ModelProvider
 
 # Exceptions
 from astral_ai.errors.exceptions import (
-    ProviderAuthenticationError,
-    UnknownAuthMethodError,
-    AuthMethodFailureError,
     AstralAuthError,
     AstralAuthMethodFailureError,
     AstralUnknownAuthMethodError,
+    MultipleAstralAuthenticationErrors,
 )
+
+from astral_ai.errors.error_decorators import auth_error_handler
+from astral_ai.errors.error_formatter import format_error_message
 
 # Logging
 from astral_ai.logger import logger
@@ -90,11 +92,11 @@ def read_config(config_path: Path) -> Optional[AUTH_CONFIG_TYPE_WITH_PROVIDER]:
         try:
             with config_path.open("r", encoding="utf-8") as f:
                 config_data: AUTH_CONFIG_TYPE_WITH_PROVIDER = yaml.safe_load(f)
-                logger.debug(f"Astral authentication configuration loaded from {config_path}: {config_data}")
+                logger.info(f"Astral authentication configuration loaded from {config_path}: {config_data}")
                 return config_data
         except Exception as e:
-            logger.error(f"Failed to load Astral authentication configuration file {config_path}: {e}", exc_info=True)
-    logger.debug("No Astral authentication configuration file found; proceeding without a configuration file.")
+            logger.error(f"Failed to load Astral authentication configuration file {config_path}: {e}")
+    logger.info("No Astral authentication configuration file found; proceeding without a configuration file.")
     return None
 
 
@@ -165,21 +167,19 @@ class BaseProviderClient(
         """
 
         self._full_config: AUTH_CONFIG_TYPE_WITH_PROVIDER = config or self.load_full_config() or {}
-        # Extract the configuration specific to this model provider.
         self._config: AUTH_CONFIG_TYPE = self.get_provider_config()
-        logger.debug(f"Provider-specific config for '{self._model_provider}': {self._config}")
+        logger.info(f"Provider-specific config for '{self._model_provider}': {self._config}")
 
-        # Handle client caching
         cache_client = self._config.get("cache_client", True)
         cache_key = self.__class__
 
         if cache_client and cache_key in self._client_cache:
-            logger.debug("Using cached provider client.")
+            logger.info("Using cached provider client.")
             self.client: ProviderClientT = self._client_cache[cache_key]
         else:
             self.client = self._get_or_authenticate_client()
             if cache_client:
-                logger.debug("Caching provider client for future use.")
+                logger.info("Caching provider client for future use.")
                 self._client_cache[cache_key] = self.client
 
     # --------------------------------------------------------------------------
@@ -225,66 +225,65 @@ class BaseProviderClient(
     # Get or Authenticate Client
     # --------------------------------------------------------------------------
 
+    @auth_error_handler
     def _get_or_authenticate_client(self) -> ProviderClientT:
-        """
-        Attempts to authenticate using a specified auth method (if provided in config)
-        or by looping through all available strategies.
-        
-        Returns:
-            ProviderClientT: An authenticated provider client
-            
-        Raises:
-            AstralUnknownAuthMethodError: If the specified auth method is not supported
-            AstralAuthMethodFailureError: If the specified auth method fails
-            AstralAuthError: If all authentication methods fail
-        """
+        logger.info(f"Available auth strategies for {self.__class__.__name__}: {list(self._auth_strategies.keys())}")
+        for name, func in self._auth_strategies.items():
+            logger.info(f"  Strategy '{name}': {func.__name__}")
+
         env = get_env_vars()
         auth_method_config = self._config.get("auth_method")
         supported_methods = list(self._auth_strategies.keys())
-        
+
         # Determine which authentication methods to try
-        methods_to_try = []
         if auth_method_config:
-            # If specific auth method is configured, only try that one
             auth_method_name = auth_method_config.auth_method
+            logger.debug(f"Auth method from config: '{auth_method_name}'")
+
             if auth_method_name not in self._auth_strategies:
-                error = AstralUnknownAuthMethodError(auth_method_name, supported_methods)
+                error = AstralUnknownAuthMethodError(
+                    f"Unknown authentication method '{auth_method_name}' for provider '{self._model_provider}'. Supported methods: {supported_methods}",
+                    auth_method_name=auth_method_name,
+                    provider_name=self._model_provider,
+                    supported_methods=supported_methods
+                )
                 logger.error(f"{error}")
                 raise error
+
             methods_to_try = [(auth_method_name, self._auth_strategies[auth_method_name])]
-            logger.debug(f"Using configured authentication method: '{auth_method_name}' for '{self._model_provider}'")
+            logger.info(f"Using configured authentication method: '{auth_method_name}' for '{self._model_provider}'")
         else:
-            # Otherwise try all available strategies
             methods_to_try = list(self._auth_strategies.items())
-            logger.debug(f"No specific auth method configured for '{self._model_provider}'. Will try all available methods: {supported_methods}")
-        
-        # Try each authentication method
+            logger.info(f"No specific auth method configured for '{self._model_provider}'. Will try all available methods: {supported_methods}")
+
         errors = []
         for name, strategy in methods_to_try:
-            logger.debug(f"Attempting authentication {self._model_provider} using method: '{name}'")
+            logger.info(f"Attempting authentication for {self._model_provider} using method: '{name}'")
             try:
                 client = strategy(self, self._config, env)
                 if client:
-                    logger.debug(f"Authentication succeeded for '{self._model_provider}' using method: '{name}'")
+                    logger.info(f"Authentication succeeded for '{self._model_provider}' using method: '{name}'")
                     return client
             except Exception as e:
-                error_msg = f"Authentication method '{name}' failed for '{self._model_provider}': {e}"
-                logger.warning(error_msg, exc_info=True)
-                errors.append((name, str(e)))
-                
-                # If using a specific configured method, fail immediately
-                if auth_method_config:
-                    raise AstralAuthMethodFailureError(error_msg) from e
-        
-        # If we get here, all authentication methods failed
-        error_details = "\n".join([f"- {name}: {error}" for name, error in errors])
-        error_message = f"All authentication methods failed for provider '{self._model_provider}':\n{error_details}"
-        logger.error(error_message)
-        raise AstralAuthError(error_message)
+                logger.warning(f"Authentication method '{name}' failed for '{self._model_provider}': {str(e)}")
+                errors.append((name, e))
+                # If there's only one method to try, re-raise the underlying error immediately.
+                if len(methods_to_try) == 1:
+                    print("We are here. BEFORE CALLED. Number of errors: ", len(errors))
+                    raise e
 
+        # If multiple methods were attempted and all failed, raise a consolidated error.
+        raise MultipleAstralAuthenticationErrors(
+            "",  # Empty message will be formatted by the decorator.
+            provider_name=self._model_provider,
+            auth_method_name="multiple_failed",
+            error_traceback=traceback.format_exc(),
+            errors=errors
+        )
     # --------------------------------------------------------------------------
     # Create Completion
     # --------------------------------------------------------------------------
+
     @abstractmethod
     def create_completion_chat(self, request: ProviderRequestChatT) -> ProviderResponseChatT:
         """

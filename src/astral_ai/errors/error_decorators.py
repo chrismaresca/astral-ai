@@ -7,6 +7,7 @@
 # -------------------------------------------------------------------------------- #
 # Built-in imports
 import functools
+import os
 import traceback
 from typing import Optional, Dict, Any
 
@@ -35,16 +36,18 @@ from astral_ai.errors.exceptions import (
     AstralUnexpectedError,
 
     # Auth Errors
-    AstralUnknownAuthMethodError,
-    AstralAuthMethodFailureError,
+    AstralAuthError,
     AstralAuthConfigurationError,
     AstralMissingCredentialsError,
     AstralInvalidCredentialsError,
     AstralEnvironmentVariableError,
+    AstralUnknownAuthMethodError,
+    AstralAuthMethodFailureError,
+    MultipleAstralAuthenticationErrors,
 )
 
 # Error Formatter
-from .error_formatter import format_error_message
+from .error_formatter import format_error_message, format_multiple_auth_errors
 
 # Astral AI Logger
 from astral_ai.logger import logger
@@ -76,7 +79,11 @@ def provider_error_handler(func):
             status_code = getattr(e, "status_code", None)
             request_id = kwargs.get("request_id") or getattr(e, "request_id", None)
             error_body = getattr(e, "body", None)
-            error_traceback = getattr(e, "error_traceback", None) or traceback.format_exc()
+            
+            # Only collect traceback if the environment variable is set
+            error_traceback = None
+            if os.environ.get("ASTRAL_TRACEBACK_IN_MESSAGE", "").lower() == "true":
+                error_traceback = getattr(e, "error_traceback", None) or traceback.format_exc()
 
             # Map the OpenAI error to the correct Astral error type.
             if isinstance(e, AuthenticationError):
@@ -109,6 +116,7 @@ def provider_error_handler(func):
                 error_body=error_body,
                 error_traceback=error_traceback
             )
+
             raise astral_error_class(verbose_message,
                                      status_code=status_code,
                                      request_id=request_id,
@@ -118,7 +126,12 @@ def provider_error_handler(func):
             # Wrap any other exception as an unexpected provider error.
             status_code = None
             request_id = kwargs.get("request_id")
-            error_traceback = traceback.format_exc()
+            
+            # Only collect traceback if the environment variable is set
+            error_traceback = None
+            if os.environ.get("ASTRAL_TRACEBACK_IN_MESSAGE", "").lower() == "true":
+                error_traceback = traceback.format_exc()
+                
             provider_name = getattr(self, "_model_provider", "unknown")
             verbose_message = format_error_message(
                 error_category="provider",
@@ -142,18 +155,32 @@ def provider_error_handler(func):
 # Auth Error Handler Decorator
 # -------------------------------------------------------------------------------- #
 def auth_error_handler(func):
-    """
-    Decorator for authentication-level functions.
-
-    This decorator captures internal authentication errors and enhances them with
-    detailed context, producing user-friendly error messages that help
-    developers identify and fix authentication issues.
-    """
     @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
         try:
             return func(self, *args, **kwargs)
+
+        except MultipleAstralAuthenticationErrors as e:
+            auth_source = getattr(self, "_model_provider", "unknown")
+            
+            # Only collect traceback if the environment variable is set
+            error_traceback = None
+            if os.environ.get("ASTRAL_TRACEBACK_IN_MESSAGE", "").lower() == "true":
+                error_traceback = getattr(e, "error_traceback", None) or traceback.format_exc()
+                
+            # Reuse message if already formatted
+            message = str(e) if "=====" in str(e) else format_multiple_auth_errors(
+                provider_name=auth_source, 
+                errors=e.errors,
+                error_traceback=error_traceback  # Include traceback in the message
+            )
+            # Create a copy of the exception's attributes
+            error_attrs = {k: v for k, v in vars(e).items() if k != "args"}
+            error_attrs["error_traceback"] = error_traceback
+            raise MultipleAstralAuthenticationErrors(message, **error_attrs) from None
+
         except (
+            AstralAuthError,
             AstralUnknownAuthMethodError,
             AstralAuthMethodFailureError,
             AstralAuthConfigurationError,
@@ -161,105 +188,79 @@ def auth_error_handler(func):
             AstralInvalidCredentialsError,
             AstralEnvironmentVariableError
         ) as e:
-            # Extract common attributes
-            error_traceback = traceback.format_exc()
             auth_source = getattr(self, "_model_provider", "unknown")
             
-            # Map exception types to error types
-            error_type_mapping = {
+            # Only collect traceback if the environment variable is set
+            error_traceback = None
+            if os.environ.get("ASTRAL_TRACEBACK_IN_MESSAGE", "").lower() == "true":
+                error_traceback = getattr(e, "error_traceback", None) or traceback.format_exc()
+                
+            # Map exception types to a simpler error type
+            error_type_map = {
                 AstralUnknownAuthMethodError: "unknown_method",
                 AstralAuthMethodFailureError: "method_failure",
                 AstralAuthConfigurationError: "configuration",
                 AstralMissingCredentialsError: "missing_credentials",
                 AstralInvalidCredentialsError: "invalid_credentials",
-                AstralEnvironmentVariableError: "environment_variables"
+                AstralEnvironmentVariableError: "environment_variables",
+                AstralAuthError: "unexpected",
             }
-            error_type = error_type_mapping.get(e.__class__, "unexpected")
+            error_type = error_type_map.get(type(e), "unexpected")
+            additional_message = str(e) or "Authentication error occurred."
             
-            # Extract auth-specific attributes
-            provider_name = getattr(e, "provider_name", auth_source)
-            required_credentials = getattr(e, "required_credentials", [])
-            missing_credentials = getattr(e, "missing_credentials", [])
-            
-            # For missing credentials errors, include specific details
-            additional_message = ""
-            if error_type == "missing_credentials" and missing_credentials:
-                missing_creds_list = ", ".join(missing_credentials)
-                additional_message = f"Missing credentials: {missing_creds_list}"
-            
-            # Generate verbose message if needed
-            verbose_message = str(e) if str(e) else format_error_message(
+            message = format_error_message(
                 error_category="authentication",
                 error_type=error_type,
-                source_name=provider_name,
+                source_name=auth_source,
                 additional_message=additional_message,
                 status_code=getattr(e, "status_code", None),
                 request_id=getattr(e, "request_id", None),
                 error_body=getattr(e, "error_body", None),
-                error_traceback=error_traceback
+                error_traceback=error_traceback  # Include the traceback in the formatted message
             )
             
-            # Collect all attributes from the original exception
-            error_kwargs = {
-                "status_code": getattr(e, "status_code", None),
-                "request_id": getattr(e, "request_id", None),
-                "error_body": getattr(e, "error_body", None),
-                "error_traceback": error_traceback,
-                "auth_method_name": getattr(e, "auth_method_name", "unknown"),
-                "provider_name": provider_name,
-                "model_name": getattr(e, "model_name", None),
-                "required_credentials": required_credentials,
-                "env_variable_name": getattr(e, "env_variable_name", None),
-                "documentation_link": getattr(e, "documentation_link", "https://docs.astralai.com/authentication")
-            }
+            # Create a copy of the exception's attributes
+            error_attrs = {k: v for k, v in vars(e).items() if k != "args"}
+            error_attrs["error_traceback"] = error_traceback
             
-            # Add any additional attributes from the original exception
-            for attr_name in dir(e):
-                if not attr_name.startswith('__') and not callable(getattr(e, attr_name)) and attr_name not in error_kwargs:
-                    error_kwargs[attr_name] = getattr(e, attr_name)
-                    
-            raise e.__class__(verbose_message, **error_kwargs) from e
+            raise e.__class__(message, **error_attrs) from None
 
         except Exception as e:
-            # Handle unexpected errors during authentication
-            error_traceback = traceback.format_exc()
             auth_source = getattr(self, "_model_provider", "unknown")
-            auth_method_name = getattr(func, "_auth_name", "unknown")
             
-            # Get required credentials if available
-            try:
-                from astral_ai._auth import AUTH_METHOD_REQUIRED_CREDENTIALS
-                required_credentials = AUTH_METHOD_REQUIRED_CREDENTIALS.get(auth_method_name, [])
-            except ImportError:
-                required_credentials = []
-
-            # Generate error message
-            verbose_message = str(e) if str(e) else format_error_message(
+            # Only collect traceback if the environment variable is set
+            error_traceback = None
+            if os.environ.get("ASTRAL_TRACEBACK_IN_MESSAGE", "").lower() == "true":
+                error_traceback = traceback.format_exc()
+            
+            message = format_error_message(
                 error_category="authentication",
                 error_type="unexpected",
                 source_name=auth_source,
-                additional_message="",
+                additional_message=str(e) or "Unexpected error during authentication.",
                 status_code=None,
                 request_id=None,
                 error_body=None,
-                error_traceback=error_traceback
+                error_traceback=error_traceback  # Include the traceback in the formatted message
             )
-
-            raise AstralUnexpectedError(
-                verbose_message,
+            
+            raise AstralAuthError(
+                message,
                 status_code=None,
                 request_id=None,
                 error_body=None,
                 error_traceback=error_traceback,
-                auth_method_name=auth_method_name,
-                provider_name=auth_source,
-                required_credentials=required_credentials
-            ) from e
+                auth_method_name=getattr(func, "_auth_name", "unknown"),
+                provider_name=auth_source
+            ) from None
+
     return wrapper
 
 # ------------------------------------------------------------------------- #
 # Resource Error Handler Decorator
 # ------------------------------------------------------------------------- #
+
+
 def resource_error_handler(func):
     """
     Decorator for resource-level functions.
@@ -278,7 +279,12 @@ def resource_error_handler(func):
             status_code = getattr(e, "status_code", None)
             request_id = getattr(e, "request_id", None)
             error_body = getattr(e, "error_body", None)
-            error_traceback = getattr(e, "error_traceback", None) or traceback.format_exc()
+            
+            # Only collect traceback if the environment variable is set
+            error_traceback = None
+            if os.environ.get("ASTRAL_TRACEBACK_IN_MESSAGE", "").lower() == "true":
+                error_traceback = getattr(e, "error_traceback", None) or traceback.format_exc()
+                
             resource_name = getattr(self, "_resource_name", "unknown")
 
             verbose_message = format_error_message(
