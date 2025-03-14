@@ -25,12 +25,15 @@ from astral_ai.constants._models import ModelName
 # Utilities
 from astral_ai.utilities import get_provider_from_model_name
 
-
 # Providers
 from astral_ai.providers._client_registry import ProviderClientRegistry
+from astral_ai.providers._adapters import create_adapter
 
 # Cost Strategies
 from astral_ai.tracing._cost_strategies import BaseCostStrategy, ReturnCostStrategy
+
+# Logger
+from astral_ai.logger import logger
 
 
 # -------------------------------------------------------------------------------- #
@@ -78,33 +81,53 @@ class AstralResource(Generic[TRequest, TResponse], ABC):
         # Set the request
         self.request = request
 
-        # Setup the resource
-        self._setup_resource()
-
-    def _setup_resource(self) -> None:
-        """
-        Setup the resource.
-        """
         # Extract core parameters
         self.astral_params = self.request.astral_params
         self.astral_client = self.astral_params.astral_client
 
+        # Determine model provider
         self._model_provider = get_provider_from_model_name(self.request.model)
 
-        # TODO: remove this in production
-        # self.model_provider = "openai"
-
-        self.client = ProviderClientRegistry.get_client(
+        # Initialize clients
+        self._client = ProviderClientRegistry.get_client(
             self._model_provider,
-            astral_client=self.astral_client
+            astral_client=self.astral_client,
+            async_client=False
+        )
+        self._async_client = ProviderClientRegistry.get_client(
+            self._model_provider,
+            astral_client=self.astral_client,
+            async_client=True
         )
 
-        # Set up provider client and adapter
-        from astral_ai.providers._adapters import create_adapter
-        self.adapter = create_adapter(self._model_provider)
+        # Initialize adapter and cost strategy directly
+        self._adapter = create_adapter(self._model_provider)
+        self._cost_strategy = self.astral_params.cost_strategy or ReturnCostStrategy()
 
-        # Set cost strategy from astral params
-        self.cost_strategy = self.astral_params.cost_strategy or ReturnCostStrategy()
+    @property
+    def client(self):
+        """Synchronous client."""
+        return self._client
+
+    @property
+    def async_client(self):
+        """Asynchronous client."""
+        return self._async_client
+
+    @property
+    def adapter(self):
+        """Provider adapter."""
+        return self._adapter
+
+    @property
+    def cost_strategy(self):
+        """Cost strategy."""
+        return self._cost_strategy
+
+    @cost_strategy.setter
+    def cost_strategy(self, value):
+        """Setter for cost strategy."""
+        self._cost_strategy = value
 
     # --------------------------------------------------------------------------
     # Validation

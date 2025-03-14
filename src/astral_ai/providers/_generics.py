@@ -32,7 +32,11 @@ if TYPE_CHECKING:
         OpenAIRequestStructuredType,
         OpenAIRequestStreamingType,
         # Clients
+        OpenAISyncClientType,
+        OpenAIAsyncClientType,  
         OpenAIClientsType,
+        AzureOpenAISyncClientType,
+        AzureOpenAIAsyncClientType,
         AzureOpenAIClientsType,
         # Response Types
         OpenAIChatResponseType,
@@ -108,6 +112,13 @@ ProviderMessageT = TypeVar("ProviderMessageT", bound=ProviderMessageType)
 # This enables generic handling of different client implementations.
 ProviderClientType: TypeAlias = Union["OpenAIClientsType", "AzureOpenAIClientsType", "DeepSeekClientsType"]
 ProviderClientT = TypeVar("ProviderClientT", bound=ProviderClientType)
+
+
+# TODO: Implement this
+SyncProviderClientType: TypeAlias = Union["OpenAISyncClientType", "AzureOpenAISyncClientType"]
+AsyncProviderClientType: TypeAlias = Union["OpenAIAsyncClientType", "AzureOpenAIAsyncClientType"]
+SyncProviderClientT = TypeVar("SyncProviderClientT", bound=SyncProviderClientType)
+AsyncProviderClientT = TypeVar("AsyncProviderClientT", bound=AsyncProviderClientType)
 
 # -------------------------------------------------------------------------------- #
 # Provider Request Types

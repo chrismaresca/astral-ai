@@ -12,7 +12,12 @@ from openai import OpenAI, AsyncOpenAI, AzureOpenAI, AsyncAzureOpenAI
 # OpenAI Clients
 # ------------------------------------------------------------------------------
 
+OpenAISyncClientType: TypeAlias = OpenAI
+OpenAIAsyncClientType: TypeAlias = AsyncOpenAI
 
-OpenAIClientsType: TypeAlias = Union[OpenAI, AsyncOpenAI]
+OpenAIClientsType: TypeAlias = Union[OpenAISyncClientType, OpenAIAsyncClientType]
 
-AzureOpenAIClientsType: TypeAlias = Union[AzureOpenAI, AsyncAzureOpenAI]
+AzureOpenAISyncClientType: TypeAlias = AzureOpenAI
+AzureOpenAIAsyncClientType: TypeAlias = AsyncAzureOpenAI
+
+AzureOpenAIClientsType: TypeAlias = Union[AzureOpenAISyncClientType, AzureOpenAIAsyncClientType]

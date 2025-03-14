@@ -34,13 +34,14 @@ import traceback
 
 # Provider Types
 from astral_ai.providers._generics import (
-    ProviderClientT,
     ProviderResponseChatT,
     ProviderResponseStructuredT,
     ProviderResponseStreamingT,
     ProviderRequestChatT,
     ProviderRequestStructuredT,
     ProviderRequestStreamingT,
+    SyncProviderClientT,
+    AsyncProviderClientT,
 )
 
 
@@ -115,7 +116,8 @@ class CombinedMeta(AuthRegistryMeta, ABCMeta):
 class BaseProviderClient(
     ABC,
     Generic[
-        ProviderClientT,
+        SyncProviderClientT,
+        AsyncProviderClientT,
         ProviderRequestChatT,
         ProviderRequestStructuredT,
         ProviderRequestStreamingT,
@@ -135,7 +137,8 @@ class BaseProviderClient(
     - Generic type definitions for provider-specific request/response types
 
     Type Parameters:
-        ProviderClientT: The provider's client type (e.g. OpenAI, Anthropic client)
+        SyncProviderClientT: The provider's synchronous client type (e.g. OpenAI, Anthropic client)
+        AsyncProviderClientT: The provider's asynchronous client type (e.g. OpenAI, Anthropic client)
         ProviderRequestChatT: The provider's chat request type
         ProviderRequestStructuredT: The provider's structured request type
         ProviderRequestStreamingT: The provider's streaming request type
@@ -150,7 +153,7 @@ class BaseProviderClient(
         _config_path: Path to the primary configuration file
     """
     _auth_strategies: Dict[AUTH_METHOD_NAMES, AuthCallable] = {}
-    _client_cache: ClassVar[Dict[Any, ProviderClientT]] = {}
+    _client_cache: ClassVar[Dict[str, SyncProviderClientT | AsyncProviderClientT]] = {}
     _model_provider: ModelProvider = None
     _config_path: ClassVar[Path] = Path("astral.yaml")
 
@@ -158,29 +161,64 @@ class BaseProviderClient(
     # Initialize
     # --------------------------------------------------------------------------
 
-    def __init__(self, config: Optional[AUTH_CONFIG_TYPE] = None) -> None:
+    def __init__(self, config: Optional[AUTH_CONFIG_TYPE] = None, async_client: bool = False) -> None:
         """Initialize the provider client with optional configuration.
 
         Args:
             config: Optional configuration dictionary. If not provided, will attempt
                    to load from config.yaml file.
+            async_client: Whether to initialize an async client
         """
-
         self._full_config: AUTH_CONFIG_TYPE_WITH_PROVIDER = config or self.load_full_config() or {}
         self._config: AUTH_CONFIG_TYPE = self.get_provider_config()
+        self._async_client_flag = async_client
         logger.debug(f"Provider-specific config for '{self._model_provider}': {self._config}")
+        
+        # Lazy initialization - clients will be created on first access
+        self._sync_client_instance = None
+        self._async_client_instance = None
 
-        cache_client = self._config.get("cache_client", True)
-        cache_key = self.__class__
-
-        if cache_client and cache_key in self._client_cache:
-            logger.debug("Using cached provider client.")
-            self.client: ProviderClientT = self._client_cache[cache_key]
-        else:
-            self.client = self._get_or_authenticate_client()
-            if cache_client:
-                logger.debug("Caching provider client for future use.")
-                self._client_cache[cache_key] = self.client
+    # --------------------------------------------------------------------------
+    # Client Properties (Lazy Initialization)
+    # --------------------------------------------------------------------------
+    
+    @property
+    def client(self) -> SyncProviderClientT:
+        """Lazily initialize and return the sync client."""
+        if self._sync_client_instance is None:
+            cache_client = self._config.get("cache_client", True)
+            sync_cache_key = f"{self.__class__.__name__}.sync"
+            
+            if cache_client and sync_cache_key in self._client_cache:
+                logger.debug(f"🔄 Using cached sync client for {self._model_provider}")
+                self._sync_client_instance = self._client_cache[sync_cache_key]
+            else:
+                logger.debug(f"🔍 No Sync Client identified for {self._model_provider}. Lazily initializing now.")
+                self._sync_client_instance = self._get_or_authenticate_client(async_client=False)
+                if cache_client:
+                    logger.debug(f"💾 Caching sync client for {self._model_provider}")
+                    self._client_cache[sync_cache_key] = self._sync_client_instance
+                    
+        return self._sync_client_instance
+    
+    @property
+    def async_client(self) -> AsyncProviderClientT:
+        """Lazily initialize and return the async client."""
+        if self._async_client_instance is None:
+            cache_client = self._config.get("cache_client", True)
+            async_cache_key = f"{self.__class__.__name__}.async"
+            
+            if cache_client and async_cache_key in self._client_cache:
+                logger.debug(f"🔄 Using cached async client for {self._model_provider}")
+                self._async_client_instance = self._client_cache[async_cache_key]
+            else:
+                logger.debug(f"🔍 No Async Client identified for {self._model_provider}. Lazily initializing now.")
+                self._async_client_instance = self._get_or_authenticate_client(async_client=True)
+                if cache_client:
+                    logger.debug(f"💾 Caching async client for {self._model_provider}")
+                    self._client_cache[async_cache_key] = self._async_client_instance
+                    
+        return self._async_client_instance
 
     # --------------------------------------------------------------------------
     # Load Full Config
@@ -226,10 +264,9 @@ class BaseProviderClient(
     # --------------------------------------------------------------------------
 
     @auth_error_handler
-    def _get_or_authenticate_client(self) -> ProviderClientT:
-        logger.debug(f"Available auth strategies for {self.__class__.__name__}: {list(self._auth_strategies.keys())}")
-        for name, func in self._auth_strategies.items():
-            logger.debug(f"  Strategy '{name}': {func.__name__}")
+    def _get_or_authenticate_client(self, async_client: bool = False) -> SyncProviderClientT | AsyncProviderClientT:
+        client_type = "Async" if async_client else "Sync"
+        logger.debug(f"🚀 Attempting to initialize {client_type} {self._model_provider} Client with available auth methods")
 
         env = get_env_vars()
         auth_method_config = self._config.get("auth_method")
@@ -238,7 +275,7 @@ class BaseProviderClient(
         # Determine which authentication methods to try
         if auth_method_config:
             auth_method_name = auth_method_config.auth_method
-            logger.debug(f"Auth method from config: '{auth_method_name}'")
+            logger.debug(f"⚙️ Using configured method: '{auth_method_name}'")
 
             if auth_method_name not in self._auth_strategies:
                 error = AstralUnknownAuthMethodError(
@@ -247,25 +284,24 @@ class BaseProviderClient(
                     provider_name=self._model_provider,
                     supported_methods=supported_methods
                 )
-                logger.error(f"{error}")
+                logger.error(f"❌ {error}")
                 raise error
 
             methods_to_try = [(auth_method_name, self._auth_strategies[auth_method_name])]
-            logger.debug(f"Using configured authentication method: '{auth_method_name}' for '{self._model_provider}'")
         else:
             methods_to_try = list(self._auth_strategies.items())
-            logger.debug(f"No specific auth method configured for '{self._model_provider}'. Will try all available methods: {supported_methods}")
+            logger.debug(f"🔄 No specific auth method configured. Trying all methods: {', '.join(supported_methods)}")
 
         errors = []
         for name, strategy in methods_to_try:
-            logger.debug(f"Attempting authentication for {self._model_provider} using method: '{name}'")
+            logger.debug(f"🔑 Trying auth method: '{name}'")
             try:
-                client = strategy(self, self._config, env)
+                client = strategy(self, self._config, env, async_client=async_client)
                 if client:
-                    logger.debug(f"Authentication succeeded for '{self._model_provider}' using method: '{name}'")
+                    logger.debug(f"✅ Authentication succeeded using '{name}'")
                     return client
             except Exception as e:
-                logger.warning(f"Authentication method '{name}' failed for '{self._model_provider}': {str(e)}")
+                logger.warning(f"❌ Auth method '{name}' failed: {str(e)}")
                 errors.append((name, e))
                 # If there's only one method to try, re-raise the underlying error immediately.
                 if len(methods_to_try) == 1:

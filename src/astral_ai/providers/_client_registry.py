@@ -43,6 +43,7 @@ class ProviderClientRegistry:
         provider_name: ModelProvider,
         config: Optional[AUTH_CONFIG_TYPE],
         client_key: Optional[str] = None,
+        async_client: bool = False,
     ) -> str:
         """
         Generate a key based on the provider name and auth configuration.
@@ -51,14 +52,21 @@ class ProviderClientRegistry:
         Otherwise, if a config is provided, the key is generated from the provider name
         and a hash of the JSON representation of the config (with sorted keys).
         If neither is provided, the provider name is used.
+        
+        The key is suffixed with ".async" if async_client is True.
         """
+        base_key = ""
         if client_key:
-            return client_key
-        if config is not None:
+            base_key = client_key
+        elif config is not None:
             config_str = json.dumps({k: v.model_dump() for k, v in config.items()}, sort_keys=True)
             config_hash = hash(config_str)
-            return f"{provider_name}_{config_hash}"
-        return provider_name
+            base_key = f"{provider_name}_{config_hash}"
+        else:
+            base_key = provider_name
+            
+        # Add suffix for async clients
+        return f"{base_key}.async" if async_client else base_key
 
     @overload
     @classmethod
@@ -66,6 +74,7 @@ class ProviderClientRegistry:
         cls,
         provider_name: Literal["openai", "azureOpenAI"],
         astral_client: Optional[AstralClientParams] = None,
+        async_client: bool = False,
     ) -> OpenAIProviderClient:
         ...
 
@@ -75,6 +84,7 @@ class ProviderClientRegistry:
         cls,
         provider_name: Literal["anthropic"],
         astral_client: Optional[AstralClientParams] = None,
+        async_client: bool = False,
     ) -> AnthropicProviderClient:
         ...
 
@@ -84,6 +94,7 @@ class ProviderClientRegistry:
         cls,
         provider_name: Literal["deepseek"],
         astral_client: Optional[AstralClientParams] = None,
+        async_client: bool = False,
     ) -> DeepSeekProviderClient:
         ...
         
@@ -92,6 +103,7 @@ class ProviderClientRegistry:
         cls,
         provider_name: ModelProvider,
         astral_client: Optional[AstralClientParams] = None,
+        async_client: bool = False,
     ) -> BaseProviderClient:
         """
         Retrieve the provider client for the given provider name and authentication configuration.
@@ -101,26 +113,39 @@ class ProviderClientRegistry:
             - The user must supply a unique client_key; otherwise, a ValueError is raised.
         - Otherwise, a deterministic key is generated from provider name and client_config,
           and the cached client is returned if present.
+          
+        Args:
+            provider_name: The name of the provider to get a client for
+            astral_client: Optional client parameters
+            async_client: Whether to return an async client (default: False)
         """
         if astral_client is None:
-            key = cls._generate_registry_key(provider_name, None)
+            key = cls._generate_registry_key(provider_name, None, async_client=async_client)
         else:
             if astral_client.new_client:
                 if astral_client.client_key:
-                    key = astral_client.client_key
+                    key = cls._generate_registry_key(provider_name, None, astral_client.client_key, async_client)
                 else:
                     raise ValueError(
                         "When new_client is True, you must provide a unique client_key."
                     )
             else:
-                key = cls._generate_registry_key(provider_name, astral_client.client_config, astral_client.client_key)
+                key = cls._generate_registry_key(
+                    provider_name, 
+                    astral_client.client_config, 
+                    astral_client.client_key,
+                    async_client
+                )
 
         with cls._lock:
             if key not in cls._client_registry:
                 client_class = _PROVIDER_CLIENT_MAP.get(provider_name)
                 if client_class is None:
                     raise ProviderNotSupportedError(provider_name=provider_name)
-                cls._client_registry[key] = client_class(astral_client.client_config if astral_client else None)
+                cls._client_registry[key] = client_class(
+                    astral_client.client_config if astral_client else None,
+                    async_client=async_client
+                )
             return cls._client_registry[key]
 
     @classmethod
@@ -130,11 +155,19 @@ class ProviderClientRegistry:
         client: BaseProviderClient,
         client_config: Optional[AUTH_CONFIG_TYPE] = None,
         client_key: Optional[str] = None,
+        async_client: bool = False,
     ) -> None:
         """
         Manually register or replace a provider client.
+        
+        Args:
+            provider_name: The name of the provider
+            client: The client instance to register
+            client_config: Optional configuration for the client
+            client_key: Optional unique key for the client
+            async_client: Whether this is an async client (default: False)
         """
-        key = cls._generate_registry_key(provider_name, client_config, client_key)
+        key = cls._generate_registry_key(provider_name, client_config, client_key, async_client)
         with cls._lock:
             cls._client_registry[key] = client
 
@@ -144,11 +177,18 @@ class ProviderClientRegistry:
         provider_name: ModelProvider,
         client_config: Optional[AUTH_CONFIG_TYPE] = None,
         client_key: Optional[str] = None,
+        async_client: bool = False,
     ) -> None:
         """
         Unregister a provider client.
+        
+        Args:
+            provider_name: The name of the provider
+            client_config: Optional configuration for the client
+            client_key: Optional unique key for the client
+            async_client: Whether this is an async client (default: False)
         """
-        key = cls._generate_registry_key(provider_name, client_config, client_key)
+        key = cls._generate_registry_key(provider_name, client_config, client_key, async_client)
         with cls._lock:
             if key in cls._client_registry:
                 del cls._client_registry[key]

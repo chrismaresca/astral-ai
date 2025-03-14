@@ -1,15 +1,17 @@
-# -------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
 # OpenAI Provider Client
-# -------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
 
-# Typing
+# -------------------------------------------------------------------------------- #
+# Imports
+# -------------------------------------------------------------------------------- #
+# Built-in imports
 from typing import Optional, Dict, Any, Union
 
-# OpenAI
+# OpenAI imports
 from openai import OpenAI, AsyncOpenAI, APIError
 
-
-# Astral AI Models and Types (assumed to be defined elsewhere)
+# Astral AI Models and Types
 from astral_ai.constants._models import ModelProvider, OpenAIModels
 from astral_ai.providers._base_client import BaseProviderClient
 
@@ -22,6 +24,7 @@ from ._types import (
     OpenAIChatResponseType,
     OpenAIStreamingResponseType
 )
+
 # Exceptions
 from astral_ai.errors.exceptions import (
     AstralProviderResponseError,
@@ -34,11 +37,19 @@ from astral_ai.errors.error_decorators import provider_error_handler
 from astral_ai._auth import AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS, AUTH_METHOD_NAMES
 
 # Provider Types
-from astral_ai.providers.openai._types import OpenAIClientsType
+from astral_ai.providers.openai._types import (
+    OpenAISyncClientType,
+    OpenAIAsyncClientType,
+)
 
+
+# -------------------------------------------------------------------------------- #
+# OpenAI Provider Client
+# -------------------------------------------------------------------------------- #
 
 class OpenAIProviderClient(BaseProviderClient[
-        OpenAIClientsType,
+        OpenAISyncClientType,
+        OpenAIAsyncClientType,
         OpenAIRequestChatType,
         OpenAIRequestStructuredType,
         OpenAIRequestStreamingType,
@@ -58,9 +69,9 @@ class OpenAIProviderClient(BaseProviderClient[
     # --------------------------------------------------------------------------
     # Initialize
     # --------------------------------------------------------------------------
-    def __init__(self, config: Optional[AUTH_CONFIG_TYPE] = None):
+    def __init__(self, config: Optional[AUTH_CONFIG_TYPE] = None, async_client: bool = False):
         # Initialize the base class (which performs authentication)
-        super().__init__(config)
+        super().__init__(config, async_client)
 
 
     # --------------------------------------------------------------------------
@@ -74,7 +85,6 @@ class OpenAIProviderClient(BaseProviderClient[
         credentials = {}
 
         if auth_method_name == "api_key":
-
             credentials["api_key"] = config.get(self._model_provider, {}).get(auth_method_name, None) or env.get("OPENAI_API_KEY")
             if not credentials["api_key"]:
                 raise AstralAuthMethodFailureError("API key is required")
@@ -101,7 +111,7 @@ class OpenAIProviderClient(BaseProviderClient[
         Args:
             config: Configuration dictionary
             env: Environment variables dictionary
-            credentials: Pre-validated credentials from the auth_method decorator
+            async_client: Whether to initialize an async client
         """
 
         credentials = self._validate_credentials(
@@ -117,21 +127,6 @@ class OpenAIProviderClient(BaseProviderClient[
             return AsyncOpenAI(api_key=api_key)
         else:
             return OpenAI(api_key=api_key)
-
-    # # --------------------------------------------------------------------------
-    # # Create Completion Stream
-    # # --------------------------------------------------------------------------
-    # def create_completion_stream(
-    #     self,
-    #     request: OpenAIRequest,
-    # ) -> Stream[ChatCompletionChunk]:
-    #     """
-    #     Create a completion stream using the OpenAI API.
-    #     """
-
-    #     response = self.client.chat.completions.create(**request)
-
-    #     return response
 
     # --------------------------------------------------------------------------
     # Create Completion
@@ -175,10 +170,7 @@ class OpenAIProviderClient(BaseProviderClient[
         Returns:
             The completion.
         """
-        # Initialize AsyncOpenAI with the same credentials
-        async_client = AsyncOpenAI(api_key=self.client.api_key)
-        
-        openai_response = await self.client.chat.completions.create(**request)
+        openai_response = await self.async_client.chat.completions.create(**request)
 
         if isinstance(openai_response, OpenAIChatResponseType):
             return openai_response
@@ -204,10 +196,7 @@ class OpenAIProviderClient(BaseProviderClient[
         Returns:
             The structured completion.
         """
-
-
         openai_response = self.client.beta.chat.completions.parse(**request)
-
 
         if isinstance(openai_response, OpenAIStructuredResponseType):
             return openai_response
@@ -233,10 +222,7 @@ class OpenAIProviderClient(BaseProviderClient[
         Returns:
             The structured completion.
         """
-        # Initialize AsyncOpenAI with the same credentials
-        async_client = AsyncOpenAI(api_key=self.client.api_key)
-        
-        openai_response = await async_client.beta.chat.completions.parse(**request)
+        openai_response = await self.async_client.beta.chat.completions.parse(**request)
 
         if isinstance(openai_response, OpenAIStructuredResponseType):
             return openai_response

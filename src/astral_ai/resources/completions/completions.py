@@ -443,6 +443,20 @@ class Completions(AstralResource):
     # Internal Helpers
     # -------------------------------------------------------------------------------- #
 
+    @overload
+    def _apply_cost(
+        self,
+        response: AstralChatResponse
+    ) -> AstralChatResponse:
+        ...
+        
+    @overload
+    def _apply_cost(
+        self,
+        response: AstralStructuredResponse[StructuredOutputResponseT]
+    ) -> AstralStructuredResponse[StructuredOutputResponseT]:
+        ...
+        
     def _apply_cost(
         self,
         response: Union[AstralChatResponse, AstralStructuredResponse[StructuredOutputResponseT]]
@@ -451,9 +465,15 @@ class Completions(AstralResource):
         Apply cost calculation to the given response if a cost strategy is configured.
         """
         if self.cost_strategy is not None:
+            # Identify the correct model name to use
+            model_name = self._model if hasattr(self, '_model') else (
+                self.request.model if self.request is not None else None
+            )
+            
+            # Apply cost calculation
             return self.cost_strategy.run_cost_strategy(
                 response=response,
-                model_name=self._model,
+                model_name=model_name,
                 model_provider=self._model_provider,
             )
         return response
@@ -594,9 +614,10 @@ class Completions(AstralResource):
         # Update request
         request = self._update_request_with_params(**kwargs)
         provider_request = self.adapter.to_provider_request(request)
-        provider_response = await self.client.create_completion_chat_async(provider_request)
+        provider_response = await self.async_client.create_completion_chat_async(provider_request)
         astral_response = self.adapter.to_astral_completion_response(provider_response)
-        return cast(AstralChatResponse, self._apply_cost(astral_response))
+        astral_response_with_cost = self._apply_cost(astral_response)
+        return astral_response_with_cost
 
     async def complete_json_async(
         self,
@@ -622,12 +643,13 @@ class Completions(AstralResource):
 
         request = self._update_request_with_params(response_format=response_format, **kwargs)
         provider_request = self.adapter.to_provider_request(request)
-        provider_response = await self.client.create_completion_structured_async(provider_request)
+        provider_response = await self.async_client.create_completion_structured_async(provider_request)
         astral_response = self.adapter.to_astral_completion_response(
             provider_response,
             response_format=response_format
         )
-        return cast(AstralStructuredResponse[StructuredOutputResponseT], self._apply_cost(astral_response))
+        astral_response_with_cost = self._apply_cost(astral_response)
+        return cast(AstralStructuredResponse[StructuredOutputResponseT], astral_response_with_cost)
 
     async def complete_structured_async(
         self,
@@ -653,7 +675,7 @@ class Completions(AstralResource):
 
         request = self._update_request_with_params(response_format=response_format, **kwargs)
         provider_request = self.adapter.to_provider_request(request)
-        provider_response = await self.client.create_completion_structured_async(provider_request)
+        provider_response = await self.async_client.create_completion_structured_async(provider_request)
         astral_response = self.adapter.to_astral_completion_response(
             provider_response,
             response_format=response_format

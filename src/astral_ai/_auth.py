@@ -186,6 +186,7 @@ class AuthCallable(Protocol):
         instance: 'BaseProviderClient',
         config: AUTH_CONFIG_TYPE, 
         env: AUTH_ENV_VARS,
+        async_client: bool = False
     ) -> ProviderClientType: ...
 
 

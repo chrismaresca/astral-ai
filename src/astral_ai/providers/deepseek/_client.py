@@ -1,15 +1,17 @@
-# -------------------------------------------------------------------
-# OpenAI Provider Client
-# -------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
+# DeepSeek Provider Client
+# -------------------------------------------------------------------------------- #
 
-# Typing
+# -------------------------------------------------------------------------------- #
+# Imports
+# -------------------------------------------------------------------------------- #
+# Built-in imports
 from typing import Optional, Dict, Any, Union
 
-# OpenAI
+# OpenAI imports
 from openai import OpenAI, AsyncOpenAI
 
-
-# Astral AI Models and Types (assumed to be defined elsewhere)
+# Astral AI Models and Types
 from astral_ai.constants._models import ModelProvider, DeepSeekModels
 from astral_ai.providers._base_client import BaseProviderClient
 
@@ -34,16 +36,23 @@ from astral_ai.errors.exceptions import (
 )
 from astral_ai.errors.error_decorators import provider_error_handler
 
-
 # Astral Auth
 from astral_ai._auth import AUTH_CONFIG_TYPE, auth_method, AUTH_ENV_VARS, AUTH_METHOD_NAMES
 
 # Provider Types
-from astral_ai.providers.deepseek._types import DeepSeekClientsType
+from astral_ai.providers.deepseek._types import (
+    DeepSeekSyncClientType,
+    DeepSeekAsyncClientType,
+)
 
+
+# -------------------------------------------------------------------------------- #
+# DeepSeek Provider Client
+# -------------------------------------------------------------------------------- #
 
 class DeepSeekProviderClient(BaseProviderClient[
-        DeepSeekClientsType,
+        DeepSeekSyncClientType,
+        DeepSeekAsyncClientType,
         DeepSeekRequestChatType,
         DeepSeekRequestStructuredType,
         DeepSeekRequestStreamingType,
@@ -51,7 +60,7 @@ class DeepSeekProviderClient(BaseProviderClient[
         DeepSeekStructuredResponseType,
         DeepSeekStreamingResponseType]):
     """
-    Client for OpenAI.
+    Client for DeepSeek.
     """
 
     # --------------------------------------------------------------------------
@@ -63,9 +72,9 @@ class DeepSeekProviderClient(BaseProviderClient[
     # --------------------------------------------------------------------------
     # Initialize
     # --------------------------------------------------------------------------
-    def __init__(self, config: Optional[AUTH_CONFIG_TYPE] = None):
+    def __init__(self, config: Optional[AUTH_CONFIG_TYPE] = None, async_client: bool = False):
         # Initialize the base class (which performs authentication)
-        super().__init__(config)
+        super().__init__(config, async_client)
 
     # --------------------------------------------------------------------------
     # Validate Credentials
@@ -97,7 +106,7 @@ class DeepSeekProviderClient(BaseProviderClient[
     # --------------------------------------------------------------------------
 
     @auth_method("api_key_with_base_url")
-    def auth_via_api_key_with_base_url(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS) -> OpenAI:
+    def auth_via_api_key_with_base_url(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS, async_client: bool = False) -> OpenAI:
         """
         Authenticate using an API key from config or environment variables.
 
@@ -127,22 +136,10 @@ class DeepSeekProviderClient(BaseProviderClient[
         # Initialize the client with the credentials and hard-coded base URL
         # Any exceptions will be caught by the auth_method decorator and wrapped appropriately
         # IMPORTANT: We use the OpenAI client for DeepSeek
-        return OpenAI(api_key=api_key, base_url=base_url)
-
-    # # --------------------------------------------------------------------------
-    # # Create Completion Stream
-    # # --------------------------------------------------------------------------
-    # def create_completion_stream(
-    #     self,
-    #     request: OpenAIRequest,
-    # ) -> Stream[ChatCompletionChunk]:
-    #     """
-    #     Create a completion stream using the OpenAI API.
-    #     """
-
-    #     response = self.client.chat.completions.create(**request)
-
-    #     return response
+        if async_client:
+            return AsyncOpenAI(api_key=api_key, base_url=base_url)
+        else:
+            return OpenAI(api_key=api_key, base_url=base_url)
 
     # --------------------------------------------------------------------------
     # Create Completion
@@ -187,14 +184,12 @@ class DeepSeekProviderClient(BaseProviderClient[
         Returns:
             The completion.
         """
-        # Initialize AsyncOpenAI with the same credentials and base URL
-        async_client = AsyncOpenAI(api_key=self.client.api_key, base_url=self.client.base_url)
 
         # IMPORTANT: We use the OpenAI client for DeepSeek
-        openai_response = await async_client.chat.completions.create(**request)
+        deepseek_response = await self.async_client.chat.completions.create(**request)
 
-        if isinstance(openai_response, DeepSeekChatResponseType):
-            return openai_response
+        if isinstance(deepseek_response, DeepSeekChatResponseType):
+            return deepseek_response
         else:
             raise AstralProviderResponseError(
                 f"Unexpected response type from {self._model_provider}",
@@ -244,7 +239,7 @@ class DeepSeekProviderClient(BaseProviderClient[
             The structured completion.
         """
         # Initialize AsyncOpenAI with the same credentials and base URL
-        async_client = AsyncOpenAI(api_key=self.client.api_key, base_url=self.client.base_url)
+        async_client = self.async_client(api_key=self.client.api_key, base_url=self.client.base_url)
 
         deepseek_response = await async_client.chat.completions.create(**request)
 

@@ -10,8 +10,8 @@
 # -------------------------------------------------------------------------------- #
 
 from ._clients import (
-    DeepSeekClientsType,
-    DeepSeekAzureClientsType,
+    DeepSeekSyncClientType,
+    DeepSeekAsyncClientType,
 )
 
 # -------------------------------------------------------------------------------- #
@@ -70,4 +70,8 @@ __all__ = [
     "DeepSeekStreamingResponseType",
     "DeepSeekStructuredResponseType",
     "DeepSeekResponseType",
+
+    # Clients
+    "DeepSeekSyncClientType",
+    "DeepSeekAsyncClientType",
 ]

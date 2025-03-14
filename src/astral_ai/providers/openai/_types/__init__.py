@@ -46,7 +46,12 @@ from ._response import (
 # -------------------------------------------------------------------------------- #
 
 from ._clients import (
+    # Clients
+    OpenAISyncClientType,
+    OpenAIAsyncClientType,
     OpenAIClientsType,
+    AzureOpenAISyncClientType,
+    AzureOpenAIAsyncClientType,
     AzureOpenAIClientsType,
 )
 
@@ -81,6 +86,10 @@ __all__ = [
     "OpenAIResponseType",
 
     # Clients
+    "OpenAISyncClientType",
+    "OpenAIAsyncClientType",
     "OpenAIClientsType",
+    "AzureOpenAISyncClientType",
+    "AzureOpenAIAsyncClientType",
     "AzureOpenAIClientsType",
 ]

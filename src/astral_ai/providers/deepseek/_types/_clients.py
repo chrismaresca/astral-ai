@@ -13,8 +13,5 @@ from openai import OpenAI, AsyncOpenAI, AzureOpenAI, AsyncAzureOpenAI
 # DeepSeek Clients
 # ------------------------------------------------------------------------------
 
-
-DeepSeekClientsType: TypeAlias = Union[OpenAI, AsyncOpenAI]
-
-# TODO: Verify if this is correct??
-DeepSeekAzureClientsType: TypeAlias = Union[AzureOpenAI, AsyncAzureOpenAI]
+DeepSeekSyncClientType: TypeAlias = Union[OpenAI, AzureOpenAI]
+DeepSeekAsyncClientType: TypeAlias = Union[AsyncOpenAI, AsyncAzureOpenAI]
