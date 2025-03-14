@@ -50,7 +50,7 @@ class DeepseekResponseFormat(TypedDict, total=False):
 # DeepSeek Chat Request
 # ------------------------------------------------------------------------------
 
-class DeepSeekChatRequest(TypedDict, total=False):
+class DeepSeekRequestChat(TypedDict, total=False):
     """
     DeepSeekChatRequest represents a standard chat request for the Deepseek model.
 
@@ -192,7 +192,7 @@ class DeepSeekChatRequest(TypedDict, total=False):
 # DeepSeek Chat Streaming Request
 # ------------------------------------------------------------------------------
 
-class DeepSeekChatStreamingRequest(DeepSeekChatRequest, total=False):
+class DeepSeekRequestStreaming(DeepSeekRequestChat, total=False):
     """
     DeepSeekChatStreamingRequest represents a streaming chat request for the Deepseek model.
 
@@ -212,7 +212,7 @@ class DeepSeekChatStreamingRequest(DeepSeekChatRequest, total=False):
 # DeepSeek Chat Structured Request
 # ------------------------------------------------------------------------------
 
-class DeepseekChatRequestStructured(DeepSeekChatRequest, total=False):
+class DeepSeekRequestStructured(DeepSeekRequestChat, total=False):
     """
     DeepseekChatRequestStructured represents a structured chat request for the Deepseek model.
 
@@ -234,13 +234,13 @@ class DeepseekChatRequestStructured(DeepSeekChatRequest, total=False):
 
 
 # Chat Request
-DeepSeekRequestChatType: TypeAlias = DeepSeekChatRequest
+DeepSeekRequestChatType: TypeAlias = DeepSeekRequestChat
 
 # Streaming Request
-DeepSeekRequestStreamingType: TypeAlias = DeepSeekChatStreamingRequest
+DeepSeekRequestStreamingType: TypeAlias = DeepSeekRequestStreaming
 
 # Structured Request
-DeepSeekRequestStructuredType: TypeAlias = DeepseekChatRequestStructured
+DeepSeekRequestStructuredType: TypeAlias = DeepSeekRequestStructured
 
 # Union of all request types
 DeepSeekRequestType: TypeAlias = Union[DeepSeekRequestChatType, DeepSeekRequestStreamingType, DeepSeekRequestStructuredType]

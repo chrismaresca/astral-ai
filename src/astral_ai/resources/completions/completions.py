@@ -139,7 +139,7 @@ class Completions(AstralResource):
         request: Optional[Union[AstralCompletionRequest, AstralStructuredCompletionRequest]] = None,
         *,
         model: ModelName | None = None,
-        messages: Union[Messages, List[Dict[str, str]]] | None = None,
+        messages: Messages | None = None,
         astral_params: AstralParams | None = None,
         tools: List[Tool] | NotGiven = NOT_GIVEN,
         tool_choice: ToolChoice | NotGiven = NOT_GIVEN,
@@ -410,7 +410,7 @@ class Completions(AstralResource):
         #     if not hasattr(t.function, "name") or not hasattr(t.function, "description"):
         #         raise InvalidToolError(f"Tool {t.function.name if hasattr(t.function, 'name') else t.function} must have both a 'name' and 'description'.")
 
-        logger.info(f"Successfully validated {len(tools)} tools ({', '.join([t.function.name for t in tools])}) for model {model_name}")
+        logger.info(f"Successfully validated {len(tools)} tools ({', '.join([tool['function']['name'] for tool in tools])}) for model {model_name}")
         return tools
 
     # -------------------------------------------------------------------------------- #
@@ -1115,56 +1115,46 @@ async def complete_json_async(
 # Simple Test Functions
 # -------------------------------------------------------------------------------- #
 
-def run_simple_tests() -> str:
-    """
-    Run a series of simple tests with the new Completions approach and print the results.
-
-    This function demonstrates various usage patterns:
-    1. Class initialization with different completion methods
-    2. Direct convenience methods
-
-    Each test displays:
-    - Response content
-    - Latency
-    - Token usage
-    - Cost information
-
-    Returns:
-        str: A message indicating all tests have completed
-    """
+def test_class_initialization_chat_completion() -> None:
+    """Test class initialization with standard chat completion."""
     import time
-    from pydantic import BaseModel
-    from typing import List
-
+    
     # Sample messages for testing
     messages = [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "What are the three laws of robotics?"}
     ]
+    
+    print("\n[TEST] Class initialization with chat completion")
+    print("-" * 70)
 
+    start_time = time.time()
+    c = Completions(model="gpt-4o", messages=messages)
+    response = c.complete()
+    latency = time.time() - start_time
+
+    print_response_details(response, latency)
+
+
+def test_class_initialization_structured_completion() -> None:
+    """Test class initialization with structured completion (JSON mode)."""
+    import time
+    from pydantic import BaseModel
+    from typing import List
+    
+    # Sample messages for testing
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What are the three laws of robotics?"}
+    ]
+    
     # Define a simple Pydantic model for structured output tests
     class RoboticLaws(BaseModel):
         laws: List[str]
         author: str
         year_published: int
-
-    print("\n# -------------------------------------------------------------------------------- #")
-    print("# Running Simple Tests for Completions (New Approach)")
-    print("# -------------------------------------------------------------------------------- #\n")
-
-    # # Test 1: Class initialization with chat completion
-    # print("\n[TEST 1] Class initialization with chat completion")
-    # print("-" * 70)
-
-    # start_time = time.time()
-    # c = Completions(model="gpt-4o", messages=messages)
-    # response = c.complete()
-    # latency = time.time() - start_time
-
-    # print_response_details(response, latency)
-
-    # Test 2: Class initialization with structured completion (JSON)
-    print("\n[TEST 2] Class initialization with structured completion (JSON mode)")
+    
+    print("\n[TEST] Class initialization with structured completion (JSON mode)")
     print("-" * 70)
 
     start_time = time.time()
@@ -1173,36 +1163,81 @@ def run_simple_tests() -> str:
         messages=messages,
         response_format=RoboticLaws          # Potential structured parse
     )
-    response2 = c_json.complete_json(response_format=RoboticLaws)
+    response = c_json.complete_json(response_format=RoboticLaws)
     latency = time.time() - start_time
 
-    print_response_details(response2, latency)
+    print_response_details(response, latency)
 
-    # Test 3: Direct convenience method - complete
-    print("\n[TEST 3] Direct convenience method - complete")
+
+def test_convenience_method_complete() -> None:
+    """Test direct convenience method - complete."""
+    import time
+    
+    # Sample messages for testing
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What are the three laws of robotics?"}
+    ]
+    
+    print("\n[TEST] Direct convenience method - complete")
     print("-" * 70)
 
     start_time = time.time()
-    response3 = complete(model="gpt-4o", messages=messages)
+    response = complete(model="gpt-4o", messages=messages)
     latency = time.time() - start_time
 
-    print_response_details(response3, latency)
+    print_response_details(response, latency)
 
-    # Test 4: Direct convenience method - complete_json
-    print("\n[TEST 4] Direct convenience method - complete_json")
+
+def test_convenience_method_complete_json() -> None:
+    """Test direct convenience method - complete_json."""
+    import time
+    from pydantic import BaseModel
+    from typing import List
+    
+    # Sample messages for testing
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What are the three laws of robotics?"}
+    ]
+    
+    # Define a simple Pydantic model for structured output tests
+    class RoboticLaws(BaseModel):
+        laws: List[str]
+        author: str
+        year_published: int
+    
+    print("\n[TEST] Direct convenience method - complete_json")
     print("-" * 70)
 
     start_time = time.time()
-    response4 = complete_json(model="gpt-4o", messages=messages, response_format=RoboticLaws)
+    response = complete_json(model="gpt-4o", messages=messages, response_format=RoboticLaws)
     latency = time.time() - start_time
 
-    print_response_details(response4, latency)
+    print_response_details(response, latency)
 
-    # Test 5: Async methods (run in sync context for simplicity)
-    print("\n[TEST 5] Async methods (run in sync context)")
-    print("-" * 70)
 
+def test_async_methods() -> None:
+    """Test async methods (run in sync context)."""
+    import time
     import asyncio
+    from pydantic import BaseModel
+    from typing import List
+    
+    # Sample messages for testing
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What are the three laws of robotics?"}
+    ]
+    
+    # Define a simple Pydantic model for structured output tests
+    class RoboticLaws(BaseModel):
+        laws: List[str]
+        author: str
+        year_published: int
+    
+    print("\n[TEST] Async methods (run in sync context)")
+    print("-" * 70)
 
     async def run_async_tests() -> None:
         # Async class method for standard chat
@@ -1211,7 +1246,7 @@ def run_simple_tests() -> str:
         response_a = await c_async.complete_async()
         latency_a = time.time() - start_time_a
 
-        print("\n[TEST 5.1] Class initialization with async chat completion")
+        print("\n[TEST] Class initialization with async chat completion")
         print_response_details(response_a, latency_a)
 
         # Async convenience method for JSON
@@ -1223,12 +1258,131 @@ def run_simple_tests() -> str:
         )
         latency_b = time.time() - start_time_b
 
-        print("\n[TEST 5.2] Direct async convenience method - complete_json_async")
+        print("\n[TEST] Direct async convenience method - complete_json_async")
         print_response_details(response_b, latency_b)
 
     asyncio.run(run_async_tests())
 
-    return "All tests completed"
+
+def test_tools_usage() -> None:
+    """Test completions with tools."""
+    import time
+    from astral_ai.tools.tool import function_tool
+    from typing import List, Dict, Any
+    from pydantic import BaseModel
+    
+    # Define some tools for testing
+    @function_tool
+    def calculate_area(length: float, width: float) -> float:
+        """Calculate the area of a rectangle."""
+        return length * width
+    
+    @function_tool
+    def get_weather(location: str, unit: str = "C") -> str:
+        """
+        Get the weather for a location.
+        
+        Args:
+            location: City or location name
+            unit: Temperature unit (C or F)
+            
+        Returns:
+            Weather description
+        """
+        return f"The weather in {location} is sunny and 25 degrees {unit}."
+    
+    # Sample messages for testing with tools
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What's the area of a 5x10 rectangle?"}
+    ]
+    
+    # Test with tool choice auto
+    print("\n[TEST] Completions with tools - auto tool choice")
+    print("-" * 70)
+    
+    start_time = time.time()
+    # response = complete(
+    #     model="gpt-4o",
+    #     messages=messages,
+    #     tools=[calculate_area.tool, get_weather.tool],
+    #     tool_choice="auto"
+    # )
+    latency = time.time() - start_time
+
+
+    from openai import OpenAI
+    client = OpenAI()
+    tools = [
+    {
+        "type": "function",
+        "function": {
+        "name": "get_current_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+            "location": {
+                "type": "string",
+                "description": "The city and state, e.g. San Francisco, CA",
+            },
+            "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+            },
+            "required": ["location"],
+        },
+        }
+    }
+    ]
+    messages = [{"role": "user", "content": "What's the weather like in Boston today?"}]
+    completion = client.chat.completions.create(
+    model="gpt-4o",
+    messages=messages,
+    tools=tools,
+    tool_choice="auto"
+    )
+
+    print(completion)
+    print_response_details(completion, 0)
+    
+    # Test with specific tool choice
+    print("\n[TEST] Completions with tools - specific tool choice")
+    print("-" * 70)
+    
+    weather_messages = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What's the weather in Paris?"}
+    ]
+    
+    start_time = time.time()
+    response = complete(
+        model="gpt-4o",
+        messages=weather_messages,
+        tools=[calculate_area.tool, get_weather.tool],
+        tool_choice={"type": "function", "function": {"name": "get_weather"}}
+    )
+    latency = time.time() - start_time
+    
+    print_response_details(response, latency)
+    
+    # Test with structured output and tools
+    print("\n[TEST] Completions with tools and structured output")
+    print("-" * 70)
+    
+    class AreaCalculation(BaseModel):
+        area: float
+        units: str
+        calculation_method: str
+    
+    start_time = time.time()
+    response = complete_json(
+        model="gpt-4o",
+        messages=messages,
+        tools=[calculate_area.tool],
+        response_format=AreaCalculation
+    )
+    latency = time.time() - start_time
+    
+    print_response_details(response, latency)
 
 
 def print_response_details(response: Union[AstralChatResponse, AstralStructuredResponse], latency: float) -> None:
@@ -1265,29 +1419,26 @@ def print_response_details(response: Union[AstralChatResponse, AstralStructuredR
         print(f"  Total cost: ${response.cost.total_cost:.6f}")
 
 
+def run_simple_tests() -> str:
+    """
+    Run a series of simple tests with the new Completions approach and print the results.
+    
+    Returns:
+        str: A message indicating all tests have completed
+    """
+    print("\n# -------------------------------------------------------------------------------- #")
+    print("# Running Simple Tests for Completions (New Approach)")
+    print("# -------------------------------------------------------------------------------- #\n")
+    
+    # test_class_initialization_chat_completion()
+    # test_class_initialization_structured_completion()
+    # test_convenience_method_complete()
+    # test_convenience_method_complete_json()
+    # test_async_methods()
+    test_tools_usage()
+    
+    return "All tests completed"
+
+
 if __name__ == "__main__":
     run_simple_tests()
-
-
-# -------------------------------------------------------------------------------- #
-# Table of Changes
-# -------------------------------------------------------------------------------- #
-#
-# 1) In `_validate_request`, we now explicitly create either:
-#    - `AstralCompletionRequest` (if no structured/JSON usage),
-#    - `AstralStructuredCompletionRequest` (if user requests a `response_format` or `_is_json_request`).
-#
-# 2) For the structured case, we set `response_format` on the request, satisfying the
-#    requirement for `AstralStructuredCompletionRequest`.
-#
-# 3) We added guard clauses in `complete()`, `complete_async()`, etc., ensuring we only call
-#    them if we actually hold the matching request type. This provides the type safety
-#    needed to know exactly which request type is being sent to the adapter.
-#
-# 4) The `_is_json_request` flag is introduced to differentiate explicit JSON usage from
-#    explicit structured output usage. Both produce an `AstralStructuredCompletionRequest`,
-#    but `_is_json_request` clarifies how the request is *intended* to be used by the adapter.
-#
-# 5) The fallback logic for structured vs. JSON is effectively handled up front in
-#    `_validate_request`. We either create a standard request or a structured request,
-#    ensuring the adapter sees a fully realized request type with `response_format`.

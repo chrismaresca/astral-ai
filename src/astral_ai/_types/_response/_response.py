@@ -11,12 +11,11 @@ Response Models for Astral AI
 # Imports
 # ------------------------------------------------------------------------------
 
-# Standard Library
+# Built-in imports
 import time
 import uuid
-
-# Types
-from typing import Optional, Iterable, TypeVar, Generic
+from abc import ABC, abstractmethod
+from typing import Optional, Iterable, TypeVar, Generic, Dict, Any
 
 # Typed Extensions
 from typing_extensions import Self
@@ -30,6 +29,13 @@ from astral_ai.constants._models import ModelName, ModelProvider
 # Astral AI Utils
 from astral_ai.utilities import get_provider_from_model_name
 
+# Astral AI Response Types
+from .resources import (
+    ChatCompletionResponse,
+    StructuredOutputCompletionResponse,
+    BaseProviderResourceResponse,
+)
+
 # Astral AI Types
 from ._usage import (
     ChatUsage,
@@ -39,44 +45,14 @@ from ._usage import (
 )
 
 
-# ------------------------------------------------------------------------------
-# Provider Response and Message Objects
-# ------------------------------------------------------------------------------
 
-
-class ProviderResponseObject(BaseModel):
-    """
-    Provider Response Model for Astral AI
-    """
-    provider_object: str = Field(description="The object type of the provider response")
-    provider_response_id: str = Field(description="The ID of the provider response")
-    provider_model_id: str = Field(description="The ID of the provider model")
-    provider_request_id: str = Field(description="The ID of the provider request")
-    provider_created: int = Field(description="The created time (UNIX timestamp) for the provider response")
-
-
-class ProviderResponseMessage(BaseModel):
-    """
-    Message Model for Astral AI
-    """
-    role: str = Field(description="The role of the message")
-    content: str = Field(description="The content of the message")
-
-
-class ProviderResponseMessageObject(BaseModel):
-    """
-    Message Object Model for Astral AI
-    """
-    index: int = Field(description="The index of the message")
-    message: ProviderResponseMessage = Field(description="The message for the response")
-    finish_reason: str = Field(description="The finish reason for the message")
 
 # ------------------------------------------------------------------------------
 # Base Response
 # ------------------------------------------------------------------------------
 
 
-class AstralBaseResponse(BaseModel):
+class AstralBaseResponse(BaseModel, ABC):
     """
     Base Response Model for Astral AI
     """
@@ -87,14 +63,20 @@ class AstralBaseResponse(BaseModel):
     # Model
     model: ModelName = Field(description="The model used to generate the response")
 
-    # Provider Response
-    provider_response: Optional[ProviderResponseObject] = Field(
-        description="The provider response object", default=None
-    )
+    # Response
+    response: BaseProviderResourceResponse = Field(description="The response for the chat completion")
 
     # Usage
     usage: BaseUsage = Field(description="The usage for the response")
     cost: Optional[BaseCost] = Field(description="The cost for the response", default=None)
+
+        
+    def __init__(self, **data: Dict[str, Any]) -> None:
+        """Override init to prevent direct instantiation of abstract class."""
+        if self.__class__ == AstralBaseResponse:
+            raise TypeError("Cannot instantiate abstract class AstralBaseResponse directly")
+        super().__init__(**data)
+
 
     @property
     def response_id(self) -> str:
@@ -168,7 +150,7 @@ class AstralChatResponse(PrivatePropagationMixin[ChatUsage, ChatCost], AstralBas
     """
     Chat Response Model for Astral AI
     """
-    response: str = Field(description="The response for the chat completion")
+    response: ChatCompletionResponse = Field(description="The response for the chat completion")
     usage: ChatUsage = Field(description="The usage for the response")
     cost: Optional[ChatCost] = Field(description="The cost for the response", default=None)
 
@@ -188,4 +170,4 @@ class AstralStructuredResponse(AstralChatResponse, Generic[StructuredOutputRespo
     """
     Structured Response Model for Astral AI
     """
-    response: StructuredOutputResponse = Field(description="The response for the structured response")
+    response: StructuredOutputCompletionResponse[StructuredOutputResponse] = Field(description="The response for the structured response")

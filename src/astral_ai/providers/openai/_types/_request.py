@@ -148,6 +148,9 @@ class OpenAIRequestBase(TypedDict, total=False):
 # ------------------------------------------------------------------------------
 
 class OpenAIRequestChat(OpenAIRequestBase, total=False):
+    """
+    OpenAI Request Chat Model for Astral AI
+    """
     pass
 
 # ------------------------------------------------------------------------------
@@ -156,6 +159,9 @@ class OpenAIRequestChat(OpenAIRequestBase, total=False):
 
 
 class OpenAIRequestStreaming(OpenAIRequestBase):
+    """
+    OpenAI Request Streaming Model for Astral AI
+    """
     stream: Literal[True]
 
 # ------------------------------------------------------------------------------
@@ -164,32 +170,35 @@ class OpenAIRequestStreaming(OpenAIRequestBase):
 
 
 class OpenAIRequestStructured(Generic[_ResponseFormatT], OpenAIRequestBase):
+    """
+    OpenAI Request Structured Model for Astral AI
+    """
     response_format: _ResponseFormatT
 
-
-# ------------------------------------------------------------------------------
-# OpenAI Type Aliases
-# ------------------------------------------------------------------------------
-
-# Chat Request
-OpenAIRequestChatType: TypeAlias = OpenAIRequestChat
-
-# Streaming Request
-OpenAIRequestStreamingType: TypeAlias = OpenAIRequestStreaming
-
-# Structured Request
-OpenAIRequestStructuredType: TypeAlias = OpenAIRequestStructured
-
-# Union of all request types
-OpenAIRequestType: TypeAlias = Union[OpenAIRequestChatType, OpenAIRequestStreamingType, OpenAIRequestStructuredType]
 
 # ------------------------------------------------------------------------------
 # TODO: OpenAI Embedding Request Types
 # ------------------------------------------------------------------------------
 
 
-class OpenAIRequestEmbedding(OpenAIRequestBase, total=False):
+class OpenAIRequestEmbedding(BaseModel, total=False):
+    """
+    OpenAI Request Embedding Model for Astral AI
+    """
     pass
 
 
+# ------------------------------------------------------------------------------
+# Type Aliases
+# ------------------------------------------------------------------------------
+OpenAIRequestChatType: TypeAlias = OpenAIRequestChat
+OpenAIRequestStreamingType: TypeAlias = OpenAIRequestStreaming
+OpenAIRequestStructuredType: TypeAlias = OpenAIRequestStructured[BaseModel]
 OpenAIRequestEmbeddingType: TypeAlias = OpenAIRequestEmbedding
+
+OpenAIRequestType: TypeAlias = Union[
+    OpenAIRequestChatType,
+    OpenAIRequestStreamingType,
+    OpenAIRequestStructuredType,
+    OpenAIRequestEmbeddingType,
+]

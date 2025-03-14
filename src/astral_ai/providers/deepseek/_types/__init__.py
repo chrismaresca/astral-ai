@@ -20,9 +20,9 @@ from ._clients import (
 
 from ._request import (
     # Request Classes
-    DeepSeekChatRequest,
-    DeepSeekChatStreamingRequest,
-    DeepseekChatRequestStructured,
+    DeepSeekRequestChat,
+    DeepSeekRequestStreaming,
+    DeepSeekRequestStructured,
 
     # Request Types
     DeepSeekRequestType,
@@ -54,9 +54,9 @@ __all__ = [
     # TODO: Add message types for DeepSeek
 
     # Chat Request Types
-    "DeepSeekChatRequest",
-    "DeepSeekChatStreamingRequest",
-    "DeepseekChatRequestStructured",
+    "DeepSeekRequestChat",
+    "DeepSeekRequestStreaming",
+    "DeepSeekRequestStructured",
     "DeepSeekRequestType",
     "DeepSeekRequestChatType",
     "DeepSeekRequestStreamingType",
