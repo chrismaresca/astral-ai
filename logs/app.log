@@ -13461,3 +13461,1680 @@ astral_ai.errors.exceptions.AstralMissingCredentialsError: Missing required cred
 2025-03-14 00:31:59 | Astral Logger | DEBUG | debug | 💬 Found 0 system messages and 0 developer messages
 2025-03-14 00:31:59 | Astral Logger | DEBUG | debug | 💬 Standardizing messages. Type: `list`
 2025-03-14 00:31:59 | Astral Logger | DEBUG | debug | 💬 Standardizing messages. Type: `MessageList`
+2025-03-14 15:06:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:06:09 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:06:09 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:06:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:06:37 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:06:37 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:06:38 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:06:38 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:06:38 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:06:38 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:06:38 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:06:49 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:09:09 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:10:29 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:10:31 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:10:31 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:10:31 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:11:29 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:11:34 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:11:34 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:11:34 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:12:41 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:12:42 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:12:42 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:12:42 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:15:40 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:15:40 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:15:40 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:15:41 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:15:41 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:16:00 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:16:00 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:16:00 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:16:01 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:16:01 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:17:35 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:17:36 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:17:36 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:17:36 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:19:37 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:19:38 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:19:38 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:19:38 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:19:52 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:19:53 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:19:53 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:19:53 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:20:04 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:20:04 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:20:04 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:20:05 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:20:06 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:20:06 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:20:06 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 15:20:06 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 15:20:06 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:21:39 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:21:45 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:21:45 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:21:45 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:21:46 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:21:46 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 15:21:46 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 15:21:46 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 15:23:55 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:23:55 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:23:55 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:25:28 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:25:29 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:25:29 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:25:29 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:25:34 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:25:34 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 15:25:34 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 15:25:34 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:25:58 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:25:59 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:25:59 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:25:59 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:26:00 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:26:00 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 15:26:00 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 15:26:00 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:37:42 | Astral Logger | DEBUG | info | Setting explicit tool_choice to auto
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:37:42 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:37:49 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:37:49 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:37:49 | Astral Logger | DEBUG | info | Setting explicit tool_choice to auto
+2025-03-14 15:37:49 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:37:49 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:37:49 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:37:49 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:37:49 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:37:50 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:37:50 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 15:37:50 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 15:37:50 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:42:19 | Astral Logger | DEBUG | info | Setting explicit tool_choice to auto
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:42:19 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:42:20 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:42:20 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:42:20 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:42:20 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:42:20 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:42:20 | Astral Logger | DEBUG | info | JSON mode or structured output detected - enforcing strict mode for tools
+2025-03-14 15:42:20 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 15:42:20 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 15:42:20 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 15:46:34 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 15:46:34 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 15:46:34 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:46:35 | Astral Logger | DEBUG | info | Setting explicit tool_choice to auto
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 15:46:35 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 15:46:40 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:46:40 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 15:46:40 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 15:46:40 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 15:46:40 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 15:46:40 | Astral Logger | DEBUG | info | JSON mode or structured output detected - enforcing strict mode for tools
+2025-03-14 15:46:40 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 15:46:40 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 15:46:40 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 19:33:56 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:33:56 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:33:56 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 19:33:57 | Astral Logger | DEBUG | info | Setting explicit tool_choice to auto
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 19:33:57 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 19:33:58 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:33:58 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 19:33:58 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 19:33:58 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 19:33:58 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:33:58 | Astral Logger | DEBUG | info | JSON mode or structured output detected - enforcing strict mode for tools
+2025-03-14 19:33:58 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 19:33:58 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 19:33:58 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 19:36:40 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:36:40 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:36:40 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:36:40 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 19:36:40 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 19:36:40 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 19:36:40 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 19:36:40 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 19:36:41 | Astral Logger | DEBUG | info | Setting explicit tool_choice to auto
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 19:36:41 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 19:36:42 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:36:42 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 19:36:42 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 19:36:42 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 19:36:42 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:36:42 | Astral Logger | DEBUG | info | JSON mode or structured output detected - enforcing strict mode for tools
+2025-03-14 19:36:42 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 19:36:42 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 19:36:42 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 19:40:36 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:40:36 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:40:36 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:42:25 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:42:25 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:42:25 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:44:28 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:44:28 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:44:28 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Decorating function as tool: get_weather
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: get_weather
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Detected docstring style: google
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: get_weather
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'location' with type <class 'str'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: get_weather
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: get_weather
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Decorating function as tool: calculate_area
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: calculate_area
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Detected docstring style: google
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: calculate_area
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Using custom name for function: calculate_geometric_area
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'shape' with type <class 'str'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'dimensions' with type typing.Dict[str, float]
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: calculate_geometric_area
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: calculate_geometric_area
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Decorating function as tool: calculate_strict
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: calculate_strict
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Detected docstring style: google
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: calculate_strict
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Using custom name for function: strict_calculator
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'a' with type <class 'float'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'b' with type <class 'float'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'operation' with type typing.Literal['add', 'multiply', 'divide', 'subtract']
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: strict_calculator
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: strict_calculator
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Tool created with strict mode enabled
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Decorating function as tool: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from decorated function: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Decorating function as tool: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from decorated function: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Enforcing strict mode for tool: sample_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Enforcing strict mode for tool: raw_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Object is not a valid tool: <class 'str'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Object is not a valid tool: <class 'int'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Object is not a valid tool: <class 'dict'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Object is not a valid tool: <class 'dict'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Decorating function as tool: strict_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: strict_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: strict_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: strict_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: strict_function
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Tool created with strict mode enabled
+2025-03-14 19:49:56 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from decorated function: strict_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: get_weather
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Detected docstring style: google
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: get_weather
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'location' with type <class 'str'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: get_weather
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: get_weather
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: calculate_area
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Detected docstring style: google
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: calculate_area
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Using custom name for function: calculate_geometric_area
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'shape' with type <class 'str'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'dimensions' with type typing.Dict[str, float]
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: calculate_geometric_area
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: calculate_geometric_area
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_strict
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: calculate_strict
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Detected docstring style: google
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: calculate_strict
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Using custom name for function: strict_calculator
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'a' with type <class 'float'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'b' with type <class 'float'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'operation' with type typing.Literal['add', 'multiply', 'divide', 'subtract']
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: strict_calculator
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: strict_calculator
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Tool created with strict mode enabled
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from decorated function: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from decorated function: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Enforcing strict mode for tool: sample_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Enforcing strict mode for tool: raw_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Object is not a valid tool: <class 'str'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Object is not a valid tool: <class 'int'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Object is not a valid tool: <class 'dict'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Object is not a valid tool: <class 'dict'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: strict_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Generating schema for function: strict_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Parsing docstring with google style for function: strict_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created Pydantic model for function: strict_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Enforced strict JSON schema
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Created tool definition for: strict_function
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Tool created with strict mode enabled
+2025-03-14 19:50:16 | Astral Logger | DEBUG | debug | 🛠️ Retrieved tool from decorated function: strict_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: get_weather
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: get_weather
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'location' with type <class 'str'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: get_weather
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: get_weather
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_area
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_area
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Using custom name for function: calculate_geometric_area
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'shape' with type <class 'str'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'dimensions' with type typing.Dict[str, float]
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: calculate_geometric_area
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: calculate_geometric_area
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_strict
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_strict
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_strict
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Using custom name for function: strict_calculator
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'a' with type <class 'float'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'b' with type <class 'float'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'operation' with type typing.Literal['add', 'multiply', 'divide', 'subtract']
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: strict_calculator
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: strict_calculator
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Tool created with strict mode enabled
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: sample_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: raw_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'str'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'int'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'dict'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'dict'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: strict_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: strict_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: strict_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: strict_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: strict_function
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Tool created with strict mode enabled
+2025-03-14 19:50:47 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: strict_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: get_weather
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: get_weather
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'location' with type <class 'str'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: get_weather
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: get_weather
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_area
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_area
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Using custom name for function: calculate_geometric_area
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'shape' with type <class 'str'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'dimensions' with type typing.Dict[str, float]
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: calculate_geometric_area
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: calculate_geometric_area
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_strict
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_strict
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_strict
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Using custom name for function: strict_calculator
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'a' with type <class 'float'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'b' with type <class 'float'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'operation' with type typing.Literal['add', 'multiply', 'divide', 'subtract']
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: strict_calculator
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: strict_calculator
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Tool created with strict mode enabled
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: sample_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: raw_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'str'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'int'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'dict'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'dict'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: strict_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: strict_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: strict_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: strict_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: strict_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Tool created with strict mode enabled
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: strict_function
+2025-03-14 19:55:41 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: strict_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: get_weather
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: get_weather
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'location' with type <class 'str'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: get_weather
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: get_weather
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_area
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_area
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Using custom name for function: calculate_geometric_area
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'shape' with type <class 'str'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'dimensions' with type typing.Dict[str, float]
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: calculate_geometric_area
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: calculate_geometric_area
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_strict
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_strict
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_strict
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Using custom name for function: strict_calculator
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'a' with type <class 'float'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'b' with type <class 'float'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'operation' with type typing.Literal['add', 'multiply', 'divide', 'subtract']
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: strict_calculator
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Tool created with strict mode enabled
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: strict_calculator
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: sample_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: raw_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'str'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'int'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'dict'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'dict'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: strict_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: strict_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: strict_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: strict_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Tool created with strict mode enabled
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: strict_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: strict_function
+2025-03-14 19:56:36 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: strict_function
+2025-03-14 19:56:54 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:56:54 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:56:54 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: get_weather
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: get_weather
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'location' with type <class 'str'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: get_weather
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: get_weather
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_area
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_area
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Using custom name for function: calculate_geometric_area
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'shape' with type <class 'str'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'dimensions' with type typing.Dict[str, float]
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: calculate_geometric_area
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: calculate_geometric_area
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_strict
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_strict
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_strict
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Using custom name for function: strict_calculator
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'a' with type <class 'float'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'b' with type <class 'float'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'operation' with type typing.Literal['add', 'multiply', 'divide', 'subtract']
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: strict_calculator
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Tool created with strict mode enabled
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: strict_calculator
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: sample_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from raw dictionary: raw_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: raw_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'str'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'int'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'dict'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Object is not a valid tool: <class 'dict'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: strict_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: strict_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: strict_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'x' with type <class 'int'>
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: strict_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforced strict JSON schema
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Tool created with strict mode enabled
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: strict_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: strict_function
+2025-03-14 19:56:55 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: strict_function
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_area
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_area
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'length' with type <class 'float'>
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'width' with type <class 'float'>
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: calculate_area
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: calculate_area
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: get_weather
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: get_weather
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'location' with type <class 'str'>
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: get_weather
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: get_weather
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: get_weather
+2025-03-14 19:57:11 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 19:57:11 | Astral Logger | DEBUG | info | Setting explicit tool_choice to auto
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 19:57:11 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 19:57:12 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:57:12 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 19:57:12 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: get_weather
+2025-03-14 19:57:12 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 19:57:12 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 19:57:12 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 19:57:13 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:57:13 | Astral Logger | DEBUG | info | JSON mode or structured output detected - enforcing strict mode for tools
+2025-03-14 19:57:13 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 19:57:13 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: calculate_area
+2025-03-14 19:57:13 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 19:57:13 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 19:57:13 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format=<class '__main__.test_tools_usage.<locals>.AreaCalculation'>
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_area
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_area
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'length' with type <class 'float'>
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'width' with type <class 'float'>
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: calculate_area
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: calculate_area
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: get_weather
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: get_weather
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'location' with type <class 'str'>
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: get_weather
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: get_weather
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: get_weather
+2025-03-14 19:57:53 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 19:57:53 | Astral Logger | DEBUG | info | Setting explicit tool_choice to auto
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 19:57:53 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 19:57:54 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:57:54 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 19:57:54 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: get_weather
+2025-03-14 19:57:54 | Astral Logger | DEBUG | info | Successfully validated 2 tools (calculate_area, get_weather) for model gpt-4o-2024-11-20
+2025-03-14 19:57:54 | Astral Logger | DEBUG | info | Setting explicit tool_choice to {'type': 'function', 'function': {'name': 'get_weather'}}
+2025-03-14 19:57:54 | Astral Logger | DEBUG | debug | Constructing AstralCompletionRequest for model=gpt-4o-2024-11-20
+2025-03-14 19:57:55 | Astral Logger | DEBUG | debug | Model validation: 'gpt-4o' -> 'gpt-4o-2024-11-20'
+2025-03-14 19:57:55 | Astral Logger | DEBUG | info | JSON mode or structured output detected - enforcing strict mode for tools
+2025-03-14 19:57:55 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 19:57:55 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: calculate_area
+2025-03-14 19:57:55 | Astral Logger | DEBUG | info | Successfully validated 1 tools (calculate_area) for model gpt-4o-2024-11-20
+2025-03-14 19:57:55 | Astral Logger | DEBUG | info | No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 19:57:55 | Astral Logger | DEBUG | debug | Constructing AstralStructuredCompletionRequest for model=gpt-4o-2024-11-20, is_json_request=True, response_format={'properties': {'area': {'title': 'Area', 'type': 'number'}, 'units': {'title': 'Units', 'type': 'string'}, 'calculation_method': {'title': 'Calculation Method', 'type': 'string'}}, 'required': ['area', 'units', 'calculation_method'], 'title': 'AreaCalculation', 'type': 'object'}
+2025-03-14 20:02:33 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 20:02:33 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 20:02:33 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 20:02:33 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 20:02:33 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 20:02:33 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 20:02:33 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 20:02:33 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_area
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_area
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'length' with type <class 'float'>
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'width' with type <class 'float'>
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: calculate_area
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: calculate_area
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'location' with type <class 'str'>
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Model resolved: 'gpt-4o' → 'gpt-4o-2024-11-20'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Validated 2 tools: calculate_area, get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Setting tool_choice to: auto
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Creating standard chat request with model gpt-4o-2024-11-20
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Executing standard chat completion with model gpt-4o-2024-11-20
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Calculating cost for model gpt-4o
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Completed standard chat request
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Model resolved: 'gpt-4o' → 'gpt-4o-2024-11-20'
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Validated 2 tools: calculate_area, get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Setting tool_choice to use specific function: get_weather
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Creating standard chat request with model gpt-4o-2024-11-20
+2025-03-14 20:02:34 | Astral Logger | DEBUG | debug | ⚡ Executing standard chat completion with model gpt-4o-2024-11-20
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ Calculating cost for model gpt-4o
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ Completed standard chat request
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ Model resolved: 'gpt-4o' → 'gpt-4o-2024-11-20'
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ JSON or structured output detected - enforcing strict schema for all tools
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: calculate_area
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ Validated 1 tools: calculate_area
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ Creating structured request with model gpt-4o-2024-11-20 for JSON output using schema: AreaCalculation
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ Executing JSON completion with model gpt-4o-2024-11-20 using schema: AreaCalculation
+2025-03-14 20:02:35 | Astral Logger | DEBUG | debug | ⚡ Updating request with new schema: AreaCalculation
+2025-03-14 20:02:36 | Astral Logger | DEBUG | debug | ⚡ Calculating cost for model gpt-4o
+2025-03-14 20:02:36 | Astral Logger | DEBUG | debug | ⚡ Completed JSON request
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AuthRegistry
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Found decorated methods in AuthRegistry: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Final auth strategies for AuthRegistry: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: BaseProviderClient
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Base class ABC has strategies: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Base class Generic has strategies: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Found decorated methods in BaseProviderClient: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Final auth strategies for BaseProviderClient: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: AnthropicProviderClient
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Found decorated methods in AnthropicProviderClient: ['api_key']
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Final auth strategies for AnthropicProviderClient: ['api_key']
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key' with auth_method 'api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key' with function 'auth_via_api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: OpenAIProviderClient
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Found decorated methods in OpenAIProviderClient: ['api_key']
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Final auth strategies for OpenAIProviderClient: ['api_key']
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Registering authentication method: 'api_key_with_base_url'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Decorating function 'auth_via_api_key_with_base_url' with auth_method 'api_key_with_base_url'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Successfully registered auth method 'api_key_with_base_url' with function 'auth_via_api_key_with_base_url'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Creating class with AuthRegistryMeta: DeepSeekProviderClient
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Base class BaseProviderClient has strategies: []
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Found decorated methods in DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Final auth strategies for DeepSeekProviderClient: ['api_key_with_base_url']
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: calculate_area
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: calculate_area
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: calculate_area
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'length' with type <class 'float'>
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'width' with type <class 'float'>
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: calculate_area
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: calculate_area
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Decorating function as tool: get_weather
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Generating schema for function: get_weather
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Detected docstring style: google
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Parsing docstring with google style for function: get_weather
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Adding required parameter 'location' with type <class 'str'>
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Adding optional parameter 'unit' with type <class 'str'> and default C
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Created Pydantic model for function: get_weather
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Created tool definition for: get_weather
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | ⚡ Model resolved: 'gpt-4o' → 'gpt-4o-2024-11-20'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: get_weather
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | ⚡ Validated 2 tools: calculate_area, get_weather
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | ⚡ Setting tool_choice to: auto
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | ⚡ Creating standard chat request with model gpt-4o-2024-11-20
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | No Astral authentication configuration file found; proceeding without a configuration file.
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Provider-specific config for 'openai': {}
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | ⚡ Executing standard chat completion with model gpt-4o-2024-11-20
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🔍 No Sync Client identified for openai. Lazily initializing now.
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🚀 Attempting to initialize Sync openai Client with available auth methods
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Loading environment variables (cached)
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Found authentication-related environment variables: ['ANTHROPIC_API_KEY', 'DEEPSEEK_API_KEY', 'OPENAI_API_KEY']
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🔄 No specific auth method configured. Trying all methods: api_key
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 🔑 Trying auth method: 'api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Auth method 'api_key' called for provider 'openai'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Calling original auth method function 'auth_via_api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | Auth method 'api_key' for provider 'openai' completed successfully
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | ✅ Authentication succeeded using 'api_key'
+2025-03-14 20:03:12 | Astral Logger | DEBUG | debug | 💾 Caching sync client for openai
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | ⚡ Calculating cost for model gpt-4o
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | ⚡ Completed standard chat request
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | ⚡ Model resolved: 'gpt-4o' → 'gpt-4o-2024-11-20'
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: get_weather
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | ⚡ Validated 2 tools: calculate_area, get_weather
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | ⚡ Setting tool_choice to use specific function: get_weather
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | ⚡ Creating standard chat request with model gpt-4o-2024-11-20
+2025-03-14 20:03:13 | Astral Logger | DEBUG | debug | ⚡ Executing standard chat completion with model gpt-4o-2024-11-20
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Calculating cost for model gpt-4o
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Completed standard chat request
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Model resolved: 'gpt-4o' → 'gpt-4o-2024-11-20'
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ JSON or structured output detected - enforcing strict schema for all tools
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | 🛠️  Retrieved tool from decorated function: calculate_area
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | 🛠️  Enforcing strict mode for tool: calculate_area
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Validated 1 tools: calculate_area
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ No tool choice specified, defaulting to 'auto' since tools are present
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Creating structured request with model gpt-4o-2024-11-20 for JSON output using schema: AreaCalculation
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Executing JSON completion with model gpt-4o-2024-11-20 using schema: AreaCalculation
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Updating request with new schema: AreaCalculation
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Calculating cost for model gpt-4o
+2025-03-14 20:03:14 | Astral Logger | DEBUG | debug | ⚡ Completed JSON request

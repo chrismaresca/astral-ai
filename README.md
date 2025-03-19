@@ -16,7 +16,7 @@
 <!-- PROJECT SHIELDS -->
 <div align="center">
   
-[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![License][license-shield]][license-url] [![LinkedIn][linkedin-shield]][linkedin-url]
+<!-- [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 </div>
 
@@ -24,22 +24,29 @@
 <br />
 <div align="center">
   <a href="https://github.com/chrismaresca/Astral-AI">
-    <img src="images/logo.png" alt="Astral AI Logo" width="80" height="80">
+    <img src="public/white-bg.png" alt="Astral AI Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Astral AI</h3>
+  <p align="center">
+    <a href="https://github.com/chrismaresca/Astral-AI/blob/main/LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
+    </a>
+  </p>
 
   <p align="center">
     Astral is an open-source framework for AI engineers that abstracts away the complexity and friction of working across multiple model providers.
     <br />
-    <a href="https://github.com/chrismaresca/Astral-AI"><strong>Explore the docs »</strong></a>
+    <a href="https://www.useastral.dev/docs/getting-started/installation"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/chrismaresca/Astral-AI">View Demo</a>
+    <a href="https://www.useastral.dev">View Demo</a>
     &middot;
-    <a href="https://github.com/chrismaresca/Astral-AI/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://www.useastral.dev">Home Page</a>
     &middot;
-    <a href="https://github.com/chrismaresca/Astral-AI/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <!-- <a href="https://github.com/chrismaresca/Astral-AI/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    &middot; -->
+    <a href="https://www.useastral.dev/contact-us">Request Feature</a>
   </p>
 </div>
 
@@ -61,11 +68,11 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <!-- <li><a href="#roadmap">Roadmap</a></li> -->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#inspiration">Inspiration</a></li>
   </ol>
 </details>
 
@@ -73,7 +80,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/chrismaresca/Astral-AI)
+[![Astral AI Homepage](public/astral-homepage.png)](https://www.useastral.dev)
 
 Astral is an open-source framework for AI engineers that abstracts away the complexity and friction of working across multiple model providers.
 
@@ -99,7 +106,7 @@ Our goal is to become the go-to framework for building AI applications, from age
 
 - [Python](https://www.python.org/)
 - [Pydantic](https://pydantic-docs.helpmanual.io/)
-- [Pydantic Settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -121,7 +128,7 @@ Before diving in, make sure to:
    Loving Astral? Show your support by starring the [repo](https://github.com/chrismaresca/Astral-AI)—it helps new folks discover us and expands our stellar community!
 
 2. **💬 Join our Discord Community:**  
-   Hop into our vibrant [Discord community](https://discord.gg/czNPugfa) to connect with fellow contributors, brainstorm ideas, ask questions, or just hang out! It's the best place to stay updated on everything Astral.
+   Hop into our vibrant [Discord community](https://discord.gg/SPNqRrPR) to connect with fellow contributors, brainstorm ideas, ask questions, or just hang out! It's the best place to stay updated on everything Astral.
 
    Thanks for helping shape the future of Astral—we can't wait to see what you build!
 
@@ -133,7 +140,7 @@ Ready to build something awesome? Follow these steps:
    Kick things off by forking the repo to your GitHub account and cloning your fork locally:
    ```bash
    # Fork the repo first from GitHub, then clone your fork
-   git clone https://github.com/YOUR-GITHUB-USERNAME/Astral-AI.git
+   git clone https://github.com/chrismaresca/Astral-AI.git
    cd astral-ai
    ```
 
@@ -150,21 +157,24 @@ Ready to build something awesome? Follow these steps:
 
 ## Usage
 
-*Usage examples go here.*  
-*(Placeholder for code snippets, demos, or additional instructions.)*
+### Quick Start
+
+See our developer quick start here: [Quick Start](https://www.useastral.dev/docs/getting-started/quick-start)
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 
-## Roadmap
+<!-- ## Roadmap
 
 *Roadmap details go here.*  
 *(Placeholder for future features, improvements, and milestones.)*
 
 See the [open issues](https://github.com/chrismaresca/Astral-AI/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- CONTRIBUTING -->
 
@@ -190,20 +200,23 @@ Distributed under the MIT License. See the [LICENSE](LICENSE) file for more info
   
   [![Twitter](https://img.shields.io/badge/Twitter-%40TheChrisMaresca-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/TheChrisMaresca)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-Chris%20Maresca-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chris-maresca/)
-  [![Email](https://img.shields.io/badge/Email-chris%40chrismaresca.dev-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:chris@chrismaresca.dev)
+  [![Email](https://img.shields.io/badge/Email-chris%40chrismaresca.dev-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:chris@useastral.dev)
   
-  [🚀 View Project on GitHub](https://github.com/chrismaresca/Astral-AI)
+  [🚀 View Project on GitHub](https://github.com/chrismaresca)
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments
+## Inspiration
 
-- [Building Effective Agents – Anthropic](https://www.anthropic.com/engineering/building-effective-agents)
-- [So You Want To Be a Writer – Poets.org](https://poets.org/poem/so-you-want-be-writer)
-- *Additional acknowledgments go here...*
+- [Building Effective Agents – Anthropic](https://www.anthropic.com/engineering/building-effective-agents) - Insights on creating autonomous AI systems that can effectively solve complex tasks
+- [Aligning Language Models To Follow Instructions – OpenAI](https://openai.com/blog/instruction-following) - Best practices for crafting effective prompts
+- [Linear – In artfully blending software and design](https://linear.app/) - Inspiration for thoughtful product design and user experience
+- [Design Philosophy] My approach to software development has been profoundly shaped by Charles Bukowski's perspectives on creativity:
+  - [Style - Charles Bukowski](https://www.goodreads.com/quotes/150224-style-is-the-answer-to-everything-a-fresh-way-to) - "Style is the answer to everything..."
+  - [So You Want To Be a Writer - Charles Bukowski](https://allpoetry.com/so-you-want-to-be-a-writer) - On authentic creation and finding your voice
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -218,8 +231,8 @@ Distributed under the MIT License. See the [LICENSE](LICENSE) file for more info
 [stars-url]: https://github.com/chrismaresca/Astral-AI/stargazers  
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge  
 [issues-url]: https://github.com/chrismaresca/Astral-AI/issues  
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge  
-[license-url]: https://github.com/chrismaresca/Astral-AI/blob/master/LICENSE  
+[license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg
+[license-url]: https://github.com/chrismaresca/Astral-AI/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555  
 [linkedin-url]: https://www.linkedin.com/in/chris-maresca/  
 [product-screenshot]: images/screenshot.png

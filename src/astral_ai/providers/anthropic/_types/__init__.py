@@ -45,6 +45,8 @@ from ._response import (
 # -------------------------------------------------------------------------------- #
 
 from ._clients import (
+    AnthropicSyncClientType,
+    AnthropicAsyncClientType,
     AnthropicClientsType,
 )
 
@@ -76,5 +78,7 @@ __all__ = [
     "AnthropicResponseType",
 
     # Clients
+    "AnthropicSyncClientType",
+    "AnthropicAsyncClientType",
     "AnthropicClientsType",
 ]

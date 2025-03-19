@@ -37,7 +37,6 @@ from astral_ai.utilities.cost_utils import calculate_cost
 TResponse = TypeVar("TResponse", bound="AstralBaseResponse")
 TCost = TypeVar("TCost", bound="BaseCost")
 StructuredOutputResponseT = TypeVar("StructuredOutputResponseT", bound=BaseModel)
-_StructuredOutputT = TypeVar("_StructuredOutputT", bound=StructuredOutputResponseT)
 
 # -------------------------------------------------------------------------------- #
 # Base Cost Strategy

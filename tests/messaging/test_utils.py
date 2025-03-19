@@ -11,7 +11,7 @@ from typing import List, Tuple, Optional
 from unittest.mock import patch, MagicMock
 
 # Module imports
-from astral_ai.messaging._utils import (
+from astral_ai.messaging._message_utils import (
     handle_no_messages,
     standardize_messages,
     count_message_roles,

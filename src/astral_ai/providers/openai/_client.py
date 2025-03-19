@@ -104,7 +104,7 @@ class OpenAIProviderClient(BaseProviderClient[
     # --------------------------------------------------------------------------
 
     @auth_method("api_key")
-    def auth_via_api_key(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS, async_client: bool = False) -> OpenAI:
+    def auth_via_api_key(self, config: AUTH_CONFIG_TYPE, env: AUTH_ENV_VARS, async_client: bool = False) -> Union[OpenAISyncClientType, OpenAIAsyncClientType]:
         """
         Authenticate using an API key from config or environment variables.
 

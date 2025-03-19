@@ -23,12 +23,13 @@ from ._request import (
     DeepSeekRequestChat,
     DeepSeekRequestStreaming,
     DeepSeekRequestStructured,
-
+    DeepSeekRequestEmbedding,
     # Request Types
     DeepSeekRequestType,
     DeepSeekRequestChatType,
     DeepSeekRequestStreamingType,
     DeepSeekRequestStructuredType,
+    DeepSeekRequestEmbeddingType,
 )
 
 # -------------------------------------------------------------------------------- #
@@ -57,11 +58,12 @@ __all__ = [
     "DeepSeekRequestChat",
     "DeepSeekRequestStreaming",
     "DeepSeekRequestStructured",
+    "DeepSeekRequestEmbedding",
     "DeepSeekRequestType",
     "DeepSeekRequestChatType",
     "DeepSeekRequestStreamingType",
     "DeepSeekRequestStructuredType",
-
+    "DeepSeekRequestEmbeddingType",
     # Usage Types
     "DeepSeekCompletionUsageType",
 

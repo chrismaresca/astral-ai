@@ -232,6 +232,23 @@ class DeepSeekRequestStructured(DeepSeekRequestChat, total=False):
 # DeepSeek Type Aliases
 # ------------------------------------------------------------------------------
 
+# Embedding Request
+class DeepSeekRequestEmbedding(TypedDict, total=False):
+    """
+    DeepSeekEmbeddingRequest represents an embedding request for the Deepseek model.
+
+    This request object is used to create an embedding for a given text input.
+    """
+    model: Required[DeepSeekModels]
+    """
+    [Required] The identifier of the model to be used.
+    - Possible values: "deepseek-chat" or "deepseek-reasoner".
+    - Specifies which Deepseek model should process the chat request.
+    """
+    input: Required[str]
+    """
+    [Required] The text input to be embedded.
+    """
 
 # Chat Request
 DeepSeekRequestChatType: TypeAlias = DeepSeekRequestChat
@@ -242,5 +259,8 @@ DeepSeekRequestStreamingType: TypeAlias = DeepSeekRequestStreaming
 # Structured Request
 DeepSeekRequestStructuredType: TypeAlias = DeepSeekRequestStructured
 
+# Embedding Request
+DeepSeekRequestEmbeddingType: TypeAlias = DeepSeekRequestEmbedding
+
 # Union of all request types
-DeepSeekRequestType: TypeAlias = Union[DeepSeekRequestChatType, DeepSeekRequestStreamingType, DeepSeekRequestStructuredType]
+DeepSeekRequestType: TypeAlias = Union[DeepSeekRequestChatType, DeepSeekRequestStreamingType, DeepSeekRequestStructuredType, DeepSeekRequestEmbeddingType]

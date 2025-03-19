@@ -1,14 +1,15 @@
-# ------------------------------------------------------------------------------
-# OpenAI
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------- #
+# OpenAI Provider
+# -------------------------------------------------------------------------------- #
+"""
+OpenAI provider for Astral AI.
+Includes client, types, and adapter for OpenAI's API.
+"""
 
-from ._client import OpenAIProviderClient
-
-
-# ------------------------------------------------------------------------------
-# All
-# ------------------------------------------------------------------------------
+from astral_ai.providers.openai._client import OpenAIProviderClient
+from astral_ai.providers.openai._adapter import OpenAIAdapter
 
 __all__ = [
     "OpenAIProviderClient",
+    "OpenAIAdapter",
 ]

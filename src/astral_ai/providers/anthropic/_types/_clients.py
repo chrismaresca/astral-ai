@@ -6,11 +6,14 @@
 from typing import TypeAlias, Union
 
 # Anthropic Imports
-from openai import OpenAI as Anthropic, AsyncOpenAI as AsyncAnthropic
+from anthropic import Anthropic as AnthropicSync, AsyncAnthropic as AnthropicAsync
 
 # ------------------------------------------------------------------------------
 # Anthropic Clients
 # ------------------------------------------------------------------------------
 
+AnthropicSyncClientType: TypeAlias = AnthropicSync
+AnthropicAsyncClientType: TypeAlias = AnthropicAsync
 
-AnthropicClientsType: TypeAlias = Union[Anthropic, AsyncAnthropic]
+AnthropicClientsType: TypeAlias = Union[AnthropicSync, AnthropicAsync]
+

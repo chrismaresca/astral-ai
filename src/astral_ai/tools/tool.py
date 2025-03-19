@@ -33,12 +33,16 @@ from pydantic import BaseModel, Field, create_model
 
 # module imports
 from astral_ai._types._request._request_params import Tool, ToolDefinition
+from astral_ai.logger import logger
 
 # -------------------------------------------------------------------------------- #
 # Type Variables and Literals
 # -------------------------------------------------------------------------------- #
 F = TypeVar('F', bound=Callable[..., Any])
 DocstringStyle = Literal["google", "numpy", "sphinx"]
+
+# Global emoji for tool-related logs
+TOOL_EMOJI = "🛠️"
 
 # -------------------------------------------------------------------------------- #
 # Schema Utilities
@@ -79,6 +83,7 @@ def ensure_strict_json_schema(schema: Dict[str, Any]) -> Dict[str, Any]:
     if "items" in strict_schema and isinstance(strict_schema["items"], dict):
         strict_schema["items"] = ensure_strict_json_schema(strict_schema["items"])
     
+    logger.debug(f"{TOOL_EMOJI}{" "} Enforced strict JSON schema")
     return strict_schema
 
 # -------------------------------------------------------------------------------- #
@@ -138,6 +143,7 @@ def _detect_docstring_style(doc: str) -> DocstringStyle:
     styles: List[DocstringStyle] = ["sphinx", "numpy", "google"]
     for style in styles:
         if scores[style] == max_score:
+            logger.debug(f"{TOOL_EMOJI}{" "} Detected docstring style: {style}")
             return style
 
     return "google"
@@ -173,11 +179,14 @@ def generate_func_documentation(
     name = func.__name__
     doc = inspect.getdoc(func)
     if not doc:
+        logger.debug(f"{TOOL_EMOJI}{" "} No docstring found for function: {name}")
         return FuncDocumentation(name=name)
 
     if GRIFFE_AVAILABLE:
         with _suppress_griffe_logging():
-            docstring = Docstring(doc, lineno=1, parser=style or _detect_docstring_style(doc))
+            docstring_style = style or _detect_docstring_style(doc)
+            logger.debug(f"{TOOL_EMOJI}{" "} Parsing docstring with {docstring_style} style for function: {name}")
+            docstring = Docstring(doc, lineno=1, parser=docstring_style)
             parsed = docstring.parse()
 
         description: Optional[str] = next(
@@ -198,6 +207,7 @@ def generate_func_documentation(
         )
     else:
         # Fallback to regex parsing if griffe is not available
+        logger.debug(f"{TOOL_EMOJI}{" "} Griffe not available, using regex parsing for function: {name}")
         style = style or _detect_docstring_style(doc)
         
         # Simple extraction for description (everything before Args/Parameters section)
@@ -256,6 +266,7 @@ def generate_func_documentation(
                         desc = param_blocks[j + 1].strip()
                         param_descriptions[name] = desc
         
+        logger.debug(f"{TOOL_EMOJI}{" "} Extracted documentation for function: {name}")
         return FuncDocumentation(
             name=name,
             description=description,
@@ -317,6 +328,7 @@ class FunctionSchema:
                 # For KEYWORD_ONLY parameters, always use keyword args.
                 keyword_args[name] = value
                 
+        logger.debug(f"{TOOL_EMOJI}{" "} Converted model data to function arguments")
         return positional_args, keyword_args
 
 
@@ -342,6 +354,8 @@ def generate_function_schema(
     Returns:
         A FunctionSchema object containing the schema representation
     """
+    logger.debug(f"{TOOL_EMOJI}{" "} Generating schema for function: {func.__name__}")
+    
     # Parse docstring for description and param descriptions
     if use_docstring_info:
         doc_info = generate_func_documentation(func, docstring_style)
@@ -352,6 +366,8 @@ def generate_function_schema(
     
     # Get function name (use override if provided)
     func_name = name_override or doc_info.name
+    if name_override:
+        logger.debug(f"{TOOL_EMOJI}{" "} Using custom name for function: {name_override}")
     
     # Get function signature and type hints
     sig = inspect.signature(func)
@@ -368,6 +384,7 @@ def generate_function_schema(
         # If there's no type hint, assume `Any`
         if ann == inspect._empty:
             ann = Any
+            logger.debug(f"{TOOL_EMOJI}{" "} No type hint for parameter '{name}', using Any")
             
         # Get parameter description from docstring if available
         field_description = param_descs.get(name)
@@ -391,6 +408,7 @@ def generate_function_schema(
                 ann,
                 Field(default_factory=list, description=field_description),
             )
+            logger.debug(f"{TOOL_EMOJI}{" "} Handling *args parameter '{name}' as {ann}")
             
         elif param.kind == param.VAR_KEYWORD:
             # **kwargs handling
@@ -409,6 +427,7 @@ def generate_function_schema(
                 ann,
                 Field(default_factory=dict, description=field_description),
             )
+            logger.debug(f"{TOOL_EMOJI}{" "} Handling **kwargs parameter '{name}' as {ann}")
             
         else:
             # Normal parameter
@@ -418,15 +437,18 @@ def generate_function_schema(
                     ann,
                     Field(..., description=field_description),
                 )
+                logger.debug(f"{TOOL_EMOJI}{" "} Adding required parameter '{name}' with type {ann}")
             else:
                 # Parameter with a default value
                 fields[name] = (
                     ann,
                     Field(default=default, description=field_description),
                 )
+                logger.debug(f"{TOOL_EMOJI}{" "} Adding optional parameter '{name}' with type {ann} and default {default}")
     
     # Create Pydantic model
     model = create_model(f"{func_name}_params", **fields)
+    logger.debug(f"{TOOL_EMOJI}{" "} Created Pydantic model for function: {func_name}")
     
     # Get JSON schema from model
     json_schema = model.model_json_schema()
@@ -454,7 +476,7 @@ def function_tool(
     description: Optional[str] = None,
     docstring_style: Optional[DocstringStyle] = None,
     use_docstring_info: bool = True,
-    strict_json_schema: bool = True,
+    strict: bool = False,
 ) -> Union[F, Callable[[F], F]]:
     """
     Decorator to convert a Python function into a tool for use with language models.
@@ -465,10 +487,12 @@ def function_tool(
         description: Optional override for the function description
         docstring_style: The docstring style to use for parsing
         use_docstring_info: Whether to use docstring information for schema generation
-        strict_json_schema: Whether to ensure the schema adheres to strict standards
+        strict: Whether to ensure the schema adheres to OpenAI's strict standards.
+               This is REQUIRED when using JSON mode or structured output with OpenAI.
+               If False, the tool will be automatically upgraded to strict mode when needed.
         
     Returns:
-        The decorated function
+        The decorated function that can be used directly as a tool
         
     Example:
         @function_tool
@@ -476,11 +500,17 @@ def function_tool(
             '''Get weather for a location.'''
             return f"The weather in {location} is sunny."
             
-        @function_tool(name="fetch_weather", description="Get weather information")
-        def get_weather(location: str, unit: str = "C") -> str:
-            return f"The weather in {location} is sunny."
+        # Can be used directly
+        response = complete_json(
+            model="gpt-4o",
+            messages=messages,
+            tools=[get_weather],  # Direct function reference
+            response_format=ResponseFormat
+        )
     """
     def decorator(fn: F) -> F:
+        logger.debug(f"{TOOL_EMOJI}{" "} Decorating function as tool: {fn.__name__}")
+        
         # Generate function schema
         schema = generate_function_schema(
             fn, 
@@ -488,15 +518,24 @@ def function_tool(
             description_override=description,
             docstring_style=docstring_style,
             use_docstring_info=use_docstring_info,
-            strict_json_schema=strict_json_schema
+            strict_json_schema=strict,
         )
         
-        # Create tool definition
-        tool_definition = ToolDefinition(
-            name=schema.name,
-            description=schema.description or "",
-            parameters=schema.params_json_schema
-        )
+        # Create tool definition with strict field only when True
+        if strict:
+            tool_definition = ToolDefinition(
+                name=schema.name,
+                description=schema.description or "",
+                parameters=schema.params_json_schema,
+                strict=True
+            )
+            logger.debug(f"{TOOL_EMOJI}{" "} Tool created with strict mode enabled")
+        else:
+            tool_definition = ToolDefinition(
+                name=schema.name,
+                description=schema.description or "",
+                parameters=schema.params_json_schema
+            )
         
         # Create tool
         tool_obj = Tool(
@@ -504,22 +543,26 @@ def function_tool(
             function=tool_definition
         )
         
+        logger.debug(f"{TOOL_EMOJI}{" "} Created tool definition for: {schema.name}")
+        
         @functools.wraps(fn)
         def wrapper(*args, **kwargs):
             return fn(*args, **kwargs)
         
-        # Attach tool and schema to the function
-        wrapper.tool = tool_obj
-        wrapper.schema = schema
-        
         # Add convenience method for validating and converting input
         def validate_and_call(input_data: Dict[str, Any]) -> Any:
             """Validate input data against the schema and call the function."""
+            logger.debug(f"{TOOL_EMOJI}{" "} Validating input data for tool: {schema.name}")
             model_instance = schema.pydantic_model(**input_data)
             args, kwargs = schema.to_call_args(model_instance)
+            logger.debug(f"{TOOL_EMOJI}{" "} Calling function with validated data")
             return fn(*args, **kwargs)
         
         wrapper.validate_and_call = validate_and_call
+        
+        # Store information on the function itself
+        wrapper.__astral_tool__ = tool_obj
+        wrapper.__astral_strict__ = strict
         
         return cast(F, wrapper)
     
@@ -529,154 +572,315 @@ def function_tool(
     else:
         return decorator(func)
 
+# Helper function to get a tool from a decorated function or raw tool object
+def get_tool(obj: Any, enforce_strict: bool = False) -> Optional[Tool]:
+    """
+    Gets the tool object from a function or object, with optional strict enforcement.
+    
+    Handles several potential input formats:
+    1. Functions decorated with @function_tool (access via __astral_tool__)
+    2. Raw Tool dictionaries
+    
+    Args:
+        obj: A function decorated with @function_tool or a raw Tool dictionary
+        enforce_strict: When True, will ensure the returned tool has strict=True
+                       (required for JSON mode and structured output with OpenAI)
+        
+    Returns:
+        The Tool object if found, None otherwise
+    """
+    # Get tool from decorated function
+    if hasattr(obj, "__astral_tool__"):
+        # Create a deep copy of the tool object using JSON serialization/deserialization
+        tool_obj = json.loads(json.dumps(obj.__astral_tool__))
+        # Check if strict was explicitly set to True
+        is_strict = getattr(obj, "__astral_strict__", False)
+        logger.debug(f"{TOOL_EMOJI}{" "} Retrieved tool from decorated function: {obj.__name__}")
+    # Get tool from raw dictionary
+    elif isinstance(obj, dict) and obj.get("type") == "function" and "function" in obj:
+        # Create a deep copy of the tool dictionary using JSON serialization/deserialization
+        tool_obj = json.loads(json.dumps(obj))
+        # Check if strict was explicitly set to True in the original
+        is_strict = "strict" in obj.get("function", {}) and obj["function"]["strict"] is True
+        logger.debug(f"{TOOL_EMOJI}{" "} Retrieved tool from raw dictionary: {tool_obj['function'].get('name', 'unnamed')}")
+    else:
+        logger.debug(f"{TOOL_EMOJI}{" "} Object is not a valid tool: {type(obj)}")
+        return None  # Not a valid tool
+    
+    # If strict attribute exists in the tool but isn't True, remove it
+    if "strict" in tool_obj.get("function", {}) and tool_obj["function"]["strict"] is not True:
+        del tool_obj["function"]["strict"]
+    
+    # Enforce strict mode if requested
+    if enforce_strict:
+        logger.debug(f"{TOOL_EMOJI}{" "} Enforcing strict mode for tool: {tool_obj['function'].get('name', 'unnamed')}")
+        tool_obj["function"]["strict"] = True
+    
+    return tool_obj
 
 # -------------------------------------------------------------------------------- #
-# Example Usage
+# Test Cases
 # -------------------------------------------------------------------------------- #
+
+# Global emoji for tool-related logs
+TOOL_EMOJI = "🛠️"
+
 if __name__ == "__main__":
-    @function_tool
-    def get_weather(location: str, unit: str = "C") -> str:
-        """
-        Fetch the weather for a given location, returning a short description.
-        
-        Args:
-            location: The city or location to get weather for
-            unit: Temperature unit, either C or F
+    import sys
+    from typing import Dict, Literal, Any, Optional, Callable
+    
+    # -------------------------------------------------------------------------------- #
+    # Test Setup and Helper Functions
+    # -------------------------------------------------------------------------------- #
+    
+    def run_test(test_func):
+        """Run a test function and catch any exceptions"""
+        try:
+            print(f"\n{TOOL_EMOJI}{" "} Running test: {test_func.__name__}")
+            test_func()
+            print(f"✅ Test {test_func.__name__} completed successfully")
+            return True
+        except AssertionError as e:
+            print(f"❌ FAIL: {test_func.__name__} - {str(e)}")
+            return False
+        except Exception as e:
+            print(f"❌ Test {test_func.__name__} failed with exception: {str(e)}")
+            import traceback
+            print(traceback.format_exc())
+            return False
+    
+    # -------------------------------------------------------------------------------- #
+    # Test Case Functions
+    # -------------------------------------------------------------------------------- #
+    
+    def test_basic_function_tool_decoration():
+        """Test basic function_tool decoration without arguments"""
+        @function_tool
+        def get_weather(location: str, unit: str = "C") -> str:
+            """
+            Fetch the weather for a given location, returning a short description.
             
-        Returns:
-            A description of the weather
-        """
-        # Example logic
-        return f"The weather in {location} is 22 degrees {unit}."
-    
-    @function_tool(name="calculate_geometric_area")
-    def calculate_area(shape: str, dimensions: Dict[str, float]) -> float:
-        """
-        Calculate the area of a geometric shape.
+            Args:
+                location: The city or location to get weather for
+                unit: Temperature unit, either C or F
+                
+            Returns:
+                A description of the weather
+            """
+            return f"The weather in {location} is 22 degrees {unit}."
         
-        Args:
-            shape: The type of shape (circle, rectangle, triangle)
-            dimensions: Dimensions required for the calculation
-            
-        Returns:
-            The calculated area
-        """
-        if shape == "circle" and "radius" in dimensions:
-            return 3.14159 * dimensions["radius"] ** 2
-        elif shape == "rectangle" and "width" in dimensions and "height" in dimensions:
-            return dimensions["width"] * dimensions["height"]
-        else:
-            return 0.0
-    
-    @function_tool(
-        name="product_search", 
-        description="Search for products in the catalog with optional filtering"
-    )
-    def search_products(query: str, category: Optional[str] = None, max_results: int = 10) -> list:
-        """
-        Search for products in a catalog.
+        # Verify the function still works
+        result = get_weather("New York", "F")
+        assert result == "The weather in New York is 22 degrees F.", "Function should still work after decoration"
         
-        Args:
-            query: Search query string
-            category: Optional category to filter results
-            max_results: Maximum number of results to return
-            
-        Returns:
-            List of matching products
-        """
-        # Example implementation
-        return [{"name": f"Product {i}", "category": category or "general"} for i in range(min(3, max_results))]
-    
-    # Variable argument example
-    @function_tool
-    def sum_values(*numbers: int, scale: float = 1.0) -> float:
-        """
-        Sum a variable number of values with optional scaling.
+        # Verify tool attributes
+        assert hasattr(get_weather, "__astral_tool__"), "Decorated function should have __astral_tool__ attribute"
+        assert hasattr(get_weather, "__astral_strict__"), "Decorated function should have __astral_strict__ attribute"
+        assert get_weather.__astral_strict__ is False, "Default strict mode should be False"
         
-        Args:
-            *numbers: Numbers to sum
-            scale: Value to multiply the sum by
-            
-        Returns:
-            The scaled sum
-        """
-        return sum(numbers) * scale
+        # Verify tool structure
+        tool = get_weather.__astral_tool__
+        assert tool["type"] == "function", "Tool type should be 'function'"
+        assert tool["function"]["name"] == "get_weather", "Tool name should match function name"
+        assert "description" in tool["function"], "Tool should have a description"
+        assert "parameters" in tool["function"], "Tool should have parameters"
     
-    # Keyword argument example
-    @function_tool 
-    def format_user_data(name: str, **attributes: Any) -> Dict[str, Any]:
-        """
-        Format user data with optional attributes.
+    def test_function_tool_with_name():
+        """Test function_tool with custom name"""
+        @function_tool(name="calculate_geometric_area")
+        def calculate_area(shape: str, dimensions: Dict[str, float]) -> float:
+            """
+            Calculate the area of a geometric shape.
+            
+            Args:
+                shape: The type of shape (circle, rectangle, triangle)
+                dimensions: Dimensions required for the calculation
+                
+            Returns:
+                The calculated area
+            """
+            if shape == "circle" and "radius" in dimensions:
+                return 3.14159 * dimensions["radius"] ** 2
+            elif shape == "rectangle" and "width" in dimensions and "height" in dimensions:
+                return dimensions["width"] * dimensions["height"]
+            else:
+                return 0.0
         
-        Args:
-            name: The user's name
-            **attributes: Additional user attributes
+        # Verify the function still works
+        result = calculate_area("circle", {"radius": 2.0})
+        assert abs(result - 12.56636) < 0.0001, "Function should calculate circle area correctly"
+        
+        # Verify tool name was customized
+        assert calculate_area.__astral_tool__["function"]["name"] == "calculate_geometric_area", "Tool name should be customized"
+    
+    def test_function_tool_with_strict():
+        """Test function_tool with strict mode enabled"""
+        @function_tool(strict=True, name="strict_calculator")
+        def calculate_strict(a: float, b: float, operation: Literal["add", "multiply", "divide", "subtract"]) -> float:
+            """
+            Perform a calculation with strict schema validation.
             
-        Returns:
-            Formatted user data object
-        """
-        return {"name": name, "attributes": attributes}
+            Args:
+                a: First number
+                b: Second number
+                operation: Mathematical operation to perform
+                
+            Returns:
+                Result of the calculation
+            """
+            if operation == "add":
+                return a + b
+            elif operation == "multiply":
+                return a * b
+            elif operation == "divide":
+                return a / b
+            elif operation == "subtract":
+                return a - b
+            else:
+                raise ValueError(f"Unknown operation: {operation}")
+        
+        # Verify strict mode is set
+        assert calculate_strict.__astral_strict__ is True, "Strict mode should be True"
+        assert calculate_strict.__astral_tool__["function"]["strict"] is True, "Tool function should have strict=True"
+        
+        # Verify function still works
+        result = calculate_strict(5, 3, "add")
+        assert result == 8, "Function should still work with strict mode"
     
-    print("\n" + "="*50)
-    print("TOOL DEFINITIONS")
-    print("="*50)
+    def test_get_tool_from_decorated_function():
+        """Test getting a tool from a decorated function"""
+        @function_tool
+        def sample_function(x: int) -> int:
+            """Sample function that returns x squared"""
+            return x * x
+        
+        # Get tool without enforcing strict
+        tool = get_tool(sample_function)
+        assert tool is not None, "Should return a tool object"
+        assert tool["type"] == "function", "Tool type should be 'function'"
+        assert tool["function"]["name"] == "sample_function", "Tool name should match function name"
+        assert tool.get("function", {}).get("strict") is None, "Strict should not be set"
+        
+        # Verify tool is a copy, not the original
+        assert tool is not sample_function.__astral_tool__, "get_tool should return a copy"
     
-    # Print the tool definitions
-    print("\nWeather Tool:")
-    weather_tool = get_weather.tool
-    print(f"Type: {weather_tool['type']}")
-    print(f"Name: {weather_tool['function']['name']}")
-    print(f"Description: {weather_tool['function']['description']}")
-    print(f"Parameters: {weather_tool['function']['parameters']}")
+    def test_get_tool_with_enforce_strict():
+        """Test getting a tool with enforce_strict=True"""
+        @function_tool
+        def sample_function(x: int) -> int:
+            """Sample function that returns x squared"""
+            return x * x
+        
+        # Get tool with enforce_strict=True
+        tool = get_tool(sample_function, enforce_strict=True)
+        assert tool is not None, "Should return a tool object"
+        assert tool["function"]["strict"] is True, "Tool should have strict=True"
+        
+        # Verify original is unmodified
+        assert sample_function.__astral_tool__["function"].get("strict") is None, "Original tool should be unmodified"
     
-    print("\nCalculate Area Tool:")
-    area_tool = calculate_area.tool
-    print(f"Type: {area_tool['type']}")
-    print(f"Name: {area_tool['function']['name']}")
-    print(f"Description: {area_tool['function']['description']}")
-    print(f"Parameters: {area_tool['function']['parameters']}")
+    def test_get_tool_from_raw_dict():
+        """Test getting a tool from a raw dictionary"""
+        raw_tool = {
+            "type": "function",
+            "function": {
+                "name": "raw_function",
+                "description": "A raw function tool",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "x": {"type": "number"}
+                    }
+                }
+            }
+        }
+        
+        # Get tool without enforcing strict
+        tool = get_tool(raw_tool)
+        assert tool is not None, "Should return a tool object"
+        assert tool["type"] == "function", "Tool type should be 'function'"
+        assert tool["function"]["name"] == "raw_function", "Tool name should match"
+        assert tool.get("function", {}).get("strict") is None, "Strict should not be set"
+        
+        # Verify tool is a copy, not the original
+        assert tool is not raw_tool, "get_tool should return a copy"
     
-    print("\nProduct Search Tool:")
-    search_tool = search_products.tool
-    print(f"Type: {search_tool['type']}")
-    print(f"Name: {search_tool['function']['name']}")
-    print(f"Description: {search_tool['function']['description']}")
-    print(f"Parameters: {search_tool['function']['parameters']}")
+    def test_get_tool_from_raw_dict_with_enforce_strict():
+        """Test getting a tool from a raw dictionary with enforce_strict=True"""
+        raw_tool = {
+            "type": "function",
+            "function": {
+                "name": "raw_function",
+                "description": "A raw function tool",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "x": {"type": "number"}
+                    }
+                }
+            }
+        }
+        
+        # Get tool with enforce_strict=True
+        tool = get_tool(raw_tool, enforce_strict=True)
+        assert tool is not None, "Should return a tool object"
+        assert tool["function"]["strict"] is True, "Tool should have strict=True"
+        
+        # Verify original is unmodified
+        assert raw_tool["function"].get("strict") is None, "Original tool should be unmodified"
     
-    print("\nSum Values Tool (variadic args):")
-    sum_tool = sum_values.tool
-    print(f"Type: {sum_tool['type']}")
-    print(f"Name: {sum_tool['function']['name']}")
-    print(f"Description: {sum_tool['function']['description']}")
-    print(f"Parameters: {sum_tool['function']['parameters']}")
+    def test_get_tool_from_invalid_object():
+        """Test getting a tool from an invalid object"""
+        # Test with various invalid objects
+        assert get_tool("not a tool") is None, "String should not be a valid tool"
+        assert get_tool(123) is None, "Number should not be a valid tool"
+        assert get_tool({}) is None, "Empty dict should not be a valid tool"
+        assert get_tool({"type": "not_function"}) is None, "Dict with wrong type should not be a valid tool"
     
-    print("\nFormat User Data Tool (keyword args):")
-    format_tool = format_user_data.tool
-    print(f"Type: {format_tool['type']}")
-    print(f"Name: {format_tool['function']['name']}")
-    print(f"Description: {format_tool['function']['description']}")
-    print(f"Parameters: {format_tool['function']['parameters']}")
+    def test_get_tool_with_already_strict():
+        """Test getting a tool that's already strict with enforce_strict=True"""
+        @function_tool(strict=True)
+        def strict_function(x: int) -> int:
+            """A function that's already strict"""
+            return x * x
+        
+        # Get tool with enforce_strict=True
+        tool = get_tool(strict_function, enforce_strict=True)
+        assert tool is not None, "Should return a tool object"
+        assert tool["function"]["strict"] is True, "Tool should have strict=True"
+        
+        # Verify original is unmodified
+        assert strict_function.__astral_tool__["function"]["strict"] is True, "Original tool should be unmodified"
     
-    print("\n" + "="*50)
-    print("USAGE EXAMPLES")
-    print("="*50)
+    # -------------------------------------------------------------------------------- #
+    # Run All Tests
+    # -------------------------------------------------------------------------------- #
     
-    # Example usage with validation
-    print("\nCalling get_weather:")
-    result = get_weather.validate_and_call({"location": "Seattle", "unit": "F"})
-    print(f"Result: {result}")
+    def run_all_tests():
+        """Run all test cases"""
+        all_tests = [
+            test_basic_function_tool_decoration,
+            test_function_tool_with_name,
+            test_function_tool_with_strict,
+            test_get_tool_from_decorated_function,
+            test_get_tool_with_enforce_strict,
+            test_get_tool_from_raw_dict,
+            test_get_tool_from_raw_dict_with_enforce_strict,
+            test_get_tool_from_invalid_object,
+            test_get_tool_with_already_strict,
+        ]
+        
+        total_tests = len(all_tests)
+        passed_tests = 0
+        
+        for test in all_tests:
+            if run_test(test):
+                passed_tests += 1
+        
+        print(f"\n📊 Test Summary: {passed_tests}/{total_tests} tests passed")
+        
+        # Return exit code based on test results
+        return 0 if passed_tests == total_tests else 1
     
-    print("\nCalling calculate_area:")
-    result = calculate_area.validate_and_call({"shape": "circle", "dimensions": {"radius": 5.0}})
-    print(f"Result: {result}")
-    
-    print("\nCalling sum_values with variadic args:")
-    result = sum_values.validate_and_call({"numbers": [1, 2, 3, 4], "scale": 2.0})
-    print(f"Result: {result}")
-    
-    print("\nCalling format_user_data with keyword args:")
-    result = format_user_data.validate_and_call({
-        "name": "Alice", 
-        "attributes": {"age": 30, "email": "alice@example.com"}
-    })
-    print(f"Result: {result}")
+    # Run all tests and set exit code
+    sys.exit(run_all_tests())

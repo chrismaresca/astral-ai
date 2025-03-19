@@ -9,7 +9,6 @@ from typing import Literal, Dict, TypeAlias
 ModelProvider = Literal[
     "openai",
     "anthropic",
-    "azureOpenAI",
     "deepseek",
 ]
 

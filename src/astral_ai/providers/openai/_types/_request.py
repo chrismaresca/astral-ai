@@ -61,7 +61,7 @@ _ResponseFormatT = TypeVar("ResponseFormatT", bound=BaseModel)
 # ------------------------------------------------------------------------------
 
 
-class OpenAIRequestBase(TypedDict, total=False):
+class OpenAIChatRequestBase(TypedDict, total=False):
     """
     OpenAI Request Base Model for Astral AI
     """
@@ -147,7 +147,7 @@ class OpenAIRequestBase(TypedDict, total=False):
 # Chat Request
 # ------------------------------------------------------------------------------
 
-class OpenAIRequestChat(OpenAIRequestBase, total=False):
+class OpenAIRequestChat(OpenAIChatRequestBase, total=False):
     """
     OpenAI Request Chat Model for Astral AI
     """
@@ -158,7 +158,7 @@ class OpenAIRequestChat(OpenAIRequestBase, total=False):
 # ------------------------------------------------------------------------------
 
 
-class OpenAIRequestStreaming(OpenAIRequestBase):
+class OpenAIRequestStreaming(OpenAIChatRequestBase):
     """
     OpenAI Request Streaming Model for Astral AI
     """
@@ -169,7 +169,7 @@ class OpenAIRequestStreaming(OpenAIRequestBase):
 # ------------------------------------------------------------------------------s
 
 
-class OpenAIRequestStructured(Generic[_ResponseFormatT], OpenAIRequestBase):
+class OpenAIRequestStructured(Generic[_ResponseFormatT], OpenAIChatRequestBase):
     """
     OpenAI Request Structured Model for Astral AI
     """
@@ -181,11 +181,14 @@ class OpenAIRequestStructured(Generic[_ResponseFormatT], OpenAIRequestBase):
 # ------------------------------------------------------------------------------
 
 
-class OpenAIRequestEmbedding(BaseModel, total=False):
+class OpenAIRequestEmbedding(TypedDict, total=False):
     """
     OpenAI Request Embedding Model for Astral AI
     """
-    pass
+    model: Required[OpenAIModels]
+    input: Required[str | List[str]]
+    user: Optional[str]
+    timeout: Optional[Union[float, Timeout]]
 
 
 # ------------------------------------------------------------------------------

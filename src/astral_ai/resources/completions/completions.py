@@ -102,6 +102,71 @@ from astral_ai.logger import logger
 
 
 # -------------------------------------------------------------------------------- #
+# Logging Helper Functions
+# -------------------------------------------------------------------------------- #
+
+# Global emoji for completion-related logs
+COMPLETION_EMOJI = "⚡ "
+
+def format_model_name(model_name: str) -> str:
+    """Format a model name for pretty logging display."""
+    return f"`{model_name}`"
+
+def format_response_schema(schema_class: Type[BaseModel]) -> str:
+    """
+    Format a response schema class for human-readable logging.
+    Returns the class name and top-level fields.
+    """
+    if not hasattr(schema_class, "model_json_schema"):
+        return schema_class.__name__
+    
+    try:
+        schema = schema_class.model_json_schema()
+        properties = schema.get("properties", {})
+        field_names = list(properties.keys())
+        
+        if len(field_names) <= 3:
+            fields_str = ", ".join(field_names)
+            return f"{schema_class.__name__} ({fields_str})"
+        else:
+            # Show first three fields with ellipsis for more
+            fields_preview = ", ".join(field_names[:3])
+            return f"{schema_class.__name__} ({fields_preview}, ...)"
+    except Exception:
+        # Fallback if schema extraction fails
+        return schema_class.__name__
+
+def format_tool_names(tools: List[Tool]) -> str:
+    """
+    Format a list of tools into a concise human-readable string of tool names.
+    """
+    if not tools:
+        return "no tools"
+    
+    # Extract tool names
+    tool_names = []
+    for tool in tools:
+        if isinstance(tool, dict) and "function" in tool:
+            name = tool["function"].get("name", "unnamed")
+            tool_names.append(name)
+        else:
+            tool_names.append("unnamed_tool")
+    
+    if len(tool_names) <= 3:
+        return ", ".join(f"`{name}`" for name in tool_names)
+    else:
+        # Show first three with count
+        preview = ", ".join(f"`{name}`" for name in tool_names[:3])
+        return f"{preview} and {len(tool_names) - 3} more"
+
+def format_tool_choice(choice: ToolChoice) -> str:
+    """Format tool choice setting for human-readable logs."""
+    if isinstance(choice, dict) and choice.get("type") == "function":
+        function_name = choice.get("function", {}).get("name", "unknown")
+        return f"function `{function_name}`"
+    return f"`{choice}`"
+
+# -------------------------------------------------------------------------------- #
 # Generic Types
 # -------------------------------------------------------------------------------- #
 
@@ -259,7 +324,6 @@ class Completions(AstralResource):
             if self._response_format is not NOT_GIVEN and self._response_format is not None:
                 # Use the actual model class as the response_format - not an instance
                 response_format = self._response_format
-                print("The response format HERE is: ", response_format)
             else:
                 # For JSON requests without a specific model, this needs to be handled differently
                 # This might need adjustment based on your implementation
@@ -270,9 +334,12 @@ class Completions(AstralResource):
                     supports_feature(validated_model, "json_mode")):
                 raise StructuredOutputNotSupportedError(validated_model)
 
+            # Format the response model name for logging
+            response_model_name = response_format.__name__ if hasattr(response_format, "__name__") else "CustomModel"
+            
             logger.debug(
-                f"Constructing AstralStructuredCompletionRequest for model={validated_model}, "
-                f"is_json_request={self._is_json_request}, response_format={response_format}"
+                f"{COMPLETION_EMOJI}Creating structured request with model {format_model_name(validated_model)} "
+                f"for {'JSON' if self._is_json_request else 'structured'} output using schema: {format_response_schema(response_format)}"
             )
 
             request_data = {
@@ -290,7 +357,7 @@ class Completions(AstralResource):
             return request_cls(**request_data)
         else:
             # The user wants a standard chat request
-            logger.debug(f"Constructing AstralCompletionRequest for model={validated_model}")
+            logger.debug(f"{COMPLETION_EMOJI}Creating standard chat request with model {format_model_name(validated_model)}")
             request_cls = AstralCompletionRequest
             request_data = {
                 "model": validated_model,
@@ -324,7 +391,7 @@ class Completions(AstralResource):
         
         # Convert any model alias to the specific model ID
         specific_model_id = get_specific_model_id(self._model)
-        logger.debug(f"Model validation: '{self._model}' -> '{specific_model_id}'")
+        logger.debug(f"{COMPLETION_EMOJI}Model resolved: '{self._model}' → '{format_model_name(specific_model_id)}'")
         
         return specific_model_id
 
@@ -364,16 +431,17 @@ class Completions(AstralResource):
         supports_reasoning = supports_feature(model_name, "reasoning_effort")
 
         if reasoning_effort is None:
-            logger.info("No reasoning effort provided, returning None")
+            logger.info(f"{COMPLETION_EMOJI}No reasoning effort specified for model {format_model_name(model_name)}")
             if supports_reasoning:
-                logger.info(f"Model {model_name} supports reasoning effort, changing ReasoningEffort from None to NOT_GIVEN")
+                logger.debug(f"{COMPLETION_EMOJI}Model {format_model_name(model_name)} supports reasoning effort, defaulting to model's choice")
                 return NOT_GIVEN
 
         # If we got here, effort is an actual value
         if not supports_reasoning:
-            logger.info(f"Model {model_name} does not support reasoning effort and it's set to {reasoning_effort}. Raising error.")
+            logger.warning(f"{COMPLETION_EMOJI}Model {format_model_name(model_name)} does not support reasoning effort level: {reasoning_effort}")
             raise ReasoningEffortNotSupportedError(model_name)
 
+        logger.debug(f"{COMPLETION_EMOJI}Setting reasoning effort to {reasoning_effort} for model {format_model_name(model_name)}")
         return reasoning_effort
 
     # -------------------------------------------------------------------------------- #
@@ -389,29 +457,49 @@ class Completions(AstralResource):
         Validate that the model can handle function calls if tools are given.
         If the user provided no tools, return None.
         If the model doesn't support function calls, raise an error.
+        
+        Automatically enforces strict mode for tools when:
+        1. Using JSON mode (_is_json_request=True)
+        2. Using structured output (response_format is provided)
         """
         if tools is NOT_GIVEN:
-            logger.info(f"No tools provided for model {model_name}.")
+            logger.debug(f"{COMPLETION_EMOJI}No tools provided for model {format_model_name(model_name)}")
             return NOT_GIVEN
 
         # If the user did provide tools, check if the model supports function calls
         if not supports_feature(model_name, "function_calls"):
-            logger.info(f"Model {model_name} does not support function calls. Raising error.")
+            logger.warning(f"{COMPLETION_EMOJI}Model {format_model_name(model_name)} does not support function calling - cannot use tools")
             raise ToolsNotSupportedError(model_name)
 
         if not isinstance(tools, list):
-            logger.info(f"Tools must be provided as a list. Raising error.")
+            logger.warning(f"{COMPLETION_EMOJI}Tools must be provided as a list")
             raise ValueError("Tools must be provided as a list")
 
-        # Optionally ensure each tool is properly formatted
-        # TODO: Implement this
-        # for t in tools:
-        #     # Check if the tool has a name and description
-        #     if not hasattr(t.function, "name") or not hasattr(t.function, "description"):
-        #         raise InvalidToolError(f"Tool {t.function.name if hasattr(t.function, 'name') else t.function} must have both a 'name' and 'description'.")
-
-        logger.info(f"Successfully validated {len(tools)} tools ({', '.join([tool['function']['name'] for tool in tools])}) for model {model_name}")
-        return tools
+        # Import the get_tool function from tools module
+        from astral_ai.tools.tool import get_tool
+        
+        # Determine if we need to enforce strict mode
+        enforce_strict = False
+        if self._is_json_request or self._response_format is not NOT_GIVEN:
+            logger.debug(f"{COMPLETION_EMOJI}JSON or structured output detected - enforcing strict schema for all tools")
+            enforce_strict = True
+        
+        # Process the tools list to handle function references
+        processed_tools = []
+        
+        for tool in tools:
+            tool_obj = get_tool(tool, enforce_strict=enforce_strict)
+            if tool_obj is None:
+                logger.warning(f"{COMPLETION_EMOJI}Invalid tool definition skipped: {str(tool)[:40]}...")
+                continue
+            processed_tools.append(tool_obj)
+        
+        if not processed_tools:
+            logger.warning(f"{COMPLETION_EMOJI}No valid tools found in provided list - all were skipped")
+            return NOT_GIVEN
+        
+        logger.debug(f"{COMPLETION_EMOJI}Validated {len(processed_tools)} tools: {format_tool_names(processed_tools)}")
+        return processed_tools
 
     # -------------------------------------------------------------------------------- #
     # Set Tool Choice
@@ -428,15 +516,21 @@ class Completions(AstralResource):
         """
         if tools is NOT_GIVEN or len(tools) == 0:
             if tool_choice is not NOT_GIVEN and tool_choice != 'auto':
-                logger.warning("`tool_choice` was explicitly set but no tools were provided. Ignoring. We recommend not setting `tool_choice` or setting it to `auto` if no tools are provided.")
+                logger.warning(f"{COMPLETION_EMOJI}tool_choice was set but no tools were provided - ignoring tool_choice")
             return NOT_GIVEN
 
         if tool_choice is NOT_GIVEN:
-            logger.info("No tool choice specified, defaulting to 'auto' since tools are present")
+            logger.debug(f"{COMPLETION_EMOJI}No tool choice specified, defaulting to 'auto' since tools are present")
             # Default to "auto"
             return "auto"
 
-        logger.info(f"Setting explicit tool_choice to {tool_choice}")
+        # Handle different tool_choice formats for better logging
+        if isinstance(tool_choice, dict) and tool_choice.get("type") == "function":
+            function_name = tool_choice.get("function", {}).get("name", "unknown")
+            logger.debug(f"{COMPLETION_EMOJI}Setting tool_choice to use specific function: {function_name}")
+        else:
+            logger.debug(f"{COMPLETION_EMOJI}Setting tool_choice to: {format_tool_choice(tool_choice)}")
+            
         return tool_choice
 
     # -------------------------------------------------------------------------------- #
@@ -470,6 +564,8 @@ class Completions(AstralResource):
                 self.request.model if self.request is not None else None
             )
             
+            logger.debug(f"{COMPLETION_EMOJI}Calculating cost for model {format_model_name(model_name)}")
+            
             # Apply cost calculation
             return self.cost_strategy.run_cost_strategy(
                 response=response,
@@ -502,6 +598,8 @@ class Completions(AstralResource):
                 "Please call `complete_structured` or `complete_json` instead."
             )
 
+        logger.debug(f"{COMPLETION_EMOJI}Executing standard chat completion with model {format_model_name(self.request.model)}")
+        
         # Update request with any provided parameters
         request = self._update_request_with_params(**kwargs)
 
@@ -513,6 +611,7 @@ class Completions(AstralResource):
         astral_response = self.adapter.to_astral_completion_response(provider_response)
         astral_response_with_cost = self._apply_cost(astral_response)
 
+        logger.debug(f"{COMPLETION_EMOJI}Completed standard chat request")
         return astral_response_with_cost
 
     def complete_json(
@@ -538,6 +637,9 @@ class Completions(AstralResource):
                 "Please call `complete` instead, or re-initialize with a structured/JSON focus."
             )
 
+        response_model_name = response_format.__name__ if hasattr(response_format, "__name__") else "CustomModel"
+        logger.debug(f"{COMPLETION_EMOJI}Executing JSON completion with model {format_model_name(self.request.model)} using schema: {format_response_schema(response_format)}")
+
         # Update request with new parameters (notably, possibly new response_format)
         request = self._update_request_with_params(response_format=response_format, **kwargs)
 
@@ -553,6 +655,7 @@ class Completions(AstralResource):
         )
         astral_response_with_cost = self._apply_cost(astral_response)
 
+        logger.debug(f"{COMPLETION_EMOJI}Completed JSON request")
         return cast(AstralStructuredResponse[StructuredOutputResponseT], astral_response_with_cost)
 
     def complete_structured(
@@ -578,6 +681,9 @@ class Completions(AstralResource):
                 "Please call `complete` instead, or re-initialize with a structured focus."
             )
 
+        response_model_name = response_format.__name__ if hasattr(response_format, "__name__") else "CustomModel"
+        logger.debug(f"{COMPLETION_EMOJI}Executing structured completion with model {format_model_name(self.request.model)} using schema: {format_response_schema(response_format)}")
+
         request = self._update_request_with_params(response_format=response_format, **kwargs)
         provider_request = self.adapter.to_provider_request(request)
         provider_response = self.client.create_completion_structured(provider_request)
@@ -586,6 +692,8 @@ class Completions(AstralResource):
             response_format=response_format
         )
         astral_response_with_cost = self._apply_cost(astral_response)
+        
+        logger.debug(f"{COMPLETION_EMOJI}Completed structured request")
         return cast(AstralStructuredResponse[StructuredOutputResponseT], astral_response_with_cost)
 
     # -------------------------------------------------------------------------------- #
@@ -611,12 +719,16 @@ class Completions(AstralResource):
                 "Please call `complete_structured_async` or `complete_json_async` instead."
             )
 
+        logger.debug(f"{COMPLETION_EMOJI}Executing async standard chat completion with model {format_model_name(self.request.model)}")
+        
         # Update request
         request = self._update_request_with_params(**kwargs)
         provider_request = self.adapter.to_provider_request(request)
         provider_response = await self.async_client.create_completion_chat_async(provider_request)
         astral_response = self.adapter.to_astral_completion_response(provider_response)
         astral_response_with_cost = self._apply_cost(astral_response)
+        
+        logger.debug(f"{COMPLETION_EMOJI}Completed async standard chat request")
         return astral_response_with_cost
 
     async def complete_json_async(
@@ -641,6 +753,9 @@ class Completions(AstralResource):
                 "Please call `complete_async` instead, or re-initialize with a structured/JSON focus."
             )
 
+        response_model_name = response_format.__name__ if hasattr(response_format, "__name__") else "CustomModel"
+        logger.debug(f"{COMPLETION_EMOJI}Executing async JSON completion with model {format_model_name(self.request.model)} using schema: {format_response_schema(response_format)}")
+
         request = self._update_request_with_params(response_format=response_format, **kwargs)
         provider_request = self.adapter.to_provider_request(request)
         provider_response = await self.async_client.create_completion_structured_async(provider_request)
@@ -649,6 +764,8 @@ class Completions(AstralResource):
             response_format=response_format
         )
         astral_response_with_cost = self._apply_cost(astral_response)
+        
+        logger.debug(f"{COMPLETION_EMOJI}Completed async JSON request")
         return cast(AstralStructuredResponse[StructuredOutputResponseT], astral_response_with_cost)
 
     async def complete_structured_async(
@@ -673,6 +790,9 @@ class Completions(AstralResource):
                 "Please call `complete_async` instead, or re-initialize with a structured focus."
             )
 
+        response_model_name = response_format.__name__ if hasattr(response_format, "__name__") else "CustomModel"
+        logger.debug(f"{COMPLETION_EMOJI}Executing async structured completion with model {format_model_name(self.request.model)} using schema: {format_response_schema(response_format)}")
+
         request = self._update_request_with_params(response_format=response_format, **kwargs)
         provider_request = self.adapter.to_provider_request(request)
         provider_response = await self.async_client.create_completion_structured_async(provider_request)
@@ -680,6 +800,8 @@ class Completions(AstralResource):
             provider_response,
             response_format=response_format
         )
+        
+        logger.debug(f"{COMPLETION_EMOJI}Completed async structured request")
         return cast(AstralStructuredResponse[StructuredOutputResponseT], self._apply_cost(astral_response))
 
     # -------------------------------------------------------------------------------- #
@@ -732,12 +854,15 @@ class Completions(AstralResource):
 
             base_value = base_params.get(param)
             if isinstance(base_value, list) and isinstance(value, list):
+                logger.debug(f"{COMPLETION_EMOJI}Merging {len(value)} {param} with existing {len(base_value)}")
                 result[param] = base_value + value
             elif isinstance(base_value, dict) and isinstance(value, dict):
+                logger.debug(f"{COMPLETION_EMOJI}Merging {param} dictionary with existing")
                 merged_dict = base_value.copy()
                 merged_dict.update(value)
                 result[param] = merged_dict
             else:
+                logger.debug(f"{COMPLETION_EMOJI}Overriding existing {param} with new value")
                 result[param] = value
 
         return result
@@ -771,11 +896,19 @@ class Completions(AstralResource):
         merged_params = self._merge_parameters(kwargs)
 
         request_cls = type(self.request)
-
-        # If we are structured, update `response_format` if needed
-        if issubclass(request_cls, AstralStructuredCompletionRequest):
-            if response_format is not NOT_GIVEN and response_format is not None:
-                merged_params["response_format"] = response_format
+        
+        # If updating structured request with new response_format
+        if (issubclass(request_cls, AstralStructuredCompletionRequest) and 
+            response_format is not NOT_GIVEN and 
+            response_format is not None):
+            
+            response_model_name = response_format.__name__ if hasattr(response_format, "__name__") else "CustomModel"
+            logger.debug(f"{COMPLETION_EMOJI}Updating request with new schema: {format_response_schema(response_format)}")
+            merged_params["response_format"] = response_format
+        
+        if kwargs:
+            param_list = ', '.join(kwargs.keys())
+            logger.debug(f"{COMPLETION_EMOJI}Updating request with parameters: {param_list}")
 
         return request_cls(**merged_params)
 
@@ -1297,55 +1430,23 @@ def test_tools_usage() -> None:
         {"role": "user", "content": "What's the area of a 5x10 rectangle?"}
     ]
     
-    # Test with tool choice auto
-    print("\n[TEST] Completions with tools - auto tool choice")
+    # Test with standard completion
+    print("\n[TEST] Standard chat completion with tools")
     print("-" * 70)
     
     start_time = time.time()
-    # response = complete(
-    #     model="gpt-4o",
-    #     messages=messages,
-    #     tools=[calculate_area.tool, get_weather.tool],
-    #     tool_choice="auto"
-    # )
-    latency = time.time() - start_time
-
-
-    from openai import OpenAI
-    client = OpenAI()
-    tools = [
-    {
-        "type": "function",
-        "function": {
-        "name": "get_current_weather",
-        "description": "Get the current weather in a given location",
-        "parameters": {
-            "type": "object",
-            "properties": {
-            "location": {
-                "type": "string",
-                "description": "The city and state, e.g. San Francisco, CA",
-            },
-            "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
-            },
-            "required": ["location"],
-        },
-        }
-    }
-    ]
-    messages = [{"role": "user", "content": "What's the weather like in Boston today?"}]
-    completion = client.chat.completions.create(
-    model="gpt-4o",
-    messages=messages,
-    tools=tools,
-    tool_choice="auto"
+    response = complete(
+        model="gpt-4o",
+        messages=messages,
+        tools=[calculate_area, get_weather],  # Direct function references
+        tool_choice="auto"
     )
-
-    print(completion)
-    print_response_details(completion, 0)
+    latency = time.time() - start_time
+    
+    print_response_details(response, latency)
     
     # Test with specific tool choice
-    print("\n[TEST] Completions with tools - specific tool choice")
+    print("\n[TEST] Completions with specific tool choice")
     print("-" * 70)
     
     weather_messages = [
@@ -1357,15 +1458,15 @@ def test_tools_usage() -> None:
     response = complete(
         model="gpt-4o",
         messages=weather_messages,
-        tools=[calculate_area.tool, get_weather.tool],
+        tools=[calculate_area, get_weather],  # Direct function references
         tool_choice={"type": "function", "function": {"name": "get_weather"}}
     )
     latency = time.time() - start_time
     
     print_response_details(response, latency)
     
-    # Test with structured output and tools
-    print("\n[TEST] Completions with tools and structured output")
+    # Test with structured output and tools (auto-enforces strict mode)
+    print("\n[TEST] Completions with tools and structured output (auto-strict mode)")
     print("-" * 70)
     
     class AreaCalculation(BaseModel):
@@ -1377,7 +1478,7 @@ def test_tools_usage() -> None:
     response = complete_json(
         model="gpt-4o",
         messages=messages,
-        tools=[calculate_area.tool],
+        tools=[calculate_area],  # Will auto-enforce strict mode!
         response_format=AreaCalculation
     )
     latency = time.time() - start_time
@@ -1420,24 +1521,15 @@ def print_response_details(response: Union[AstralChatResponse, AstralStructuredR
 
 
 def run_simple_tests() -> str:
-    """
-    Run a series of simple tests with the new Completions approach and print the results.
+    """Run basic tests to validate functionality."""
+    print("\n" + "=" * 70)
+    print("ASTRAL TOOLS TESTING")
+    print("=" * 70)
     
-    Returns:
-        str: A message indicating all tests have completed
-    """
-    print("\n# -------------------------------------------------------------------------------- #")
-    print("# Running Simple Tests for Completions (New Approach)")
-    print("# -------------------------------------------------------------------------------- #\n")
-    
-    # test_class_initialization_chat_completion()
-    # test_class_initialization_structured_completion()
-    # test_convenience_method_complete()
-    # test_convenience_method_complete_json()
-    # test_async_methods()
+    # Test the tools
     test_tools_usage()
     
-    return "All tests completed"
+    return "Tests completed successfully."
 
 
 if __name__ == "__main__":
