@@ -102,33 +102,37 @@ Our goal is to become the go-to framework for building AI applications, from age
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+<!-- ### Built With
 
 - [Python](https://www.python.org/)
-- [Pydantic](https://pydantic-docs.helpmanual.io/)
+- [Pydantic](https://pydantic-docs.helpmanual.io/) -->
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-This section shows you how to get a local copy up and running.
+This section shows you how to get a local copy up and running. For a more structured overview, see our docs here: [Astral Documentation](https://www.useastral.dev/docs/)
 
 ### Prerequisites
 
 - Requires Python **>=3.12**
+- Authentication credentials for whatever model providers you're interested in using (i.e API key for OpenAI, API key for Anthropic, etc)
 
 ### 🌌 Join the Astral Community!
 
 Before diving in, make sure to:
 
 1. **⭐️ Star the Repository!**  
-   Loving Astral? Show your support by starring the [repo](https://github.com/chrismaresca/Astral-AI)—it helps new folks discover us and expands our stellar community!
+  Show your support by starring the [repo](https://github.com/chrismaresca/Astral-AI)—it helps new builders discover us and expands our community!
 
 2. **💬 Join our Discord Community:**  
    Hop into our vibrant [Discord community](https://discord.gg/SPNqRrPR) to connect with fellow contributors, brainstorm ideas, ask questions, or just hang out! It's the best place to stay updated on everything Astral.
+
+3. **🐦 Follow me on X:**  
+   Stay updated with the latest news and updates by following me on [X](https://x.com/thechrismaresca).
 
    Thanks for helping shape the future of Astral—we can't wait to see what you build!
 
@@ -136,51 +140,52 @@ Before diving in, make sure to:
 
 Ready to build something awesome? Follow these steps:
 
-1. **Fork and Clone:**  
-   Kick things off by forking the repo to your GitHub account and cloning your fork locally:
+1. **🍴 Fork and Clone:**  
+   Begin by forking the repository to your GitHub account and cloning your fork locally:
    ```bash
-   # Fork the repo first from GitHub, then clone your fork
+   # First, fork the repository on GitHub, then clone your fork
    git clone https://github.com/chrismaresca/Astral-AI.git
-   cd astral-ai
+   cd Astral-AI
    ```
 
-2. **Set Up Development Environment:**  
-   We use [**UV**](https://docs.astral.sh/uv/)—a blazing-fast Python package and project manager built with Rust—to streamline setup.
+2. **⚙️ Set Up Development Environment:**  
+   We utilize [**UV**](https://docs.astral.sh/uv/)—a high-performance Python package and project manager built with Rust—to simplify setup.
    ```bash
-   # Run the following command which will create a virtual environment and download all dependencies.
+   # Execute the following command to create a virtual environment and install all dependencies.
    uv sync
    ```
 
+3. **📚 Refer to Quick Start Guide:**  
+   Access our developer quick start guide here: [Quick Start](https://www.useastral.dev/docs/getting-started/quick-start)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE -->
+<!-- Examples -->
 
-## Usage
+### **🔍 Examples**
 
-### Quick Start
-
-See our developer quick start here: [Quick Start](https://www.useastral.dev/docs/getting-started/quick-start)
-
-
+Dive into our demos and guides to get a hands-on experience: [Demos](https://www.useastral.dev/docs/guides/quick-start)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 
-<!-- ## Roadmap
+## **🛤️ Roadmap**
 
-*Roadmap details go here.*  
-*(Placeholder for future features, improvements, and milestones.)*
+See our vision for the future of AI engineering: [Future Vision](https://www.useastral.dev/resources/future-vision) 🌌
 
-See the [open issues](https://github.com/chrismaresca/Astral-AI/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/chrismaresca/Astral-AI/issues) for a full list of proposed features (and known issues) 📝.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
-## Contributing
+## **🤝 Contributing**
 
-See the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
+Your contributions are what make Astral shine! For more information, see the [CONTRIBUTING.md](CONTRIBUTING.md) file. 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- LICENSE -->
 
 ## License
@@ -200,9 +205,8 @@ Distributed under the MIT License. See the [LICENSE](LICENSE) file for more info
   
   [![Twitter](https://img.shields.io/badge/Twitter-%40TheChrisMaresca-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/TheChrisMaresca)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-Chris%20Maresca-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chris-maresca/)
-  [![Email](https://img.shields.io/badge/Email-chris%40chrismaresca.dev-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:chris@useastral.dev)
+  [![Email](https://img.shields.io/badge/Email-chris%40useastral.dev-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:chris@useastral.dev)
   
-  [🚀 View Project on GitHub](https://github.com/chrismaresca)
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -214,7 +218,8 @@ Distributed under the MIT License. See the [LICENSE](LICENSE) file for more info
 - [Building Effective Agents – Anthropic](https://www.anthropic.com/engineering/building-effective-agents) - Insights on creating autonomous AI systems that can effectively solve complex tasks
 - [Aligning Language Models To Follow Instructions – OpenAI](https://openai.com/blog/instruction-following) - Best practices for crafting effective prompts
 - [Linear – In artfully blending software and design](https://linear.app/) - Inspiration for thoughtful product design and user experience
-- [Design Philosophy] My approach to software development has been profoundly shaped by Charles Bukowski's perspectives on creativity:
+- [Steve Jobs on Changing the World](https://www.youtube.com/watch?v=kYfNvmF0Bqw) - "When you grow up you tend to get told the world is the way it is... life changes when you realize one simple truth: Everything around you that you call life was made up by people that were no smarter than you."
+- My approach to software development has been profoundly shaped by the philosophical and poetic insights of Charles Bukowski:
   - [Style - Charles Bukowski](https://www.goodreads.com/quotes/150224-style-is-the-answer-to-everything-a-fresh-way-to) - "Style is the answer to everything..."
   - [So You Want To Be a Writer - Charles Bukowski](https://allpoetry.com/so-you-want-to-be-a-writer) - On authentic creation and finding your voice
 
