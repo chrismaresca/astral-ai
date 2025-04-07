@@ -1,0 +1,14 @@
+from typing import List, Optional
+from pydantic import BaseModel
+
+class Headquarters(BaseModel):
+    city: str
+    country: str
+
+class Company(BaseModel):
+    name: str
+    founded: int
+    employees: List[Person]
+    revenue: Optional[float] = None
+    public: bool
+    headquarters: Headquarters 

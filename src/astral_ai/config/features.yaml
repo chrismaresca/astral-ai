@@ -1,0 +1,39 @@
+features:
+  reasoning_effort:
+    description: "Whether the model supports reasoning effort."
+  extended_thinking:
+    description: "Whether the model supports extended thinking."
+  developer_message:
+    description: "Whether the model supports developer messages."
+  system_message:
+    description: "Whether the model supports system messages."
+  json_mode:
+    description: "Whether the model supports JSON mode."
+  structured_output:
+    description: "Whether the model supports structured output."
+  function_calling:
+    description: "Whether the model supports function calling."
+  streaming:
+    description: "Whether the model supports streaming."
+  distillation:
+    description: "Whether the model supports distillation."
+  fine_tuning:
+    description: "Whether the model supports fine-tuning."
+  predicted_outputs:
+    description: "Whether the model supports predicted outputs."
+
+
+costs:
+  time_based: boolean
+  standard_window:
+    time_period: string
+    input_base_cost: float
+    input_cache_hit_cost: float
+    input_cache_write_cost: float | None
+    output_base_cost: float
+  discount_window:
+    time_period: string
+    input_base_cost: float
+    input_cache_hit_cost: float
+    input_cache_write_cost: float | None
+    output_base_cost: float
